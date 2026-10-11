@@ -7,6 +7,6 @@
 - [x] Address code-review findings with regression tests.
 - [x] Pass parent 23-test suite, deterministic build, 27 browser cases, 71 local targets and 11 interactions.
 - [x] Document editing, provenance and code ownership.
-- [ ] Obtain focused review approval and successful GitHub branch CI.
-- [ ] Integrate main, deploy Pages and verify live website.
-- [ ] Record deployment evidence and close release planning.
+- [x] Obtain focused review approval and successful GitHub branch CI.
+- [x] Integrate main, deploy Pages and verify live website.
+- [x] Record deployment evidence and close release planning.

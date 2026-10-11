@@ -27,7 +27,15 @@ An initial parent filter-reset assertion read before the native form reset defau
 
 ## Release Verification
 
-Pending focused review approval, GitHub CI, integration and live HTTPS verification. This local report does not claim public deployment.
+- Focused final code review: APPROVE, after testing collision-free future publication fixtures. The existing J17 in-memory regression also passed all four targeted tests.
+- Latest feature-branch CI passed: https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/38154637890
+- Verified implementation commit e163dcfb4719b799a85d0438211353f6c16c3f8e was fast-forward integrated into the clean primary main worktree and pushed.
+- Main test/build and Pages deployment passed: https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/38154808069
+- Public URL: https://data-science-tamu.github.io/ ; Pages build type is workflow and HTTPS is enforced.
+- Live integrity checks: 49 requests passed. Published HTML, images, fonts, CSS/JS and the real CV match local build SHA-256 hashes. Unknown routes and non-public build-source paths return the custom 404.
+- The full Chromium QA was repeated against the live HTTPS website: 27 page/viewport cases, 71 internal targets and 11 interaction checks passed with no failures.
+- Source-code/provenance files remain available in the intentionally public GitHub repository but are not served by the Pages website.
+- Changes after this verification are documentation-only closeout. The final main workflow is checked again before handoff.
 
 ## Limitations
 
