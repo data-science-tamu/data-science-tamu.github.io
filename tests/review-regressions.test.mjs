@@ -42,10 +42,13 @@ test("publication validation rejects unknown categories and duplicate IDs", () =
 test("maintained publications and news may grow without weakening source coverage", () => {
   const data = read("lab.json"),
     site = read("site.json");
+  const usedIds = new Set(data.publications.map((p) => p.id));
+  let fixtureNumber = 1;
+  while (usedIds.has(`J${fixtureNumber}`)) fixtureNumber++;
   // Synthetic regression fixtures are rendered in memory only, never in dist.
   const publication = {
     ...data.publications[0],
-    id: "J17",
+    id: `J${fixtureNumber}`,
     title: "Synthetic regression publication",
     metadata: "Regression fixture only.",
     year: "2030",
