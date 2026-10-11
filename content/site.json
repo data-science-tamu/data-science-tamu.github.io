@@ -1,0 +1,14 @@
+{
+  "title": "Data Science Lab",
+  "url": "https://data-science-tamu.github.io",
+  "email": "j.lee@tamu.edu",
+  "institution": "Texas A&M University",
+  "department": "Industrial & Systems Engineering",
+  "facultyRole": "Assistant Professor",
+  "location": "College Station, Texas",
+  "profile": "https://engineering.tamu.edu/industrial/profiles/lee-jaesung.html",
+  "scholar": "https://scholar.google.com/citations?user=qzckakwAAAAJ&hl=en&oi=sra",
+  "linkedin": "https://www.linkedin.com/in/jaesung-lee-phd/",
+  "cv": "/assets/documents/jaesung-lee-cv.pdf",
+  "description": "Domain-informed statistical and machine learning methods for engineering systems under uncertainty. The Data Science Lab at Texas A&M University, led by Jaesung Lee."
+}

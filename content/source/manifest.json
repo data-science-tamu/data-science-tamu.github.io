@@ -1,0 +1,242 @@
+{
+  "capturedAt": "2026-10-11T15:39:11.724Z",
+  "base": "https://sites.google.com/view/jaesunglee",
+  "pages": [
+    {
+      "slug": "home",
+      "url": "https://sites.google.com/view/jaesunglee/home",
+      "source": "content/source/home.json",
+      "sections": 8
+    },
+    {
+      "slug": "people",
+      "url": "https://sites.google.com/view/jaesunglee/people",
+      "source": "content/source/people.json",
+      "sections": 8
+    },
+    {
+      "slug": "cv",
+      "url": "https://sites.google.com/view/jaesunglee/cv",
+      "source": "content/source/cv.json",
+      "sections": 2
+    },
+    {
+      "slug": "research",
+      "url": "https://sites.google.com/view/jaesunglee/research",
+      "source": "content/source/research.json",
+      "sections": 14
+    },
+    {
+      "slug": "research/ai-for-systems",
+      "url": "https://sites.google.com/view/jaesunglee/research/ai-for-systems",
+      "source": "content/source/research-ai-for-systems.json",
+      "sections": 7
+    },
+    {
+      "slug": "research/ai-for-processes",
+      "url": "https://sites.google.com/view/jaesunglee/research/ai-for-processes",
+      "source": "content/source/research-ai-for-processes.json",
+      "sections": 7
+    },
+    {
+      "slug": "research/physics-informed-ai",
+      "url": "https://sites.google.com/view/jaesunglee/research/physics-informed-ai",
+      "source": "content/source/research-physics-informed-ai.json",
+      "sections": 3
+    },
+    {
+      "slug": "news",
+      "url": "https://sites.google.com/view/jaesunglee/news",
+      "source": "content/source/news.json",
+      "sections": 14
+    },
+    {
+      "slug": "publication",
+      "url": "https://sites.google.com/view/jaesunglee/publication",
+      "source": "content/source/publication.json",
+      "sections": 2
+    }
+  ],
+  "assets": [
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72vuIqTHiJRrV1bywEB57YGPTleDrNVAxZ1vO0cOHnbcUC9pfkedx-KU6FhoRt0pNEsFC3OQf-ddAK33ptkEqXvQH6dn5iE1p_TWz5iAFRd8CLlDHcObQdDaW3MOrz0WWc96Y2MQreONy28FivpvjyKxmaZpDIjy49jDu0jD0nW_ERQt-Jitmwf2u8qIkt8zNfheQkMgd8FLnIdHb-5hzgdRkLRuRPCARHte=w1280",
+      "path": "public/assets/images/home-1-ffa7bee24b.jpg",
+      "bytes": 362705,
+      "contentType": "image/jpeg",
+      "sha256": "ffa7bee24b58421064a54c8cc04e514c53ba247e38e90d764fd486c39afbda6f"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72u7ETKzxylK-lPAOBfKYHr-p8Txc4DIIBRTvJIujQdVLzphccXAyR7ywubLqZT1k69WPzR7r5INZt71c-BsElMoiWC-b7xBG_UkGst9UUeVZKi_DGiEyly5liXAfyRU9h3MnbMudpJU3h3bG3SKUFjN2cegSHLoLXQIEIzA6E3imsQH4cfhh-I-AUWXGFE4nFD2RktMg1GSGiA0lE9rQeEZPFQSA2XFVUDx=w1280",
+      "path": "public/assets/images/people-1-4fd85da93d.jpg",
+      "bytes": 168472,
+      "contentType": "image/jpeg",
+      "sha256": "4fd85da93dfff891d816b89bb81b2b84239df2d5e3bee718bb96386493d18095"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72s8DGey8OFGLoGS5x-t2DZpAVOBjRb41myKeDf2HTIOqN3Ewq7ElAeY30l6GOlsU5aKPzCjcMymtWaYYKMH_IldcLMaWJfmgBpktkBSv_Iqhkpg9_62-kCgjRBYwH6Egq2hY41nOgjzvm5l_cEnDLHfSwcZYzMdaswNeozzY3INJ21dw0Esf1P2MM3DbxdBrxVWoZA6Y3M5G2xF4mDHnQxQM3HcZX49v29p=w1280",
+      "path": "public/assets/images/people-1-9d534f6658.jpg",
+      "bytes": 62885,
+      "contentType": "image/jpeg",
+      "sha256": "9d534f6658b4b3367a0d3789e906bdc13fd13f2bcfe15fae8d77d78960756a2a"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72smmop3T8-oQkS0ZP-VsiXYo-Oa0b2XNP_bRoYs4-UyvUvIWn0hSAOChVlpksPTnXBDR9tQ3fZVjlM0jRVTcTjjyoHoG5QQFPvVu98G9R9xnz5IHw49-cjfeeA9DnkZVLz4Ay1m9f_AlAggsa_63wCpGExzOoK2uN0x4z_5xiBbh2NoN_kk-0rdlVs3mETPwNCAU6Mq8iwsxs4et-U_3BLnWwHhOg6th1nL=w1280",
+      "path": "public/assets/images/people-1-4e3f0dc833.jpg",
+      "bytes": 118777,
+      "contentType": "image/jpeg",
+      "sha256": "4e3f0dc833d7fbb873b904609fb36a0197745c3de514c5a82ec8374ac86b85aa"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72tXDwZUlF3zkYyxqFaBaKoLKdHKIvVqb--FvfdBsc5GMY5vjoKXHlSfeQVO9eUZmeVc4DGY-XGLCh7PkDLZAlntiXp9lAst42LFImQUPUYTa4KmH8zkSs1DAzcdwEa1GZI5eyzLec8mYJHwMAqBR8xzmhzs_WSqwbNLyXiEaQRYt_e_olLYeXHdnUnmeRVSwhFclLctl0D4WL38_luk0YYvpQazeVvT2O82=w1280",
+      "path": "public/assets/images/people-1-c060cdafd7.jpg",
+      "bytes": 165392,
+      "contentType": "image/jpeg",
+      "sha256": "c060cdafd7c2c8cc2eeb132a2fcb994c8c8ff3309b51fa30b7c7c836a5033b9d"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72s5e_-wWa3t3SCxBVUQ5oUKuKknBKEBvP--tbrQpt3O7cfd-c18V2pVeowI0opqilLUBTnB7KCSPrvDUHjVnovL8OCCPnp0COYYaMCTw9D4dA2u9A8oqoDvUJSm4S55Bl9axovpFGwAsAhqdduFXHNiWZxxUVZC-Rn1qr5NR03NYzSBVd1FA6ONBAT25-dlKo0NscdogeLY_tLH_WTsfiGl0VuPHLdmHnkn=w1280",
+      "path": "public/assets/images/people-2-c9f2346674.jpg",
+      "bytes": 324387,
+      "contentType": "image/jpeg",
+      "sha256": "c9f234667493e6983e7e334a75ab7d41b15d43c4754c1150455092b2a9a91d6c"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72uXzMSAv3NUvwGm7lltrOaNRWcZ56rLcQJJcw2D-fjiMhJu89i4naGDCMlQvC0vL3OmGx4xp73uarAhm3_5le3AoJiVGsk_LFu8GxhwTc_eM6ZqAC_xLbo-QRovsjqWwxg4gDGUo1X9JSZSJNv7TILYIyT1cDJAhc3Dmp4xOuWUMAMUSUIBilC4pMQBWsci69Q0Yfy7pWIPM2X-ZeuP4hjUQBKJ_PsuCYy7=w1280",
+      "path": "public/assets/images/research-1-2c2733ddd9.png",
+      "bytes": 366004,
+      "contentType": "image/png",
+      "sha256": "2c2733ddd92f5f1092accda477af12b4f33212de09b1c86f6f3cef3ebd8d694c"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72skJsW1MZSiO_fxFAfHnrarntofTj5pL1yJU3PQ5q1IW-Tl6IuXlQfM0zTUtE-3bmXhC1v2nDPlJWoSq3s9TtIV-JLlUHVSvm8Y3_d_hAW9-GKGHL-bDEDQPqrbKXxMio8J1lUle3XYYdB41856IF4ufHXNt9C9Gjd1_57XtAlWUwUZ-b104sDzQcGZDNWs-stCM6XnO7hApyprOTq2M0jUTqjML7oNOg=w1280",
+      "path": "public/assets/images/research-1-cd79bc1b85.png",
+      "bytes": 45890,
+      "contentType": "image/png",
+      "sha256": "cd79bc1b859d9219581888c75322d301351da366fa574238ac3b80162b427535"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72u1003PbcYwOxgcCz60FfBdpE3uyCVTZkismQVzqNTGQHVxSMEP387tN7ZwdCCoYfrnIN5tbfdJhIoXt12tpnefH2z9vTmqQiRs6RMCNv1oYijA-Jye3f3CfBhRF4tHWLAxitaq1m5vf8NjJMAlgC81rilPXNeagypP8-nIbbtD2vIX2E7xXoITKw6XRcv2RhNNP3r5r6weW4U7fuT_dt7tFDlT4yz5Yw=w1280",
+      "path": "public/assets/images/research-1-ea37ce2933.png",
+      "bytes": 446833,
+      "contentType": "image/png",
+      "sha256": "ea37ce2933b4ed547ebc5000005ba6d214e3aff83124955790e45fd894d05b10"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72tpo4G6TzzPlwO2v0Qwb_NsK975TFe03OEGw5e_g7EOyqyHQs00WaZutFDQpBYuKbUV6MEitc53zoUt7JWm0nCGSwlZA5XlB64NUkk5kBnsvw6zx3og9DvpfZXzufCZauGLuZQkCiV27kKHj7LTlycw9plKsP-DUodBr406-kS_MLxn3_fxB7QH0myhRb_vXOat8UFFyujGRpGTIum4AOI3bfhEaB3zlJBz=w1280",
+      "path": "public/assets/images/research-1-2067e6d3f8.jpg",
+      "bytes": 284267,
+      "contentType": "image/jpeg",
+      "sha256": "2067e6d3f851c65f8b9320243bbbbc6d8a8607030a8646a6464104297d978860"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72uyvClhK2ww5asNmV1ndmyInsWgsnoQu6BgTVs2pIu-wjNsEGjrvWvIbWifewbi08t-aJ7Vo4_iOHeWzuNl4Kptb18Pbe40QcLDKSxun8tYfRG3-LEBVULXtSmnJkfMBPB3kIZuG2hJjXn76x5-ZaBuKVZRbnwVtv531vM5aaQt09izMT6ADtIJxhs83zdBspzyz8jEk_RgCAEb-7UdqkblUnUzh2ePQB51=w1280",
+      "path": "public/assets/images/research-1-daade3e8d1.png",
+      "bytes": 220726,
+      "contentType": "image/png",
+      "sha256": "daade3e8d19c601b777decefe45315ab7c52a06eaa18c125eabc84956a6e2d2f"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72tCdDP4VCqNjmotVegsmU8bL1XjT_jIefhhIYE2ZiJojRpsm9RspZM-tM51__PCgPGAPjj20V3utWLZWoqSaU_iQj3p7Uv-5v2F5WMKwI7u272dTDsupKkITSHXyf88xeOwpk68SPENLY6lN8KqUk_yR6PG_yoSf8HTSUd-m9svpU1e9202ZImZOeRW07MtlHRpAgtPSL-Ix7a5sWtHPzDs0upJW6CMoF5M=w1280",
+      "path": "public/assets/images/research-1-4c33128db0.png",
+      "bytes": 436862,
+      "contentType": "image/png",
+      "sha256": "4c33128db0583590882d056a04e7c1375766714c189c42b5f6f749d9b2f34ca2"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72v1-hI4IrXxgd59k4xcOmyBgnN7jK8XuxMkFaW3mapSwhoJ6Yc6sDTtykknOk1wWY1W7X2x-3T2Dx2wHqpVRQ__90LHwfeUKNgkyX87v-bT9sjpqAq_XvJMAxoZ4kxthU2IBPP_mqcNlB1q4wkuxBb7V88SpcGqtVPZp3L-WK07gbY5lfYLL1AZkE9Fepa9cJmq6kAdTS8bKaf_dhs9kmXQoUuf292Iog=w1280",
+      "path": "public/assets/images/research-1-771f351e05.png",
+      "bytes": 238077,
+      "contentType": "image/png",
+      "sha256": "771f351e0500e47471656349043e04c1715b07eaced606a587136b6bd4d808b4"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72tNIi4ZmTMcfNOuSY616LKovg1WQ9u4cdApX4Xlauh7aUz7nEh69EmM1NCWY24RhcAmZPhiCQqwxZLTf7qjq5RFxliIcLlcz1J7X1TT5g2igeJdmNrvs5tzGCDXY7JTnniaL-VuqqKs7v7nfy54t6U15xEyUEG9qA9hA2LEimShl2tEgNIgCPmKkZI9BhcIHYUKdvS3xWQ8LDlG0ZoW2PPgWTuh_E2M7g3q=w1280",
+      "path": "public/assets/images/research-1-ab9676c7e7.png",
+      "bytes": 446727,
+      "contentType": "image/png",
+      "sha256": "ab9676c7e791d984ad130d623cdc950b781590b4b06987906779f10589e873f0"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72sknKzrJ0Qw27nnyrg8QjmeKLfQ2OrkjfsLRQsIUwdzzH_HE3b96nrrAlLI-i_zxVs4NBNTaaMoyVQThbuB9hNao020zuH1kbh9hNbXcw4v6Bu7slji0KF_GtuUgR1sVuNvn2i-URaGcUUkXWRX1dSJfgtYZnhxa0-SbB0rkTL39iypvMGcxwICwdtTY87tHtz2ZPvTPVWRLN8rDvlJmXlQz0OpzQhuObm3=w1280",
+      "path": "public/assets/images/research-1-36a37c1c69.png",
+      "bytes": 276962,
+      "contentType": "image/png",
+      "sha256": "36a37c1c691f4b98dcbde2f74f545a6991a920c4877911916494b3d4c6186b82"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72vqMk4vnur0wdBAHDO248xZLE4KQZ_E_BOiP5L1e50VfakkHC8AHG3BgwiZjrUoZiHuMDqdmRrgT42e3s6EjrvAI6sbeJazEs-rmV123_NqIDuST_os7UfVkGKyxM-HRUqU5rU-pEWG7y_rYUPF-QxLIbJCHJ_PiVZBlQCFBejD4K2gksFjKlPDoKvwOuOkKDh9fTFj3s7dFN4oK30lWvFJ3wFa-XFgOA=w1280",
+      "path": "public/assets/images/research-1-92cdb3d899.png",
+      "bytes": 597667,
+      "contentType": "image/png",
+      "sha256": "92cdb3d899cc000ac310c1b378463e3331415d35214c57363425d53c9704ce4f"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72ulJngum8ruHQMOLJYZdcmdStZEaLOO935bpYoUJ-FHddXvpPCi86vXkz5EJOorWL8UpxwCaW7_NKuG69mTQ90jWr2vBhED7O0pSNxG6C3Ye1T-l7sp39NuCsbwVU7dZqL4Ld3nLhdg3xxLPk7MZEfTZbHYexjbMZ0AAVR6jwiyU45kxcScswdrQJjALB20P9Np_FtUj_Hkp9nk5NQ0DYvwb7W7LRvoJk-1=w1280",
+      "path": "public/assets/images/news-1-6627c5ad1b.jpg",
+      "bytes": 185012,
+      "contentType": "image/jpeg",
+      "sha256": "6627c5ad1b4f70338ce73641bd9436d2e54f9674b9ee2cb2b518dd0afe5a5497"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72uJbgmRJ76qzbvY2V1SplmwcgD1SaQnRMve6WWjXXQbzuIX6Mfr-3yDDsTSOmSjyOKzM3whDWD7QSoEax46_dQqApULeQoh_8v1AxNON_K_2fTkdXzf1CxMMX-EVn7jF-ywXmwSFhvJWihw_DF1kfU9PpDn6nPGEv7_7xTvQUDBgLqeR8-ayEK7LGQOtHkptdPD6cHMxaaa0wW-RAkvIwZxiAGaBD399wJd=w1280",
+      "path": "public/assets/images/news-1-c0718d6e5d.jpg",
+      "bytes": 200891,
+      "contentType": "image/jpeg",
+      "sha256": "c0718d6e5db5fad1a7def9160cecaa612244e2dcc43e774ad311bd20c2b425eb"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72ttridJYvD_0TeT1Kv3CTbpgoxz3XVVA-NyOREhqrI5MAp_cuxb1QQXjJufRAW5qL0ok_WJLh0PW_Ndp9YeCesOKTFCizxsJAZtB_dc-Ex7PgWExdewD2G2usVshNGvnKYsIM95bsChHCrspgMzf3r_GhrAt6iwPbZvdSXjCr_65rSUoAuA3XbQDSjJHnzVvKrLw5UbWVirbyjtPevTLQS5x_Siyj741A=w1280",
+      "path": "public/assets/images/news-2-24d8363a27.jpg",
+      "bytes": 152472,
+      "contentType": "image/jpeg",
+      "sha256": "24d8363a2791a3b0a81ee5b73809261ef43bc087f20d7e45cdda53723665fca0"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72sxBC9QPFRIG-AkrX3WwMfHKx_NYyWYpeoq-DrgTM578_WiRVKUZS44s3j82VJ8gVRXeqLIeqqyfdHNtOkoZiHYP_dP9PvyLk4yQ8YECqi4NwiYOG1CA0F9ZLELzFkoaYOTHeZrUjl0NNELeE8JPSuLjC8C0s2njE6DBxeJzy_f0HElua5UCJ_QIhJk1lN7eXo9kSp1UvyPWclWIcgMUMo-5M7CR9VHqw=w1280",
+      "path": "public/assets/images/news-1-8b0fe41831.jpg",
+      "bytes": 175414,
+      "contentType": "image/jpeg",
+      "sha256": "8b0fe41831d754e6f2c6ab18baf070adb756c221925778fc010163ddc9102592"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72udVBE-V9Ws8ICILEFGvThsJ79PY05ipsgvGxZjugxC6Ux5UyqWS8QL2JCRn8lZqk9rIyhI2O7m_4UN3ennh2GmnlCD_rsFEqwpbWW2lTEDMuo_GOy2HinDrhn5lG3nDWgqJ4X8mX7DQ-Y9QSQ2tx3rWvrDXGJmSBLYCXMpqmy6-01IKFwtaenxQ00kKfQXyfgUXMSItxu4hBYfNUasLsZnuEgiO9OaJ4uP=w1280",
+      "path": "public/assets/images/news-2-a5f6cbe391.jpg",
+      "bytes": 148391,
+      "contentType": "image/jpeg",
+      "sha256": "a5f6cbe391fde335045e0e348fb313ef267f5c05d62847586fff7fdfb72aebf4"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72sEzzRBDsjV9vfwdiInFbEqmnyEUlpkosM14Hq8QmA6M_KBV1dNiAXz1vWymlIKa_aBhUPU8D_uiJeX1RRXD5AXAX3p0fN6FZIOCNy1XKmIgXQhRfCu2Y2viyCUr0CutOOZJfbyha9rmJQkOgZXhFdZR3r-GL6EqOsLW3w1veYUT4GVVbzIn01OIwTSna0nOE3rxgDDiS8kJgNp_MTMAyg_FWloVYiH3w=w1280",
+      "path": "public/assets/images/news-3-5573de3ea8.jpg",
+      "bytes": 142424,
+      "contentType": "image/jpeg",
+      "sha256": "5573de3ea81457181c87005b73b0ed158ed899cd5bf604b35ab883479bf97582"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72u20bVDDbVyIIwZR0M6ja-6TqHPnqi1L9IgL6OfROnyCUy189Pzgnu-NrRRaY0rAn0qaEhLyx1NQrepJNkHATOCYlPrM0PQnptVl5tjreOjwpWJe6r8704bNf4QrDnTRNdDPHubQc3nRcBV3PriorINNT87MggY16oiAhYrvXZi9Ky4JEOaVYGbqiDbtIktTvYlpxvbbTMGPteSfkpRBbNzzSHkJsaYRw=w1280",
+      "path": "public/assets/images/news-1-db61e9c97e.jpg",
+      "bytes": 171758,
+      "contentType": "image/jpeg",
+      "sha256": "db61e9c97eadcccd25154374b8f32a7c5c4c82aa94e1b9ce7fe4db5506e7fed2"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72uUTNy9mNm0wdD9EmcPGBdl-OlrgWHYbxf-nnQS5PkeDMnxMcze3645Xl8RvNmsUpGHPOA93LqZUutU6p78uVAph3AxxnRdccnnd7jhOaBYOAXwy82fin0o5L8Q23Zvea7n22cgjhS5NScBJsXkt3sw6SmVmkGYVMhwS_h0qswRdbFocz5oVDq0Yzp4wLptg5qTKWDr_fQ3xuzt6Jzx9TuwC_6Jn1zDlE7I=w1280",
+      "path": "public/assets/images/news-1-f3c4376bd2.jpg",
+      "bytes": 146272,
+      "contentType": "image/jpeg",
+      "sha256": "f3c4376bd29d663c90365cd88b0e953c798af64782f38620784d6dc64d7d0a62"
+    },
+    {
+      "source": "https://sites.google.com/sitesv-images-rt/AMxu72utClMj6lGya6wvWANRRb40Xke7noBcUgwjT9YLm6i_IBMyYfAZqEnyDwHjAYzvSTzUNB_U2jA5ViVoctsG9FZoFIVUBa00OBV_GgY4cr22FmyfocaRSERkZqfYpC3ao0G93W8WznHD4PKO_KODuhx0eMhpfE9N7SR5D2Odg6axUTRoImpQmqMB2EYAB0sxfiIxjOIy9wI3109UWwNlQhVMCkK7yzfQJg=w1280",
+      "path": "public/assets/images/news-1-7adf262fe6.png",
+      "bytes": 296536,
+      "contentType": "image/png",
+      "sha256": "7adf262fe6946b9ed110b830f3af3e92c3502a7c02e42314efb93d7f98d50105"
+    }
+  ],
+  "cv": {
+    "source": "https://drive.google.com/file/d/1RBv4s-vcrYNvnsNH11Wgk5LdlVJfk-Cu/view",
+    "local": "public/assets/documents/jaesung-lee-cv.pdf",
+    "sha256": "7f69e03576716d02fcca4eba376c83c874aec7e4851433aaf37228bbc0743264"
+  }
+}
