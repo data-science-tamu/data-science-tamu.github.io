@@ -21,3 +21,9 @@
 - https://data-science-tamu.github.io is live with HTTPS enforced. Published artifacts match the verified build; 49 live integrity requests passed.
 - Repeated the complete browser QA against the public URL: 27 page/viewport cases, 71 local targets and 11 functional checks passed.
 - No unfinished implementation items remain. External-link availability and source/CV status differences are documented limitations, not fabricated corrections.
+
+## 2026-10-11: Record Visibility Considerations
+
+- Recorded the requested prior suggestions 2, 3 and 4 as consideration-only items in todo.md, with a pointer in plan.md.
+- Distinguished these options from approved implementation: assess research visibility, qualified collaboration and publicity outcomes before choosing features.
+- This documentation-only change does not modify website content, templates, assets, runtime behavior or public-facing output. Strategic recommendations remain proposals, not actions or outreach commitments.
