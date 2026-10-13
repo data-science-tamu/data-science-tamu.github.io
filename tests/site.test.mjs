@@ -297,5 +297,5 @@ test("home title and faculty footer come from maintained content", async () => {
   assert.ok(
     plain(home.body.match(/<h1>([\s\S]*?)<\/h1>/)[1]).includes(site.title),
   );
-  assert.ok(layout(site, home, data.faculty.name).includes(data.faculty.name));
+  assert.ok(layout(site, home, data.faculty.name, data.research.areas).includes(data.faculty.name));
 });

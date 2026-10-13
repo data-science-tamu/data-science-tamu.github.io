@@ -10,7 +10,7 @@ Read `README.md` for commands/editing, `docs/source-provenance.md` for source in
 
 `npm run build` runs `scripts/build.mjs`. It resolves all paths relative to the repository, loads explicit metadata and maintained content, validates required config and inline rich text, reads actual image dimensions, and renders all pages through the shared layout. Rendering happens before existing output is replaced, so invalid config/content does not destroy the last valid build. Assets are copied only from `public/` into a temporary `.local/build-output` directory; successful output replaces `dist/`. This is a deterministic local build, not a Google Sites importer.
 
-`src/helpers.mjs` owns HTML escaping, publication fragment IDs, required config validation, the small inline-markup allowlist, JPEG/PNG dimension parsing and the image-rendering closure. `src/templates.mjs` owns all layout and rendering. `createPages` accepts the build-validated optional original-figure map as its fourth argument and returns explicit route/title/description/body records, and `layout` wraps each body with the common document head, skip link, brand, primary navigation and footer. The faculty footer name is supplied from maintained content.
+`src/helpers.mjs` owns HTML escaping, publication fragment IDs, required config validation, the small inline-markup allowlist, JPEG/PNG dimension parsing and the image-rendering closure. `src/templates.mjs` owns page composition and layout; the Research Structure section describes the shared research-content renderer. `createPages` accepts the build-validated optional original-figure map as its fourth argument and returns explicit route/title/description/body records, and `layout` wraps each body with the common document head, skip link, brand, primary navigation and footer. The faculty footer name is supplied from maintained content.
 
 ## Content Boundaries
 
@@ -43,6 +43,34 @@ The generator renders `/`, `/people/`, `/cv/`, `/research/`, its three source-co
 `tests/site.test.mjs` uses Node built-ins and executes the real generator. It covers semantic structure, headings/descriptions, captured publication IDs/metadata and substantive paragraphs, all local URLs/fragments/assets, people/degrees/news/projects/image coverage, exact PDF bytes/hash, required-config failure, output isolation, maintained title reuse and deterministic rebuilds. Baselines are intentional migration regression gates; approved future factual updates should revise them with documented source evidence.
 
 `scripts/serve.mjs` serves `dist/` only on loopback, handles MIME types, redirects directory URLs to trailing-slash routes, provides the local 404 and rejects path escape. It does not watch files or expose provenance. `npm run dev` builds first and starts that server.
+
+## Research Structure
+
+The editing and interaction contract is [Research presentation](../docs/research-presentation.md).
+`content/lab.json` owns explicit paragraph labels, collaborator kinds, citation
+`recordId` values and nested notes. `src/research-content.mjs` renders these once
+for all project routes and selected citations, plus h3/list overview groups.
+Project-level `relatedIds` is removed rather than maintained as overlapping state.
+
+`research.theme` owns the authored three-concept textual counterpart. The figure
+marked `placement: "theme"` moves above directions on the landing page; the shared
+scientific-figure renderer retains original-size reading and no-JS source links.
+
+`src/templates.mjs` shares `researchDisclosure` between header and home primary
+action. `layout(site, page, facultyName, researchAreas)` receives maintained areas
+from `scripts/build.mjs` for every route and 404. `public/assets/site.js` enhances
+normal links/list markup using `data-research-toggle` and
+`data-research-directions`; `.research-enhanced` scopes dropdown positioning.
+No-JS exposes links, not dead controls. Mobile lists stay in-flow; print hides
+directions/toggles. The footer and non-research page bodies are unaffected.
+
+`tests/research-content.test.mjs` checks explicit rendering and fail-closed metadata;
+`tests/research-structure.test.mjs` covers data reuse, figure ordering, semantic
+hierarchy and exact paragraph preservation via a compact hash fixture;
+`tests/research-navigation.test.mjs` executes real navigation handlers in a DOM
+double for hover, toggle, focus, Escape, outside clicks, viewport and outer-nav
+state. Parent still owns real-browser gates. Worker evidence lives under
+`.local/research-structure/`, never in the deployed artifact.
 
 ## Deployment Boundary
 

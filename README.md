@@ -38,6 +38,10 @@ The active font is locally hosted DM Sans. The captured Newsreader file and both
 
 Research figures use wide uncropped previews and open at 100% source resolution, with Fit/200% controls and scrollable details. `content/figure-originals.json` explicitly maps available verified larger sources; `src/figure-originals.mjs` validates paths, dimensions and hashes before the build replaces output. Original-resolution files load only when requested. Without JavaScript, figure links still open the real local image.
 
+Research labels, collaborator paragraphs, citations/notes and overview lists use
+explicit maintained presentation metadata. Header/home direction disclosures
+share the same research areas. See [editing and navigation contract](docs/research-presentation.md).
+
 The owner-approved academic-readability and restrained-polish revision is published at https://data-science-tamu.github.io/. Main integration, exact-head Pages deployment and live verification passed on 2026-10-13; release evidence is in docs/validation.md. See [comparison and recovery](docs/academic-preview.md). Code ownership, route mapping and reading order are in `wiki/codebase.md`.
 
 ## Routes

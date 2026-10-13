@@ -1,5 +1,16 @@
 # Academic Website Release Tasks
 
+## Research Structure Task
+
+- [x] Add semantic/structural and client-state tests; record expected RED.
+- [x] Implement shared Research disclosures and progressive enhancement.
+- [x] Structure every project/citation and overview; move integration figure.
+- [x] Run npm test/build and git diff --check; update editing/wiki contracts.
+- [x] Record implementation RED/GREEN and parent preservation/browser evidence.
+- [x] Correct responsive focus race and hover-only Escape; repeat real-browser checks.
+- [x] Parent: independent browser/accessibility QA, final review and local documentation.
+- [ ] Parent: commit/push, main integration and deployment/readback.
+
 Academic/polish implementation and independent reviews are complete in history.md.
 The owner-approved release was published and verified on 2026-10-13.
 

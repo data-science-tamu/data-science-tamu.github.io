@@ -250,6 +250,43 @@ time,
 .menu-toggle {
   display: none;
 }
+.research-disclosure {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 0;
+}
+[data-research-toggle] {
+  margin-left: 0.25rem;
+}
+.research-directions {
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  list-style: none;
+  background: var(--paper);
+}
+.research-directions li {
+  margin: 0;
+}
+.research-directions a {
+  display: block;
+  padding: 0.5rem 0;
+}
+.research-enhanced > .research-directions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 5;
+  width: 26rem;
+  max-width: calc(100vw - 2rem);
+  border: 0.0625rem solid var(--rule);
+}
+.research-action > [data-research-toggle] {
+  border-color: var(--maroon);
+  color: var(--maroon);
+}
 .home-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 16rem;
@@ -284,7 +321,7 @@ time,
   font-size: var(--text-small);
   font-weight: 600;
 }
-.home-hero .hero-actions > .button:first-child {
+.home-hero .hero-actions > .research-action > .button {
   min-height: 2.75rem;
   padding-block: 0.25rem;
   padding-inline: 0.875rem;
@@ -294,7 +331,7 @@ time,
   color: var(--paper);
   text-decoration: none;
 }
-.home-hero .hero-actions > .button:first-child:hover {
+.home-hero .hero-actions > .research-action > .button:hover {
   background: #3b0000;
   border-color: #3b0000;
   color: var(--paper);
@@ -476,6 +513,25 @@ time {
 }
 .research-context h2:not(:first-child) {
   margin-top: 1.5rem;
+}
+.research-theme {
+  padding-bottom: 1.25rem;
+}
+.project-collaborators {
+  margin-block: 1rem;
+}
+.project-publications h4 {
+  margin-top: 1.25rem;
+}
+.research-publications > li + li {
+  margin-top: 1rem;
+}
+.research-publications p {
+  margin-bottom: 0.5rem;
+}
+.citation-notes {
+  margin-block: 0.5rem 0;
+  color: var(--muted);
 }
 .scientific-figure {
   margin-block: 1.25rem;
@@ -723,6 +779,17 @@ time {
   .primary-nav {
     width: 100%;
   }
+  .primary-nav .research-disclosure {
+    width: 100%;
+  }
+  .research-enhanced > .research-directions {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+  }
+  .research-action {
+    max-width: 100%;
+  }
   .has-menu .menu-toggle {
     display: block;
   }
@@ -817,6 +884,8 @@ time {
   }
   .site-header,
   .site-footer,
+  .research-directions,
+  [data-research-toggle],
   .skip-link,
   .publication-filters,
   .result-count,
@@ -855,8 +924,8 @@ time {
     color: #000;
   }
   /* Match hover specificity even when print backgrounds are disabled. */
-  .home-hero .hero-actions > .button:first-child,
-  .home-hero .hero-actions > .button:first-child:hover {
+  .home-hero .hero-actions > .research-action > .button,
+  .home-hero .hero-actions > .research-action > .button:hover {
     color: #000;
     background: none;
     border-color: #000;

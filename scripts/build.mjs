@@ -44,7 +44,7 @@ try {
   );
   const rendered = pages.map((page) => [
     `${page.route}index.html`,
-    layout(site, page, lab.faculty.name),
+    layout(site, page, lab.faculty.name, lab.research.areas),
   ]);
   const errorPage = {
     route: "/404.html",
@@ -53,7 +53,7 @@ try {
       "This page could not be found. Return to the Data Science Lab website.",
     body: `<header class="page-heading"><p class="eyebrow">404</p><h1>Page not found</h1><p class="lead">The page may have moved, or the address may be incorrect.</p><div class="hero-actions"><a class="button" href="/">Return home</a><a class="button button-secondary" href="/research/">Explore research</a></div></header>`,
   };
-  rendered.push(["404.html", layout(site, errorPage, lab.faculty.name)]);
+  rendered.push(["404.html", layout(site, errorPage, lab.faculty.name, lab.research.areas)]);
   const stage = path.join(root, ".local/build-output");
   fs.mkdirSync(path.dirname(stage), { recursive: true });
   fs.rmSync(stage, { recursive: true, force: true });

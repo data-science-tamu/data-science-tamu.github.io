@@ -126,3 +126,28 @@ by the 2026-10-13 authorization below; independent review is now complete.
   the academic worktree. Google Sites and separate4174 prototype were untouched.
 - Subsequent closeout edits are documentation-only; parent verifies their exact-head
   workflow again before handoff. No Safari/Firefox or physical screen-reader claim.
+
+## 2026-10-13: Research Navigation and Information Hierarchy
+
+- Implemented with gpt-6.1-sol, reasoning max, in isolated feat/research-structure.
+- Shared header and home Research disclosures derive three directions from maintained
+  content and retain the Research landing-page link, touch/keyboard controls,
+  JavaScript-disabled links and print behavior.
+- One research-content renderer uses explicit labels, collaborator/citation roles,
+  record IDs and nested explanatory notes. All eight projects and their source
+  facts/links remain complete. Tasks, Approaches and Applications are real lists.
+- Moved the original three-part integration theme/figure ahead of directions.
+  White academic type, source-size scientific figures and CV are unchanged.
+- Parent found and reproduced two navigation boundaries missed by the initial DOM
+  double: CSS-driven focus loss before resize handlers, and hover-only Escape
+  originating outside the disclosure. Focused Sol/max corrections use actual nav
+  ownership/focusout and document Escape, with RED/GREEN regressions and repeated
+  browser verification. No production diagnostic instrumentation remains.
+- Parent local gates:83 tests/build; Git-free source export83 tests;22 structure
+  scenarios;19 extended nav cases;48 focus transitions;27 page/viewport axe cases;
+  80 internal targets;11 existing journeys;30 viewer cases plus8 extra checks.
+  Source/asset preservation passed. Full evidence and limits: docs/validation.md.
+- Release integration and public readback are not claimed in this entry.
+
+- Independent content/theme and focused final navigation reviews APPROVE; parent
+  verified the reviewed runtime hash. Release gates remain tracked in plan/todo.

@@ -33,7 +33,7 @@ test("templates have a logical heading outline without decorative eyebrow labels
 
 test("all research pages share one hidden, named native dialog with keyboard scroll and original-file fallback", () => {
   for (const page of pages) {
-    const html = layout(site, page, lab.faculty.name);
+    const html = layout(site, page, lab.faculty.name, lab.research.areas);
     assert.equal((html.match(/<dialog\b/g) || []).length, research.includes(page) ? 1 : 0, page.route);
     if (!research.includes(page)) continue;
     assert.match(html, /<dialog[^>]*id="figure-viewer"[^>]*aria-labelledby="figure-viewer-title"[^>]*hidden/);
@@ -68,10 +68,10 @@ test("full project text precedes its image, with no accordion or hidden project 
     for (const [, id, body] of page.body.matchAll(/<article class="project" id="([^"]+)">([\s\S]*?)<\/article>/g)) {
       const project = lab.projects.find((p) => p.id === id);
       const imageOffset = body.indexOf('<figure class="scientific-figure">');
-      for (const paragraph of project.paragraphs) {
-        const offset = body.indexOf(paragraph.html);
-        assert.ok(offset >= 0 && offset < imageOffset, `${id}: full text before figure`);
-      }
+      const beforeFigure = body.slice(0, imageOffset).replace(/<[^>]*>/g, "");
+      const content = project.paragraphs.flatMap((p) => [p, ...(p.notes || [])]);
+      for (const paragraph of content)
+        assert.ok(beforeFigure.includes(paragraph.html.replace(/<[^>]*>/g, "")), `${id}: full semantic text before figure`);
       assert.doesNotMatch(body, /<(?:p|div|article)\b[^>]*(?:\shidden\b|\saria-hidden="true")/);
     }
   }
@@ -84,7 +84,7 @@ test("white neutral surfaces and a single local sans type system replace gradien
   for (const selector of ["body", ".site-header", ".site-footer", ".contact-panel"])
     assert.match(declarations(selector), /background:\s*var\(--paper\)/, selector);
   for (const page of pages)
-    assert.doesNotMatch(layout(site, page, lab.faculty.name), /newsreader\.ttf/);
+    assert.doesNotMatch(layout(site, page, lab.faculty.name, lab.research.areas), /newsreader\.ttf/);
 });
 
 test("central rem tokens enforce the tight, accessible academic type scale", () => {

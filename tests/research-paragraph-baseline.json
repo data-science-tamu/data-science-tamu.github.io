@@ -1,0 +1,37 @@
+{
+  "projects": [
+    {
+      "id": "preventive-maintenance",
+      "sha256": "5bed39f95f537222feb1e3ddd4c551e9c6fe208d431d29d2012dcb874acab62c"
+    },
+    {
+      "id": "bone-elastic-properties",
+      "sha256": "9045501afd9a479e4b50d892098de81fda8a7227aa4bc5996ea103535a1d5df7"
+    },
+    {
+      "id": "failure-prognostics",
+      "sha256": "37158f5c20522c0907a7184ee32c5423b6789d19272612d1f6fd22c428aae60a"
+    },
+    {
+      "id": "nanosensor-monitoring",
+      "sha256": "99b8a5e34b62bc7007bc7f16f115821f6c574ce94fd30677db2aca39575f7262"
+    },
+    {
+      "id": "robust-design",
+      "sha256": "74331fb1efeb39d3d166c09abfed04227d1ed407513542d88e204e45114c2613"
+    },
+    {
+      "id": "functional-data-calibration",
+      "sha256": "83075a3a002ec38d57a4dead1c8b23209faea7b2142ac5d0f65034967d958609"
+    },
+    {
+      "id": "fault-diagnosis",
+      "sha256": "16a97d32263f429b31f3e7c18cb2e45e1c26c3feb4eed300982eed9421e38852"
+    },
+    {
+      "id": "water-sensing",
+      "sha256": "dd5d2f963e49b8677caed2f9c4ed3a0e43527ff711ecd2a83c1451c283726c6b"
+    }
+  ],
+  "overviewSha256": "e26095ce527797b38e92efc5f16f0720e27b6d9ae4354963e27c2448148f01b4"
+}

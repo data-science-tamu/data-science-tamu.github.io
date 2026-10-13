@@ -107,3 +107,54 @@ its seven-file edits and test/build pass; parent took over final closeout.
 Non-blocking CI platform notices: existing v4 Actions use a deprecated Node20
 action runtime now executed as Node24 by GitHub; ubuntu-latest migration was
 also announced. Both jobs passed; no workflow upgrade was included in this release.
+
+## Research Structure Local Verification (2026-10-13)
+
+Baseline:6bcceef. Task branch:feat/research-structure. Implementation and follow-up
+fixes used gpt-6.1-sol/max; the parent owns independent QA and release.
+
+- npm ci --ignore-scripts, npm test and npm run build succeeded:83 tests,0 failed.
+  Source export without Git history independently passed all83 tests.
+- 22 new rendered-structure cases passed:both disclosure locations across1440,
+  1024,801,800,390,320px; source text on four research routes; print; no-JS at1440,
+  390,320; emulated touch at390,320. Tested axe A/AA rules report no violations.
+- 19 additional navigation cases passed:BODY-focus hover Escape for both instances,
+  200% text at five widths, breakpoint/same-breakpoint focus recovery, nested/outer
+  Escape, and all ten shared headers including404 plus print-hidden directions.
+- 48 actual focus transitions passed:30 direction1024->390;6 direction1024->801;
+  6 direction390->1024;6 primary-link1024->390. No BODY or hidden focus outcomes.
+- Existing regression QA passed:27 page/viewport/accessibility combinations,
+  80 local targets,11 interaction journeys,30 scientific viewer cases and8 extra
+  print,large-text,short-screen,error/fallback checks.
+- Preservation:45 captured-source/image/CV files match the baseline hashes;
+  16 project renderings retain72 paragraph instances and16 original citation-link
+  instances. Faculty,people,publications,news maintained data are unchanged.
+  Existing243-paragraph source gate remains. Image-source/catalog tests pass.
+- Visual checks covered theme ordering and all-new menu states at desktop/mobile,
+  and actual bone project text at1440/390:Goal/Methodologies/PDE labels are strong,
+  collaborators distinct and Advanced Science note nested beneathJ9.
+
+Causal correction:the original flat renderer had no presentation-role metadata;
+text-preservation tests could not detect a missing hierarchy. New metadata and
+semantic tests correct the data/rendering boundary. For responsive focus,the DOM
+platform double accepted hidden focus and missed browser CSS-induced blur before
+resize/media events. Production now resolves actual nav via Menu aria-controls,
+selects a visible owner before hide,and handles null-relatedTarget focusout on a
+collapsed nav. Hover-only Escape now reaches a document listener without default
+prevention or focus theft. Both defects were reproduced before fixes.
+
+Evidence lives in ignored .local/research-structure/:RED/GREEN logs,qa scripts,
+JSON results/screenshots,baseline hashes,focus-fix.md and independent review files.
+No QA evidence,source,docs or prompts enter dist. Browser coverage is Chromium,
+including emulated touch,not physical assistive-technology or cross-browser QA.
+Final review approval and deployment evidence are recorded separately below.
+
+### Independent Review Approval
+
+Content/theme review approved all eight projects and exact text/HTML/link
+preservation. Final focused navigation re-review approved both repaired P2s with
+23targeted tests,19extended cases,48focus cases and18independent browser probes.
+Source and served JS matched SHA-256 4fbf425e789a9ecd9f439ddea6fb2f931522c17f43a14135836ace027542a14c.
+Reports: .local/research-structure/deleg_74078668.json and final-review.md.
+No in-scope blocking findings remain. These are local/review gates,not a claim
+that GitHub integration or public deployment has finished.

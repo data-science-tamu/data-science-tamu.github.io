@@ -1,31 +1,100 @@
 const toggle = document.querySelector(".menu-toggle");
 const header = document.querySelector(".site-header");
+const navigation = toggle && document.getElementById(toggle.getAttribute("aria-controls"));
+const researchClosers = [];
+for (const root of document.querySelectorAll(".research-disclosure")) {
+  const control = root.querySelector("[data-research-toggle]");
+  const directions = root.querySelector("[data-research-directions]");
+  if (!control || !directions) continue;
+  const viewport = window.matchMedia("(max-width: 800px)");
+  const close = (restore = false) => {
+    const focusedDirection = directions.contains(document.activeElement);
+    if (restore && focusedDirection) {
+      const owner = viewport.matches && navigation?.contains(root) && !navigation.getClientRects().length
+        ? toggle : control;
+      owner.focus();
+    }
+    directions.hidden = true;
+    control.setAttribute("aria-expanded", "false");
+  };
+  const open = () => {
+    directions.hidden = false;
+    control.setAttribute("aria-expanded", "true");
+    if (!viewport.matches) {
+      // Clamp relative positioning to the viewport even if the header wraps.
+      const { left } = root.getBoundingClientRect();
+      const { width } = directions.getBoundingClientRect();
+      directions.style.left = `${Math.max(16, Math.min(left, window.innerWidth - width - 16)) - left}px`;
+    }
+  };
+  control.addEventListener("click", () => directions.hidden ? open() : close());
+  root.addEventListener("pointerenter", (event) => {
+    if (event.pointerType === "mouse") open();
+  });
+  root.addEventListener("pointerleave", (event) => {
+    if (event.pointerType === "mouse" && !root.contains(document.activeElement)) close();
+  });
+  root.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || directions.hidden) return;
+    event.preventDefault();
+    event.stopPropagation();
+    close();
+    control.focus();
+  });
+  root.addEventListener("focusout", (event) => {
+    if (!root.contains(event.relatedTarget)) close();
+  });
+  document.addEventListener("pointerdown", (event) => {
+    if (!root.contains(event.target)) close(true);
+  });
+  for (const link of root.querySelectorAll("a")) link.addEventListener("click", () => close(true));
+  viewport.addEventListener("change", () => close(true));
+  window.addEventListener("resize", () => close(true));
+  researchClosers.push({root, close});
+  close();
+  root.classList.add("research-enhanced");
+  control.hidden = false;
+}
+if (researchClosers.length) document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || event.defaultPrevented) return;
+  for (const {root, close} of researchClosers)
+    if (!root.contains(document.activeElement)) close();
+});
+
 if (toggle && header) {
+  const viewport = window.matchMedia("(max-width: 800px)");
   toggle.hidden = false;
   header.classList.add("has-menu");
   const close = () => {
+    const focusInside = navigation?.contains(document.activeElement);
+    for (const disclosure of researchClosers)
+      if (header.contains(disclosure.root)) disclosure.close(true);
     toggle.setAttribute("aria-expanded", "false");
     header.classList.remove("nav-open");
+    if (viewport.matches && focusInside) toggle.focus();
   };
   toggle.addEventListener("click", () => {
     const open = toggle.getAttribute("aria-expanded") !== "true";
+    if (!open) close();
     toggle.setAttribute("aria-expanded", String(open));
     header.classList.toggle("nav-open", open);
   });
   header.addEventListener("keydown", (event) => {
-    if (
-      event.key === "Escape" &&
-      toggle.getAttribute("aria-expanded") === "true"
-    ) {
+    if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+      event.preventDefault();
       close();
       toggle.focus();
     }
   });
-  document
-    .querySelectorAll(".primary-nav a")
-    .forEach((a) => a.addEventListener("click", close));
-  window.matchMedia("(max-width: 800px)").addEventListener("change", close);
+  document.querySelectorAll(".primary-nav a").forEach((a) => a.addEventListener("click", close));
+  navigation?.addEventListener("focusout", (event) => {
+    // CSS can blur a collapsed nav's child before resize/media-change handlers run.
+    if (!event.relatedTarget && viewport.matches && !navigation.getClientRects().length)
+      toggle.focus();
+  });
+  viewport.addEventListener("change", close);
 }
+
 const form = document.querySelector("#publication-filters");
 if (form) {
   const search = document.querySelector("#publication-search");

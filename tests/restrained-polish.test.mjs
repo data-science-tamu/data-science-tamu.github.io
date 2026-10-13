@@ -9,7 +9,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const css = fs.readFileSync(path.join(root, "public/assets/site.css"), "utf8");
 const screen = css.slice(0, css.indexOf("@media print"));
 const print = css.slice(css.indexOf("@media print"));
-const primary = ".home-hero .hero-actions > .button:first-child";
+const primary = ".home-hero .hero-actions > .research-action > .button";
 const rules = (source) => [...source.replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/([^{}]+)\{([^{}]*)\}/g)]
   .map((match) => ({ selectors: match[1].trim().split(/,\s*/), body: match[2] }));
 const declarations = (body) => Object.fromEntries([...body.matchAll(/([\w-]+)\s*:\s*([^;]+);/g)]
@@ -46,7 +46,7 @@ test("only the first home Research action receives the rectangular filled treatm
   const site = JSON.parse(fs.readFileSync(path.join(root, "content/site.json"), "utf8"));
   const lab = JSON.parse(fs.readFileSync(path.join(root, "content/lab.json"), "utf8"));
   const home = createPages(site, lab, imageRenderer(path.join(root, "public"))).find((page) => page.route === "/");
-  assert.match(home.body, /class="hero-actions"><a class="button" href="\/research\/">Research /);
+  assert.match(home.body, /class="hero-actions"><div class="research-disclosure research-action"><a class="button" href="\/research\/">Research /);
   assert.match(home.body, /class="button button-secondary" href="\/publication\/">Publications /);
 });
 
