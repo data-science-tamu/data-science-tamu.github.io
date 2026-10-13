@@ -262,3 +262,27 @@ and matching staged/public/dist PDF. No blocking findings remain. Final local
 gates: website118, source113, PDF/preservation66, realTeX13 and keyboard/download6
 all passed. Branch CI, main integration and live Pages readback are the remaining
 release gates and are not claimed by this local checkpoint.
+
+## CV Publication Synchronization - Published and Verified (2026-10-13)
+
+Implementation commit: `ba68f2a742e2b21842a8e0c5d35fe9940b1f3914`.
+[Branch CI](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/38482004793)
+and [main test-build/Pages deployment](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/38482075910)
+both succeeded for that exact commit. Primary main was fast-forwarded and pushed;
+only `dist` was deployed. Public site: https://data-science-tamu.github.io/.
+
+Post-deployment HTTPS verification: all58 public-file/private-404 checks passed;
+all served public files matched the reviewed build. Publication205 assertions
+confirmed15 journal,4 review/revision,2 working and4 conference records. All44
+publication interactions and6 keyboard/download checks passed. Live layout/axe
+checks covered27 route/viewport combinations and81 local targets with no errors,
+accessibility violations or overflow. JavaScript-disabled and print checks passed.
+
+The live10-page PDF was downloaded separately and byte-compared:167272 bytes,
+SHA-256 `baf3923c557fc9c8f4ccd2fc48ae412377e7a7dd6926a50a6368f66e096ea65e`.
+The original CV sources, final staged PDF and served PDF now agree. Existing
+BibTeX keys and all old publication fragments survive; no new BibTeX keys.
+The sole independent-review P2 was fixed and re-reviewed APPROVE. No task-specific
+implementation or release gate remains open. Earlier pending checkpoints above
+are historical, not the current release state. Automated accessibility coverage
+is not exhaustive assistive-technology certification.

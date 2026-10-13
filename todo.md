@@ -11,7 +11,7 @@
       console and accessibility QA (worker browser tool blocked by approval policy).
 - [x] Parent: verified publication-only CV rebuild/application, update current-CV
       manifest, and repeat tests/build and served-PDF comparison.
-- [ ] Parent: commit/push, CI, main integration, deploy dist and live HTML/PDF readback.
+- [x] Parent: commit/push, CI, main integration, deploy dist and live HTML/PDF readback.
 
 
 ## Research Menu Correction

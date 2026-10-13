@@ -38,3 +38,12 @@ step 6 are pending; no remote deployment success is claimed at this checkpoint.
 
 Final parent and independent review gates passed after the two-character CV
 author-list parsing repair. Only step6 remote release remains pending.
+
+## Completed Release
+
+All six steps completed. Exact-commit branch CI and main Pages succeeded for
+ba68f2a. Live HTML/assets/PDF integrity, all25 bibliography records, browser
+interactions, keyboard/download and layout/accessibility checks passed. The
+publication-only CV patch includes the independently reviewed StudentList
+delimiter/trailing-whitespace repair. Detailed measured evidence is recorded
+in docs/validation.md and history.md.
