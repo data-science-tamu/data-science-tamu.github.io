@@ -151,3 +151,14 @@ by the 2026-10-13 authorization below; independent review is now complete.
 
 - Independent content/theme and focused final navigation reviews APPROVE; parent
   verified the reviewed runtime hash. Release gates remain tracked in plan/todo.
+
+## 2026-10-13: Research Structure Release
+
+- Integrated7a378bf into primary main after branch CI38438196473 passed; Pages
+  run38438288315 passed and actual public HTTPS readback matched55artifact files.
+- Public58request integrity check,22structure,19extended navigation,27page/viewport,
+  80target,11journey,30viewer and8extra checks passed. Both independent reviews
+  approved the final source/runtime. Detailed evidence:docs/validation.md.
+- Remote backup/pre-research-structure-20261013 preserves6bcceef for recovery.
+  No source-fact,scientific-asset,CV or original Google Sites changes.
+- Closed the task plan/todo. Consideration-only strategic suggestions remain unapproved.

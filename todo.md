@@ -9,7 +9,7 @@
 - [x] Record implementation RED/GREEN and parent preservation/browser evidence.
 - [x] Correct responsive focus race and hover-only Escape; repeat real-browser checks.
 - [x] Parent: independent browser/accessibility QA, final review and local documentation.
-- [ ] Parent: commit/push, main integration and deployment/readback.
+- [x] Parent: commit/push, main integration and deployment/readback.
 
 Academic/polish implementation and independent reviews are complete in history.md.
 The owner-approved release was published and verified on 2026-10-13.

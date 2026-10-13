@@ -1,13 +1,16 @@
 # Website Plan
 
-## Research Navigation and Presentation Release
+## Research Navigation and Presentation - Published
 
-Implementation and parent local browser/coverage checks are complete; completed
-work is in history.md and docs/validation.md. Independent content and final navigation reviews approved. Task branch CI, main
-integration and live Pages readback remain.
-Scope is this independent repository. Source facts and assets are unchanged.
-Recovery: local tag backup/pre-research-structure-20261013 at baseline 6bcceef;
-parent will verify the remote tag with release. Planning ideas below stay unapproved.
+The verified research navigation/presentation release is integrated into primary
+main and published at https://data-science-tamu.github.io/. Independent reviews,
+branch CI, main Pages deployment and public integrity/browser readback passed.
+No implementation or release work remains for this request. Completed work and
+measured evidence are in history.md and docs/validation.md.
+
+Recovery: GitHub tag backup/pre-research-structure-20261013 preserves baseline
+6bcceef. Keep recovery non-destructive with a reviewed revert, not a force push.
+Original Google Sites, source facts, scientific assets and CV are unchanged.
 
 ## Previously Published Release
 

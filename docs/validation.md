@@ -158,3 +158,23 @@ Source and served JS matched SHA-256 4fbf425e789a9ecd9f439ddea6fb2f931522c17f43a
 Reports: .local/research-structure/deleg_74078668.json and final-review.md.
 No in-scope blocking findings remain. These are local/review gates,not a claim
 that GitHub integration or public deployment has finished.
+
+## Research Structure Public Release (2026-10-13)
+
+- Implementation commit:7a378bfb0e89a9344738e1b5860bb9865bf83ace.
+- Task branch CI38438196473 succeeded; the same commit fast-forwarded into clean
+  primary main. Parent reran83tests/build there before pushing.
+- Main Pages run38438288315 succeeded in test-build and deploy. Actual GitHub
+  readback confirms the intended main commit and rollback tag
+  backup/pre-research-structure-20261013 at6bcceef1f1df17ace63b2d6141a50f1e02f9bd0b.
+- Live https://data-science-tamu.github.io/ integrity:58requests,0failures. The
+  55public artifact files match the approved local candidate; protected/unknown
+  paths return custom404 rather than exposing source material.
+- Repeated full parent QA on the public HTTPS URL:22structure scenarios,
+  19extended navigation checks,27page/viewport axe cases,80local targets,
+  11existing interactions,30viewer cases and8extra checks all passed.
+- Workflow emitted existing advisory notices about actions'Node20 runtime and
+  upcoming ubuntu-latest migration; neither failed either job. CI migration is
+  outside this presentation change; no workflow or dependency change was made.
+- Public source/asset/content preservation remains as documented above. No
+  remaining task-specific acceptance gate; strategic ideas remain consideration-only.
