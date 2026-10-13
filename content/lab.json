@@ -258,7 +258,7 @@
   },
   "research": {
     "theme": {
-      "title": "Integrating knowledge, modeling and uncertainty",
+      "title": "Domain-informed Statistical Machine learning and modeling with Uncertainty Quantification",
       "summary": {
         "text": "Our research integrates domain knowledge, statistical and machine learning modeling, and uncertainty quantification. The original diagram connects physics/engineering knowledge, data-driven modeling, and a Bayesian framework.",
         "html": "Our research integrates domain knowledge, statistical and machine learning modeling, and uncertainty quantification. The original diagram connects physics/engineering knowledge, data-driven modeling, and a Bayesian framework."

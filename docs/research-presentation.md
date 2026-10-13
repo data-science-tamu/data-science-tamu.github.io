@@ -28,7 +28,10 @@ publication IDs, mismatched label prefixes and empty overview lists. Validation
 runs during rendering before the build replaces output. No prose regex, project
 ID or journal-venue branch establishes these relationships.
 
-`research.theme` contains the authored integration heading, summary and concept
+`research.theme.title` is the sole H1 on the Research overview, exactly:
+"Domain-informed Statistical Machine learning and modeling with Uncertainty Quantification".
+It is not repeated as an H2, and the old generic overview and integration headings
+are removed. `research.theme` also retains the integration summary and concept
 counterparts: Domain Knowledge (physics/engineering knowledge), Statistical/ML
 Modeling (data-driven modeling), and Uncertainty Quantification (Bayesian
 framework). Exactly one existing `research.figures` entry has `placement: "theme"`.
@@ -41,8 +44,19 @@ scientific-figure links, image geometry, original assets and viewer are unchange
 `src/templates.mjs` uses one `researchDisclosure` component for the header and
 home primary Research action. `layout` receives `lab.research.areas` as its fourth
 argument, including when rendering 404. Research remains an ordinary `/research/`
-link; the separate Directions button controls a normal list of site links, never
-an ARIA menu. The footer stays unchanged.
+link; its adjacent down chevron is a separate icon-only button named
+`Open research menu`, controlling a normal list of site links, never an ARIA menu.
+There is no visible Directions label or diagonal arrow on this action. The header
+toggle inherits navigation typography and has no border, divider, box or gap.
+The home link and toggle share one contiguous compact rectangular maroon
+treatment, including shared hover color. Both retain visible keyboard focus and
+the toggle retains a compact 2.75rem-high hit target.
+
+`researchLinks` renders Overview (`/research/`) first, followed by the three
+maintained direction links in their existing order. Both disclosure instances
+and the existing direction-page research subnav use this helper. Overview has
+`aria-current="page"` only on exact `/research/`; direction pages mark only their
+own direction link current. The footer stays unchanged.
 
 With JavaScript disabled, direction links are visible and toggle buttons remain
 hidden. Enhancement exposes the buttons only after handlers are attached and

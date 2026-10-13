@@ -178,3 +178,52 @@ that GitHub integration or public deployment has finished.
   outside this presentation change; no workflow or dependency change was made.
 - Public source/asset/content preservation remains as documented above. No
   remaining task-specific acceptance gate; strategic ideas remain consideration-only.
+
+## Research Menu Correction: Local Evidence (2026-10-13)
+
+Baseline main 8c634be passed 83 existing tests, but the new actual-browser contract
+failed on the visible Directions label. That mismatch is the reported UI defect,
+not a failure to navigate. Baseline screenshots and failure are under
+.local/research-menu/qa/before/.
+
+Parent reran npm ci --ignore-scripts, npm test (86 passed, zero failures), npm run
+build (9 content pages plus 404), and git diff --check. The exact source/content
+preservation check permits only the owner-authored research.theme.title change
+in content/lab.json; production JS, image/font/source assets and dependencies are
+unchanged. Existing source-coverage and CV-byte tests remain active.
+
+Actual Chromium at http://127.0.0.1:4177:
+
+- menu.cjs: 26 cases passed, no browser errors. Tests single visible Research
+  label, no diagonal arrow/Directions text, borderless header icon, contiguous
+  matched home colors, Overview-first link order, current-page semantics, actual
+  Research and Overview clicks, hover travel, keyboard Escape, native touch,
+  no-JS, print and exact single theme H1. Viewports 1440/1024/801/800/390/320.
+- check.cjs: 27 page/viewport accessibility cases and 80 local targets; no failures.
+- interactions.cjs: 11 existing user journeys passed.
+- viewer.cjs: 30 scientific-figure cases passed, plus modified-link/no-JS fallback.
+- extra.cjs: 8 print, image-error, short-screen/large-text and fallback checks passed.
+- focus-resize.cjs after: 48 transitions passed, zero BODY/hidden-focus outcomes.
+- escape-viewer.cjs: 3 hover-only Escape/native modal cancellation checks passed.
+
+Parent inspected desktop header/home, mobile home and overview screenshots.
+Screenshots captured after keyboard activation intentionally show the keyboard
+focus outline; this is not the removed default Directions button border.
+The focused suite was repeated after final shared hover/focus CSS changes.
+Local harness corrections: axe needs explicit browser.newContext(); selectors
+for Research were made specific because Overview deliberately shares its href.
+These were QA harness fixes, not runtime failures or changes to acceptance.
+
+Artifacts stay in ignored .local/research-menu/qa/. Independent review and live
+release verification are pending; the local results do not claim deployment.
+
+### Independent Menu Review
+
+APPROVE with no substantive findings. Reviewer independently reran 34 targeted
+tests, in-memory rendering/link/control-ID assertions, parsed content equality
+apart from the approved title, unchanged JS and whitespace checks. The final six
+reviewed source/test hashes were read back and matched the candidate. Report:
+.local/research-menu/review.md. Parent owns actual browser and deployment checks.
+Local worker completed normally with exit 0; its result is
+.local/research-menu/result.md. The verified model was gpt-6.1-sol, reasoning max.
+Remote recovery tag was pushed and read back at baseline 8c634be. Release pending.

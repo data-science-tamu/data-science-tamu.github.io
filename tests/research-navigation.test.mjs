@@ -68,7 +68,11 @@ function fixture() {
     toggle.hidden = true;
     toggle.setAttribute("aria-expanded", "false");
     const list = new Element();
-    const links = [new Element(), new Element(), new Element()];
+    const links = ["/research/", "/research/ai-for-systems/", "/research/ai-for-processes/", "/research/physics-informed-ai/"].map((href) => {
+      const link = new Element();
+      link.setAttribute("href", href);
+      return link;
+    });
     list.append(...links);
     root.append(link, toggle, list);
     root.map = {"[data-research-toggle]": toggle, "[data-research-directions]": list};

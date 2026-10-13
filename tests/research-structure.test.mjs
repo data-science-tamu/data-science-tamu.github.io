@@ -27,10 +27,24 @@ test("all headers including 404 and the home primary action share data-driven Re
     const instances = html.match(/<div class="research-disclosure[^>]*>([\s\S]*?)<\/div>/g) || [];
     assert.equal(instances.length, page.route === "/" ? 2 : 1, page.route);
     for (const instance of instances) {
-      assert.match(instance, /<a[^>]*href="\/research\/"/);
+      assert.match(instance, /<a[^>]*href="\/research\/">Research<\/a>/);
       assert.match(instance, /<button[^>]*data-research-toggle[^>]*aria-expanded="false"[^>]*hidden/);
+      const toggle = instance.match(/<button[^>]*>([\s\S]*?)<\/button>/)[0];
+      assert.match(toggle, /aria-label="Open research menu"/);
+      assert.equal(text(toggle), "", "Icon-only toggle has no visible Directions label");
+      assert.match(toggle, /<svg[^>]*aria-hidden="true"/);
+      assert.doesNotMatch(instance, /&#8599;|\u2197/);
       assert.match(instance, /<ul[^>]*data-research-directions/);
       assert.doesNotMatch(instance, /role="menu|aria-haspopup="menu|<ul[^>]*hidden/);
+      const menu = instance.match(/<ul[^>]*>([\s\S]*?)<\/ul>/)[1];
+      const links = [...menu.matchAll(/<a href="([^"]+)"([^>]*)>([^<]+)<\/a>/g)];
+      assert.deepEqual(links.map((m) => [m[1], m[3]]), [
+        ["/research/", "Overview"],
+        ...renamed.research.areas.map((a) => [`/research/${a.slug}/`, escape(a.title)]),
+      ]);
+      assert.equal(links[0][2].includes('aria-current="page"'), page.route === "/research/");
+      assert.equal(links.filter((m) => m[2].includes('aria-current="page"')).length,
+        page.route.startsWith("/research/") ? 1 : 0);
       for (const a of renamed.research.areas)
         assert.ok(instance.includes(`href="/research/${a.slug}/"`));
       assert.ok(instance.includes(escape(renamed.research.areas[0].title)));
@@ -38,6 +52,36 @@ test("all headers including 404 and the home primary action share data-driven Re
       assert.ok(instance.includes(`id="${id}"`));
     }
     assert.doesNotMatch(html.match(/<footer[\s\S]*<\/footer>/)[0], /research-disclosure/);
+  }
+});
+
+test("overview uses the exact maintained owner-authored theme as its only H1", () => {
+  const title = "Domain-informed Statistical Machine learning and modeling with Uncertainty Quantification";
+  const body = research.find((p) => p.route === "/research/").body;
+  assert.equal(lab.research.theme.title, title);
+  assert.deepEqual([...body.matchAll(/<h1>([^<]*)<\/h1>/g)].map((m) => m[1]), [title]);
+  assert.doesNotMatch(body, /Domain-informed data science|Integrating knowledge, modeling and uncertainty/);
+  assert.doesNotMatch(body, new RegExp(`<h2>${escape(title)}<\/h2>`));
+  assert.ok(body.includes(lab.research.theme.summary.html));
+  const renamed = structuredClone(lab);
+  renamed.research.theme.title = "Maintained theme \u0026 title";
+  const variant = createPages(site, renamed, imageRenderer(path.join(root, "public")))
+    .find((p) => p.route === "/research/");
+  assert.ok(variant.body.includes(`<h1>${escape(renamed.research.theme.title)}</h1>`));
+});
+
+test("direction subnavigation starts with Overview and preserves the three direction links", () => {
+  for (const area of lab.research.areas) {
+    const body = research.find((p) => p.route === `/research/${area.slug}/`).body;
+    const subnav = body.match(/<nav class="research-subnav"[^>]*>([\s\S]*?)<\/nav>/)[1];
+    const links = [...subnav.matchAll(/<a href="([^"]+)"([^>]*)>([^<]+)<\/a>/g)];
+    assert.deepEqual(links.map((m) => [m[1], m[3]]), [
+      ["/research/", "Overview"],
+      ...lab.research.areas.map((a) => [`/research/${a.slug}/`, escape(a.title)]),
+    ]);
+    assert.equal(links[0][2], "");
+    assert.deepEqual(links.filter((m) => m[2].includes('aria-current="page"')).map((m) => m[1]),
+      [`/research/${area.slug}/`]);
   }
 });
 

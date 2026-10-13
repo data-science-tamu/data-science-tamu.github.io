@@ -10,6 +10,8 @@ const css = fs.readFileSync(path.join(root, "public/assets/site.css"), "utf8");
 const screen = css.slice(0, css.indexOf("@media print"));
 const print = css.slice(css.indexOf("@media print"));
 const primary = ".home-hero .hero-actions > .research-action > .button";
+const chevron = ".home-hero .hero-actions > .research-action > [data-research-toggle]";
+const hover = (selector) => selector.replace(".research-action >", ".research-action:hover >");
 const rules = (source) => [...source.replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/([^{}]+)\{([^{}]*)\}/g)]
   .map((match) => ({ selectors: match[1].trim().split(/,\s*/), body: match[2] }));
 const declarations = (body) => Object.fromEntries([...body.matchAll(/([\w-]+)\s*:\s*([^;]+);/g)]
@@ -37,22 +39,26 @@ test("only the first home Research action receives the rectangular filled treatm
   assert.equal(button.background, "var(--maroon)");
   assert.equal(button.color, "var(--paper)");
   assert.equal(button.border, "0.0625rem solid var(--maroon)");
-  assert.equal(button["padding-inline"], "0.875rem");
+  assert.equal(button["padding-inline"], "0.875rem 0.25rem");
   assert.equal(button["text-decoration"], "none");
   assert.equal(button["border-radius"] || "0", "0");
   const filled = rules(screen).filter((entry) => /background:\s*(?:var\(--maroon\)|#3b0000)/.test(entry.body));
   assert.equal(filled.length, 2);
-  for (const entry of filled) assert.ok(entry.selectors.every((selector) => selector === primary || selector === primary + ":hover"));
+  for (const entry of filled) assert.ok(entry.selectors.every((selector) =>
+    [primary, chevron, hover(primary), hover(chevron)].includes(selector)));
+  for (const property of ["background", "color", "border", "min-height"]) assert.equal(rule(chevron)[property], button[property]);
   const site = JSON.parse(fs.readFileSync(path.join(root, "content/site.json"), "utf8"));
   const lab = JSON.parse(fs.readFileSync(path.join(root, "content/lab.json"), "utf8"));
   const home = createPages(site, lab, imageRenderer(path.join(root, "public"))).find((page) => page.route === "/");
-  assert.match(home.body, /class="hero-actions"><div class="research-disclosure research-action"><a class="button" href="\/research\/">Research /);
+  assert.match(home.body, /class="hero-actions"><div class="research-disclosure research-action"><a class="button" href="\/research\/">Research<\/a>/);
   assert.match(home.body, /class="button button-secondary" href="\/publication\/">Publications /);
 });
 
 test("the primary hover subtly darkens while keyboard focus keeps its visible outline", () => {
-  assert.equal(rule(primary + ":hover").background, "#3b0000");
-  assert.equal(rule(primary + ":hover")["border-color"], "#3b0000");
+  for (const selector of [primary, chevron]) {
+    assert.equal(rule(hover(selector)).background, "#3b0000");
+    assert.equal(rule(hover(selector))["border-color"], "#3b0000");
+  }
   assert.equal(rule(":focus-visible").outline, "0.1875rem solid #245b86");
   assert.equal(rule(":focus-visible")["outline-offset"], "0.1875rem");
   for (const entry of rules(screen).filter((entry) => entry.selectors.some((selector) => selector.startsWith(primary))))
@@ -60,11 +66,37 @@ test("the primary hover subtly darkens while keyboard focus keeps its visible ou
 });
 
 test("the filled action has a black-on-paper print fallback even while hovered", () => {
-  for (const selector of [primary, primary + ":hover"]) {
+  for (const selector of [primary, chevron, hover(primary), hover(chevron)]) {
     const printed = rule(selector, print);
     assert.equal(printed.color, "#000", selector);
     assert.equal(printed.background, "none", selector);
     assert.equal(printed["border-color"], "#000", selector);
+  }
+});
+
+test("the adjacent header chevron has no box or gap and inherits nav typography with a compact hit target", () => {
+  const toggle = rule("[data-research-toggle]");
+  assert.equal(toggle.border, "0");
+  assert.equal(toggle.background, "transparent");
+  assert.equal(toggle.margin, "0");
+  assert.equal(toggle.padding, "0");
+  assert.equal(toggle.font, "inherit");
+  assert.equal(toggle.color, "inherit");
+  assert.equal(toggle["align-self"], "stretch");
+  assert.equal(toggle["min-height"], "2.75rem");
+  assert.equal(toggle["min-width"], "1.75rem");
+  assert.equal(rule(".research-disclosure").gap, "0");
+  assert.equal(rule(chevron)["padding-inline"], "0.25rem 0.625rem");
+  for (const state of [":hover", ":focus-within"]) {
+    const root = ".primary-nav .research-disclosure" + state;
+    assert.equal(rule(root + " > a").color, "var(--maroon)");
+    assert.equal(rule(root + " > a")["border-bottom-color"], "var(--maroon)");
+    assert.equal(rule(root + " > [data-research-toggle]").color, "var(--maroon)");
+  }
+  for (const state of [":hover", ":focus-visible", "[aria-current]", ".active-section"]) {
+    const link = state.startsWith(".") ? state : "a" + state;
+    assert.equal(rule(`.primary-nav .research-disclosure > ${link} + [data-research-toggle]`).color,
+      "var(--maroon)");
   }
 });
 

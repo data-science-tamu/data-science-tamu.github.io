@@ -255,10 +255,35 @@ time,
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 0;
   min-width: 0;
 }
 [data-research-toggle] {
-  margin-left: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  min-width: 1.75rem;
+  min-height: 2.75rem;
+}
+.primary-nav .research-disclosure:hover > a,
+.primary-nav .research-disclosure:focus-within > a {
+  color: var(--maroon);
+  border-bottom-color: var(--maroon);
+}
+.primary-nav .research-disclosure > a:hover + [data-research-toggle],
+.primary-nav .research-disclosure > a:focus-visible + [data-research-toggle],
+.primary-nav .research-disclosure > a[aria-current] + [data-research-toggle],
+.primary-nav .research-disclosure > .active-section + [data-research-toggle],
+.primary-nav .research-disclosure:hover > [data-research-toggle],
+.primary-nav .research-disclosure:focus-within > [data-research-toggle] {
+  color: var(--maroon);
 }
 .research-directions {
   width: 100%;
@@ -282,10 +307,6 @@ time,
   width: 26rem;
   max-width: calc(100vw - 2rem);
   border: 0.0625rem solid var(--rule);
-}
-.research-action > [data-research-toggle] {
-  border-color: var(--maroon);
-  color: var(--maroon);
 }
 .home-hero {
   display: grid;
@@ -321,17 +342,24 @@ time,
   font-size: var(--text-small);
   font-weight: 600;
 }
-.home-hero .hero-actions > .research-action > .button {
+.home-hero .hero-actions > .research-action > .button,
+.home-hero .hero-actions > .research-action > [data-research-toggle] {
   min-height: 2.75rem;
   padding-block: 0.25rem;
-  padding-inline: 0.875rem;
   border: 0.0625rem solid var(--maroon);
   border-radius: 0;
   background: var(--maroon);
   color: var(--paper);
   text-decoration: none;
 }
-.home-hero .hero-actions > .research-action > .button:hover {
+.home-hero .hero-actions > .research-action > .button {
+  padding-inline: 0.875rem 0.25rem;
+}
+.home-hero .hero-actions > .research-action > [data-research-toggle] {
+  padding-inline: 0.25rem 0.625rem;
+}
+.home-hero .hero-actions > .research-action:hover > .button,
+.home-hero .hero-actions > .research-action:hover > [data-research-toggle] {
   background: #3b0000;
   border-color: #3b0000;
   color: var(--paper);
@@ -925,7 +953,9 @@ time {
   }
   /* Match hover specificity even when print backgrounds are disabled. */
   .home-hero .hero-actions > .research-action > .button,
-  .home-hero .hero-actions > .research-action > .button:hover {
+  .home-hero .hero-actions > .research-action > [data-research-toggle],
+  .home-hero .hero-actions > .research-action:hover > .button,
+  .home-hero .hero-actions > .research-action:hover > [data-research-toggle] {
     color: #000;
     background: none;
     border-color: #000;

@@ -162,3 +162,29 @@ by the 2026-10-13 authorization below; independent review is now complete.
 - Remote backup/pre-research-structure-20261013 preserves6bcceef for recovery.
   No source-fact,scientific-asset,CV or original Google Sites changes.
 - Closed the task plan/todo. Consideration-only strategic suggestions remain unapproved.
+
+## 2026-10-13: Research Menu Visual Correction
+
+- Owner rejected the two-label/two-color Research and Directions presentation.
+  The shared researchDisclosure template had introduced the redundant label and
+  home diagonal arrow; the generic button rule and isolated Research-link fill
+  produced the boxed header toggle and contrasting homepage controls. Earlier
+  tests validated that split markup rather than the intended visual grouping.
+- Sol/max implementation replaces this with a Research link and adjacent
+  icon-only chevron: borderless in the header, same-color contiguous home action,
+  shared hover/focus colors and retained keyboard focus indicators. JS unchanged.
+- researchLinks shares Overview followed by the existing three directions across
+  both dropdowns and the direction-page subnav. Research and Overview both lead
+  to /research/. Exact-route current-page semantics are preserved.
+- The owner-authored research.theme.title is now the main overview H1, replacing
+  the generic H1 and competing integration H2. Scientific content, original
+  diagram, publications, source snapshots, assets and CV remain unchanged.
+- Parent local verification passed: 86 tests/build; 26 focused menu/appearance
+  scenarios; 27 page/viewport accessibility cases and 80 targets; 11 existing
+  journeys; 30 figure cases; 8 extra print/error/large-text cases; 48 responsive
+  focus transitions; 3 hover-Escape/native-viewer checks. See docs/validation.md.
+- Independent review, commit/CI, integration and live readback remain release
+  gates tracked in plan.md/todo.md. Recovery tag: backup/pre-research-menu-20261013.
+
+- Independent focused source/test review APPROVE, final reviewed-file hashes
+  matched. Worker exit 0; parent owns remaining CI/integration/public readback.

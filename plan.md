@@ -1,5 +1,13 @@
 # Website Plan
 
+## Research Menu Correction - Release Pending
+
+Implementation, parent desktop/mobile visual and browser QA, 86 tests/build and
+independent review are complete. Completed changes and evidence moved to
+history.md and docs/validation.md. Parent owns remaining branch CI, primary-main
+integration, Pages deployment and exact public readback, tracked in todo.md.
+Recovery: remote backup/pre-research-menu-20261013 preserves baseline 8c634be.
+
 ## Research Navigation and Presentation - Published
 
 The verified research navigation/presentation release is integrated into primary

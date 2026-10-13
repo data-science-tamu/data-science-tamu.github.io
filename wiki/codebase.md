@@ -52,25 +52,38 @@ The editing and interaction contract is [Research presentation](../docs/research
 for all project routes and selected citations, plus h3/list overview groups.
 Project-level `relatedIds` is removed rather than maintained as overlapping state.
 
-`research.theme` owns the authored three-concept textual counterpart. The figure
+`research.theme.title` supplies the overview's single H1:
+"Domain-informed Statistical Machine learning and modeling with Uncertainty Quantification".
+No generic page heading or competing integration H2 remains. `research.theme`
+also owns the unchanged integration explanation and three-concept textual counterpart. The figure
 marked `placement: "theme"` moves above directions on the landing page; the shared
 scientific-figure renderer retains original-size reading and no-JS source links.
 
 `src/templates.mjs` shares `researchDisclosure` between header and home primary
-action. `layout(site, page, facultyName, researchAreas)` receives maintained areas
+action: one Research link with an adjacent semantic icon-only down-chevron toggle
+named `Open research menu`, without a visible Directions label or diagonal arrow.
+`researchLinks` supplies Overview first and the three unchanged direction links
+to the disclosure and existing direction-page subnav. Exact-route matching alone
+marks Overview current. `layout(site, page, facultyName, researchAreas)` receives maintained areas
 from `scripts/build.mjs` for every route and 404. `public/assets/site.js` enhances
 normal links/list markup using `data-research-toggle` and
 `data-research-directions`; `.research-enhanced` scopes dropdown positioning.
+The header toggle inherits nav type and has no separate box/border/divider.
+The compact home link and chevron have a contiguous same-color maroon fill,
+shared hover treatment and visible keyboard focus. The production JS is unchanged.
 No-JS exposes links, not dead controls. Mobile lists stay in-flow; print hides
 directions/toggles. The footer and non-research page bodies are unaffected.
 
 `tests/research-content.test.mjs` checks explicit rendering and fail-closed metadata;
 `tests/research-structure.test.mjs` covers data reuse, figure ordering, semantic
-hierarchy and exact paragraph preservation via a compact hash fixture;
+hierarchy, exact H1, icon-only controls, four-link order/current state and exact
+paragraph preservation via a compact hash fixture;
 `tests/research-navigation.test.mjs` executes real navigation handlers in a DOM
-double for hover, toggle, focus, Escape, outside clicks, viewport and outer-nav
+double with Overview plus three directions for hover, toggle, focus, Escape, outside clicks, viewport and outer-nav
 state. Parent still owns real-browser gates. Worker evidence lives under
-`.local/research-structure/`, never in the deployed artifact.
+`.local/research-structure/` and `.local/research-menu/result.md`, never in the deployed artifact.
+`tests/restrained-polish.test.mjs` also guards the integrated chevron's compact
+hit target, borderless header, matching home colors/hover and print fallback.
 
 ## Deployment Boundary
 
