@@ -4,8 +4,8 @@
 
 `content/lab.json` is the only maintained source for direction names/slugs and
 research presentation. `content/source/` stays immutable. Preserve complete
-`text`/`html`, author order, accepted status, years and original links when adding
-presentation metadata. Do not create missing Goals or interpret a journal note
+explanatory `text`/`html`, notes and original links when adding presentation
+metadata. Approved bibliography corrections follow [source provenance](source-provenance.md). Do not create missing Goals or interpret a journal note
 as a newly verified metric.
 
 - `label` names an existing exact leading label in `html`, such as `Goal:`,
@@ -14,7 +14,9 @@ as a newly verified metric.
   its original wording follows the visible `Collaborators:` label.
 - `kind: "citation"` uses an explicit `recordId` from maintained publications.
   Citation paragraphs appear in a list beneath `Publications`, with an integrated
-  Publication record link. `recordId` replaces unused project-level `relatedIds`.
+  Publication record link. `src/publications.mjs` resolves canonical authors,
+  title, status and bibliography from that record; citation items have no
+  duplicate `text`/`html`. `recordId` replaces unused project-level `relatedIds`.
 - `notes` is an array of original explanatory paragraphs nested on the citation
   they explain. Journal, award and featured notes render as nested list items.
 - `kind: "publication-heading"` retains an original label introducing another
@@ -81,7 +83,9 @@ lists and toggles while retaining the ordinary Research action and research text
 
 Project-local Node tests exercise real rendering and production event handlers
 through a small DOM platform double. Compact SHA-256 fixtures protect the exact
-pre-change project/overview paragraph HTML while semantic text assertions allow
-inline strong tags. The existing 243-paragraph source gate remains unchanged.
+pre-change project/overview paragraph HTML. The explicit CV correction fixture
+substitutes only recorded prior citation strings for hash checks; unrelated text
+and notes retain the original hashes. Current canonical citations have independent
+public CV expectations. All 243 source paragraphs retain coverage.
 These tests are not measured browser layout or assistive-technology QA. Parent
 owns independent browser/accessibility checks, final closeout and release.

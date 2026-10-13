@@ -4,16 +4,34 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
+import { publicationCitation, publicationMetadata } from "../src/publications.mjs";
+import { assertApprovedPublications, captured } from "./cv-expectations.mjs";
 import {
   assertPublicationBaseline,
   assertNewsBaseline,
 } from "./source-baseline.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const result = spawnSync(process.execPath, ["scripts/build.mjs"], {
-  cwd: root,
-  encoding: "utf8",
-});
+function runBuild(args = []) {
+  fs.mkdirSync(path.join(root, ".local"), { recursive: true });
+  const temp = fs.mkdtempSync(path.join(root, ".local/build-check-"));
+  const stdoutPath = path.join(temp, "stdout"), stderrPath = path.join(temp, "stderr");
+  const stdout = fs.openSync(stdoutPath, "w"), stderr = fs.openSync(stderrPath, "w");
+  try {
+    // File descriptors preserve real exit status and diagnostics in restricted
+    // environments where child-process pipe capture reports EPERM.
+    const result = spawnSync(process.execPath, ["scripts/build.mjs", ...args], {
+      cwd: root, stdio: ["ignore", stdout, stderr],
+    });
+    if (result.error) throw result.error;
+    return { ...result, stdout: fs.readFileSync(stdoutPath, "utf8"), stderr: fs.readFileSync(stderrPath, "utf8") };
+  } finally {
+    fs.closeSync(stdout);
+    fs.closeSync(stderr);
+    fs.rmSync(temp, { recursive: true, force: true });
+  }
+}
+const result = runBuild();
 test("the actual static build succeeds", () => {
   assert.equal(result.status, 0, result.stderr);
 });
@@ -115,7 +133,7 @@ test("publication IDs, citations, categories and all source titles survive", () 
       p.id + " anchor",
     );
   }
-  assert.match(html, /doi:10\.3390\/bioengineering1007084/);
+  assert.match(html, /doi:10\.3390\/bioengineering10070845/);
   assert.match(html, /https:\/\/www\.mdpi\.com\/2306-5354\/10\/7\/845/);
   assert.doesNotMatch(html, /href="[^"]*bioengineering1007084"/);
 });
@@ -143,14 +161,15 @@ test("all source news dates, people, degrees, projects and local images are repr
   assert.doesNotMatch(all, /href="http:\/\/202\d\./);
   assert.doesNotMatch(all, /href="http:\/\/doi.org\/2025"/);
 });
-test("CV PDF remains exact and has direct local open and download links", () => {
+test("CV PDF matches maintained artifact provenance and has direct local open and download links", () => {
   const pdf = fs.readFileSync(
     path.join(root, "dist/assets/documents/jaesung-lee-cv.pdf"),
   );
-  assert.equal(pdf.length, 166640);
+  const currentCv = JSON.parse(read("content/cv-current.json"));
+  assert.equal(pdf.length, currentCv.bytes);
   assert.equal(
     createHash("sha256").update(pdf).digest("hex"),
-    JSON.parse(read("content/source/manifest.json")).cv.sha256,
+    currentCv.sha256,
   );
   const html = htmlAt("/cv/");
   assert.match(html, /href="\/assets\/documents\/jaesung-lee-cv.pdf" download/);
@@ -181,20 +200,12 @@ test("build is fail-closed for missing and invalid required config without destr
     const temp = path.join(root, ".local", "invalid-site.json");
     fs.mkdirSync(path.dirname(temp), { recursive: true });
     fs.writeFileSync(temp, JSON.stringify(bad));
-    const r = spawnSync(
-      process.execPath,
-      ["scripts/build.mjs", "--config", temp],
-      { cwd: root, encoding: "utf8" },
-    );
+    const r = runBuild(["--config", temp]);
     assert.notEqual(r.status, 0);
     assert.match(r.stderr, /Invalid site config/);
     assert.equal(read("dist/index.html"), existing);
   }
-  const missing = spawnSync(
-    process.execPath,
-    ["scripts/build.mjs", "--config", ".local/nonexistent.json"],
-    { cwd: root, encoding: "utf8" },
-  );
+  const missing = runBuild(["--config", ".local/nonexistent.json"]);
   assert.notEqual(missing.status, 0);
   assert.equal(read("dist/index.html"), existing);
 });
@@ -207,10 +218,7 @@ test("repeated build is byte-identical", () => {
         createHash("sha256").update(fs.readFileSync(p)).digest("hex"),
       ]);
   const before = digest();
-  const r = spawnSync(process.execPath, ["scripts/build.mjs"], {
-    cwd: root,
-    encoding: "utf8",
-  });
+  const r = runBuild();
   assert.equal(r.status, 0, r.stderr);
   assert.deepEqual(digest(), before);
 });
@@ -240,6 +248,7 @@ test("every substantive source paragraph is retained on its owning page", () => 
   ].map(normalize);
   const manifest = JSON.parse(read("content/source/manifest.json"));
   const data = JSON.parse(read("content/lab.json"));
+  assertApprovedPublications(data.publications);
   let checked = 0;
   for (const page of manifest.pages) {
     if (page.slug === "cv") continue;
@@ -252,23 +261,23 @@ test("every substantive source paragraph is retained on its owning page", () => 
         .matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)) {
         const text = plain(match[1].replace(/<[^>]*>/g, ""));
         if (!text || labels.includes(normalize(text))) continue;
-        if (page.slug === "publication" && /^\[([JC]\d+\*?)\]/.test(text)) {
+        if (/^\[([JC]\d+\*?)\]/.test(text)) {
           const id = text.match(/^\[([^\]]+)\]/)[1];
-          const p = data.publications.find((p) => p.id === id);
+          const p = data.publications.find((p) => p.id === (id === "J15*" ? "J15" : id));
+          const original = captured.find((p) => p.id === id);
           assert.ok(p, id);
-          assert.equal(
-            normalize(`[${id}] ${p.authors} ${p.title} ${p.metadata}`),
-            normalize(text),
-            `${id} source metadata`,
-          );
-          for (const part of [
-            p.title,
-            p.authors.replace(/,\s*$/, ""),
-            p.metadata,
-          ])
+          assert.ok(original, `${id}: explicit approved source exception`);
+          if (page.slug === "publication")
+            assert.equal(normalize(`[${id}] ${original.authors} ${original.title} ${original.metadata}`),
+              normalize(text), `${id}: immutable captured metadata`);
+          else
+            assert.ok(normalize(text).includes(normalize(original.title)), `${id}: original research title mapping`);
+          for (const part of page.slug === "publication"
+            ? [p.title, ...p.authors.map((a) => a.name), publicationMetadata(p)]
+            : [publicationCitation(p)])
             assert.ok(
               rendered.includes(normalize(part)),
-              id + " rendered content",
+              id + " rendered approved correction",
             );
         } else
           assert.ok(

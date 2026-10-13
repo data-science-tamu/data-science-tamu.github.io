@@ -1,7 +1,8 @@
 import { escape as e, rich, anchor } from "./helpers.mjs";
+import { publicationCitation } from "./publications.mjs";
 
 // Presentation is authored in maintained data, never inferred from prose.
-export function researchContent(items, publicationIds, headingLevel = 4) {
+export function researchContent(items, publicationsById, headingLevel = 4) {
   let html = "", publications = false, citationList = false;
   const closeList = () => {
     if (citationList) html += "</ul>";
@@ -13,14 +14,15 @@ export function researchContent(items, publicationIds, headingLevel = 4) {
         (item.notes && kind !== "citation") || (item.items && kind !== "list"))
       throw new Error("Invalid research presentation metadata");
     if (kind === "citation") {
-      if (!publicationIds.has(item.recordId)) throw new Error("Invalid research citation record");
+      const publication = publicationsById.get(item.recordId);
+      if (!publication) throw new Error("Invalid research citation record");
       if (!publications) {
         html += `<section class="project-publications"><h${headingLevel}>Publications</h${headingLevel}>`;
         publications = true;
       }
       if (!citationList) html += '<ul class="research-publications">';
       citationList = true;
-      html += `<li><p>${rich(item.html)}</p><p class="project-refs">Publication record: <a href="/publication/#${anchor(item.recordId)}">[${e(item.recordId)}]</a></p>${item.notes?.length ? `<ul class="citation-notes">${item.notes.map((n) => `<li>${rich(n.html)}</li>`).join("")}</ul>` : ""}</li>`;
+      html += `<li><p>${publicationCitation(publication)}</p><p class="project-refs">Publication record: <a href="/publication/#${anchor(item.recordId)}">[${e(item.recordId)}]</a></p>${item.notes?.length ? `<ul class="citation-notes">${item.notes.map((n) => `<li>${rich(n.html)}</li>`).join("")}</ul>` : ""}</li>`;
       continue;
     }
     closeList();

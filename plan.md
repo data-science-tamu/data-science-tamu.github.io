@@ -1,5 +1,19 @@
 # Website Plan
 
+## CV Publication Synchronization - Verified Candidate - Remote Release Pending
+
+All 25 public records, canonical research citations, working-paper support,
+annotations and legacy fragments are implemented and locally verified. Approved
+correction evidence and unchanged source boundaries are in docs/source-provenance.md;
+completed commands/results are in history.md and docs/validation.md.
+
+The parent applied the verified publication-only CV sources/PDF and updated
+content/cv-current.json. Local tests, actual desktop/mobile/keyboard, no-JS, print,
+console, accessibility and exact PDF download checks passed. Independent gpt-6.1-sol/max review approved the corrected candidate.
+Remote commit/CI/integration/Pages readback remain pending. See
+[scoped plan](docs/plans/2026-10-13-cv-publication-sync.md).
+
+
 ## Research Menu Correction - Published
 
 The owner-requested unified Research/chevron, Overview navigation and exact main

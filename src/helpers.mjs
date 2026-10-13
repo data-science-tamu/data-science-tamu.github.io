@@ -81,16 +81,42 @@ export function validatePublications(publications) {
     if (
       !p ||
       typeof p.id !== "string" ||
-      !/^([JC]\d+\*?)$/.test(p.id) ||
+      !/^([JCW]\d+\*?)$/.test(p.id) ||
       ids.has(p.id) ||
       typeof p.title !== "string" ||
       !p.title.trim() ||
-      typeof p.metadata !== "string" ||
-      !p.metadata.trim() ||
-      !["journal", "review", "conference"].includes(p.type)
+      !["journal", "review", "working", "conference"].includes(p.type) ||
+      !Array.isArray(p.authors) || !p.authors.length ||
+      p.authors.some((a) => !a || typeof a.name !== "string" || !a.name.trim() ||
+        [a.advisee, a.corresponding].some((v) => v !== undefined && typeof v !== "boolean")) ||
+      ((p.type === "journal" || p.type === "conference" || p.status === "major revision") &&
+        (typeof p.venue !== "string" || !p.venue.trim())) ||
+      !({journal: ["published", "accepted"], conference: ["published"],
+        review: ["under review", "major revision"], working: ["working paper"]}[p.type] || []).includes(p.status) ||
+      (p.year !== null && !/^\d{4}$/.test(p.year)) ||
+      (p.doi !== undefined && (typeof p.doi !== "string" || !/^10\.\d{4,9}\/[^\s<>"']+$/.test(p.doi)))
     )
       throw new Error("Invalid publication record");
     ids.add(p.id);
+  }
+  const fragments = new Set(["main", "journal-papers", "under-review", "working-papers", "conference-proceedings"]);
+  const dois = new Set();
+  for (const p of publications) {
+    if (p.doi) {
+      const doi = p.doi.toLowerCase();
+      if (dois.has(doi)) throw new Error("Invalid publication: duplicate DOI");
+      dois.add(doi);
+    }
+    if (p.legacyAnchors !== undefined && !Array.isArray(p.legacyAnchors))
+      throw new Error("Invalid publication: legacy anchors");
+    for (const id of [anchor(p.id), ...(p.legacyAnchors || [])]) {
+      if (typeof id !== "string" || !/^[A-Za-z][\w-]*$/.test(id) || fragments.has(id))
+        throw new Error("Invalid publication: duplicate or invalid fragment");
+      fragments.add(id);
+    }
+    for (const link of p.links || [])
+      if (typeof link.href !== "string" || !/^https:\/\/[^\s<>"']+$/.test(link.href))
+        throw new Error("Invalid publication: publisher link");
   }
 }
 export function dimensions(file) {

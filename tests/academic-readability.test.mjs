@@ -1,4 +1,5 @@
 import test from "node:test";
+import { publicationCitation } from "../src/publications.mjs";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
@@ -71,7 +72,9 @@ test("full project text precedes its image, with no accordion or hidden project 
       const beforeFigure = body.slice(0, imageOffset).replace(/<[^>]*>/g, "");
       const content = project.paragraphs.flatMap((p) => [p, ...(p.notes || [])]);
       for (const paragraph of content)
-        assert.ok(beforeFigure.includes(paragraph.html.replace(/<[^>]*>/g, "")), `${id}: full semantic text before figure`);
+        assert.ok(beforeFigure.includes((paragraph.kind === "citation"
+          ? publicationCitation(lab.publications.find((p) => p.id === paragraph.recordId))
+          : paragraph.html).replace(/<[^>]*>/g, "")), `${id}: full semantic text before figure`);
       assert.doesNotMatch(body, /<(?:p|div|article)\b[^>]*(?:\shidden\b|\saria-hidden="true")/);
     }
   }

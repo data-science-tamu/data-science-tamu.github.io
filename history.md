@@ -198,3 +198,67 @@ by the 2026-10-13 authorization below; independent review is now complete.
   cases, 27 page/viewport checks, 80 targets and 3 Escape/viewer cases also passed.
 - Closed plan/todo for this correction. Remote recovery tag preserves 8c634be.
   Detailed evidence and source/asset preservation: docs/validation.md.
+
+
+## CV Publication Synchronization — Worker Complete (2026-10-13)
+
+Implemented the owner-approved public CV/publisher correction set in the dedicated
+CV-sync worktree. Maintained records are now 15 journal, 4 review/revision, 2 working
+and 4 conference, ordered as the public CV. J15 replaces the stale J15* review
+classification and retains J15-review; every previous publication fragment remains.
+The new review/working website IDs do not change any CV BibTeX key.
+
+Canonical structured authors/bibliography replace duplicate metadata/citation
+strings. Research selected/project entries resolve recordId through the same
+renderer, with all explanatory paragraphs, nested notes and images unchanged.
+Public CV annotations/notes are retained; private destinations are excluded.
+The current-CV manifest records the existing PDF truthfully, separately from the
+immutable original capture manifest. The worker does not rebuild or write the CV.
+
+Test-first evidence: 31 focused regressions failed before production edits; the
+first mismatch was 14/2/0/4 vs 15/4/2/4. The corrected suite has 32 passing focused
+tests, including an additional real-client-handler/print contract. Mutation checks
+reject missing records, a missing journal, wrong author order/DOI and Manufacturing
+Letters reclassification. npm test exited 0; the detailed no-isolation run reported
+118 passed, 0 failed, 0 skipped. npm run build exited 0 (9 pages + 404, 25 records);
+git diff --check passed. Build diagnostic capture now uses file descriptors because
+sandbox child-process pipes returned EPERM and suppressed diagnostics; negative
+build checks still assert actual nonzero status/error and preserved output.
+
+All 243 source paragraphs retain coverage. Existing research paragraph hash
+fixtures are unchanged; only explicit old citation substitutions are allowed.
+45 protected source/image/PDF hashes and all unrelated maintained content compare
+unchanged. PDF remains 166640 bytes, SHA-256
+7f69e03576716d02fcca4eba376c83c874aec7e4851433aaf37228bbc0743264.
+Evidence remains in ignored .local/cv-sync/.
+
+Worker browser navigation was rejected by approval policy never; actual browser
+layout/console/accessibility checks are not claimed. Parent still owns independent
+review, original CV writes, verified PDF replacement/current manifest update,
+actual browser QA, commits/pushes, integration, deployment and live readback.
+No commit, push or deployment was performed by this worker.
+
+## CV Publication Synchronization - Parent Local QA (2026-10-13)
+
+Applied the backed-up five-source publication-only CV patch and rebuilt public PDF.
+Maintained PDF provenance now supersedes the historical capture without modifying
+that capture. Parent repeated 118 website tests, 205 publication assertions, 113
+CV-source checks and 60 PDF/preservation checks. Actual browser checks passed:
+27 route/viewport cases, 81 internal targets, 44 publication interactions and 6
+keyboard/download checks. No automated accessibility or console failures.
+All 51 protected non-CV assets/config/source captures remain unchanged.
+Independent sol/max review and remote release are separate pending gates.
+
+Independent review P2 resolved: CV StudentList separator/trailing whitespace
+prevented intended advisee underlines. Real TeX regressions now13/13, source113/113,
+PDF/preservation66/66; original CV and served candidate updated. Exact artifact
+provenance is in content/cv-current.json. Final focused review remains pending.
+
+### Final independent review: APPROVE
+
+A separate gpt-6.1-sol/max read-only re-review verified the sole P2 remediation,
+actual underline drawing, exact two-character CV macro change, preserved baseline
+and matching staged/public/dist PDF. No blocking findings remain. Final local
+gates: website118, source113, PDF/preservation66, realTeX13 and keyboard/download6
+all passed. Branch CI, main integration and live Pages readback are the remaining
+release gates and are not claimed by this local checkpoint.

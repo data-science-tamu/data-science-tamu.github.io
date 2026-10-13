@@ -247,3 +247,133 @@ Remote recovery tag was pushed and read back at baseline 8c634be. Release pendin
 - Recovery tag backup/pre-research-menu-20261013 was pushed/read back at
   8c634bea071e4c8b505c13e0d5981cc8b4db1445. Source facts, original scientific assets,
   CV and original Google Sites remain unchanged. No task-specific gate is open.
+
+
+## CV Publication Synchronization: Local Worker Evidence (2026-10-13)
+
+These results verify the local website implementation; the served PDF still has
+its original bytes and parent PDF synchronization/release gates remain open.
+
+| Command/check | Actual result |
+| --- | --- |
+| Before production edits: node tests/cv-publication-sync.test.mjs | Exit 1; 31 expected failures (RED), including 14/2/0/4 vs approved 15/4/2/4 |
+| Final focused node tests/cv-publication-sync.test.mjs | Exit 0; 32 passed, 0 failed |
+| npm test | Exit 0; all 10 test files passed |
+| node --test --test-isolation=none tests/*.test.mjs | Exit 0; 118 passed, 0 failed, 0 skipped |
+| npm run build | Exit 0; 9 content pages plus 404; 25 publications, 14 news, 8 projects |
+| git diff --check | Exit 0; no whitespace errors |
+| Source coverage / research hashes | All 243 substantive paragraphs covered; original hash fixture unchanged; only recorded approved citation replacements |
+| Internal links/assets/fragments and deterministic rebuild | Passed through actual generator tests, including J15-review alias |
+| Protected source/image/PDF hashes and unrelated content | 45 protected files unchanged; unrelated maintained content identical |
+
+Focused mutations reject missing journal venue, wrong author order, incorrect DOI,
+reclassified Manufacturing Letters and omission of each of the 25 public records.
+The real existing client script filters both working/undated papers, finds J11
+under IISE Transactions, hides empty groups and resets all 25 records. Static
+HTML includes all records without JavaScript; existing print rules restore all
+hidden publication entries/groups. These are Node/data/markup/event-handler
+contracts, not a claim of measured browser or assistive-technology QA.
+
+Default sandbox Node child-process pipe capture returned spawnSync EPERM with
+empty diagnostics, including on the negative config checks. The test build helper
+uses temporary file descriptors and rejects launcher errors; real build exit
+codes and error output are preserved. No expected failure assertion was removed.
+The normal npm reporter shows files only in this environment; the detailed
+no-isolation command supplies the actual individual-test count.
+
+Browser tool navigation was attempted and rejected: approval is required but the
+policy is never. Actual desktop/mobile layout, keyboard, no-JS/print, console
+and accessibility gates remain explicitly pending for the parent. No worker
+browser success, live-site change or deployment is claimed. Local commands,
+RED/GREEN logs and preservation results are in ignored .local/cv-sync/.
+
+### Parent PDF and Release Steps
+
+1. Independently verify the staged publication-only CV changes against the
+   approved bibliography in source-provenance.md. Keep BibTeX keys, other CV
+   sections, public notes and author annotations; exclude private instructions.
+   Use J11’s 2026 bibliography/assigned November issue without claiming print
+   completion; retain J2’s CV final issue rather than incomplete API pages.
+2. Back up/checksum the original CV, rebuild and inspect the public PDF, then
+   apply the verified file to public/assets/documents/jaesung-lee-cv.pdf.
+3. Set content/cv-current.json bytes, SHA-256 and truthful rebuilt-artifact
+   provenance. Preserve content/source/manifest.json as the original capture.
+   Tests allow a verified replacement; they do not force the original PDF forever.
+4. Repeat npm test, npm run build and actual browser/source/PDF review, including
+   the 15/4/2/4 categories, working filter, legacy anchors, print and no-JS.
+5. Parent commits/pushes, verifies CI, integrates main, deploys dist only and reads
+   back the live Pages HTML/PDF. Record those gates only after actual success.
+
+## CV Synchronization: Parent Verification (2026-10-13)
+
+The parent independently applied the reviewed five-source CV patch after a
+backup/checksum guard; no BibTeX keys were added. The rebuilt public PDF has
+10 pages, 167237 bytes and SHA-256
+`5bff8f004569a8fccd6d34129b8b028ce2b2317f00a9cfe44dd45ffbc79b272d`.
+The website PDF and current manifest now match this rebuild, superseding the
+worker-only PDF checkpoint above. Nonpublication CV text is unchanged.
+
+| Parent command/check | Actual result |
+| --- | --- |
+| npm test; npm run build; git diff --check | 118 passed, 0 failed; build and whitespace check passed |
+| Independent publication-contract.cjs | 205 assertions passed; 15/4/2/4 records |
+| validate_publications.py | 113 source checks passed |
+| validate_pdf.py | 60 PDF/preservation checks passed; real TeX-built baseline and corrected PDF |
+| Rendered CV publication pages | Visually inspected; no clipping or overlap |
+| SHA-256 protected-file guard | 51 source, image, font, workflow and dependency files unchanged |
+| site-layout.cjs (Chromium + axe WCAG A/AA) | 27 route/viewport combinations; 81 local targets; 0 failures, accessibility violations or console errors |
+| publication-interactions.cjs | 44 checks passed: categories, search, reset, legacy fragment, print, no-JS and canonical research citations |
+| keyboard-download.cjs | 6 checks passed: skip link, mobile keyboard menu, search/reset/category selection, exact corrected PDF download |
+| Served local PDF byte comparison | Identical to reviewed rebuild |
+
+Viewports: 1440, 390 and 320 CSS pixels. Automated accessibility checks are not
+a claim of exhaustive assistive-technology testing. External publication URLs
+were verified through the recorded publisher/Crossref audit where available,
+not by bypassing publisher access restrictions.
+
+Parent QA initially exposed a generated harness syntax error and asynchronous
+assertion races (the reset wait matched the total in "0 of 25"; fragment position
+was read before navigation scroll completed). Corrected harnesses wait for the
+actual state and retain the assertions; no production change was needed.
+
+Reproducible QA scripts, CV patch/backup and evidence are retained in the
+operator-local CV synchronization archive; worker evidence is in ignored
+`.local/cv-sync/`. No private CV source or backup enters the public build.
+Independent gpt-6.1-sol/max review and remote release gates are recorded separately
+only after completion.
+
+### Independent Review Follow-up
+
+The independent gpt-6.1-sol/max reviewer found one P2 mismatch: Matthew Lemon
+was underlined in website J9 but not in the public CV PDF. The existing CV
+StudentList omitted the comma between Matthew/Lemon and Tanvir/Ahmed. The
+website matched the intended list but not the rendered PDF. Release is blocked
+until the narrowly scoped delimiter repair, real-PDF verification and renewed
+review are complete. All other public bibliography and source-preservation
+checks were accepted; no substantive subprocess-handling defect was found.
+
+### Final Parent Annotation Follow-up (supersedes both preceding rebuilds)
+
+The comma-only repair exposed a second pre-existing parser issue: whitespace
+after the last StudentList entry prevented Tanvir/Ahmed from matching. The
+parent added the conventional TeX line-ending `%` to suppress that whitespace.
+No names or roles were invented. Exactly two characters now differ outside the
+previously authorized article driver, enforced by a byte-exact inverse guard.
+The focused regression genuinely failed 12/13 before this second repair and now
+passes 13/13 using the actual TeX parser. The 113 source checks and 66 actual-PDF/
+preservation checks pass. M. Lemon has a real stroked underline, and all
+nonpublication text plus immutable baseline files remain unchanged.
+
+Final public artifact: 10 pages, 167272 bytes, SHA-256 `baf3923c557fc9c8f4ccd2fc48ae412377e7a7dd6926a50a6368f66e096ea65e`.
+Original CV macro and website PDF/current manifest were applied by the parent.
+The earlier 5bff8f and 3a033a artifacts are superseded, retained as historical
+validation evidence only. New BibTeX keys: none.
+
+### Final independent review: APPROVE
+
+A separate gpt-6.1-sol/max read-only re-review verified the sole P2 remediation,
+actual underline drawing, exact two-character CV macro change, preserved baseline
+and matching staged/public/dist PDF. No blocking findings remain. Final local
+gates: website118, source113, PDF/preservation66, realTeX13 and keyboard/download6
+all passed. Branch CI, main integration and live Pages readback are the remaining
+release gates and are not claimed by this local checkpoint.

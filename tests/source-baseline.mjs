@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { anchor } from "../src/helpers.mjs";
+import { captured as originalRecords } from "./cv-expectations.mjs";
 const source = (file) =>
   JSON.parse(
     fs.readFileSync(
@@ -18,13 +20,13 @@ const dates = [
 ].map((m) => m[0]);
 // Keep the immutable migration baseline, while allowing newly maintained records.
 export function assertPublicationBaseline(publications) {
-  const captured = publications.filter((p) => ids.includes(p.id));
-  assert.deepEqual(
-    captured.map((p) => p.id),
-    ids,
-  );
-  assert.equal(captured.filter((p) => p.type === "review").length, 2);
-  assert.equal(captured.filter((p) => p.type === "conference").length, 4);
+  for (const id of ids) {
+    const matches = publications.filter((p) => p.id === id || p.legacyAnchors?.includes(anchor(id)));
+    assert.equal(matches.length, 1, `${id}: captured record and fragment coverage`);
+    const original = originalRecords.find((p) => p.id === id);
+    assert.equal(matches[0].type, id === "J15*" ? "journal" : original.type,
+      `${id}: captured category or approved Manufacturing Letters promotion`);
+  }
 }
 export function assertNewsBaseline(news) {
   assert.deepEqual(

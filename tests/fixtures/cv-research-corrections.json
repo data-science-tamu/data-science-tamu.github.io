@@ -1,0 +1,194 @@
+{
+  "approval": "2026-10-13 public CV synchronization; canonical citations replace only recorded citation paragraphs. Original hash baseline remains unchanged.",
+  "projects": {
+    "preventive-maintenance": [
+      {
+        "text": "[J11] J. Lee, T. Srikitrungruang, and S. Jahani, \"Knowledge-Guided Reinforcement Learning for Preventive Maintenance Planning in Economically Dependent Multi-Component Systems\", IISE Transactions, accepted, 2025.",
+        "html": "[J11] J. Lee, T. Srikitrungruang, and S. Jahani, \"Knowledge-Guided Reinforcement Learning for Preventive Maintenance Planning in Economically Dependent Multi-Component Systems\", IISE Transactions, accepted, 2025.",
+        "kind": "citation",
+        "recordId": "J11",
+        "notes": [
+          {
+            "text": "This work was selected as a finalist in the QSR Best Referred Paper Competition in 2025 INFORMS Conference.",
+            "html": "This work was selected as a finalist in the QSR Best Referred Paper Competition in 2025 INFORMS Conference."
+          }
+        ]
+      }
+    ],
+    "bone-elastic-properties": [
+      {
+        "text": "[J9] T. Srikitrungruang, M. Lemon, S. Aghaee Dabanghan Fard, J. Lee, Y. Zhou, \"Robust Physics-Informed Neural Network Approach for Estimating Heterogeneous Elastic Properties from Noisy Displacement Data\", Advanced Science, Accepted, 2025, 10.1002/advs.202508445.",
+        "html": "[J9] T. Srikitrungruang, M. Lemon, S. Aghaee Dabanghan Fard, J. Lee, Y. Zhou,&nbsp; \"Robust Physics-Informed Neural Network Approach for Estimating Heterogeneous Elastic Properties from Noisy Displacement Data\", Advanced Science, Accepted, <a href=\"http://doi.org/10.1002/advs.202508445\">2025, 10.1002/advs.202508445</a>.",
+        "kind": "citation",
+        "recordId": "J9",
+        "notes": [
+          {
+            "text": "Advanced Science is a premier interdisciplinary journal with high impact (IF > 14).",
+            "html": "Advanced Science is a premier interdisciplinary journal with high impact (IF &gt; 14)."
+          }
+        ]
+      }
+    ],
+    "failure-prognostics": [
+      {
+        "text": "[J12] S. Aghaee Dabanghan Fard, A. Deep, M. Kim, J. Lee, \"Bayesian Joint Model of Multi-Sensor and Failure Event Data for Multi-Mode Failure Prediction'', Technometrics, 2026.",
+        "html": "[J12] S. Aghaee Dabanghan Fard, A. Deep, M. Kim, J. Lee, \"Bayesian Joint Model of Multi-Sensor and Failure Event Data for Multi-Mode Failure Prediction'', Technometrics, 2026.",
+        "kind": "citation",
+        "recordId": "J12",
+        "notes": [
+          {
+            "text": "This work was selected as a finalist in the QCRE Best Student Paper Competition in 2025 IISE Conference .",
+            "html": "This work was selected as a finalist in the QCRE Best Student Paper Competition in 2025 IISE Conference ."
+          }
+        ]
+      }
+    ],
+    "nanosensor-monitoring": [
+      {
+        "text": "[J3] J. Lee, S. Zhou, and J. Chen, \"Statistical modeling and analysis of k-layer coverage of two-dimensional materials in inkjet printing processes,\" Technometrics, vol. 63, no. 3, pp. 410–420, 2021.",
+        "html": "[J3] J. Lee, S. Zhou, and J. Chen, \"<a href=\"https://www.tandfonline.com/doi/full/10.1080/00401706.2020.1805020\">Statistical modeling and analysis of k-layer coverage of two-dimensional materials in inkjet printing processes</a>,\" Technometrics, vol. 63, no. 3, pp. 410–420, 2021.",
+        "kind": "citation",
+        "recordId": "J3"
+      },
+      {
+        "text": "[C3] J. Lee, C. Wang, S. Zhou, and J. Chen, \"Spatial distribution quantification and control of ink flakes in reduced graphene oxide FET inkjet printing,\" Procedia Manufacturing, vol. 34, pp. 19–25, 2019. 47th SME North American Manufacturing Research Conference, NAMRC 47, Pennsylvania, USA.",
+        "html": "[C3] J. Lee, C. Wang, S. Zhou, and J. Chen, \"<a href=\"https://www.sciencedirect.com/science/article/pii/S2351978919308376\">Spatial distribution quantification and control of ink flakes in reduced graphene oxide FET inkjet printing</a>,\" Procedia Manufacturing, vol. 34, pp. 19–25, 2019.&nbsp; 47th SME North American Manufacturing Research Conference, NAMRC 47, Pennsylvania, USA.",
+        "kind": "citation",
+        "recordId": "C3"
+      }
+    ],
+    "robust-design": [
+      {
+        "text": "[J6] J. Lee, S. Zhou, and J. Chen, \"Robust Parameter Design on Dual Stochastic Response Models with Constrained Bayesian Optimization,\", IEEE Transactions on Automation Science and Engineering, 2023, doi:10.1109/TASE.2023.3251973",
+        "html": "[J6] J. Lee, S. Zhou, and J. Chen, \"<a href=\"https://ieeexplore.ieee.org/abstract/document/10064253/\">Robust Parameter Design on Dual Stochastic Response Models with Constrained Bayesian Optimization</a>,\", IEEE Transactions on Automation Science and Engineering, 2023, doi:10.1109/TASE.2023.3251973",
+        "kind": "citation",
+        "recordId": "J6"
+      },
+      {
+        "text": "[J5] C. Huang, J. Lee, Y. Zhang, S. Zhou, and J. Tang, \"Mixed-input Bayesian Optimization Method for Structural Damage Diagnosis,\" IEEE Transactions on Reliability, vol 72, no. 2, pp. 678-691, 2023. doi:10.1109/TR.2022.3179602",
+        "html": "[J5] C. Huang, J. Lee, Y. Zhang, S. Zhou, and J. Tang, \"<a href=\"https://ieeexplore.ieee.org/document/9795926\">Mixed-input Bayesian Optimization Method for Structural Damage Diagnosis</a>,\" IEEE Transactions on Reliability, vol 72, no. 2, pp. 678-691, 2023. doi:10.1109/TR.2022.3179602",
+        "kind": "citation",
+        "recordId": "J5"
+      },
+      {
+        "text": "[C4] J. Lee, S. Zhou, and J. Chen, \"Sequential Robust Parameter Design With Sample Size Selection\", ASME 2022 17th International Manufacturing Science and Engineering Conference, Indiana, USA, doi:10.1115/MSEC2022-85690",
+        "html": "[C4] J. Lee, S. Zhou, and J. Chen, \"<a href=\"https://asmedigitalcollection.asme.org/MSEC/proceedings/MSEC2022/85819/V002T06A024/1147019\">Sequential Robust Parameter Design With Sample Size Selection</a>\", ASME 2022 17th International Manufacturing Science and Engineering Conference, Indiana, USA, doi:10.1115/MSEC2022-85690",
+        "kind": "citation",
+        "recordId": "C4"
+      }
+    ],
+    "functional-data-calibration": [
+      {
+        "text": "[J4] J. Lee, C. Wang, X. Sui, S. Zhou, and J. Chen, \"Landmark-embedded Gaussian process with applications for functional data modeling,\" IISE Transactions, vol. 54, no. 11, pp. 1033-1046, 2022.",
+        "html": "[J4] J. Lee, C. Wang, X. Sui, S. Zhou, and J. Chen, \"<a href=\"https://www.tandfonline.com/doi/full/10.1080/24725854.2021.1974129\">Landmark-embedded Gaussian process with applications for functional data modeling</a>,\" IISE Transactions, vol. 54, no. 11, pp. 1033-1046, 2022.",
+        "kind": "citation",
+        "recordId": "J4",
+        "notes": [
+          {
+            "text": "This paper was featured in the ISE Magazine (October 2022 issue)",
+            "html": "This paper was featured in the ISE Magazine (October 2022 issue)"
+          },
+          {
+            "text": "This work was selected as the Best Paper in IISE Transactions in 2024.",
+            "html": "This work was selected as the Best Paper in IISE Transactions in 2024."
+          }
+        ]
+      }
+    ],
+    "fault-diagnosis": [
+      {
+        "text": "[J2] J. Lee, J. Son, S. Zhou, and Y. Chen, \"Variation source identification in manufacturing processes using Bayesian approach with sparse variance components prior,\" IEEE Transactions on Automation Science and Engineering, vol. 17, no. 3, pp. 1469–1485, 2020.",
+        "html": "[J2] J. Lee, J. Son, S. Zhou, and Y. Chen, \"<a href=\"https://ieeexplore.ieee.org/abstract/document/8963861\">Variation source identification in manufacturing processes using Bayesian approach with sparse variance components prior</a>,\" IEEE Transactions on Automation Science and Engineering,&nbsp; vol. 17,&nbsp; no. 3,&nbsp; pp. 1469–1485, 2020.",
+        "kind": "citation",
+        "recordId": "J2"
+      }
+    ],
+    "water-sensing": [
+      {
+        "text": "[J8] X. Sui, S. Rangnekar, J. Lee, S. Liu, J. Downing, L. Chaney, X. Yan, H. Jang, H.Pu, S. Zhou, M. Hersam, and J. Chen, “Fully Inkjet-Printed, 2D Materials-Based Field-Effect Transistor for Water Sensing,” Advanced Materials Technologies, 2023, doi:10.1002/admt.202301288",
+        "html": "[J8] X. Sui, S. Rangnekar, J. Lee, S. Liu, J. Downing, L. Chaney, X. Yan, H. Jang, H.Pu, S. Zhou, M. Hersam, and J. Chen, “Fully Inkjet-Printed, 2D Materials-Based Field-Effect Transistor for Water Sensing,” Advanced Materials Technologies, 2023, doi:10.1002/admt.202301288",
+        "kind": "citation",
+        "recordId": "J8",
+        "notes": [
+          {
+            "text": "This paper was selected as the top viewed article in 2023.",
+            "html": "This paper was selected as the top viewed article in 2023."
+          }
+        ]
+      }
+    ]
+  },
+  "selected": {
+    "ai-for-systems": [
+      {
+        "text": "[J11] J. Lee, T. Srikitrungruang, and S. Jahani, \"Knowledge-Guided Reinforcement Learning for Preventive Maintenance Planning in Economically Dependent Multi-Component Systems\", IISE Transactions, accepted, 2025.",
+        "html": "[J11] J. Lee, T. Srikitrungruang, and S. Jahani, \"Knowledge-Guided Reinforcement Learning for Preventive Maintenance Planning in Economically Dependent Multi-Component Systems\", IISE Transactions, accepted, 2025.",
+        "kind": "citation",
+        "recordId": "J11"
+      },
+      {
+        "text": "[J12] S. Aghaee Dabanghan Fard, A. Deep, M. Kim, J. Lee, \"Bayesian Joint Model of Multi-Sensor and Failure Event Data for Multi-Mode Failure Prediction'', Technometrics, 2026.",
+        "html": "[J12] S. Aghaee Dabanghan Fard, A. Deep, M. Kim, J. Lee, \"Bayesian Joint Model of Multi-Sensor and Failure Event Data for Multi-Mode Failure Prediction'', Technometrics, 2026.",
+        "kind": "citation",
+        "recordId": "J12"
+      },
+      {
+        "text": "[J2] J. Lee, J. Son, S. Zhou, and Y. Chen, \"Variation source identification in manufacturing processes using Bayesian approach with sparse variance components prior,\" IEEE Transactions on Automation Science and Engineering, vol. 17, no. 3, pp. 1469–1485, 2020.",
+        "html": "[J2] J. Lee, J. Son, S. Zhou, and Y. Chen, \"<a href=\"https://ieeexplore.ieee.org/abstract/document/8963861\">Variation source identification in manufacturing processes using Bayesian approach with sparse variance components prior</a>,\" IEEE Transactions on Automation Science and Engineering,&nbsp; vol. 17,&nbsp; no. 3,&nbsp; pp. 1469–1485, 2020.",
+        "kind": "citation",
+        "recordId": "J2"
+      },
+      {
+        "text": "[J5] C. Huang, J. Lee, Y. Zhang, S. Zhou, and J. Tang, \"Mixed-input Bayesian Optimization Method for Structural Damage Diagnosis,\" IEEE Transactions on Reliability, vol 72, no. 2, pp. 678-691, 2023. doi:10.1109/TR.2022.3179602",
+        "html": "[J5] C. Huang, J. Lee, Y. Zhang, S. Zhou, and J. Tang, \"<a href=\"https://ieeexplore.ieee.org/document/9795926\">Mixed-input Bayesian Optimization Method for Structural Damage Diagnosis</a>,\" IEEE Transactions on Reliability, vol 72, no. 2, pp. 678-691, 2023. doi:10.1109/TR.2022.3179602",
+        "kind": "citation",
+        "recordId": "J5"
+      }
+    ],
+    "ai-for-processes": [
+      {
+        "text": "[J3] J. Lee, S. Zhou, and J. Chen, \"Statistical modeling and analysis of k-layer coverage of two-dimensional materials in inkjet printing processes,\" Technometrics, vol. 63, no. 3, pp. 410–420, 2021.",
+        "html": "[J3] J. Lee, S. Zhou, and J. Chen, \"<a href=\"https://www.tandfonline.com/doi/full/10.1080/00401706.2020.1805020\">Statistical modeling and analysis of k-layer coverage of two-dimensional materials in inkjet printing processes</a>,\" Technometrics, vol. 63, no. 3, pp. 410–420, 2021.",
+        "kind": "citation",
+        "recordId": "J3"
+      },
+      {
+        "text": "[C3] J. Lee, C. Wang, S. Zhou, and J. Chen, \"Spatial distribution quantification and control of ink flakes in reduced graphene oxide FET inkjet printing,\" Procedia Manufacturing, vol. 34, pp. 19–25, 2019. 47th SME North American Manufacturing Research Conference, NAMRC 47, Pennsylvania, USA.",
+        "html": "[C3] J. Lee, C. Wang, S. Zhou, and J. Chen, \"<a href=\"https://www.sciencedirect.com/science/article/pii/S2351978919308376\">Spatial distribution quantification and control of ink flakes in reduced graphene oxide FET inkjet printing</a>,\" Procedia Manufacturing, vol. 34, pp. 19–25, 2019.&nbsp; 47th SME North American Manufacturing Research Conference, NAMRC 47, Pennsylvania, USA.",
+        "kind": "citation",
+        "recordId": "C3"
+      },
+      {
+        "text": "[J6] J. Lee, S. Zhou, and J. Chen, \"Robust Parameter Design on Dual Stochastic Response Models with Constrained Bayesian Optimization,\", IEEE Transactions on Automation Science and Engineering, 2023, doi:10.1109/TASE.2023.3251973",
+        "html": "[J6] J. Lee, S. Zhou, and J. Chen, \"<a href=\"https://ieeexplore.ieee.org/abstract/document/10064253/\">Robust Parameter Design on Dual Stochastic Response Models with Constrained Bayesian Optimization</a>,\", IEEE Transactions on Automation Science and Engineering, 2023, doi:10.1109/TASE.2023.3251973",
+        "kind": "citation",
+        "recordId": "J6"
+      },
+      {
+        "text": "[J5] C. Huang, J. Lee, Y. Zhang, S. Zhou, and J. Tang, \"Mixed-input Bayesian Optimization Method for Structural Damage Diagnosis,\" IEEE Transactions on Reliability, vol 72, no. 2, pp. 678-691, 2023. doi:10.1109/TR.2022.3179602",
+        "html": "[J5] C. Huang, J. Lee, Y. Zhang, S. Zhou, and J. Tang, \"<a href=\"https://ieeexplore.ieee.org/document/9795926\">Mixed-input Bayesian Optimization Method for Structural Damage Diagnosis</a>,\" IEEE Transactions on Reliability, vol 72, no. 2, pp. 678-691, 2023. doi:10.1109/TR.2022.3179602",
+        "kind": "citation",
+        "recordId": "J5"
+      },
+      {
+        "text": "[C4] J. Lee, S. Zhou, and J. Chen, \"Sequential Robust Parameter Design With Sample Size Selection\", ASME 2022 17th International Manufacturing Science and Engineering Conference, Indiana, USA, doi:10.1115/MSEC2022-85690",
+        "html": "[C4] J. Lee, S. Zhou, and J. Chen, \"<a href=\"https://asmedigitalcollection.asme.org/MSEC/proceedings/MSEC2022/85819/V002T06A024/1147019\">Sequential Robust Parameter Design With Sample Size Selection</a>\", ASME 2022 17th International Manufacturing Science and Engineering Conference, Indiana, USA, doi:10.1115/MSEC2022-85690",
+        "kind": "citation",
+        "recordId": "C4"
+      },
+      {
+        "text": "[J4] J. Lee, C. Wang, X. Sui, S. Zhou, and J. Chen, \"Landmark-embedded Gaussian process with applications for functional data modeling,\" IISE Transactions, vol. 54, no. 11, pp. 1033-1046, 2022.",
+        "html": "[J4] J. Lee, C. Wang, X. Sui, S. Zhou, and J. Chen, \"<a href=\"https://www.tandfonline.com/doi/full/10.1080/24725854.2021.1974129\">Landmark-embedded Gaussian process with applications for functional data modeling</a>,\" IISE Transactions, vol. 54, no. 11, pp. 1033-1046, 2022.",
+        "kind": "citation",
+        "recordId": "J4"
+      },
+      {
+        "text": "[J8] X. Sui, S. Rangnekar, J. Lee, S. Liu, J. Downing, L. Chaney, X. Yan, H. Jang, H.Pu, S. Zhou, M. Hersam, and J. Chen, “Fully Inkjet-Printed, 2D Materials-Based Field-Effect Transistor for Water Sensing,” Advanced Materials Technologies, 2023, doi:10.1002/admt.202301288",
+        "html": "[J8] X. Sui, S. Rangnekar, J. Lee, S. Liu, J. Downing, L. Chaney, X. Yan, H. Jang, H.Pu, S. Zhou, M. Hersam, and J. Chen, “Fully Inkjet-Printed, 2D Materials-Based Field-Effect Transistor for Water Sensing,” Advanced Materials Technologies, 2023, doi:10.1002/admt.202301288",
+        "kind": "citation",
+        "recordId": "J8"
+      }
+    ],
+    "physics-informed-ai": []
+  }
+}

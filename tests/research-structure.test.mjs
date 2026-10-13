@@ -5,6 +5,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { createPages, layout } from "../src/templates.mjs";
 import { imageRenderer, escape } from "../src/helpers.mjs";
+import { publicationCitation } from "../src/publications.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (p) => fs.readFileSync(path.join(root, p), "utf8");
@@ -14,7 +15,8 @@ const pages = createPages(site, lab, imageRenderer(path.join(root, "public")));
 const research = pages.filter((p) => p.route.startsWith("/research/"));
 const text = (html) => html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
 const digest = (items) => createHash("sha256").update(JSON.stringify(items)).digest("hex");
-const flatten = (items) => items.flatMap((p) => [p.html, ...flatten(p.notes || []), ...flatten(p.items || [])]);
+const itemHtml = (p) => p.html ?? publicationCitation(lab.publications.find((record) => record.id === p.recordId));
+const flatten = (items) => items.flatMap((p) => [itemHtml(p), ...flatten(p.notes || []), ...flatten(p.items || [])]);
 
 test("all headers including 404 and the home primary action share data-driven Research disclosures", () => {
   const renamed = structuredClone(lab);
@@ -121,13 +123,13 @@ test("all eight projects label facts, distinguish collaborators and nest notes u
           assert.ok(item.label);
           assert.ok(html.includes(`<strong>${item.label}</strong>`), `${id}: ${item.label}`);
         }
-        if (item.text.startsWith("This work is done")) {
+        if (item.text?.startsWith("This work is done")) {
           assert.equal(item.kind, "collaborators");
           assert.ok(html.includes(`<p class="project-collaborators"><strong>Collaborators:</strong> ${item.html}</p>`));
         }
-        if (/^\[[JC]\d/.test(item.text)) {
+        if (item.kind === "citation") {
           assert.equal(item.kind, "citation");
-          assert.ok(html.includes(`<li><p>${item.html}</p>`));
+          assert.ok(html.includes(`<li><p>${itemHtml(item)}</p>`));
           assert.ok(html.includes(`href="/publication/#${item.recordId.replace("*", "-review")}"`));
           if (item.notes?.length)
             assert.ok(html.includes(`<ul class="citation-notes">${item.notes.map((n) => `<li>${n.html}</li>`).join("")}</ul></li>`));
@@ -141,11 +143,19 @@ test("all eight projects label facts, distinguish collaborators and nest notes u
   assert.ok(!lab.projects.find((p) => p.id === "failure-prognostics").paragraphs.some((p) => p.label === "Goal:"));
 });
 
-test("selected citations share presentation and every original project text/link is preserved", () => {
+test("canonical citations use approved corrections while unrelated text retains the original hashes", () => {
   const baseline = JSON.parse(read("tests/research-paragraph-baseline.json"));
+  const corrections = JSON.parse(read("tests/fixtures/cv-research-corrections.json"));
   for (const p of lab.projects) {
     const original = baseline.projects.find((item) => item.id === p.id);
-    assert.equal(digest(flatten(p.paragraphs)), original.sha256, p.id);
+    const oldCitations = corrections.projects[p.id];
+    assert.deepEqual(p.paragraphs.filter((item) => item.kind === "citation").map((item) => item.recordId),
+      oldCitations.map((item) => item.recordId), `${p.id}: original citation coverage`);
+    // Substitute only each explicitly approved prior citation string. Original
+    // paragraph/notes hashes remain unchanged and still reject unrelated edits.
+    const historical = p.paragraphs.map((item) => item.kind === "citation"
+      ? { ...item, html: oldCitations.find((old) => old.recordId === item.recordId).html } : item);
+    assert.equal(digest(flatten(historical)), original.sha256, p.id);
     const owners = ["/research/", ...lab.research.areas.filter((a) => a.projects.includes(p.id)).map((a) => `/research/${a.slug}/`)];
     for (const page of research.filter((page) => owners.includes(page.route))) {
       for (const html of flatten(p.paragraphs)) assert.ok(text(page.body).includes(text(html)), `${page.route}: ${p.id}`);
@@ -156,9 +166,11 @@ test("selected citations share presentation and every original project text/link
   assert.equal(digest(flatten(lab.research.overview)), baseline.overviewSha256);
   for (const area of lab.research.areas) {
     const page = research.find((p) => p.route === `/research/${area.slug}/`);
+    assert.deepEqual(area.selected.map((item) => item.recordId),
+      corrections.selected[area.slug].map((item) => item.recordId), `${area.slug}: selected citation coverage`);
     for (const citation of area.selected) {
       assert.equal(citation.kind, "citation");
-      assert.ok(page.body.includes(`<li><p>${citation.html}</p>`));
+      assert.ok(page.body.includes(`<li><p>${itemHtml(citation)}</p>`));
     }
   }
 });

@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { rich, validatePublications, imageRenderer } from "../src/helpers.mjs";
 import { createPages } from "../src/templates.mjs";
+import { publicationCitation } from "../src/publications.mjs";
 import {
   assertPublicationBaseline,
   assertNewsBaseline,
@@ -52,7 +53,8 @@ test("maintained publications and news may grow without weakening source coverag
     title: "Synthetic regression publication",
     metadata: "Regression fixture only.",
     year: "2030",
-    citation: "",
+    doi: undefined,
+    legacyAnchors: undefined,
     links: [],
     notes: [],
   };
@@ -84,15 +86,15 @@ test("maintained publications and news may grow without weakening source coverag
   );
   assert.throws(() => assertNewsBaseline(data.news.slice(0, -1)));
 });
-test("the corrected J9 research citation keeps its source-confirmed year", () => {
+test("J9 research citation renders the approved published record and year", () => {
   const data = read("lab.json");
   const citation = data.projects
     .find((p) => p.id === "bone-elastic-properties")
-    .paragraphs.find((p) => p.text.startsWith("[J9]"));
-  assert.match(citation.text, /Accepted, 2025, 10\.1002\/advs\.202508445/);
-  assert.match(citation.html.replace(/<[^>]*>/g, ""), /Accepted, 2025,/);
-  assert.match(
-    citation.html,
-    /href="http:\/\/doi\.org\/10\.1002\/advs\.202508445"/,
-  );
+    .paragraphs.find((p) => p.recordId === "J9");
+  const record = data.publications.find((p) => p.id === citation.recordId);
+  const html = publicationCitation(record);
+  assert.equal(record.status, "published");
+  assert.match(html, /Advanced Science, vol\. 12, no\. 48, article e08445, 2025,/);
+  assert.match(html, /href="https:\/\/doi\.org\/10\.1002\/advs\.202508445"/);
+  assert.doesNotMatch(html, /accepted/i);
 });

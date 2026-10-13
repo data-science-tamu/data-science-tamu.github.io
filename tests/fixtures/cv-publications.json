@@ -1,0 +1,1001 @@
+{
+  "approval": "2026-10-13 public CV and verified publisher corrections; see docs/source-provenance.md",
+  "records": [
+    {
+      "id": "J12",
+      "type": "journal",
+      "title": "Bayesian Joint Model of Multi-Sensor and Failure Event Data for Multi-Mode Failure Prediction",
+      "authors": [
+        {
+          "name": "Sina Aghaee Dabaghan Fard",
+          "advisee": true
+        },
+        {
+          "name": "Minhee Kim"
+        },
+        {
+          "name": "Akash Deep"
+        },
+        {
+          "name": "Jaesung Lee",
+          "corresponding": true
+        }
+      ],
+      "venue": "Technometrics",
+      "year": "2026",
+      "status": "published",
+      "doi": "10.1080/00401706.2026.2653564",
+      "pages": "1-15",
+      "onlineDate": "2026-05-13",
+      "bibKey": "fard2025bayesian",
+      "notes": [
+        "Finalist for the QCRE Student Paper Competition at the 2025 IISE Annual Conference & Expo.",
+        "Technometrics is a top journal in science and engineering statistics, with an acceptance rate of approximately 11%.",
+        "Invited to present in the Technometrics Journal Session at the 2026 Quality and Productivity Research Conference."
+      ]
+    },
+    {
+      "id": "J15",
+      "type": "journal",
+      "title": "Explainable Sequential Survival Modeling for Downtime Prognostics in Manufacturing Systems",
+      "authors": [
+        {
+          "name": "Haopeng Tian"
+        },
+        {
+          "name": "Abhishek Hanchate"
+        },
+        {
+          "name": "Rajkumar Palanna"
+        },
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Satish Bukkapatnam"
+        }
+      ],
+      "venue": "Manufacturing Letters",
+      "year": "2026",
+      "status": "published",
+      "doi": "10.1016/j.mfglet.2026.08.035",
+      "volume": "49",
+      "pages": "1286-1297",
+      "issueLabel": "Supplement",
+      "legacyAnchors": [
+        "J15-review"
+      ],
+      "bibKey": "tian2026explainable",
+      "notes": []
+    },
+    {
+      "id": "J14",
+      "type": "journal",
+      "title": "Examining and mitigating underspecification in neural network-based wafer defect pattern classification",
+      "authors": [
+        {
+          "name": "Kani Fu"
+        },
+        {
+          "name": "Zihan Li"
+        },
+        {
+          "name": "Linrui Zhao"
+        },
+        {
+          "name": "Akash Deep"
+        },
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Navid Asadi"
+        },
+        {
+          "name": "Minhee Kim"
+        }
+      ],
+      "venue": "Journal of Intelligent Manufacturing",
+      "year": "2026",
+      "status": "published",
+      "doi": "10.1007/s10845-026-02890-8",
+      "onlineDate": "2026-06-02",
+      "bibKey": "fu2026examining",
+      "notes": []
+    },
+    {
+      "id": "J13",
+      "type": "journal",
+      "title": "Manifold-informed Meta-Learning for Out-of-Distribution Detection and Classification in Small-Scale Industrial Datasets",
+      "authors": [
+        {
+          "name": "Zihan Li"
+        },
+        {
+          "name": "Akash Deep"
+        },
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Minhee Kim"
+        }
+      ],
+      "venue": "Journal of Intelligent Manufacturing",
+      "year": "2026",
+      "status": "published",
+      "doi": "10.1007/s10845-026-02873-9",
+      "onlineDate": "2026-05-07",
+      "bibKey": "li2025manifold",
+      "notes": []
+    },
+    {
+      "id": "J11",
+      "type": "journal",
+      "title": "Knowledge-Guided Reinforcement Learning for Preventive Maintenance Planning in Economically Dependent Multi-Component Systems",
+      "authors": [
+        {
+          "name": "Jaesung Lee",
+          "corresponding": true
+        },
+        {
+          "name": "Tatthapong Srikitrungruang",
+          "advisee": true
+        },
+        {
+          "name": "Salman Jahani"
+        }
+      ],
+      "venue": "IISE Transactions",
+      "year": "2026",
+      "status": "published",
+      "doi": "10.1080/24725854.2025.2610967",
+      "volume": "58",
+      "issue": "11",
+      "pages": "1352-1369",
+      "onlineDate": "2026-01-22",
+      "issueLabel": "Assigned November 2026 issue",
+      "bibKey": "lee2025Knowledge",
+      "notes": [
+        "Finalist for the 2025 QSR Best Refereed Paper Competition at the 2025 INFORMS Annual Conference."
+      ]
+    },
+    {
+      "id": "J9",
+      "type": "journal",
+      "title": "Robust Physics-Informed Neural Network Approach for Estimating Heterogeneous Elastic Properties from Noisy Displacement Data",
+      "authors": [
+        {
+          "name": "Tatthapong Srikitrungruang",
+          "advisee": true
+        },
+        {
+          "name": "Sina Aghaee Dabaghan Fard",
+          "advisee": true
+        },
+        {
+          "name": "Matthew Lemon",
+          "advisee": true
+        },
+        {
+          "name": "Jaesung Lee",
+          "corresponding": true
+        },
+        {
+          "name": "Yuxiao Zhou"
+        }
+      ],
+      "venue": "Advanced Science",
+      "year": "2025",
+      "status": "published",
+      "doi": "10.1002/advs.202508445",
+      "volume": "12",
+      "issue": "48",
+      "articleNumber": "e08445",
+      "onlineDate": "2025-11-25",
+      "bibKey": "srikitrungruang2026robust",
+      "notes": [
+        "Advanced Science is a premier open access journal with high interdisciplinary impact (IF > 14)."
+      ]
+    },
+    {
+      "id": "J10",
+      "type": "journal",
+      "title": "A New View of Neural Network-Based Health Index: Connecting Prediction and Operational Decision-Making to Address Underspecification",
+      "authors": [
+        {
+          "name": "Zihan Li"
+        },
+        {
+          "name": "Akash Deep"
+        },
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Minhee Kim"
+        }
+      ],
+      "venue": "IEEE Transactions on Automation Science and Engineering",
+      "year": "2025",
+      "status": "published",
+      "doi": "10.1109/TASE.2025.3627844",
+      "volume": "22",
+      "pages": "23501-23512",
+      "bibKey": "li2025new",
+      "notes": []
+    },
+    {
+      "id": "J6",
+      "type": "journal",
+      "title": "Robust Parameter Design on Dual Stochastic Response Models With Constrained Bayesian Optimization",
+      "authors": [
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Shiyu Zhou"
+        },
+        {
+          "name": "Junhong Chen"
+        }
+      ],
+      "venue": "IEEE Transactions on Automation Science and Engineering",
+      "year": "2024",
+      "status": "published",
+      "doi": "10.1109/TASE.2023.3251973",
+      "volume": "21",
+      "issue": "2",
+      "pages": "2039-2050",
+      "bibKey": "lee2023robust",
+      "notes": []
+    },
+    {
+      "id": "J8",
+      "type": "journal",
+      "title": "Fully Inkjet-Printed, 2D Materials-Based Field-Effect Transistor for Water Sensing",
+      "authors": [
+        {
+          "name": "Xiaoyu Sui"
+        },
+        {
+          "name": "Sonal V. Rangnekar"
+        },
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Stephanie E. Liu"
+        },
+        {
+          "name": "Julia R. Downing"
+        },
+        {
+          "name": "Lindsay E. Chaney"
+        },
+        {
+          "name": "Xiaodong Yan"
+        },
+        {
+          "name": "Hyun-June Jang"
+        },
+        {
+          "name": "Haihui Pu"
+        },
+        {
+          "name": "Xiaoao Shi"
+        },
+        {
+          "name": "Shiyu Zhou"
+        },
+        {
+          "name": "Mark C. Hersam"
+        },
+        {
+          "name": "Junhong Chen"
+        }
+      ],
+      "venue": "Advanced Materials Technologies",
+      "year": "2023",
+      "status": "published",
+      "doi": "10.1002/admt.202301288",
+      "volume": "8",
+      "issue": "22",
+      "articleNumber": "2301288",
+      "bibKey": "sui2023fully",
+      "notes": [
+        "Back Cover.",
+        "Recognized as a top-viewed article of 2023."
+      ]
+    },
+    {
+      "id": "J7",
+      "type": "journal",
+      "title": "Additive Manufacturing Using Agriculturally Derived Biowastes: A Systematic Literature Review",
+      "authors": [
+        {
+          "name": "Al Mazedur Rahman"
+        },
+        {
+          "name": "Taieba Tuba Rahman"
+        },
+        {
+          "name": "Zhijian Pei"
+        },
+        {
+          "name": "Chukwuzubelu Okenwa Ufodike"
+        },
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Alaa Elwany"
+        }
+      ],
+      "venue": "Bioengineering",
+      "year": "2023",
+      "status": "published",
+      "doi": "10.3390/bioengineering10070845",
+      "volume": "10",
+      "issue": "7",
+      "articleNumber": "845",
+      "bibKey": "rahman2023additive",
+      "notes": []
+    },
+    {
+      "id": "J5",
+      "type": "journal",
+      "title": "Mixed-Input Bayesian Optimization Method for Structural Damage Diagnosis",
+      "authors": [
+        {
+          "name": "Congfang Huang"
+        },
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Yang Zhang"
+        },
+        {
+          "name": "Shiyu Zhou"
+        },
+        {
+          "name": "Jiong Tang"
+        }
+      ],
+      "venue": "IEEE Transactions on Reliability",
+      "year": "2023",
+      "status": "published",
+      "doi": "10.1109/TR.2022.3179602",
+      "volume": "72",
+      "issue": "2",
+      "pages": "678-691",
+      "bibKey": "huang2022mixed",
+      "notes": []
+    },
+    {
+      "id": "J4",
+      "type": "journal",
+      "title": "Landmark-embedded Gaussian process with applications for functional data modeling",
+      "authors": [
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Chao Wang"
+        },
+        {
+          "name": "Xiaoyu Sui"
+        },
+        {
+          "name": "Shiyu Zhou"
+        },
+        {
+          "name": "Junhong Chen"
+        }
+      ],
+      "venue": "IISE Transactions",
+      "year": "2022",
+      "status": "published",
+      "doi": "10.1080/24725854.2021.1974129",
+      "volume": "54",
+      "issue": "11",
+      "pages": "1033-1046",
+      "bibKey": "lee2022landmark",
+      "notes": [
+        "Featured in the ISE Magazine (October 2022 issue)",
+        "Awarded as Best Paper in the 2023 IISE Transactions Focus Issue on Design and Manufacturing"
+      ]
+    },
+    {
+      "id": "J3",
+      "type": "journal",
+      "title": "Statistical Modeling and Analysis of k-Layer Coverage of Two-Dimensional Materials in Inkjet Printing Processes",
+      "authors": [
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Shiyu Zhou"
+        },
+        {
+          "name": "Junhong Chen"
+        }
+      ],
+      "venue": "Technometrics",
+      "year": "2021",
+      "status": "published",
+      "doi": "10.1080/00401706.2020.1805020",
+      "volume": "63",
+      "issue": "3",
+      "pages": "410-420",
+      "bibKey": "lee2020statistical",
+      "notes": []
+    },
+    {
+      "id": "J2",
+      "type": "journal",
+      "title": "Variation source identification in manufacturing processes using Bayesian approach with sparse variance components prior",
+      "authors": [
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "Junbo Son"
+        },
+        {
+          "name": "Shiyu Zhou"
+        },
+        {
+          "name": "Yong Chen"
+        }
+      ],
+      "venue": "IEEE Transactions on Automation Science and Engineering",
+      "year": "2020",
+      "status": "published",
+      "doi": "10.1109/TASE.2019.2959605",
+      "volume": "17",
+      "issue": "3",
+      "pages": "1469-1485",
+      "bibKey": "lee2020variation",
+      "notes": []
+    },
+    {
+      "id": "J1",
+      "type": "journal",
+      "title": "Indexing by Latent Dirichlet Allocation and an Ensemble Model",
+      "authors": [
+        {
+          "name": "Yanshan Wang"
+        },
+        {
+          "name": "Jaesung Lee"
+        },
+        {
+          "name": "In-Chan Choi"
+        }
+      ],
+      "venue": "Journal of the Association for Information Science and Technology",
+      "year": "2016",
+      "status": "published",
+      "doi": "10.1002/asi.23444",
+      "volume": "67",
+      "issue": "7",
+      "pages": "1736-1750",
+      "bibKey": "wang2016indexing",
+      "notes": []
+    },
+    {
+      "id": "J17*",
+      "type": "review",
+      "title": "Probabilistic Physics-Informed Neural Networks for Estimating Heterogeneous Elastic Properties from Low-Resolution and Noisy Displacement Data",
+      "authors": [
+        {
+          "name": "T. Srikitrungruang",
+          "advisee": true
+        },
+        {
+          "name": "J. Lee",
+          "corresponding": true
+        }
+      ],
+      "year": null,
+      "status": "major revision",
+      "venue": "Technometrics",
+      "doi": "10.48550/arXiv.2607.14563",
+      "preprint": "arXiv",
+      "notes": [
+        "Finalist for the 2026 INFORMS QSR Best Student Paper Competition (Ph.D. advisee: Tatthapong Srikitrungruang)."
+      ]
+    },
+    {
+      "id": "J18*",
+      "type": "review",
+      "title": "Scalable Bayesian Deep Kernel Networks via Ensemble-Induced Finite Function Spaces",
+      "authors": [
+        {
+          "name": "S. Aghaee Dabaghan Fard",
+          "advisee": true
+        },
+        {
+          "name": "J. Lee",
+          "corresponding": true
+        }
+      ],
+      "year": null,
+      "status": "under review",
+      "notes": []
+    },
+    {
+      "id": "J16*",
+      "type": "review",
+      "title": "A Scalable POMDP-based Framework for Real-Time Maintenance Planning using Multiple Sensor Signals",
+      "authors": [
+        {
+          "name": "A. Salehiyan"
+        },
+        {
+          "name": "J. Lee"
+        },
+        {
+          "name": "M. Kim"
+        },
+        {
+          "name": "A. Deep"
+        }
+      ],
+      "year": null,
+      "status": "under review",
+      "doi": "10.36227/techrxiv.173337778.83986484/v1",
+      "preprint": "TechRxiv",
+      "notes": []
+    },
+    {
+      "id": "J19*",
+      "type": "review",
+      "title": "BEIFSurv: Bayesian Ensemble-Induced Finite Function-Space Survival Model for Multi-Sensor Data and Multi-Mode Failure Prediction",
+      "authors": [
+        {
+          "name": "S. Aghaee Dabaghan Fard",
+          "advisee": true
+        },
+        {
+          "name": "M. Kim"
+        },
+        {
+          "name": "A. Deep"
+        },
+        {
+          "name": "J. Lee",
+          "corresponding": true
+        }
+      ],
+      "year": null,
+      "status": "under review",
+      "notes": []
+    },
+    {
+      "id": "W1",
+      "type": "working",
+      "title": "Physics-Informed Heterogeneous Bayesian Last Layer Neural Network",
+      "authors": [
+        {
+          "name": "S. Aghaee Dabaghan Fard",
+          "advisee": true
+        },
+        {
+          "name": "J. Lee",
+          "corresponding": true
+        }
+      ],
+      "year": null,
+      "status": "working paper",
+      "notes": []
+    },
+    {
+      "id": "W2",
+      "type": "working",
+      "title": "Bayesian Physics-Informed Probabilistic Neural Network with Variance-Driven Weighting and Spline Guidance for Inverse Heterogeneous Elasticity Estimation from Low-Resolution and Noisy Data",
+      "authors": [
+        {
+          "name": "T. Srikitrungruang",
+          "advisee": true
+        },
+        {
+          "name": "J. Lee",
+          "corresponding": true
+        }
+      ],
+      "year": null,
+      "status": "working paper",
+      "notes": []
+    },
+    {
+      "id": "C4",
+      "type": "conference",
+      "title": "Sequential Robust Parameter Design With Sample Size Selection",
+      "authors": [
+        {
+          "name": "J. Lee"
+        },
+        {
+          "name": "S. Zhou"
+        },
+        {
+          "name": "J. Chen"
+        }
+      ],
+      "year": "2022",
+      "status": "published",
+      "bibKey": "lee2022sequential",
+      "venue": "ASME 2022 17th International Manufacturing Science and Engineering Conference",
+      "volume": "85819",
+      "articleNumber": "V002T06A024",
+      "doi": "10.1115/MSEC2022-85690",
+      "location": "Indiana, USA",
+      "notes": []
+    },
+    {
+      "id": "C3",
+      "type": "conference",
+      "title": "Spatial distribution quantification and control of ink flakes in reduced graphene oxide FET inkjet printing",
+      "authors": [
+        {
+          "name": "J. Lee"
+        },
+        {
+          "name": "C. Wang"
+        },
+        {
+          "name": "S. Zhou"
+        },
+        {
+          "name": "J. Chen"
+        }
+      ],
+      "year": "2019",
+      "status": "published",
+      "bibKey": "lee2019spatial",
+      "venue": "Procedia Manufacturing",
+      "volume": "34",
+      "pages": "19-25",
+      "doi": "10.1016/j.promfg.2019.06.109",
+      "event": "47th SME North American Manufacturing Research Conference, NAMRC 47",
+      "location": "Pennsylvania, USA",
+      "notes": []
+    },
+    {
+      "id": "C2",
+      "type": "conference",
+      "title": "Efficient compact join algorithm for acyclic conjunctive SPARQL",
+      "authors": [
+        {
+          "name": "J. Lee"
+        },
+        {
+          "name": "D. Kim"
+        },
+        {
+          "name": "K. Kim"
+        },
+        {
+          "name": "H. Jung"
+        }
+      ],
+      "year": "2016",
+      "status": "published",
+      "venue": "ITMSOC Transactions on Information Technology Management",
+      "volume": "1",
+      "issue": "1",
+      "pages": "1-8",
+      "notes": []
+    },
+    {
+      "id": "C1",
+      "type": "conference",
+      "title": "Document indexing by latent Dirichlet allocation",
+      "authors": [
+        {
+          "name": "I. Choi"
+        },
+        {
+          "name": "J. Lee"
+        }
+      ],
+      "year": "2010",
+      "status": "published",
+      "venue": "Proceedings of the 2010 International Conference on Data Mining",
+      "pages": "409-414",
+      "location": "Las Vegas NV, USA",
+      "eventDates": "Jul. 12-15, 2010",
+      "notes": []
+    }
+  ],
+  "capturedRecords": [
+    {
+      "id": "J14",
+      "authors": "K. Fu, Z. Li, L. Zhao, A. Deep, J. Lee, N. Asadi, and M. Kim,",
+      "title": "Examining and Mitigating Underspecification in Neural Network-based Wafer Defect Pattern Classification",
+      "metadata": "Journal of Intelligent Manufacturing, Accepted, 2026.",
+      "type": "journal",
+      "year": "2026",
+      "notes": [],
+      "links": [],
+      "citation": "[J14] K. Fu, Z. Li, L. Zhao, A. Deep, J. Lee, N. Asadi, and M. Kim, \"Examining and Mitigating Underspecification in Neural Network-based Wafer Defect Pattern Classification\", Journal of Intelligent Manufacturing, Accepted, 2026."
+    },
+    {
+      "id": "J13",
+      "authors": "Z. Li, A. Deep, J. Lee and M Kim,",
+      "title": "Manifold-informed Meta-Learning for Out-of-Distribution Detection and Classification in Small-Scale Industrial Datasets",
+      "metadata": "Journal of Intelligent Manufacturing, Accepted, 2026.",
+      "type": "journal",
+      "year": "2026",
+      "notes": [],
+      "links": [],
+      "citation": "[J13] Z. Li, A. Deep, J. Lee and M Kim, \"Manifold-informed Meta-Learning for Out-of-Distribution Detection and Classification in Small-Scale Industrial Datasets\", Journal of Intelligent Manufacturing, Accepted, 2026."
+    },
+    {
+      "id": "J12",
+      "authors": "S. Aghaee Dabanghan Fard, A. Deep, M. Kim, J. Lee,",
+      "title": "Bayesian Joint Model of Multi-Sensor and Failure Event Data for Multi-Mode Failure Prediction",
+      "metadata": "Technometrics, Accepted, 2026, https://doi.org/10.1080/00401706.2026.2653564.",
+      "type": "journal",
+      "year": "2026",
+      "notes": [
+        "Finalist for the QCRE Student Paper Competition at the 2025 IISE Annual Conference & Expo."
+      ],
+      "links": [
+        {
+          "text": "https://doi.org/10.1080/00401706.2026.2653564",
+          "href": "https://doi.org/10.1080/00401706.2026.2653564"
+        }
+      ],
+      "citation": "[J12] S. Aghaee Dabanghan Fard, A. Deep, M. Kim, J. Lee, \"Bayesian Joint Model of Multi-Sensor and Failure Event Data for Multi-Mode Failure Prediction'',Technometrics, Accepted, 2026, https://doi.org/10.1080/00401706.2026.2653564."
+    },
+    {
+      "id": "J11",
+      "authors": "J. Lee, T. Srikitrungruang, and S. Jahani,",
+      "title": "Knowledge-Guided Reinforcement Learning for Preventive Maintenance Planning in Economically Dependent Multi-Component Systems",
+      "metadata": "2025, https://doi.org/10.1080/24725854.2025.2610967.",
+      "type": "journal",
+      "year": "2025",
+      "notes": [],
+      "links": [
+        {
+          "text": "https://doi.org/10.1080/24725854.2025.2610967",
+          "href": "https://doi.org/10.1080/24725854.2025.2610967"
+        }
+      ],
+      "citation": "[J11] J. Lee, T. Srikitrungruang, and S. Jahani, \"Knowledge-Guided Reinforcement Learning for Preventive Maintenance Planning in Economically Dependent Multi-Component Systems\", 2025, https://doi.org/10.1080/24725854.2025.2610967."
+    },
+    {
+      "id": "J10",
+      "authors": "Z. Li, A. Deep, J. Lee and M Kim,",
+      "title": "A New View of Neural Network-based Health Index: Connecting Prediction and Operational Decision-Making to Address Underspecification",
+      "metadata": "IEEE Transactions on Automation Science and Engineering, 2025, https://doi.org/10.1109/TASE.2025.3627844.",
+      "type": "journal",
+      "year": "2025",
+      "notes": [],
+      "links": [
+        {
+          "text": "https://doi.org/10.1109/TASE.2025.3627844",
+          "href": "https://doi.org/10.1109/TASE.2025.3627844"
+        }
+      ],
+      "citation": "[J10] Z. Li, A. Deep, J. Lee and M Kim, \"A New View of Neural Network-based Health Index: Connecting Prediction and Operational Decision-Making to Address Underspecification\", IEEE Transactions on Automation Science and Engineering, 2025, https://doi.org/10.1109/TASE.2025.3627844."
+    },
+    {
+      "id": "J9",
+      "authors": "T. Srikitrungruang, M. Lemon, S. Aghaee Dabanghan Fard, J. Lee, Y. Zhou,",
+      "title": "Robust Physics-Informed Neural Network Approach for Estimating Heterogeneous Elastic Properties from Noisy Displacement Data",
+      "metadata": "Advanced Science, accepted, 2025, http://doi.org/10.1002/advs.202508445.",
+      "type": "journal",
+      "year": "2025",
+      "notes": [],
+      "links": [
+        {
+          "text": "http://doi.org/10.1002/advs.202508445",
+          "href": "http://doi.org/10.1002/advs.202508445"
+        }
+      ],
+      "citation": "[J9] T. Srikitrungruang, M. Lemon, S. Aghaee Dabanghan Fard, J. Lee, Y. Zhou, \"Robust Physics-Informed Neural Network Approach for Estimating Heterogeneous Elastic Properties from Noisy Displacement Data\", Advanced Science, accepted, 2025, http://doi.org/10.1002/advs.202508445."
+    },
+    {
+      "id": "J8",
+      "authors": "X. Sui, S. Rangnekar, J. Lee, S. Liu, J. Downing, L. Chaney, X. Yan, H. Jang, H.Pu, S. Zhou, M. Hersam, and J. Chen,",
+      "title": "Fully Inkjet-Printed, 2D Materials-Based Field-Effect Transistor for Water Sensing",
+      "metadata": "Advanced Materials Technologies, accepted, 2023, doi:10.1002/admt.202301288.",
+      "type": "journal",
+      "year": "2023",
+      "notes": [],
+      "links": [],
+      "citation": "[J8] X. Sui, S. Rangnekar, J. Lee, S. Liu, J. Downing, L. Chaney, X. Yan, H. Jang, H.Pu, S. Zhou, M. Hersam, and J. Chen, “Fully Inkjet-Printed, 2D Materials-Based Field-Effect Transistor for Water Sensing,” Advanced Materials Technologies, accepted, 2023, doi:10.1002/admt.202301288."
+    },
+    {
+      "id": "J7",
+      "authors": "A Rahman, T. Rahman, Z. Pei, C. Ufodlike, J. Lee, and A. Elwany,",
+      "title": "Additive Manufacturing Using Agriculturally Derived Biowastes: A Systematic Literature Review",
+      "metadata": "Bioengineering, vol. 10, no. 7, pp. 845-874 , 2023, doi:10.3390/bioengineering1007084",
+      "type": "journal",
+      "year": "2023",
+      "notes": [],
+      "links": [
+        {
+          "text": "Additive Manufacturing Using Agriculturally Derived Biowastes: A Systematic Literature Review",
+          "href": "https://www.mdpi.com/2306-5354/10/7/845"
+        }
+      ],
+      "citation": "[J7] A Rahman, T. Rahman, Z. Pei, C. Ufodlike, J. Lee, and A. Elwany, “Additive Manufacturing Using Agriculturally Derived Biowastes: A Systematic Literature Review,” Bioengineering, vol. 10, no. 7, pp. 845-874 , 2023, doi:10.3390/bioengineering1007084"
+    },
+    {
+      "id": "J6",
+      "authors": "J. Lee, S. Zhou, and J. Chen,",
+      "title": "Robust Parameter Design on Dual Stochastic Response Models with Constrained Bayesian Optimization",
+      "metadata": "IEEE Transactions on Automation Science and Engineering, 2023, doi:10.1109/TASE.2023.3251973",
+      "type": "journal",
+      "year": "2023",
+      "notes": [],
+      "links": [
+        {
+          "text": "Robust Parameter Design on Dual Stochastic Response Models with Constrained Bayesian Optimization",
+          "href": "https://ieeexplore.ieee.org/abstract/document/10064253/"
+        }
+      ],
+      "citation": "[J6] J. Lee, S. Zhou, and J. Chen, \"Robust Parameter Design on Dual Stochastic Response Models with Constrained Bayesian Optimization,\", IEEE Transactions on Automation Science and Engineering, 2023, doi:10.1109/TASE.2023.3251973"
+    },
+    {
+      "id": "J5",
+      "authors": "C. Huang, J. Lee, Y. Zhang, S. Zhou, and J. Tang,",
+      "title": "Mixed-input Bayesian Optimization Method for Structural Damage Diagnosis",
+      "metadata": "IEEE Transactions on Reliability, vol 72, no. 2, pp. 678-691, 2023. doi:10.1109/TR.2022.3179602",
+      "type": "journal",
+      "year": "2023",
+      "notes": [],
+      "links": [
+        {
+          "text": "Mixed-input Bayesian Optimization Method for Structural Damage Diagnosis",
+          "href": "https://ieeexplore.ieee.org/document/9795926"
+        }
+      ],
+      "citation": "[J5] C. Huang, J. Lee, Y. Zhang, S. Zhou, and J. Tang, \"Mixed-input Bayesian Optimization Method for Structural Damage Diagnosis,\" IEEE Transactions on Reliability, vol 72, no. 2, pp. 678-691, 2023. doi:10.1109/TR.2022.3179602"
+    },
+    {
+      "id": "J4",
+      "authors": "J. Lee, C. Wang, X. Sui, S. Zhou, and J. Chen,",
+      "title": "Landmark-embedded Gaussian process with applications for functional data modeling",
+      "metadata": "IISE Transactions, vol. 54, no. 11, pp. 1033-1046, 2022.",
+      "type": "journal",
+      "year": "2022",
+      "notes": [
+        "Featured in the ISE Magazine (October 2022 issue)",
+        "Awarded as Best Paper in the 2023 IISE Transactions Focus Issue on Design and Manufacturing"
+      ],
+      "links": [
+        {
+          "text": "Landmark-embedded Gaussian process with applications for functional data modeling",
+          "href": "https://www.tandfonline.com/doi/full/10.1080/24725854.2021.1974129"
+        }
+      ],
+      "citation": "[J4] J. Lee, C. Wang, X. Sui, S. Zhou, and J. Chen, \"Landmark-embedded Gaussian process with applications for functional data modeling,\" IISE Transactions, vol. 54, no. 11, pp. 1033-1046, 2022."
+    },
+    {
+      "id": "J3",
+      "authors": "J. Lee, S. Zhou, and J. Chen,",
+      "title": "Statistical modeling and analysis of k-layer coverage of two-dimensional materials in inkjet printing processes",
+      "metadata": "Technometrics, vol. 63, no. 3, pp. 410–420, 2021.",
+      "type": "journal",
+      "year": "2021",
+      "notes": [],
+      "links": [
+        {
+          "text": "Statistical modeling and analysis of k-layer coverage of two-dimensional materials in inkjet printing processes",
+          "href": "https://www.tandfonline.com/doi/full/10.1080/00401706.2020.1805020"
+        }
+      ],
+      "citation": "[J3] J. Lee, S. Zhou, and J. Chen, \"Statistical modeling and analysis of k-layer coverage of two-dimensional materials in inkjet printing processes,\" Technometrics, vol. 63, no. 3, pp. 410–420, 2021."
+    },
+    {
+      "id": "J2",
+      "authors": "J. Lee, J. Son, S. Zhou, and Y. Chen,",
+      "title": "Variation source identification in manufacturing processes using Bayesian approach with sparse variance components prior",
+      "metadata": "IEEE Transactions on Automation Science and Engineering, vol. 17, no. 3, pp. 1469–1485, 2020.",
+      "type": "journal",
+      "year": "2020",
+      "notes": [],
+      "links": [
+        {
+          "text": "Variation source identification in manufacturing processes using Bayesian approach with sparse variance components prior",
+          "href": "https://ieeexplore.ieee.org/abstract/document/8963861"
+        }
+      ],
+      "citation": "[J2] J. Lee, J. Son, S. Zhou, and Y. Chen, \"Variation source identification in manufacturing processes using Bayesian approach with sparse variance components prior,\" IEEE Transactions on Automation Science and Engineering, vol. 17, no. 3, pp. 1469–1485, 2020."
+    },
+    {
+      "id": "J1",
+      "authors": "Y. Wang, J. Lee, and I. Choi,",
+      "title": "Indexing by latent Dirichlet allocation and an ensemble model",
+      "metadata": "Journal of the Association for Information Science and Technology, vol. 67, no. 7, pp. 1736–1750, 2016.",
+      "type": "journal",
+      "year": "2016",
+      "notes": [],
+      "links": [],
+      "citation": "[J1] Y. Wang, J. Lee, and I. Choi, \"Indexing by latent Dirichlet allocation and an ensemble model,\" Journal of the Association for Information Science and Technology, vol. 67, no. 7, pp. 1736–1750, 2016."
+    },
+    {
+      "id": "J15*",
+      "authors": "H. Tian, A. Hanchate, R. Palanna, J. Lee, and S. Bukkapatnam,",
+      "title": "Explainable Sequential Survival Modeling for Downtime Prognostics in Manufacturing Systems",
+      "metadata": "under review.",
+      "type": "review",
+      "year": null,
+      "notes": [],
+      "links": [],
+      "citation": "[J15*] H. Tian, A. Hanchate, R. Palanna, J. Lee, and S. Bukkapatnam, \"Explainable Sequential Survival Modeling for Downtime Prognostics in Manufacturing Systems\", under review."
+    },
+    {
+      "id": "J16*",
+      "authors": "A Salehiyan, J. Lee, M. Kim, A. Deep,",
+      "title": "A Scalable POMDP-based Framework for Real-Time Maintenance Planning using Multiple Sensor Signals",
+      "metadata": "doi:10.36227/techrxiv.173337778.83986484/v1.",
+      "type": "review",
+      "year": null,
+      "notes": [],
+      "links": [],
+      "citation": "[J16*] A Salehiyan, J. Lee, M. Kim, A. Deep, \"A Scalable POMDP-based Framework for Real-Time Maintenance Planning using Multiple Sensor Signals\", doi:10.36227/techrxiv.173337778.83986484/v1."
+    },
+    {
+      "id": "C4",
+      "authors": "J. Lee, S. Zhou, and J. Chen,",
+      "title": "Sequential Robust Parameter Design With Sample Size Selection",
+      "metadata": "ASME 2022 17th International Manufacturing Science and Engineering Conference, Indiana, USA, doi:10.1115/MSEC2022-85690",
+      "type": "conference",
+      "year": "2022",
+      "notes": [],
+      "links": [
+        {
+          "text": "Sequential Robust Parameter Design With Sample Size Selection",
+          "href": "https://asmedigitalcollection.asme.org/MSEC/proceedings/MSEC2022/85819/V002T06A024/1147019"
+        }
+      ],
+      "citation": "[C4] J. Lee, S. Zhou, and J. Chen, \"Sequential Robust Parameter Design With Sample Size Selection\", ASME 2022 17th International Manufacturing Science and Engineering Conference, Indiana, USA, doi:10.1115/MSEC2022-85690"
+    },
+    {
+      "id": "C3",
+      "authors": "J. Lee, C. Wang, S. Zhou, and J. Chen,",
+      "title": "Spatial distribution quantification and control of ink flakes in reduced graphene oxide FET inkjet printing",
+      "metadata": "Procedia Manufacturing, vol. 34, pp. 19–25, 2019. 47th SME North American Manufacturing Research Conference, NAMRC 47, Pennsylvania, USA.",
+      "type": "conference",
+      "year": "2019",
+      "notes": [],
+      "links": [
+        {
+          "text": "Spatial distribution quantification and control of ink flakes in reduced graphene oxide FET inkjet printing",
+          "href": "https://www.sciencedirect.com/science/article/pii/S2351978919308376"
+        }
+      ],
+      "citation": "[C3] J. Lee, C. Wang, S. Zhou, and J. Chen, \"Spatial distribution quantification and control of ink flakes in reduced graphene oxide FET inkjet printing,\" Procedia Manufacturing, vol. 34, pp. 19–25, 2019. 47th SME North American Manufacturing Research Conference, NAMRC 47, Pennsylvania, USA."
+    },
+    {
+      "id": "C2",
+      "authors": "J. Lee, D. Kim, K. Kim, and H. Jung,",
+      "title": "Efficient compact join algorithm for acyclic conjunctive SPARQL",
+      "metadata": "ITMSOC Transactions on Information Technology Management, vol. 1, no. 1, pp. 1–8, 2016.",
+      "type": "conference",
+      "year": "2016",
+      "notes": [],
+      "links": [],
+      "citation": "[C2] J. Lee, D. Kim, K. Kim, and H. Jung, \"Efficient compact join algorithm for acyclic conjunctive SPARQL,\" ITMSOC Transactions on Information Technology Management, vol. 1, no. 1, pp. 1–8, 2016."
+    },
+    {
+      "id": "C1",
+      "authors": "I. Choi and J. Lee,",
+      "title": "Document indexing by latent Dirichlet allocation",
+      "metadata": "in Proceedings of the 2010 international conference on data mining, Las Vegas NV, USA, Jul. 12-15, 2010, pp. 409–414, 2010.",
+      "type": "conference",
+      "year": "2010",
+      "notes": [],
+      "links": [],
+      "citation": "[C1] I. Choi and J. Lee, \"Document indexing by latent Dirichlet allocation,\" in Proceedings of the 2010 international conference on data mining, Las Vegas NV, USA, Jul. 12-15, 2010, pp. 409–414, 2010."
+    }
+  ]
+}

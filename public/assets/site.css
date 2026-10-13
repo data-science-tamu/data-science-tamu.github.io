@@ -695,6 +695,13 @@ time {
 .publication-notes {
   padding-left: 1.25rem;
 }
+.advisee {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.publication-alias {
+  position: absolute;
+}
 .empty-state {
   padding-block: 1.5rem;
   border-block: 0.0625rem solid var(--rule);

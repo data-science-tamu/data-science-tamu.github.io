@@ -1,5 +1,19 @@
 # Academic Website Release Tasks
 
+## CV Publication Synchronization
+
+- [x] Worker: record focused expected RED before production changes; synchronize
+      all 15 journal / 4 review / 2 working / 4 conference records and research citations.
+- [x] Worker: retain legacy fragments, public CV annotations/notes, original
+      captures/PDF/assets and unrelated content; record approved source exceptions.
+- [x] Worker: current-CV manifest, documentation, 118 passing tests, build and whitespace checks.
+- [x] Parent: independent review and actual desktop/mobile/keyboard, no-JS/print,
+      console and accessibility QA (worker browser tool blocked by approval policy).
+- [x] Parent: verified publication-only CV rebuild/application, update current-CV
+      manifest, and repeat tests/build and served-PDF comparison.
+- [ ] Parent: commit/push, CI, main integration, deploy dist and live HTML/PDF readback.
+
+
 ## Research Menu Correction
 
 - [x] Worker: tests first, unified menu appearance, Overview and exact main theme.

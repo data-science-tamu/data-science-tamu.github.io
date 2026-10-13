@@ -1,5 +1,6 @@
 import { escape as e, rich, anchor } from "./helpers.mjs";
 import { researchContent } from "./research-content.mjs";
+import { publicationAuthors, publicationMetadata, publicationLinks } from "./publications.mjs";
 
 const nav = [
   ["/", "Home"],
@@ -36,7 +37,7 @@ function researchDisclosure(areas, id, route, action = false) {
 
 export function createPages(site, lab, img, originals = new Map()) {
   const faculty = lab.faculty;
-  const publicationIds = new Set(lab.publications.map((p) => p.id));
+  const publicationsById = new Map(lab.publications.map((p) => [p.id, p]));
   const themeFigures = lab.research.figures.filter((f) => f.placement === "theme");
   if (themeFigures.length !== 1) throw new Error("Invalid research theme figure placement");
   const themeFigure = themeFigures[0];
@@ -45,7 +46,7 @@ export function createPages(site, lab, img, originals = new Map()) {
   const figure = (src, alt, caption = alt) =>
     `<figure class="scientific-figure"><a href="${e(originals.get(src) || src)}" data-figure-open data-figure-title="${e(caption)}" aria-label="${e(`View full-size figure: ${caption}`)}">${img(src, alt)}</a><figcaption>${e(caption)} <a href="${e(originals.get(src) || src)}" data-figure-open data-figure-title="${e(caption)}">View full-size figure ${arrow}</a></figcaption></figure>`;
   const project = (p) =>
-    `<article class="project" id="${e(p.id)}"><div class="project-text"><h3>${e(p.title)}</h3>${p.prefix ? `<p class="small">${rich(p.prefix.html)}</p>` : ""}${researchContent(p.paragraphs, publicationIds)}</div>${figure(p.image, p.alt, p.title)}</article>`;
+    `<article class="project" id="${e(p.id)}"><div class="project-text"><h3>${e(p.title)}</h3>${p.prefix ? `<p class="small">${rich(p.prefix.html)}</p>` : ""}${researchContent(p.paragraphs, publicationsById)}</div>${figure(p.image, p.alt, p.title)}</article>`;
   const contact = () =>
     `<section class="contact-panel" id="prospective-students"><div><h2>Prospective Students &amp; Collaborators</h2></div><div>${paragraphs([faculty.collaboration, faculty.prospective])}${button(`mailto:${site.email}`, site.email)}</div></section>`;
   const facultyLinks = () =>
@@ -73,7 +74,7 @@ export function createPages(site, lab, img, originals = new Map()) {
   const research = `${pageHead(lab.research.theme.title, "Statistical and machine learning methods for engineering processes and systems, integrating domain knowledge with data and uncertainty.")}
   <section class="research-theme"><div class="prose">${paragraphs([lab.research.theme.summary])}<ul class="theme-concepts">${lab.research.theme.concepts.map((c) => `<li><strong>${e(c.label)}:</strong> ${rich(c.html)}</li>`).join("")}</ul></div>${figure(themeFigure.src, themeFigure.alt)}</section>
   <section class="section">${sectionHead("Research directions")}${areas()}</section>
-  <section class="section research-context"><div class="prose"><h2>Research interests</h2>${paragraphs(lab.research.interests.slice(1))}<h2>Previous & ongoing work</h2>${researchContent(lab.research.overview.slice(1), publicationIds, 3)}</div><div>${lab.research.figures.filter((f) => f.placement !== "theme").map((f) => figure(f.src, f.alt)).join("")}<aside class="featured-in"><h2>Research in the news</h2><ul>${lab.research.features.map((l) => `<li><a href="${e(l.href)}">${e(l.text)} ${arrow}</a></li>`).join("")}</ul></aside></div></section>
+  <section class="section research-context"><div class="prose"><h2>Research interests</h2>${paragraphs(lab.research.interests.slice(1))}<h2>Previous & ongoing work</h2>${researchContent(lab.research.overview.slice(1), publicationsById, 3)}</div><div>${lab.research.figures.filter((f) => f.placement !== "theme").map((f) => figure(f.src, f.alt)).join("")}<aside class="featured-in"><h2>Research in the news</h2><ul>${lab.research.features.map((l) => `<li><a href="${e(l.href)}">${e(l.text)} ${arrow}</a></li>`).join("")}</ul></aside></div></section>
   <section class="section projects">${sectionHead("Projects & applications")}<nav class="project-index" aria-label="Research project index">${lab.projects.map((p, i) => `<a href="#${e(p.id)}"><span>0${i + 1}</span> ${e(p.title)}</a>`).join("")}</nav>${lab.projects.map(project).join("")}</section>`;
   const news = `${pageHead("News", "Research milestones, student achievements and news from the Data Science Lab.")}<div class="news-timeline">${lab.news.map((n, i) => `${i === 0 || n.date.slice(0, 4) !== lab.news[i - 1].date.slice(0, 4) ? `<h2 class="news-year">${n.date.slice(0, 4)}</h2>` : ""}<article class="news-entry" id="news-${n.date.replaceAll(".", "-")}"><time datetime="${n.date.replaceAll(".", "-")}">${n.date}</time><div><p>${rich(n.html)}</p>${n.images.length ? `<div class="news-photos">${n.images.map((src, j) => `<a href="${e(src)}" aria-label="${e(`View full-size photo ${j + 1} for news dated ${n.date}`)}">${img(src, `Lab news photo ${j + 1}: ${n.text}`)}</a>`).join("")}</div>` : ""}</div></article>`).join("")}</div>`;
   const pubGroups = [
@@ -89,6 +90,7 @@ export function createPages(site, lab, img, originals = new Map()) {
       "Under Review / Revision",
       "Manuscripts under review or revision.",
     ],
+    ["working", "working-papers", "Working Papers", "Work in progress."],
     ["conference", "conference-proceedings", "Conference Proceedings", ""],
   ];
   const years = [
@@ -96,9 +98,10 @@ export function createPages(site, lab, img, originals = new Map()) {
   ]
     .sort()
     .reverse();
-  const publication = `${pageHead("Publications", "Journal papers, work under review or revision, and conference proceedings.")}
+  const publication = `${pageHead("Publications", "Journal papers, work under review or revision, working papers, and conference proceedings.")}
+  <p class="small author-legend">Advisees are underlined; an asterisk (*) denotes Jaesung Lee’s role as corresponding author.</p>
   <nav class="jump-links" aria-label="Publication categories">${pubGroups.map(([, id, title]) => `<a href="#${id}">${title}</a>`).join("")}<a href="${e(site.scholar)}">Google Scholar ${arrow}</a></nav>
-  <form class="publication-filters" id="publication-filters" role="search" aria-label="Filter publications" hidden><div><label for="publication-search">Search publications</label><input type="search" id="publication-search" placeholder="Title, author, topic or ID"></div><div><label for="publication-year">Year</label><select id="publication-year"><option value="">All years</option>${years.map((y) => `<option value="${y}">${y}</option>`).join("")}<option value="undated">Year not specified</option></select></div><div><label for="publication-type">Type</label><select id="publication-type"><option value="">All types</option><option value="journal">Journal papers</option><option value="review">Under review / revision</option><option value="conference">Conference proceedings</option></select></div><button type="reset">Reset filters</button></form>
+  <form class="publication-filters" id="publication-filters" role="search" aria-label="Filter publications" hidden><div><label for="publication-search">Search publications</label><input type="search" id="publication-search" placeholder="Title, author, topic or ID"></div><div><label for="publication-year">Year</label><select id="publication-year"><option value="">All years</option>${years.map((y) => `<option value="${y}">${y}</option>`).join("")}<option value="undated">Year not specified</option></select></div><div><label for="publication-type">Type</label><select id="publication-type"><option value="">All types</option><option value="journal">Journal papers</option><option value="review">Under review / revision</option><option value="working">Working papers</option><option value="conference">Conference proceedings</option></select></div><button type="reset">Reset filters</button></form>
   <p class="result-count" id="publication-count" role="status" aria-live="polite">${lab.publications.length} publications</p><div id="publication-empty" class="empty-state" hidden><h2>No matching publications</h2><p>Try another title, author, year or type.</p><button type="button" id="empty-reset">Clear all filters</button></div>
   ${pubGroups
     .map(
@@ -106,8 +109,10 @@ export function createPages(site, lab, img, originals = new Map()) {
         `<section class="publication-group" id="${id}"><div class="section-heading"><h2>${title}</h2>${subtitle ? `<p>${subtitle}</p>` : ""}</div><ol class="publication-list">${lab.publications
           .filter((p) => p.type === type)
           .map(
-            (p) =>
-              `<li class="publication" id="${anchor(p.id)}" data-type="${type}" data-year="${p.year || "undated"}"><div class="publication-id">[${e(p.id)}]</div><article><h3>${p.links.length ? `<a href="${e(p.links[0].href)}">${e(p.title)}</a>` : e(p.title)}</h3><p class="authors">${e(p.authors.replace(/,\s*$/, ""))}</p><p class="publication-meta">${e(p.metadata)}</p>${p.notes.length ? `<ul class="publication-notes">${p.notes.map((n) => `<li>${e(n)}</li>`).join("")}</ul>` : ""}${p.links.length ? `<p class="publication-links">${p.links.map((l) => `<a href="${e(l.href)}">Publisher record ${arrow}<span class="visually-hidden"> for ${e(p.id)}</span></a>`).join(" ")}</p>` : ""}</article></li>`,
+            (p) => {
+              const links = publicationLinks(p);
+              return `<li class="publication" id="${anchor(p.id)}" data-type="${type}" data-year="${p.year || "undated"}">${(p.legacyAnchors || []).map((id) => `<span id="${e(id)}" class="publication-alias" aria-hidden="true"></span>`).join("")}<div class="publication-id">[${e(p.id)}]</div><article><h3>${links.length ? `<a href="${e(links[0].href)}">${e(p.title)}</a>` : e(p.title)}</h3><p class="authors">${publicationAuthors(p)}</p><p class="publication-meta">${e(publicationMetadata(p))}</p>${p.notes.length ? `<ul class="publication-notes">${p.notes.map((n) => `<li>${e(n)}</li>`).join("")}</ul>` : ""}${links.length ? `<p class="publication-links">${links.map((l) => `<a href="${e(l.href)}">${e(l.text)} ${arrow}<span class="visually-hidden"> for ${e(p.id)}</span></a>`).join(" ")}</p>` : ""}</article></li>`;
+            },
           )
           .join("")}</ol></section>`,
     )
@@ -151,7 +156,7 @@ export function createPages(site, lab, img, originals = new Map()) {
       route: "/publication/",
       title: "Publications",
       description:
-        "Publications by Jaesung Lee and collaborators, including journal papers, manuscripts under review and conference proceedings.",
+        "Publications by Jaesung Lee and collaborators, including journal papers, manuscripts under review, working papers and conference proceedings.",
       body: publication,
     },
   ];
@@ -160,7 +165,7 @@ export function createPages(site, lab, img, originals = new Map()) {
       route: `/research/${area.slug}/`,
       title: area.title,
       description: area.summary,
-      body: `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/research/">Research</a><span aria-hidden="true">/</span><span>${e(area.title)}</span></nav>${pageHead(area.title, area.summary)}<nav class="research-subnav" aria-label="Research directions">${researchLinks(lab.research.areas, `/research/${area.slug}/`)}</nav><section class="section split-section">${sectionHead("Research focus")}<div class="prose">${paragraphs(area.intro)}</div></section>${area.slug === "ai-for-systems" ? `<div class="overview-figure">${figure(lab.research.figures[0].src, lab.research.figures[0].alt)}</div>` : ""}${area.selected.length ? `<section class="section split-section">${sectionHead("Selected publications")}<div class="selected-publications">${researchContent(area.selected, publicationIds, 3)}<a href="/publication/">Complete publication record ${arrow}</a></div></section>` : ""}<section class="section projects">${sectionHead("Projects & applications")}${area.projects.map((id) => project(lab.projects.find((p) => p.id === id))).join("")}</section><section class="section">${sectionHead("Other research directions")}${areas()}</section>`,
+      body: `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/research/">Research</a><span aria-hidden="true">/</span><span>${e(area.title)}</span></nav>${pageHead(area.title, area.summary)}<nav class="research-subnav" aria-label="Research directions">${researchLinks(lab.research.areas, `/research/${area.slug}/`)}</nav><section class="section split-section">${sectionHead("Research focus")}<div class="prose">${paragraphs(area.intro)}</div></section>${area.slug === "ai-for-systems" ? `<div class="overview-figure">${figure(lab.research.figures[0].src, lab.research.figures[0].alt)}</div>` : ""}${area.selected.length ? `<section class="section split-section">${sectionHead("Selected publications")}<div class="selected-publications">${researchContent(area.selected, publicationsById, 3)}<a href="/publication/">Complete publication record ${arrow}</a></div></section>` : ""}<section class="section projects">${sectionHead("Projects & applications")}${area.projects.map((id) => project(lab.projects.find((p) => p.id === id))).join("")}</section><section class="section">${sectionHead("Other research directions")}${areas()}</section>`,
     });
   }
   return pages;
