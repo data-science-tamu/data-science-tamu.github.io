@@ -99,9 +99,30 @@ by the 2026-10-13 authorization below; independent review is now complete.
 - Documentation worker reran npm test (58 passed,0 failed), npm run build
   (9 content pages+404;20 publications,14 news items,8 projects) and
   git diff --check successfully on2026-10-13.
-- Parent-only remaining gates: fresh final verification; task commit/push+CI;
+- At preparation time, parent-only gates remained: fresh verification; task commit/push+CI;
   main fast-forward/push; exact-head Pages run and live build readback.
-  Parent appends publication-success evidence only after these are verified.
+  Their subsequently verified completion is recorded below.
 - Recovery retains the baseline tag/bundle and pre-polish archive. Use a new
   revert commit for rollback, not reset/force-push. Port4173 follows primary
   dist; a separate worktree at the backup tag provides the original comparison.
+
+## Verified Academic Release (2026-10-13)
+
+- Implementation commit: f39fdb590b66bc8a2957043d1231cc6ab85572a1.
+- Task branch CI: https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/38414792839 (success).
+- Fast-forward integrated into clean primary main and pushed; exact-head test-build
+  and Pages deployment: https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/38414888674 (both success).
+- Public URL: https://data-science-tamu.github.io/.
+- Live integrity: 58 requests passed, comparing public HTML/assets/CV and custom
+  404 bytes with the verified build. Source-only paths remain custom404 on Pages.
+- Repeated live Chromium checks: 27 route/viewport/accessibility combinations,
+  80 targets, 11 interaction flows and 30 figure-viewer cases passed.
+- Parent and Sol/max each ran 58 passing tests and the actual build. Primary build
+  matched all 55 owner-approved preview files. Fresh independent release review
+  deleg_37203263 approved the unchanged runtime and dist-only publishing boundary.
+- Recovery tag backup/pre-academic-20261012 is also on GitHub; peeled commit is
+  7ad88ee1362f885fee1688796e9dbb00a96a6d95. Local bundle and pre-polish archive remain.
+- Evidence: .local/release/live-qa/evidence/ and .local/release/live-qa/after/ in
+  the academic worktree. Google Sites and separate4174 prototype were untouched.
+- Subsequent closeout edits are documentation-only; parent verifies their exact-head
+  workflow again before handoff. No Safari/Firefox or physical screen-reader claim.

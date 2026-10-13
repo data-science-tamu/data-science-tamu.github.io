@@ -1,14 +1,14 @@
 # Academic Website Release Tasks
 
 Academic/polish implementation and independent reviews are complete in history.md.
-The owner authorized publication on 2026-10-13; only parent release gates remain.
+The owner-approved release was published and verified on 2026-10-13.
 
-## Parent Release Gates
+## Completed Release Gates
 
 - [x] Fresh verification of final candidate: 58 tests/build, 55-file preservation and browser QA.
-- [ ] Commit/push approved task branch and verify successful exact-commit CI.
-- [ ] Fast-forward primary main and push main.
-- [ ] Verify successful exact-head Pages run and live HTTPS build readback; append
+- [x] Commit/push approved task branch and verify successful exact-commit CI.
+- [x] Fast-forward primary main and push main.
+- [x] Verify successful exact-head Pages run and live HTTPS build readback; append
       release-success evidence to history.md and docs/validation.md.
 
 ## Consideration Only

@@ -1,12 +1,12 @@
 # Academic Readability Preview
 
-## Approved Release, Publication Pending
+## Published Academic Revision
 
 The owner explicitly authorized GitHub publication of the current academic and
 restrained-polish candidate on 2026-10-13. Implementation and independent reviews
-are complete. Earlier local-only restrictions and the approval timeout are
-historical and superseded; this authorization is not a successful-publication claim.
-Parent owns fresh verification, Git/CI, main integration and exact-head Pages/live checks.
+are complete. Main integration, exact-head Pages deployment and live checks passed
+on 2026-10-13. See [release evidence](validation.md). Earlier local-only restrictions
+and approval timeouts are historical and superseded.
 
 - Primary checkout preview (serves its current dist): http://localhost:4173/
 - Previous research/collaboration proposal (unchanged): http://localhost:4174/
@@ -38,7 +38,7 @@ not force-push main, delete current work, or use destructive reset for rollback.
 Academic and polish implementation and independent review are complete: academic
 APPROVE including the cold-image fix (33 pending-load cases); polish deleg_9b881723
 APPROVE with58 independently passed tests. Parent verification is recorded below;
-publication success remains pending the parent-only release gates in ../todo.md.
+publication success is recorded in [release evidence](validation.md).
 Before evidence: .local/academic/qa/before/readability.json and screenshots.
 Baseline measurements: 1440px viewport, home title 110.88px; bone figure 455.375px
 wide from a 1280px original. Source-content/asset preservation manifest is under
@@ -92,7 +92,7 @@ socket only for those checks resolved it, without changing system configuration.
 Browser testing used Chromium and emulated touch, not physical Safari or a screen
 reader. Source rasters can still contain author-origin contrast/detail limitations.
 This dated technical QA did not itself authorize release. The owner's separate
-2026-10-13 GitHub publication approval is recorded above; no live release is claimed.
+2026-10-13 approval and successful publication are recorded above and in validation.md.
 
 ## Restrained Polish Follow-up
 

@@ -1,25 +1,14 @@
-# Academic Website Release
+# Website Plan
 
-Owner explicitly authorized GitHub publication of the current academic readability
-and restrained polish on 2026-10-13, using gpt-6.1-sol/max. This supersedes the
-earlier local-only scope and approval timeout; it is not evidence of publication.
+The approved academic-readability and restrained-polish release is integrated
+into primary main and published at https://data-science-tamu.github.io/. Tests,
+branch CI, exact-head Pages deployment and live integrity/browser checks passed.
+No implementation or release gate remains open for this change.
 
-Implementation and independent reviews are complete; see history.md and
-docs/validation.md. All current staged/unstaged work belongs to this approved
-release. Parent owns the following remaining gates; this worker changes docs only.
-
-## Parent Release Gates
-
-1. Fresh verification of the final candidate, including tests/build and browser QA.
-2. Task-branch commit/push and successful CI for that exact commit.
-3. Fast-forward integration into clean primary main, then main push.
-4. Successful Pages run for the exact main head and live HTTPS readback against
-   that build. Parent records successful release evidence only after verification.
-
-Preserve backup/pre-academic-20261012, .local/academic/pre-academic.bundle and
-.local/polish/pre-polish-source.tar.gz. Rollback uses a new revert commit, never
-reset or force-push. Port4173 follows primary dist; use a separate worktree at
-the backup tag for an unchanged original comparison. Leave the4174 prototype alone.
+Completed work and evidence: history.md and docs/validation.md. Recovery retains
+the GitHub tag backup/pre-academic-20261012 plus local bundle/pre-polish archive;
+see docs/academic-preview.md. Google Sites and the separate4174 prototype remain
+unchanged. Port4173 follows primary dist and now serves the released design.
 
 ## Strategic Considerations
 

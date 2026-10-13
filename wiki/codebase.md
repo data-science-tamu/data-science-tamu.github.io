@@ -71,6 +71,7 @@ The home action has a print override at matching hover specificity so printing
 without backgrounds keeps black readable text. tests/restrained-polish.test.mjs
 guards scoping, sizes, frame geometry, focus, print and absence of decorative
 background/motion effects. See ../docs/academic-preview.md for comparison/recovery.
-Academic/polish implementation and reviews are complete; the owner authorized GitHub
-publication on 2026-10-13. Parent-only release gates are in ../plan.md and ../todo.md;
-publication remains unverified until exact-head Pages success and live readback.
+Academic/polish implementation, reviews and owner-approved publication are complete.
+See [verified release evidence](../docs/validation.md) and
+[recovery procedure](../docs/academic-preview.md); planning and consideration-only
+items remain in ../plan.md and ../todo.md.

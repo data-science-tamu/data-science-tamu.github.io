@@ -72,9 +72,8 @@ checkpoint. That dated evidence did not claim or authorize the later release.
   .local/academic/pre-academic.bundle, and81-file .local/polish/pre-polish-source.tar.gz.
 - Documentation worker: npm test58 passed/0 failed; npm run build9 pages+404,
   20 publications,14 news items,8 projects; git diff --check passed today.
-- Release still pending: parent fresh verification, task commit/push+exact-commit CI,
-  main fast-forward/push, exact-head Pages success and live HTTPS build readback.
-  Parent will append success evidence; authorization/local QA is not publication.
+- At this preparation checkpoint the parent release gates were pending; their
+  subsequently verified completion is recorded below.
 
 Parent fresh pre-release checks (2026-10-13): locked npm install, 58 tests, build,
 27 Chromium route/viewport/accessibility cases, 80 targets, 11 interaction flows,
@@ -83,3 +82,28 @@ build files exactly match the owner-approved preview. Evidence is under
 .local/release/local-qa/ and .local/release/approved-dist.json. No runtime file
 changed during release preparation. The Sol/max documentation worker completed
 its seven-file edits and test/build pass; parent took over final closeout.
+
+## Verified Academic Release (2026-10-13)
+
+- Implementation commit: f39fdb590b66bc8a2957043d1231cc6ab85572a1.
+- Task branch CI: https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/38414792839 (success).
+- Fast-forward integrated into clean primary main and pushed; exact-head test-build
+  and Pages deployment: https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/38414888674 (both success).
+- Public URL: https://data-science-tamu.github.io/.
+- Live integrity: 58 requests passed, comparing public HTML/assets/CV and custom
+  404 bytes with the verified build. Source-only paths remain custom404 on Pages.
+- Repeated live Chromium checks: 27 route/viewport/accessibility combinations,
+  80 targets, 11 interaction flows and 30 figure-viewer cases passed.
+- Parent and Sol/max each ran 58 passing tests and the actual build. Primary build
+  matched all 55 owner-approved preview files. Fresh independent release review
+  deleg_37203263 approved the unchanged runtime and dist-only publishing boundary.
+- Recovery tag backup/pre-academic-20261012 is also on GitHub; peeled commit is
+  7ad88ee1362f885fee1688796e9dbb00a96a6d95. Local bundle and pre-polish archive remain.
+- Evidence: .local/release/live-qa/evidence/ and .local/release/live-qa/after/ in
+  the academic worktree. Google Sites and separate4174 prototype were untouched.
+- Subsequent closeout edits are documentation-only; parent verifies their exact-head
+  workflow again before handoff. No Safari/Firefox or physical screen-reader claim.
+
+Non-blocking CI platform notices: existing v4 Actions use a deprecated Node20
+action runtime now executed as Node24 by GitHub; ubuntu-latest migration was
+also announced. Both jobs passed; no workflow upgrade was included in this release.
