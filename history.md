@@ -188,3 +188,13 @@ by the 2026-10-13 authorization below; independent review is now complete.
 
 - Independent focused source/test review APPROVE, final reviewed-file hashes
   matched. Worker exit 0; parent owns remaining CI/integration/public readback.
+
+
+## 2026-10-13: Research Menu Release Verified
+
+- Published 7f25023 after task branch CI 38446195880 and main Pages 38446259522
+  succeeded. Primary main has the verified change; both worktrees remain separate.
+- Public exact-byte integrity passed 58 requests; the 26 focused visual/menu
+  cases, 27 page/viewport checks, 80 targets and 3 Escape/viewer cases also passed.
+- Closed plan/todo for this correction. Remote recovery tag preserves 8c634be.
+  Detailed evidence and source/asset preservation: docs/validation.md.

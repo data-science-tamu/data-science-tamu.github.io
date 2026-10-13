@@ -227,3 +227,23 @@ reviewed source/test hashes were read back and matched the candidate. Report:
 Local worker completed normally with exit 0; its result is
 .local/research-menu/result.md. The verified model was gpt-6.1-sol, reasoning max.
 Remote recovery tag was pushed and read back at baseline 8c634be. Release pending.
+
+### Research Menu Public Release
+
+- Implementation commit 7f25023b68ec0d2665fea2e52b6b22409783cda5.
+- Task branch CI 38446195880 succeeded. Parent fast-forwarded clean primary main,
+  reran all 86 tests and build there, pushed main and read back the exact SHA.
+- Main Pages 38446259522 succeeded (test-build and deploy).
+- Actual https://data-science-tamu.github.io/ integrity: 58 requests, zero failures;
+  public artifacts match the verified 55-file build, including custom 404 handling
+  for private/unknown routes. Approved artifact manifest remained unchanged.
+- Repeated on public HTTPS: 26 menu/appearance/navigation cases passed with zero
+  browser errors; 27 page/viewport accessibility cases and 80 targets passed;
+  3 hover-only Escape and native-viewer cancellation checks passed.
+- Public Research and Overview clicks from header and home reach /research/;
+  both show the exact owner-authored single H1. Both menus start with Overview
+  followed by all three maintained directions. No visible Directions label,
+  separate header chevron box or two-color home split remains.
+- Recovery tag backup/pre-research-menu-20261013 was pushed/read back at
+  8c634bea071e4c8b505c13e0d5981cc8b4db1445. Source facts, original scientific assets,
+  CV and original Google Sites remain unchanged. No task-specific gate is open.

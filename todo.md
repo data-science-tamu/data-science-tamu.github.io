@@ -5,7 +5,7 @@
 - [x] Worker: tests first, unified menu appearance, Overview and exact main theme.
 - [x] Worker: update research presentation/wiki; tests/build.
 - [x] Parent: visual desktop/mobile and keyboard/touch QA; independent review.
-- [ ] Parent: branch CI, main integration, deployment and public verification.
+- [x] Parent: branch CI, main integration, deployment and public verification.
 
 
 ## Research Structure Task
