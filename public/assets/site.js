@@ -24,7 +24,7 @@ if (toggle && header) {
   document
     .querySelectorAll(".primary-nav a")
     .forEach((a) => a.addEventListener("click", close));
-  window.matchMedia("(min-width: 801px)").addEventListener("change", close);
+  window.matchMedia("(max-width: 800px)").addEventListener("change", close);
 }
 const form = document.querySelector("#publication-filters");
 if (form) {
@@ -63,4 +63,133 @@ if (form) {
     search.focus();
   });
   filter();
+}
+
+const dialog = document.querySelector("#figure-viewer");
+if (typeof dialog?.showModal === "function") {
+  const title = dialog.querySelector("[data-viewer-title]");
+  const close = dialog.querySelector("[data-viewer-close]");
+  const original = dialog.querySelector("[data-viewer-original]");
+  const status = dialog.querySelector("[data-viewer-status]");
+  const scroll = dialog.querySelector(".figure-scroll");
+  const slot = dialog.querySelector("[data-viewer-image]");
+  const scales = [...dialog.querySelectorAll("[data-viewer-scale]")];
+  let currentImage = null;
+  let loaded = false;
+  let mode = "1";
+  let opener = null;
+  let priorOverflow = "";
+  let priorScroll = [0, 0];
+
+  function setScale(value) {
+    if (!loaded || !currentImage) return;
+    mode = value;
+    const { naturalWidth, naturalHeight } = currentImage;
+    const scale = value === "fit"
+      ? Math.min(1, scroll.clientWidth / naturalWidth, scroll.clientHeight / naturalHeight)
+      : Number(value);
+    // Real dimensions, not transforms, keep the top-left and all corners reachable.
+    currentImage.style.width = `${naturalWidth * scale}px`;
+    currentImage.style.height = "auto";
+    for (const button of scales)
+      button.setAttribute("aria-pressed", String(button.dataset.viewerScale === value));
+    status.textContent = value === "fit"
+      ? "Fit overview. Select 100% to read at original resolution."
+      : value === "2"
+        ? "200% magnification. Magnification does not add detail to the original."
+        : "100% original resolution. Scroll the image area to read all corners.";
+  }
+
+  for (const button of scales)
+    button.addEventListener("click", () => setScale(button.dataset.viewerScale));
+  window.addEventListener("resize", () => {
+    if (!dialog.open || mode !== "fit") return;
+    setScale("fit");
+  });
+  close.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    dialog.close();
+  });
+  dialog.addEventListener("close", () => {
+    dialog.hidden = true;
+    currentImage = null;
+    loaded = false;
+    if (!opener) return;
+    document.body.style.overflow = priorOverflow;
+    window.scrollTo(...priorScroll);
+    if (opener.isConnected) opener.focus({ preventScroll: true });
+    opener = null;
+  });
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab") return;
+    const focusable = [...dialog.querySelectorAll('button:not([disabled]), a[href], [tabindex="0"]')];
+    const first = focusable[0];
+    const last = focusable.at(-1);
+    const active = document.activeElement;
+    if (event.shiftKey ? active === first : active === last) {
+      event.preventDefault();
+      (event.shiftKey ? last : first).focus();
+    }
+  });
+
+  for (const link of document.querySelectorAll("[data-figure-open]")) {
+    link.setAttribute("aria-haspopup", "dialog");
+    link.setAttribute("aria-controls", "figure-viewer");
+    link.addEventListener("click", (event) => {
+      if ([event.defaultPrevented, event.button !== 0, event.ctrlKey,
+        event.metaKey, event.shiftKey, event.altKey, link.hasAttribute("download")].some(Boolean)) return;
+      const target = link.getAttribute("target");
+      if (target) {
+        if (target !== "_self") return;
+      }
+      if (dialog.open) return;
+      title.textContent = link.dataset.figureTitle;
+      original.setAttribute("href", link.getAttribute("href"));
+      status.textContent = "Loading figure...";
+      mode = "1";
+      loaded = false;
+      for (const button of scales) {
+        button.disabled = true;
+        button.setAttribute("aria-pressed", String(button.dataset.viewerScale === mode));
+      }
+      priorOverflow = document.body.style.overflow;
+      priorScroll = [window.scrollX, window.scrollY];
+      dialog.hidden = false;
+      try {
+        dialog.showModal();
+      } catch {
+        dialog.hidden = true;
+        return;
+      }
+      // Only intercept after a working native modal is available.
+      event.preventDefault();
+      opener = link;
+      document.body.style.overflow = "hidden";
+      scroll.scrollLeft = 0;
+      scroll.scrollTop = 0;
+      const image = new Image();
+      image.alt = link.closest(".scientific-figure").querySelector("img").alt;
+      image.hidden = true;
+      currentImage = image;
+      slot.replaceChildren(image);
+      image.addEventListener("load", () => {
+        if (currentImage !== image || !dialog.open) return;
+        if (!image.naturalWidth || !image.naturalHeight) return;
+        loaded = true;
+        image.hidden = false;
+        for (const button of scales) button.disabled = false;
+        setScale("1");
+      }, { once: true });
+      image.addEventListener("error", () => {
+        if (currentImage !== image || !dialog.open) return;
+        loaded = false;
+        image.hidden = true;
+        for (const button of scales) button.disabled = true;
+        status.textContent = "Could not load this figure. Use the original image file link, or close and try again.";
+      }, { once: true });
+      image.src = link.getAttribute("href");
+      close.focus();
+    });
+  }
 }

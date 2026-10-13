@@ -126,6 +126,6 @@ export function imageRenderer(publicRoot) {
       throw new Error(`Invalid image ${src}`);
     if (!cache.has(src)) cache.set(src, dimensions(path.join(publicRoot, src)));
     const { width, height } = cache.get(src);
-    return `<img src="${escape(src)}" alt="${escape(alt)}" width="${width}" height="${height}" ${eager ? `fetchpriority="high"` : `loading="lazy"`} decoding="async"${className ? ` class="${escape(className)}"` : ""}>`;
+    return `<img src="${escape(src)}" alt="${escape(alt)}" width="${width}" height="${height}" style="--image-width: ${width}px" ${eager ? `fetchpriority="high"` : `loading="lazy"`} decoding="async"${className ? ` class="${escape(className)}"` : ""}>`;
   };
 }

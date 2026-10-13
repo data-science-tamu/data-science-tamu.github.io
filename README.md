@@ -32,11 +32,14 @@ The capture under `content/source/` is immutable migration provenance, not a run
 
 ## Design and Code
 
-`src/templates.mjs` centralizes the header/footer, page layouts and repeated content components. `src/helpers.mjs` validates config/rich markup and reads JPEG/PNG dimensions. `public/assets/site.css` owns the warm-white editorial design, maroon accents, responsive layouts, visible focus and reduced-motion behavior. `public/assets/site.js` provides only progressive-enhancement navigation and publication filtering. Full readable content and navigation remain available with JavaScript disabled.
+`src/templates.mjs` centralizes the header/footer, page layouts and repeated content components. `src/helpers.mjs` validates config/rich markup and reads JPEG/PNG dimensions. `public/assets/site.css` owns the white academic layout, restrained type scale, maroon links, responsive layouts, visible focus and reduced-motion behavior. `public/assets/site.js` provides progressive-enhancement navigation, publication filtering and a shared native scientific-figure viewer. Full readable content and navigation remain available with JavaScript disabled.
 
-The fonts are locally hosted Newsreader and DM Sans, with original SIL Open Font Licenses alongside them. There are no remote fonts, external embeds or runtime requests to Google Sites. The CV opens/downloads directly; it does not rely on Google Drive.
+The active font is locally hosted DM Sans. The captured Newsreader file and both original SIL Open Font Licenses are preserved, but the unused font is not requested. There are no remote fonts, external embeds or runtime requests to Google Sites. The CV opens/downloads directly; it does not rely on Google Drive.
 
-Code ownership, route mapping and reading order are in `wiki/codebase.md`.
+Research figures use wide uncropped previews and open at 100% source resolution, with Fit/200% controls and scrollable details. `content/figure-originals.json` explicitly maps available verified larger sources; `src/figure-originals.mjs` validates paths, dimensions and hashes before the build replaces output. Original-resolution files load only when requested. Without JavaScript, figure links still open the real local image.
+
+The owner authorized GitHub publication of the current academic-readability and restrained-polish revision on 2026-10-13. Implementation and independent reviews are complete; parent-owned Git/CI, main integration and exact-head Pages/live verification remain pending.
+This is release authorization, not a claim that the candidate is published. See [comparison and recovery](docs/academic-preview.md). Code ownership, route mapping and reading order are in `wiki/codebase.md`.
 
 ## Routes
 

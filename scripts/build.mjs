@@ -7,6 +7,7 @@ import {
   escape,
 } from "../src/helpers.mjs";
 import { createPages, layout } from "../src/templates.mjs";
+import { validateFigureOriginals } from "../src/figure-originals.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const configFlag = process.argv.indexOf("--config");
@@ -30,10 +31,16 @@ try {
   validatePublications(lab.publications);
   if (!fs.existsSync(path.join(root, "public", site.cv)))
     throw new Error("CV PDF is missing");
+  const originals = validateFigureOriginals(
+    JSON.parse(fs.readFileSync(path.join(root, "content/figure-originals.json"), "utf8")),
+    path.join(root, "public"),
+    [...lab.research.figures.map((f) => f.src), ...lab.projects.map((p) => p.image)],
+  );
   const pages = createPages(
     site,
     lab,
     imageRenderer(path.join(root, "public")),
+    originals,
   );
   const rendered = pages.map((page) => [
     `${page.route}index.html`,

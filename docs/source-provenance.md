@@ -12,7 +12,7 @@ The migration baseline contains 20 publication records: 14 journal entries in th
 
 ## PDF and Images
 
-All 25 unique captured original images remain under `public/assets/images/`; their source URLs, byte sizes and SHA-256 values are in the manifest. No original was deleted, cropped, recompressed or overwritten. Scientific figures display with `object-fit: contain` and link to their full-resolution local files. Portrait/photo display cropping is CSS-only; the source files are untouched. JPEG and PNG dimensions are read from the actual files at build time.
+All 25 unique captured original images remain under `public/assets/images/`; their source URLs, byte sizes and SHA-256 values are in the manifest. No original was deleted, cropped, recompressed or overwritten. Scientific figures retain native aspect ratio with no cropping or height cap and link to their full-resolution local files. Portrait/photo display cropping is CSS-only; the source files are untouched. JPEG and PNG dimensions are read from the actual files at build time.
 
 The CV is `public/assets/documents/jaesung-lee-cv.pdf`, downloaded from the source Google Drive document identified in the manifest. It is a real 10-page PDF, 166640 bytes, with SHA-256 `7f69e03576716d02fcca4eba376c83c874aec7e4851433aaf37228bbc0743264`. It is served unchanged. Its text was inspected locally for provenance; no PDF parsing package is needed by the site build or deployed site.
 
@@ -46,3 +46,35 @@ Harmless prose corrections: `Accpeted` to `Accepted`, `Texasa` to `Texas`, `Opti
 Newsreader and DM Sans variable TTF files were fetched from the Google Fonts repository and self-hosted. Their original SIL Open Font Licenses are in `public/assets/fonts/Newsreader-OFL.txt` and `public/assets/fonts/DM-Sans-OFL.txt`. The fonts load locally; no Google font request is made at runtime.
 
 The redesign adds editorial headings and navigation, not fictional lab claims, slogans, metrics, papers, members, photos or research achievements. Capture date does not mean that every source fact was current on that date. Impact-factor text already present in source research/news is retained as historical source wording, not presented as a freshly verified metric. No analytics, remote runtime content fetching or external CV embed is used.
+
+## Verified Larger Source Rasters (2026-10-12)
+
+The academic-readability preview retains every original capture byte. Additional
+source rasters were recovered from fresh image URLs on the same public Google Sites
+research pages; none was generated, sharpened, relabeled, or AI-upscaled.
+All ten fresh 1280px renditions match the existing capture files byte-for-byte.
+Side-by-side inspection confirms diagram identity. Nine native renditions are larger;
+the domain-knowledge diagram already matches its largest 1165px served source.
+
+`content/figure-originals.json` records preview/original local paths, source URL/page,
+dimensions and SHA-256. `public/assets/images/originals/` stores these extra files.
+Build-time integrity checks reject unknown/duplicate preview mappings, unsafe paths,
+missing or altered images, wrong dimensions and incompatible aspect ratios.
+The preview stays lightweight; a figure link requests its larger local counterpart
+only when opened. There are no runtime requests to Google Sites.
+
+| Captured Figure | Preview | Verified Larger Source |
+| --- | --- | --- |
+| research-1-2c2733ddd9.png | 1280 x 614 | 1374 x 659 |
+| research-1-ea37ce2933.png | 1280 x 716 | 2048 x 1145 |
+| research-1-2067e6d3f8.jpg | 1280 x 1174 | 2047 x 1877 |
+| research-1-daade3e8d1.png | 1280 x 618 | 1941 x 937 |
+| research-1-771f351e05.png | 1280 x 719 | 4213 x 2366 |
+| research-1-ab9676c7e7.png | 1280 x 730 | 4193 x 2391 |
+| research-1-36a37c1c69.png | 1280 x 677 | 4466 x 2363 |
+| research-1-92cdb3d899.png | 1280 x 911 | 2045 x 1456 |
+| research-1-4c33128db0.png | 1280 x 705 | 4388 x 2416 |
+
+These are verified Google Sites source rasters, not a claim of vector authoring
+masters. 200% display magnifies pixels; it does not manufacture additional detail.
+The separate original-file link is retained for browser-native viewing.
