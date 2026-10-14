@@ -1,4 +1,12 @@
-import { escape as e } from "./helpers.mjs";
+import { escape as e, anchor, rich } from "./helpers.mjs";
+
+// Storage IDs and shared fragments stay stable; journal labels follow listing order.
+export function publicationPresentation(publications) {
+  let journalNumber = publications.filter((p) => p.type === "journal").length;
+  return new Map(publications.map((p) => [p.id, {
+    ...p, displayId: p.type === "journal" ? `J${journalNumber--}` : p.id,
+  }]));
+}
 
 export function publicationAuthors(p, annotated = true) {
   return p.authors.map((a, i) => {
@@ -38,18 +46,36 @@ export function publicationMetadata(p) {
   return parts.join(", ") + ".";
 }
 
-export function publicationLinks(p) {
-  const links = p.doi ? [{ href: `https://doi.org/${p.doi}`, text: p.preprint ? "Preprint record" : "DOI record" }] : [];
-  for (const link of p.links || []) {
-    if (!links.some((l) => l.href === link.href || l.href === link.href.replace(/^http:/, "https:")))
-      links.push({ ...link, text: "Publisher record" });
-  }
-  return links;
+export function publicationPrimaryLink(p) {
+  return p.doi ? `https://doi.org/${p.doi}` : p.links?.[0]?.href;
 }
 
 // All research citations use the same authors/title/bibliography as the listing.
-export function publicationCitation(p) {
-  const link = publicationLinks(p)[0];
-  const title = link ? `<a href="${e(link.href)}">${e(p.title)}</a>` : e(p.title);
-  return `[${e(p.id)}] ${publicationAuthors(p)}, “${title},” ${e(publicationMetadata(p))}`;
+export function publicationCitation(recordId, publicationsById) {
+  const p = publicationsById?.get?.(recordId);
+  if (!p?.displayId) throw new Error("Invalid publication presentation context");
+  const href = publicationPrimaryLink(p);
+  const title = href ? `<a href="${e(href)}">${e(p.title)}</a>` : e(p.title);
+  return `[${e(p.displayId)}] ${publicationAuthors(p)}, “${title},” ${e(publicationMetadata(p))}`;
+}
+
+// Only exact bracketed reference groups in maintained text are presentation tokens.
+export function publicationReferences(html, publicationsById) {
+  let inLink = false;
+  return rich(html).split(/(<[^>]+>)/).map((part) => {
+    if (part.startsWith("<")) {
+      if (part.startsWith('<a ')) inLink = true;
+      if (part === "</a>") inLink = false;
+      return part;
+    }
+    return part.replace(/\[((?:[JC]\d+\*?)(?:\s*,\s*[JC]\d+\*?)*)\]/g, (group) =>
+      group.replace(/[JC]\d+\*?/g, (id) => {
+        const p = publicationsById.get(id) || [...publicationsById.values()]
+          .find((record) => record.legacyAnchors?.includes(anchor(id)));
+        if (!p && id.startsWith("J")) throw new Error(`Invalid journal reference: ${id}`);
+        if (!p) return id; // Preserve pre-existing source-only conference references, e.g. C5.
+        if (!p.displayId) throw new Error("Invalid publication presentation context");
+        return inLink ? e(p.displayId) : `<a href="/publication/#${anchor(p.id)}">${e(p.displayId)}</a>`;
+      }));
+  }).join("");
 }

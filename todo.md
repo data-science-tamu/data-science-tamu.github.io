@@ -1,5 +1,14 @@
 # Academic Website Release Tasks
 
+## Publication Presentation
+
+- [x] Remove redundant DOI/Publisher record rows; keep functional title links.
+- [x] Sequential journal labels shared across all pages; verify same-paper links.
+- [x] Readable emphasized highlights, with factual wording preserved.
+- [x] Project index numbers cannot shrink/wrap; native browser regression.
+- [x] Full tests/build/preservation/browser QA and independent review.
+- [ ] Commit/push task, integrate main, deploy, live readback and close history.
+
 ## CV Publication Synchronization
 
 - [x] Worker: record focused expected RED before production changes; synchronize

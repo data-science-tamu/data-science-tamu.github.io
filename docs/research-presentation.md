@@ -41,6 +41,36 @@ It renders once after the page title/summary and before directions; other figure
 remain below interests and the Tasks/Approaches/Applications overview. The
 scientific-figure links, image geometry, original assets and viewer are unchanged.
 
+## Publication Presentation
+
+Publication storage identities are not display numbers. Keep `p.id`, citation
+`recordId`, existing `#Jx` fragments and `legacyAnchors` stable when adding or
+reordering papers. Do not renumber maintained facts or captured/approved fixtures.
+`publicationPresentation(lab.publications)` in `src/publications.mjs` creates
+fresh mapped records keyed by storage ID, assigning journal `displayId` values
+from the journal count down to 1 in the existing listing order. Non-journal
+labels stay unchanged. Listing and all research citations use this same map;
+`publicationCitation(recordId, publicationsById)` requires it explicitly and
+rejects missing/unmapped context. At the current approved order, stored J12 is
+displayed as J15 while its shared URL remains `/publication/#J12`.
+
+`publicationReferences(html, publicationsById)` recognizes only exact bracketed
+reference groups such as `[J10,J12]` in maintained research text. It preserves
+surrounding prose, whitespace, punctuation, markup and existing link destinations,
+and links recognized tokens to their stable paper fragments. Existing links
+receive updated text without nested anchors; attributes are never rewritten.
+Legacy `[J15*]` resolves through `J15-review` to stored J15, currently displayed
+as J14. Unknown journal tokens fail the build. The pre-existing source-only C5
+has no maintained publication record and remains plain C5, not a fabricated link.
+
+Titles use a DOI destination first, the first publisher link when no DOI exists,
+or plain text without a link. Redundant DOI/Publisher/Preprint record rows are
+not rendered; DOI bibliography and all note wording remain. Empty legacy alias
+anchors contain no hidden index text, so existing `textContent` search sees the
+current visible label. Notes use body-size ink and a thin maroon left rule.
+Project-index numbers are nonshrinking and nowrap; a separate bounded title
+column wraps normally, including long words, without changing project anchors.
+
 ## Shared Disclosure
 
 `src/templates.mjs` uses one `researchDisclosure` component for the header and
@@ -87,5 +117,11 @@ pre-change project/overview paragraph HTML. The explicit CV correction fixture
 substitutes only recorded prior citation strings for hash checks; unrelated text
 and notes retain the original hashes. Current canonical citations have independent
 public CV expectations. All 243 source paragraphs retain coverage.
+`tests/publication-presentation.test.mjs` independently checks order/count-derived
+labels and same-paper destinations, all overview inline groups, insertion and
+reordering, immutable inputs, explicit citation context, source-only C5, real
+search handlers, unchanged notes and project-index CSS contracts. Source-coverage
+expectations adapt only reference presentation; source facts/fixtures are unchanged.
 These tests are not measured browser layout or assistive-technology QA. Parent
-owns independent browser/accessibility checks, final closeout and release.
+owns native-browser checks at 1440/1024/801/800/390/320px and enlarged text,
+accessibility checks, independent review, final closeout and release.

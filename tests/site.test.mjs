@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { publicationCitation, publicationMetadata } from "../src/publications.mjs";
+import { publicationCitation, publicationMetadata, publicationPresentation, publicationReferences } from "../src/publications.mjs";
 import { assertApprovedPublications, captured } from "./cv-expectations.mjs";
 import {
   assertPublicationBaseline,
@@ -134,7 +134,9 @@ test("publication IDs, citations, categories and all source titles survive", () 
     );
   }
   assert.match(html, /doi:10\.3390\/bioengineering10070845/);
-  assert.match(html, /https:\/\/www\.mdpi\.com\/2306-5354\/10\/7\/845/);
+  assert.ok(pubs.find((p) => p.id === "J7").links.some((link) =>
+    link.href === "https://www.mdpi.com/2306-5354/10/7/845"), "Original publisher fact retained");
+  assert.match(html, /href="https:\/\/doi\.org\/10\.3390\/bioengineering10070845"/);
   assert.doesNotMatch(html, /href="[^"]*bioengineering1007084"/);
 });
 test("all source news dates, people, degrees, projects and local images are represented", () => {
@@ -248,6 +250,7 @@ test("every substantive source paragraph is retained on its owning page", () => 
   ].map(normalize);
   const manifest = JSON.parse(read("content/source/manifest.json"));
   const data = JSON.parse(read("content/lab.json"));
+  const publicationsById = publicationPresentation(data.publications);
   assertApprovedPublications(data.publications);
   let checked = 0;
   for (const page of manifest.pages) {
@@ -274,14 +277,15 @@ test("every substantive source paragraph is retained on its owning page", () => 
             assert.ok(normalize(text).includes(normalize(original.title)), `${id}: original research title mapping`);
           for (const part of page.slug === "publication"
             ? [p.title, ...p.authors.map((a) => a.name), publicationMetadata(p)]
-            : [publicationCitation(p)])
+            : [publicationCitation(p.id, publicationsById)])
             assert.ok(
               rendered.includes(normalize(part)),
               id + " rendered approved correction",
             );
         } else
           assert.ok(
-            rendered.includes(normalize(text)),
+            rendered.includes(normalize(page.slug.startsWith("research")
+              ? publicationReferences(text, publicationsById) : text)),
             `${page.slug}: ${text}`,
           );
         checked++;

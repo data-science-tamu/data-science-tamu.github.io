@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { rich, validatePublications, imageRenderer } from "../src/helpers.mjs";
 import { createPages } from "../src/templates.mjs";
-import { publicationCitation } from "../src/publications.mjs";
+import { publicationCitation, publicationPresentation } from "../src/publications.mjs";
 import {
   assertPublicationBaseline,
   assertNewsBaseline,
@@ -92,7 +92,7 @@ test("J9 research citation renders the approved published record and year", () =
     .find((p) => p.id === "bone-elastic-properties")
     .paragraphs.find((p) => p.recordId === "J9");
   const record = data.publications.find((p) => p.id === citation.recordId);
-  const html = publicationCitation(record);
+  const html = publicationCitation(record.id, publicationPresentation(data.publications));
   assert.equal(record.status, "published");
   assert.match(html, /Advanced Science, vol\. 12, no\. 48, article e08445, 2025,/);
   assert.match(html, /href="https:\/\/doi\.org\/10\.1002\/advs\.202508445"/);

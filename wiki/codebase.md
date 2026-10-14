@@ -17,7 +17,7 @@ Read `README.md` for commands/editing, `docs/source-provenance.md` for source in
 - `content/site.json`: title, canonical origin, affiliation/contact/profile settings and CV path. No implicit environment-based metadata fallback.
 - `content/lab.json`: faculty records, current/past people and education, research area intros/selections, a shared project catalog, news and publications.
 - Research area `projects` arrays contain catalog IDs, not duplicate project facts. Main research renders all eight; systems renders preventive-maintenance, failure-prognostics and fault-diagnosis; processes renders nanosensor-monitoring, robust-design, functional-data-calibration and water-sensing; physics-informed AI renders bone-elastic-properties.
-- Publications are canonical structured records with ordered/annotated authors, venue, status, year and optional complete bibliography/DOI fields. `src/publications.mjs` generates all authors/metadata/links and research citation text. Selected/project citations contain `recordId` and original notes; they do not duplicate stale bibliography. J15 preserves J15-review as a legacy fragment alias.
+- Publications are canonical structured records with ordered/annotated authors, venue, status, year and optional complete bibliography/DOI fields. `src/publications.mjs` owns authors/metadata, DOI-first primary links, the order/count-based presentation map and research citations/inline references. Storage `p.id` and citation `recordId` are stable identities, not journal display numbers. J15 preserves J15-review as a legacy fragment alias; no source fact or fixture is renumbered.
 - `content/cv-current.json`: maintained current PDF hash/size and provenance, separate from immutable original capture provenance. Parent replaces the verified PDF and updates only this artifact manifest.
 - `content/figure-originals.json`: explicit larger-source counterparts with dimensions, SHA-256 and acquisition provenance. `src/figure-originals.mjs` validates this catalog before output replacement. All original captures remain unchanged; on-demand larger assets live under `public/assets/images/originals/`.
 - `content/source/`: immutable nine-page captures/manifest, never consumed by the production generator and never copied to `dist/`. Tests consume them for fidelity.
@@ -52,6 +52,18 @@ The editing and interaction contract is [Research presentation](../docs/research
 `recordId` values and nested notes. `src/research-content.mjs` renders these once
 for all project routes and selected citations, plus h3/list overview groups.
 Project-level `relatedIds` is removed rather than maintained as overlapping state.
+
+`createPages` constructs one `publicationPresentation` map and uses its records
+for both the publication listing and every research citation. Journal `displayId`
+counts down in maintained listing order; all hrefs still use stable IDs.
+`publicationCitation` requires the stable record ID and explicit mapped context.
+`publicationReferences` handles only bracketed reference groups in maintained
+research HTML text, leaving attributes/prose intact and avoiding nested links.
+Legacy J15* resolves via its existing alias; unmatched source-only C5 stays plain.
+See the [presentation contract](../docs/research-presentation.md#publication-presentation).
+CSS owns body-size ink notes with a thin maroon rule and separate project-number
+(nonshrinking/nowrap) and project-title (bounded/wrapping) spans. No client JS,
+navigation, viewer, scientific assets, public metadata or source facts change.
 
 `research.theme.title` supplies the overview's single H1:
 "Domain-informed Statistical Machine learning and modeling with Uncertainty Quantification".
@@ -98,6 +110,7 @@ hit target, borderless header, matching home colors/hover and print fallback.
 - tests/figure-viewer.test.mjs executes the real client script in a small DOM platform double, checking original-size opening, Fit/200% behavior, resize, native cancellation, focus wrapping/restoration, body/page scroll restoration, modified-click fallback, unsupported/failed dialogs, load recovery and stale image events. It does not substitute for the parent's real browser and assistive-technology QA.
 - tests/source-baseline.mjs owns immutable source ID/fragment/date coverage while allowing approved promotion and new maintained entries.
 - tests/cv-publication-sync.test.mjs and tests/cv-expectations.mjs cover all 25 approved public records, complete fields, author annotations, working/no-JS/print support, canonical research reuse, legacy anchors, and mutation rejection for omitted records, wrong author order/DOI, missing journal venue or reclassified Manufacturing Letters. Public-only fixtures are in tests/fixtures/.
+- tests/publication-presentation.test.mjs verifies journal display numbering, same-paper citation/inline links, insertion/reordering without mutation, explicit presentation context, title-only external links, real visible-label search, unchanged notes and project-index CSS. Native-browser layout/enlarged-text QA and independent review remain parent-owned; worker results are in .local/publication-presentation/result.md, outside the parent's qa directory.
 - tests/review-regressions.test.mjs checks incomplete HTML rejection, publication type/ID guards, non-destructive content growth, and the source-confirmed J9 year.
 - src/helpers.mjs validatePublications is the build-time publication guard used before rendering by scripts/build.mjs.
 - docs/validation.md and history.md record verified gates; plan.md and todo.md track only remaining release work.

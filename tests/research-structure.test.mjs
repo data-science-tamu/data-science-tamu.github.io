@@ -5,17 +5,18 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { createPages, layout } from "../src/templates.mjs";
 import { imageRenderer, escape } from "../src/helpers.mjs";
-import { publicationCitation } from "../src/publications.mjs";
+import { publicationCitation, publicationPresentation, publicationReferences } from "../src/publications.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (p) => fs.readFileSync(path.join(root, p), "utf8");
 const lab = JSON.parse(read("content/lab.json"));
+const publicationsById = publicationPresentation(lab.publications);
 const site = JSON.parse(read("content/site.json"));
 const pages = createPages(site, lab, imageRenderer(path.join(root, "public")));
 const research = pages.filter((p) => p.route.startsWith("/research/"));
 const text = (html) => html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
 const digest = (items) => createHash("sha256").update(JSON.stringify(items)).digest("hex");
-const itemHtml = (p) => p.html ?? publicationCitation(lab.publications.find((record) => record.id === p.recordId));
+const itemHtml = (p) => p.html ?? publicationCitation(p.recordId, publicationsById);
 const flatten = (items) => items.flatMap((p) => [itemHtml(p), ...flatten(p.notes || []), ...flatten(p.items || [])]);
 
 test("all headers including 404 and the home primary action share data-driven Research disclosures", () => {
@@ -109,7 +110,7 @@ test("overview has real headings and lists with complete original items", () => 
     assert.equal(group.kind, "list");
     assert.ok(group.items.length > 0);
     assert.ok(html.includes(`<h3>${group.html}</h3><ul>`));
-    for (const item of group.items) assert.ok(html.includes(`<li>${item.html}</li>`));
+    for (const item of group.items) assert.ok(html.includes(`<li>${publicationReferences(item.html, publicationsById)}</li>`));
   }
 });
 

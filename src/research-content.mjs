@@ -1,9 +1,10 @@
-import { escape as e, rich, anchor } from "./helpers.mjs";
-import { publicationCitation } from "./publications.mjs";
+import { escape as e, anchor } from "./helpers.mjs";
+import { publicationCitation, publicationReferences } from "./publications.mjs";
 
 // Presentation is authored in maintained data, never inferred from prose.
 export function researchContent(items, publicationsById, headingLevel = 4) {
   let html = "", publications = false, citationList = false;
+  const content = (html) => publicationReferences(html, publicationsById);
   const closeList = () => {
     if (citationList) html += "</ul>";
     citationList = false;
@@ -22,13 +23,13 @@ export function researchContent(items, publicationsById, headingLevel = 4) {
       }
       if (!citationList) html += '<ul class="research-publications">';
       citationList = true;
-      html += `<li><p>${publicationCitation(publication)}</p><p class="project-refs">Publication record: <a href="/publication/#${anchor(item.recordId)}">[${e(item.recordId)}]</a></p>${item.notes?.length ? `<ul class="citation-notes">${item.notes.map((n) => `<li>${rich(n.html)}</li>`).join("")}</ul>` : ""}</li>`;
+      html += `<li><p>${publicationCitation(item.recordId, publicationsById)}</p><p class="project-refs">Publication record: <a href="/publication/#${anchor(publication.id)}">[${e(publication.displayId)}]</a></p>${item.notes?.length ? `<ul class="citation-notes">${item.notes.map((n) => `<li>${content(n.html)}</li>`).join("")}</ul>` : ""}</li>`;
       continue;
     }
     closeList();
     if (kind === "publication-heading") {
       if (!publications) throw new Error("Invalid research publication heading");
-      html += `<p class="publication-group-label"><strong>${rich(item.html)}</strong></p>`;
+      html += `<p class="publication-group-label"><strong>${content(item.html)}</strong></p>`;
       continue;
     }
     if (publications) {
@@ -37,15 +38,15 @@ export function researchContent(items, publicationsById, headingLevel = 4) {
     }
     if (kind === "list") {
       if (!Array.isArray(item.items) || !item.items.length) throw new Error("Invalid research overview list");
-      html += `<section class="research-overview-group"><h3>${rich(item.html)}</h3><ul>${item.items.map((p) => `<li>${rich(p.html)}</li>`).join("")}</ul></section>`;
+      html += `<section class="research-overview-group"><h3>${content(item.html)}</h3><ul>${item.items.map((p) => `<li>${content(p.html)}</li>`).join("")}</ul></section>`;
       continue;
     }
     if (kind === "collaborators") {
-      html += `<p class="project-collaborators"><strong>Collaborators:</strong> ${rich(item.html)}</p>`;
+      html += `<p class="project-collaborators"><strong>Collaborators:</strong> ${content(item.html)}</p>`;
       continue;
     }
     if (item.label && !item.html.startsWith(item.label)) throw new Error("Invalid research paragraph label");
-    html += `<p>${item.label ? `<strong>${e(item.label)}</strong>${rich(item.html.slice(item.label.length))}` : rich(item.html)}</p>`;
+    html += `<p>${item.label ? `<strong>${e(item.label)}</strong>${content(item.html.slice(item.label.length))}` : content(item.html)}</p>`;
   }
   closeList();
   if (publications) html += "</section>";

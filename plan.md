@@ -1,5 +1,13 @@
 # Website Plan
 
+## Publication Presentation - Release Pending
+
+Implementation and independent local verification are complete; details moved to
+history.md and docs/validation.md. Release remains gated on branch CI, main
+integration, exact-head Pages success and actual public readback. Source facts,
+CV/images/JavaScript and immutable fixtures are unchanged. Recovery baseline:
+e639d2c / backup/pre-publication-presentation-20261013.
+
 ## CV Publication Synchronization - Published
 
 The CV/publication synchronization is integrated into clean primary main and

@@ -401,3 +401,36 @@ The sole independent-review P2 was fixed and re-reviewed APPROVE. No task-specif
 implementation or release gate remains open. Earlier pending checkpoints above
 are historical, not the current release state. Automated accessibility coverage
 is not exhaustive assistive-technology certification.
+
+## 2026-10-13 Publication Presentation Candidate
+
+Owner requests: remove redundant record rows, use J15..J1 consistently across
+all pages, make highlights legible, and keep project-index digits on one line.
+Implementation used gpt-6.1-sol with reasoning max in its dedicated worktree.
+Stored paper IDs/old URLs are stable; a shared order/count-based presentation map
+feeds listing, canonical citations, record links and bracketed inline references.
+Title links stay DOI-first; bibliography, notes and source data remain intact.
+Notes use body-size ink and a thin maroon rule; nowrap nonshrinking project digits
+are separate from wrapping titles. No client JS, scientific asset or CV change.
+
+Causes and prior gaps: the listing rendered historical storage IDs as labels
+after CV reordering; overview prose also embedded those IDs. Previous tests
+protected identity but not sequential presentation. Notes inherited the shared
+muted metadata style. Project digits were shrinkable flex children inheriting
+overflow-wrap:anywhere; general page-overflow tests did not detect internal digit
+line breaks. Guards now act at the presentation map/rendering and scoped CSS.
+
+Evidence: baseline118tests passed. New expected RED reached16failures/1pass,
+then17/17targeted GREEN. Parent independently ran135/135full tests, canonical
+build and git diff --check successfully. All protected maintained/source content,
+CV/images/fonts/JavaScript/dependencies and source fixtures equal e639d2c.
+Native browser:254focused checks passed;27page/viewport checks and85local
+targets passed; no accessibility/console/overflow failures. Focused checks cover
+all13inline-reference items, journal search, same-paper href/title/DOI, original
+fragments, no-JS/print, six viewport widths and enlarged text. Desktop/mobile
+screenshots were inspected. Independent source reviewer APPROVE was read back
+and matched to all4runtime SHA256s; reviewer separately ran17targeted tests.
+
+Local evidence: .local/publication-presentation/{red.log,red-inline.log,green.log,
+review.md}, qa/{report.md,numbering-map.json,after/results.json,evidence/results.json}.
+Remaining gate: parent branch CI/main integration/Pages/live verification.

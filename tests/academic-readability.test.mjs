@@ -1,5 +1,5 @@
 import test from "node:test";
-import { publicationCitation } from "../src/publications.mjs";
+import { publicationCitation, publicationPresentation } from "../src/publications.mjs";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
@@ -10,6 +10,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const site = JSON.parse(read("content/site.json"));
 const lab = JSON.parse(read("content/lab.json"));
+const publicationsById = publicationPresentation(lab.publications);
 const pages = createPages(site, lab, imageRenderer(path.join(root, "public")));
 const css = read("public/assets/site.css");
 const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/([^{}]+)\{([^{}]*)\}/g)];
@@ -73,7 +74,7 @@ test("full project text precedes its image, with no accordion or hidden project 
       const content = project.paragraphs.flatMap((p) => [p, ...(p.notes || [])]);
       for (const paragraph of content)
         assert.ok(beforeFigure.includes((paragraph.kind === "citation"
-          ? publicationCitation(lab.publications.find((p) => p.id === paragraph.recordId))
+          ? publicationCitation(paragraph.recordId, publicationsById)
           : paragraph.html).replace(/<[^>]*>/g, "")), `${id}: full semantic text before figure`);
       assert.doesNotMatch(body, /<(?:p|div|article)\b[^>]*(?:\shidden\b|\saria-hidden="true")/);
     }

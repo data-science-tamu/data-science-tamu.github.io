@@ -1,9 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { publicationPresentation } from "../src/publications.mjs";
 
 test("presentation uses only explicit metadata, not citation-like prose or venue names", async () => {
   const { researchContent } = await import("../src/research-content.mjs");
-  const records = new Map([["C91", {id: "C91", type: "conference", status: "published", title: "A canonical title", authors: [{name: "A. Author"}], venue: "A canonical venue", year: "2030"}]]);
+  const records = publicationPresentation([{id: "C91", type: "conference", status: "published", title: "A canonical title", authors: [{name: "A. Author"}], venue: "A canonical venue", year: "2030"}]);
   const items = [
     {html: "Goal: unchanged prose"},
     {html: "Goal: Explicitly labeled", label: "Goal:"},
