@@ -317,5 +317,34 @@ screenshots were inspected. Independent source reviewer APPROVE was read back
 and matched to all4runtime SHA256s; reviewer separately ran17targeted tests.
 
 Local evidence: .local/publication-presentation/{red.log,red-inline.log,green.log,
-review.md}, qa/{report.md,numbering-map.json,after/results.json,evidence/results.json}.
-Remaining gate: parent branch CI/main integration/Pages/live verification.
+review.md}, qa/{report.md,numbering-map.json,after/results.json,evidence/qa-report.json}.
+Candidate release gate was satisfied by the verified release below.
+
+### Publication Presentation Release Verified
+
+Implementation commit: acb9304cccd417ff4a82cc4a9c76072b11520128. Branch CI
+38511150730 succeeded for this exact commit. Parent fast-forwarded clean main
+from e639d2c, repeated 135 tests/build successfully, pushed, and verified remote
+main equality. Pages run38511199791 succeeded for the implementation commit.
+
+Public readback at https://data-science-tamu.github.io/ passed all58URL/content
+integrity checks, including custom404 and non-public source paths. The native
+focused browser repeated254checks with0failures on the public origin; general
+browser repeated27page/viewport checks and85local targets with0failures.
+Public desktop publication and mobile project-index screenshots were inspected.
+All15journal display labels descend and resolve the same publications; existing
+shared fragments and J15-review still target their original paper identities.
+
+The remote recovery tag backup/pre-publication-presentation-20261013 was read
+back at e639d2c232c4682a84cff36bee3db3981cc08300. Local candidate manifest has
+55files and matches the unchanged production artifact. Final closeout changes
+only planning/history/validation documentation. The requested task is closed;
+existing consideration-only ideas remain unapproved and untouched.
+
+Evidence: .local/publication-presentation/qa/live/results.json,
+qa/evidence/{live-integrity.json,qa-report.json}, qa/candidate-results.json,
+qa/candidate-manifest.json and the independently verified review.md. Coverage
+limits remain Chromium and automated accessibility; no native assistive-tool or
+external publisher-content audit is claimed. Non-blocking upstream Actions
+Node20 deprecation and future Ubuntu-runner migration notices were observed;
+workflow changes are outside this correction.

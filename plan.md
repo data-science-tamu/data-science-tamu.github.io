@@ -1,12 +1,15 @@
 # Website Plan
 
-## Publication Presentation - Release Pending
+## Publication Presentation - Published
 
-Implementation and independent local verification are complete; details moved to
-history.md and docs/validation.md. Release remains gated on branch CI, main
-integration, exact-head Pages success and actual public readback. Source facts,
-CV/images/JavaScript and immutable fixtures are unchanged. Recovery baseline:
-e639d2c / backup/pre-publication-presentation-20261013.
+The requested publication links/numbering/highlight and project-index corrections
+are integrated into primary main and published. Independent review, 135 tests,
+build, native desktop/mobile/enlarged-text QA, branch CI, exact-head Pages and
+actual live readback passed. No task-specific implementation/release gate remains.
+Completed work and evidence: history.md and docs/validation.md. Recovery tag:
+backup/pre-publication-presentation-20261013 preserves e639d2c; use a reviewed
+revert, not a destructive reset. Source facts, original captures, CV, images and
+client JavaScript are unchanged.
 
 ## CV Publication Synchronization - Published
 

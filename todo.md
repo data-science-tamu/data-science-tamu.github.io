@@ -7,7 +7,7 @@
 - [x] Readable emphasized highlights, with factual wording preserved.
 - [x] Project index numbers cannot shrink/wrap; native browser regression.
 - [x] Full tests/build/preservation/browser QA and independent review.
-- [ ] Commit/push task, integrate main, deploy, live readback and close history.
+- [x] Commit/push task, integrate main, deploy, live readback and close history.
 
 ## CV Publication Synchronization
 
