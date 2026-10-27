@@ -10,6 +10,25 @@ Maintained content is in `content/lab.json`; change-prone metadata is in `conten
 
 The migration baseline contains 20 publication records: 14 journal entries in the original Published category, 2 under review/revision and 4 conference proceedings. It contains 14 dated news items, 3 current Ph.D. students, 5 other named students/interns, 5 faculty education entries, 8 current-student education entries and 8 research projects. These are historical migration counts. The maintained bibliography was synchronized on 2026-10-13 to 15 journal, 4 review/revision, 2 working and 4 conference records; the original captures remain unchanged.
 
+## Tatthapong QSR Finalist News (2026-10-27)
+
+The owner-approved news addition uses the public [official finalist announcement](https://connect.informs.org/discussion/informs-2026-best-student-paper-competition-finalists).
+It lists Tatthapong Srikitrungruang and Jaesung Lee, Texas A&M University, for
+"Probabilistic Physics-Informed Neural Networks for Estimating Heterogeneous Elastic Properties from Low-Resolution and Noisy Displacement Data"
+among the 2026 INFORMS QSR Best Student Paper Competition finalists.
+The [official call](https://connect.informs.org/qsr/awards) confirms the Annual
+Meeting is November 1–4, 2026, in San Francisco, so the posting says "will present."
+
+`2026.11.01` is the scheduled presentation date from the owner-supplied selection
+email (Sunday, November 1, 2026, in San Francisco), not the website posting date or
+finalist decision date. The section heading records the provenance date,
+2026-10-27. The public post omits the presentation time. The unchanged Sina item
+dated `2025.04.22` supplies the writing style.
+Only the competition name links to the announcement; no winner, rank or paper
+publication status is claimed. The new record has no images or `sourceSection`;
+the immutable captures and all prior records remain unchanged. Public announcement
+evidence is retained locally in `.local/qsr-news/official-finalists.html` and `.txt`.
+
 ## PDF and Images
 
 All 25 unique captured original images remain under `public/assets/images/`; their source URLs, byte sizes and SHA-256 values are in the manifest. No original was deleted, cropped, recompressed or overwritten. Scientific figures retain native aspect ratio with no cropping or height cap and link to their full-resolution local files. Portrait/photo display cropping is CSS-only; the source files are untouched. JPEG and PNG dimensions are read from the actual files at build time.

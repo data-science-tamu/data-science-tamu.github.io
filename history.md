@@ -1,5 +1,18 @@
 # Website History
 
+## 2026-10-27: Tatthapong QSR Presentation Date Correction
+
+- Implementation complete: the new news item uses `2026.11.01`, the scheduled
+  presentation date from the owner-supplied selection email, rather than the
+  website posting date or finalist decision date. No presentation time is public.
+- Preserved the approved wording, future tense, official link and original 14
+  news records. Updated the existing four focused tests and active documentation.
+- Worker validation: direct focused execution passed all 4 tests; `npm test`
+  passed all 12 test files; `npm run build` generated 9 content pages plus 404
+  (25 publications, 15 news items, 8 projects); `git diff --check` passed.
+- Parent QA, final review and release remain pending. No commit, push or deployment
+  was performed; prior logs and the parent-owned browser script were untouched.
+
 ## 2026-10-11: Initial Website Implementation and Local Validation
 
 - Created the independent organization website repository and isolated task worktree; the original Google Sites and unrelated repositories were not modified.

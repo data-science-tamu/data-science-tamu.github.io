@@ -1,5 +1,9 @@
 # Website Plan
 
+## Tatthapong QSR Finalist News - Active
+
+Implementation is complete for one owner-requested news item matching the Sina finalist announcement. Official competition naming and finalist selection are documented. Use 2026.11.01 as the scheduled presentation date from the owner-supplied selection email, not the website posting date or finalist decision date. Preserve all existing records, captures, assets and CV. Sol/max implementation is complete. Parent test/build, preservation and desktop/mobile/accessibility QA passed; final date-review, branch push, main integration, Pages deployment and live readback remain pending.
+
 ## Publication Presentation - Published
 
 The requested publication links/numbering/highlight and project-index corrections

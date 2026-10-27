@@ -463,3 +463,12 @@ limits remain Chromium and automated accessibility; no native assistive-tool or
 external publisher-content audit is claimed. Non-blocking upstream Actions
 Node20 deprecation and future Ubuntu-runner migration notices were observed;
 workflow changes are outside this correction.
+
+## Tatthapong QSR Finalist News: Local Verification (2026-10-27)
+
+- One new `content/lab.json` record dated `2026.11.01`, the owner-supplied scheduled presentation date, with the official finalist announcement linked from the competition name.
+- Parent independently reran all 139 tests: 139 passed, 0 failed. Deterministic build, source coverage and internal links/assets/fragments passed through the project suite. Build: 9 content pages plus 404; 25 publications, 15 news records, 8 projects.
+- Compared to baseline `0bb2f3d`, all 14 previous news records and every non-news content field are unchanged; CV, source captures, images, CSS, JavaScript, templates and workflow are unchanged.
+- Chromium checks passed for news and home at widths 1440, 390 and 320: six route/viewport cases, no overflow, console errors or tested axe WCAG A/AA violations. Official link href, keyboard focus, future-tense copy and November 1 date passed. News remains readable with JavaScript disabled and in print. Desktop/mobile screenshots were inspected.
+- Evidence: `.local/qsr-news/parent-final-tests.log`, `qa-local/results.json` and `preservation.json` in the task worktree. Chromium/automated accessibility coverage is not exhaustive assistive-technology certification.
+- At this local checkpoint, final corrected-date review and GitHub publication are pending; no live success is claimed.

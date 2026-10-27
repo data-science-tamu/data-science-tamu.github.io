@@ -23,6 +23,12 @@ Read `README.md` for commands/editing, `docs/source-provenance.md` for source in
 - `content/source/`: immutable nine-page captures/manifest, never consumed by the production generator and never copied to `dist/`. Tests consume them for fidelity.
 - `public/`: captured images/PDF, local licensed fonts, CSS/JS and favicon. All 25 captured original image files are retained.
 
+News flows from `content/lab.json` through `src/templates.mjs`: `/news/` renders
+every record in maintained order, while home renders the first three. The approved
+Tatthapong QSR item is a content-only prepend; `tests/tatthapong-qsr-news.test.mjs`
+guards its public wording/link, presentation date, future tense, historical news and
+capture preservation, and both render paths. See [provenance](../docs/source-provenance.md#tatthapong-qsr-finalist-news-2026-10-27).
+
 ## Browser Behavior
 
 `public/assets/site.css` owns the shared academic type and layout system: a white canvas, local DM Sans, charcoal text, neutral rules and restrained maroon links. Central rem tokens define body text (1.0625rem), small text (0.9375rem), project headings (1.3125rem), section headings (1.625rem) and page titles (2.125rem, 1.8125rem on mobile). The same hierarchy applies to home, people, research, publications, news and CV; inputs use 1rem. Compact sections put headings above content rather than in a wide empty gutter. The home portrait is 11.25rem wide on desktop; only portrait display may crop an image.

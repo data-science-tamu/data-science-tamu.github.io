@@ -1,5 +1,15 @@
 # Academic Website Release Tasks
 
+## Tatthapong QSR Finalist News
+
+- [x] Verify official finalist announcement and existing Sina style.
+- [x] Add one maintained news record and focused source/rendering tests; use the
+      scheduled presentation date, 2026.11.01, from the owner-supplied selection email.
+- [x] Worker: date correction, focused tests, npm test/build and whitespace checks.
+- [x] Parent: test/build, preservation, desktop/mobile/console/accessibility QA.
+- [ ] Parent: commit/push branch, integrate main, verify Pages and live content.
+- [ ] Close active planning into history with actual validation evidence.
+
 ## Publication Presentation
 
 - [x] Remove redundant DOI/Publisher record rows; keep functional title links.
