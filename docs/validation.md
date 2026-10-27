@@ -472,3 +472,12 @@ workflow changes are outside this correction.
 - Chromium checks passed for news and home at widths 1440, 390 and 320: six route/viewport cases, no overflow, console errors or tested axe WCAG A/AA violations. Official link href, keyboard focus, future-tense copy and November 1 date passed. News remains readable with JavaScript disabled and in print. Desktop/mobile screenshots were inspected.
 - Evidence: `.local/qsr-news/parent-final-tests.log`, `qa-local/results.json` and `preservation.json` in the task worktree. Chromium/automated accessibility coverage is not exhaustive assistive-technology certification.
 - At this local checkpoint, final corrected-date review and GitHub publication are pending; no live success is claimed.
+
+### Tatthapong QSR News: Public Release Verified
+
+- Final corrected-date independent review: APPROVE; focused tests 4/4.
+- Content commit: d2008c4682ff806c6ab5215433fea47305a78986. Task-branch run [40552290402](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/40552290402) succeeded; primary main fast-forward and push were read back from GitHub.
+- Exact-commit main [40552388264](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/40552388264) test/build and Pages deployment succeeded. The primary build matched all 55 approved build files.
+- Actual HTTPS news and homepage bytes match the approved build. Checked all 15 news entries and 3 latest-news entries, with the new item dated 2026.11.01 and linked to the official announcement.
+- Repeated native browser checks on public home/news at 1440, 390 and 320 pixels: six cases, zero console errors, overflow or tested axe A/AA violations. Keyboard link focus, no-JS and print passed.
+- Evidence: `.local/qsr-news/live-integrity.json` and `qa-live/results.json`. The earlier local pending status is historical. Subsequent closeout edits change only documentation/planning, not any public build bytes.

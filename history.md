@@ -1,17 +1,29 @@
 # Website History
 
-## 2026-10-27: Tatthapong QSR Presentation Date Correction
+## 2026-10-27: Tatthapong QSR Finalist News - Published
 
-- Implementation complete: the new news item uses `2026.11.01`, the scheduled
-  presentation date from the owner-supplied selection email, rather than the
-  website posting date or finalist decision date. No presentation time is public.
-- Preserved the approved wording, future tense, official link and original 14
-  news records. Updated the existing four focused tests and active documentation.
-- Worker validation: direct focused execution passed all 4 tests; `npm test`
-  passed all 12 test files; `npm run build` generated 9 content pages plus 404
-  (25 publications, 15 news items, 8 projects); `git diff --check` passed.
-- Parent QA, final review and release remain pending. No commit, push or deployment
-  was performed; prior logs and the parent-owned browser script were untouched.
+- Added one news item, following the existing Sina QCRE finalist style, for
+  Tatthapong Srikitrungruang in the 2026 INFORMS QSR Best Student Paper
+  Competition. The competition name links to the official finalist list.
+- At the owner correction, the displayed date is `2026.11.01`, the scheduled
+  presentation date, not the posting date or finalist-decision date. Future
+  presentation wording is retained; no winner/rank claim is made.
+- Sol/max implementation and bounded date correction; independent final review
+  approved the November 1 candidate. Parent independently passed 139 tests,
+  deterministic build, historical-content preservation and desktop/mobile QA.
+- Content commit `d2008c4682ff806c6ab5215433fea47305a78986` was pushed on the task
+  branch, passed [CI](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/40552290402),
+  then fast-forward integrated into clean primary main. [Main test/build and Pages](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/40552388264)
+  succeeded for that exact commit.
+- Live [news](https://data-science-tamu.github.io/news/#news-2026-11-01) and home
+  HTML match the approved build bytes. All 15 news records and 3 homepage
+  latest-news records were checked. Chromium checks on both pages at 1440,
+  390 and 320 pixels passed, with no overflow, console errors or tested axe
+  violations. Link, keyboard focus, no-JS and print checks passed.
+- All 14 previous news records, non-news content, CV, source captures and assets
+  are unchanged. No remaining implementation or release work for this request.
+  Active planning was removed; evidence is in `.local/qsr-news/` and
+  [validation](docs/validation.md). Prior unrelated consideration items remain.
 
 ## 2026-10-11: Initial Website Implementation and Local Validation
 
