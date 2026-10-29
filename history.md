@@ -1,5 +1,26 @@
 # Website History
 
+## 2026-10-29: Tatthapong ISEN Presentation Year - Published
+
+- Corrected the owner-confirmed second-place presentation award to visible year
+  2025 in the local CV and website. Exact day remains only in source comments.
+  The news record is in 2025 chronology; sentence, two photos and QSR news remain
+  unchanged. The download is the verified current 10-page CV.
+- Content commit `8ecfe9538494003e6c2bde3c90a2402179a799d0` passed task-branch
+  [CI](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/40962425814),
+  was fast-forward integrated into clean primary main, and passed exact-head
+  [test/build and Pages](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/40962502835).
+- Live [news](https://data-science-tamu.github.io/news/#news-2025), Home and CV
+  passed the same 9 desktop/mobile Chromium cases, keyboard/no-JS/print checks,
+  with no tested accessibility violations, console errors or overflow. Seven
+  fetched HTML/CSS/photo/PDF resources match the verified build byte-for-byte.
+  The real downloaded PDF is 10 pages and includes the corrected award year.
+- Implementation, PDF synchronization, review, local/CI validation, integration,
+  deployment and live readback are complete. Active task entries were removed
+  from plan/todo; unrelated consideration-only items remain. Evidence is under
+  `.local/presentation-year/` (live-integrity.json, qa-live/results.json, downloaded
+  PDF and screenshots). Original Google Sites and immutable captures are intact.
+
 ## 2026-10-27: Tatthapong QSR Finalist News - Published
 
 - Added one news item, following the existing Sina QCRE finalist style, for
