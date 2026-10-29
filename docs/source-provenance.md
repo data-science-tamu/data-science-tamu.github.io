@@ -64,6 +64,14 @@ updates; publication text remains unchanged. The immutable original capture is
 not replaced. Independent review and parent local browser/accessibility/console
 checks passed; release evidence is recorded in docs/validation.md.
 
+## Session Chair Label (2026-10-29)
+
+At the owner's follow-up request, the current CV omits `(scheduled)` from the
+2026 Session Chair entry. The session title, November 2026 date, all other body
+text and 10-page layout remain unchanged. This removes a display label and does
+not assert that the future-dated event has already occurred. The current-CV
+manifest identifies the verified replacement; immutable captures remain intact.
+
 ## PDF and Images
 
 All 25 unique captured original images remain under `public/assets/images/`; their source URLs, byte sizes and SHA-256 values are in the manifest. No original was deleted, cropped, recompressed or overwritten. Scientific figures retain native aspect ratio with no cropping or height cap and link to their full-resolution local files. Portrait/photo display cropping is CSS-only; the source files are untouched. JPEG and PNG dimensions are read from the actual files at build time.

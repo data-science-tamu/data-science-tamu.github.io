@@ -1,5 +1,17 @@
 # Website History
 
+## 2026-10-29: Session Chair Label
+
+The owner requested removal of `(scheduled)` from the 2026 Session Chair entry
+only. The authoritative local CV retains the exact session title and November
+2026 date. Full-PDF text comparison confirms that this label is the sole body
+change; both PDFs are 10 pages and the Tatthapong presentation award remains
+2025. The parent visually checked page 9 and refreshed the public PDF/manifest.
+All 148 tests and the deterministic build passed; only the PDF differs in build
+output, with HTML, CSS, images and news byte-identical to the verified release.
+Evidence: `.local/session-chair/`; final distribution is gated by exact-head
+CI/Pages success and public PDF hash/text readback.
+
 ## 2026-10-29: Tatthapong ISEN Presentation Year - Published
 
 - Corrected the owner-confirmed second-place presentation award to visible year
