@@ -1,5 +1,13 @@
 # Website Plan
 
+## Tatthapong Presentation Award Year - Release Pending
+
+Implementation, verified 10-page CV/PDF sync, independent review, 148 tests,
+deterministic build and actual desktop/mobile accessibility/console checks passed.
+Completed details are in history.md and docs/validation.md. Remaining gates:
+commit/push task branch, exact-head CI, integration into clean main, Pages
+deployment and live HTML/PDF readback, then remove this active plan section.
+
 ## Publication Presentation - Published
 
 The requested publication links/numbering/highlight and project-index corrections

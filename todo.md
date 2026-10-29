@@ -1,5 +1,16 @@
 # Academic Website Release Tasks
 
+## Tatthapong Presentation Award Year
+
+- [x] Worker: year-only news/inert JSON note, shared date renderer, chronology,
+      preserved original baselines, regression coverage and editing/provenance docs.
+- [x] Worker: focused RED/GREEN, full npm test/build and preservation audit;
+      evidence under `.local/presentation-year/worker-*`, checkpoint in history.md.
+- [x] Parent: verified local CV year/comment edit and public PDF/provenance sync.
+- [x] Parent: full validation, browser and independent review.
+- [ ] Parent: commit/push, main integration, Pages and live HTML/PDF readback.
+- [ ] Move completed work into history and close active planning.
+
 ## Publication Presentation
 
 - [x] Remove redundant DOI/Publisher record rows; keep functional title links.

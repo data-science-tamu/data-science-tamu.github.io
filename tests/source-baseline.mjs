@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { anchor } from "../src/helpers.mjs";
 import { captured as originalRecords } from "./cv-expectations.mjs";
+import { normalizePresentationForBaseline } from "./news-expectations.mjs";
 const source = (file) =>
   JSON.parse(
     fs.readFileSync(
@@ -30,7 +31,7 @@ export function assertPublicationBaseline(publications) {
 }
 export function assertNewsBaseline(news) {
   assert.deepEqual(
-    news.filter((n) => dates.includes(n.date)).map((n) => n.date),
+    normalizePresentationForBaseline(news).filter((n) => dates.includes(n.date)).map((n) => n.date),
     dates,
   );
 }

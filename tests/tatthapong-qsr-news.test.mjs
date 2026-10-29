@@ -6,6 +6,7 @@ import { createHash } from "node:crypto";
 import { createPages } from "../src/templates.mjs";
 import { imageRenderer } from "../src/helpers.mjs";
 import { assertNewsBaseline } from "./source-baseline.mjs";
+import { normalizePresentationForBaseline } from "./news-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
@@ -32,12 +33,14 @@ test("one newest Tatthapong finalist item uses only the approved wording and off
   assert.doesNotMatch(matches[0].text, /\b(?:won|winner|ranked|first place|accepted|published|presented)\b/i);
 });
 
-test("the immutable capture and every prior news record, including Sina's, remain preserved", () => {
+test("the capture and prior news remain preserved except the approved ISEN year/position correction", () => {
   assertNewsBaseline(lab.news);
   // Pin the original capture bytes and maintained source records before this addition.
   assert.equal(sha256(read("content/source/news.json")),
     "595176b2327d6f59bdb336431e89b6d181ca0075617beeea32ae86c1b81bfb55");
-  const historical = lab.news.filter((item) => Object.hasOwn(item, "sourceSection"));
+  // Validate the owner correction, then restore only it for the original hash.
+  const historical = normalizePresentationForBaseline(lab.news)
+    .filter((item) => Object.hasOwn(item, "sourceSection"));
   assert.equal(sha256(JSON.stringify(historical)),
     "f807d45cde099edce0e7a7644d4395b8cb600249a484508eeb4ee579a6532434");
 });
@@ -54,8 +57,12 @@ for (const route of ["/news/", "/"]) {
     assert.equal(html.split(`<a href="${announcement}">`).length - 1, 1);
     const expected = route === "/" ? lab.news.slice(0, 3) : lab.news;
     assert.equal(articles.length, expected.length);
-    assert.deepEqual(articles.map((article) => article.match(/<time datetime="([^"]+)"/)[1]),
-      expected.map((item) => item.date.replaceAll(".", "-")));
+    for (const [index, item] of expected.entries()) {
+      const date = /^\d{4}$/.test(item.date)
+        ? `<span class="news-date">${item.date}</span>`
+        : `<time datetime="${item.date.replaceAll(".", "-")}">${item.date}</time>`;
+      assert.ok(articles[index].includes(date), `${route}: date for ${item.text}`);
+    }
     if (route === "/news/") assert.match(articles[0], /id="news-2026-11-01"/);
   });
 }

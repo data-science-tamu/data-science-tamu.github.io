@@ -19,6 +19,9 @@ const button = (href, label, secondary = false) =>
   `<a class="button${secondary ? " button-secondary" : ""}" href="${e(href)}">${e(label)} ${arrow}</a>`;
 const sectionHead = (title) =>
   `<div class="section-heading"><h2>${e(title)}</h2></div>`;
+const newsDate = (date) => /^\d{4}$/.test(date)
+  ? `<span class="news-date">${e(date)}</span>`
+  : `<time datetime="${e(date.replaceAll(".", "-"))}">${e(date)}</time>`;
 const pageHead = (title, description) =>
   `<header class="page-heading"><h1>${e(title)}</h1><p class="lead">${e(description)}</p></header>`;
 const education = (items) =>
@@ -59,7 +62,7 @@ export function createPages(site, lab, img, originals = new Map()) {
   const home = `<section class="home-hero"><div class="hero-copy"><h1>${e(site.title)}</h1><p class="affiliation">${e(site.institution)} <span aria-hidden="true">/</span> ${e(site.department)}</p><div class="hero-lead">${paragraphs([faculty.bio[1]])}</div><div class="hero-actions">${researchDisclosure(lab.research.areas, "home-research-directions", "/", true)}${button("/publication/", "Publications", true)}</div><a class="student-link" href="#prospective-students">Interested in a Ph.D. position? <span aria-hidden="true">&#8595;</span></a></div><figure class="faculty-portrait">${img(faculty.portrait, `Portrait of ${faculty.name}`, { eager: true })}<figcaption><h2>${e(faculty.name)}</h2><p>${e(site.facultyRole)}<br>${e(site.department)}</p><a href="mailto:${e(site.email)}">${e(site.email)}</a></figcaption></figure></section>
   <section class="section split-section">${sectionHead("Research focus")}<div class="prose">${paragraphs([faculty.bio[2]])}<ul class="topic-list">${faculty.topics.map((t) => `<li>${e(t)}</li>`).join("")}</ul><p class="section-link"><a href="/people/">Meet the research group ${arrow}</a></p></div></section>
   <section class="section">${sectionHead("Research directions")}${areas()}</section>
-  <section class="section split-section">${sectionHead("Latest news")}<div class="latest-news">${latest.map((n) => `<article><time datetime="${n.date.replaceAll(".", "-")}">${n.date}</time><p>${rich(n.html)}</p></article>`).join("")}<a href="/news/">All lab news ${arrow}</a></div></section>
+  <section class="section split-section">${sectionHead("Latest news")}<div class="latest-news">${latest.map((n) => `<article>${newsDate(n.date)}<p>${rich(n.html)}</p></article>`).join("")}<a href="/news/">All lab news ${arrow}</a></div></section>
   ${contact()}
   <section class="section split-section">${sectionHead(faculty.name)}<div class="prose">${paragraphs([faculty.bio[0]])}${facultyLinks()}</div></section>${facultyDetails()}
   <section class="section split-section">${sectionHead("Industry & funding partners")}<div class="prose">${paragraphs(faculty.partners)}</div></section>`;
@@ -76,7 +79,7 @@ export function createPages(site, lab, img, originals = new Map()) {
   <section class="section">${sectionHead("Research directions")}${areas()}</section>
   <section class="section research-context"><div class="prose"><h2>Research interests</h2>${paragraphs(lab.research.interests.slice(1))}<h2>Previous & ongoing work</h2>${researchContent(lab.research.overview.slice(1), publicationsById, 3)}</div><div>${lab.research.figures.filter((f) => f.placement !== "theme").map((f) => figure(f.src, f.alt)).join("")}<aside class="featured-in"><h2>Research in the news</h2><ul>${lab.research.features.map((l) => `<li><a href="${e(l.href)}">${e(l.text)} ${arrow}</a></li>`).join("")}</ul></aside></div></section>
   <section class="section projects">${sectionHead("Projects & applications")}<nav class="project-index" aria-label="Research project index">${lab.projects.map((p, i) => `<a href="#${e(p.id)}"><span class="project-number">0${i + 1}</span> <span class="project-title">${e(p.title)}</span></a>`).join("")}</nav>${lab.projects.map(project).join("")}</section>`;
-  const news = `${pageHead("News", "Research milestones, student achievements and news from the Data Science Lab.")}<div class="news-timeline">${lab.news.map((n, i) => `${i === 0 || n.date.slice(0, 4) !== lab.news[i - 1].date.slice(0, 4) ? `<h2 class="news-year">${n.date.slice(0, 4)}</h2>` : ""}<article class="news-entry" id="news-${n.date.replaceAll(".", "-")}"><time datetime="${n.date.replaceAll(".", "-")}">${n.date}</time><div><p>${rich(n.html)}</p>${n.images.length ? `<div class="news-photos">${n.images.map((src, j) => `<a href="${e(src)}" aria-label="${e(`View full-size photo ${j + 1} for news dated ${n.date}`)}">${img(src, `Lab news photo ${j + 1}: ${n.text}`)}</a>`).join("")}</div>` : ""}</div></article>`).join("")}</div>`;
+  const news = `${pageHead("News", "Research milestones, student achievements and news from the Data Science Lab.")}<div class="news-timeline">${lab.news.map((n, i) => `${i === 0 || n.date.slice(0, 4) !== lab.news[i - 1].date.slice(0, 4) ? `<h2 class="news-year">${n.date.slice(0, 4)}</h2>` : ""}<article class="news-entry" id="news-${n.date.replaceAll(".", "-")}">${newsDate(n.date)}<div><p>${rich(n.html)}</p>${n.images.length ? `<div class="news-photos">${n.images.map((src, j) => `<a href="${e(src)}" aria-label="${e(`View full-size photo ${j + 1} for news dated ${n.date}`)}">${img(src, `Lab news photo ${j + 1}: ${n.text}`)}</a>`).join("")}</div>` : ""}</div></article>`).join("")}</div>`;
   const pubGroups = [
     [
       "journal",

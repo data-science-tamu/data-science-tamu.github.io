@@ -10,6 +10,7 @@ import {
   assertPublicationBaseline,
   assertNewsBaseline,
 } from "./source-baseline.mjs";
+import { assertPresentationCorrection, presentationCorrection } from "./news-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 function runBuild(args = []) {
@@ -282,12 +283,20 @@ test("every substantive source paragraph is retained on its owning page", () => 
               rendered.includes(normalize(part)),
               id + " rendered approved correction",
             );
-        } else
+        } else {
+          let approvedText = text;
+          // Only this owner-corrected news paragraph supersedes its captured date.
+          if (page.slug === "news" &&
+            normalize(text) === normalize(`2026.03.26 ${presentationCorrection.text}`)) {
+            const corrected = assertPresentationCorrection(data.news);
+            approvedText = `${corrected.date} ${corrected.text}`;
+          }
           assert.ok(
             rendered.includes(normalize(page.slug.startsWith("research")
-              ? publicationReferences(text, publicationsById) : text)),
+              ? publicationReferences(approvedText, publicationsById) : approvedText)),
             `${page.slug}: ${text}`,
           );
+        }
         checked++;
       }
     }

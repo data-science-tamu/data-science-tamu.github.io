@@ -1,6 +1,6 @@
 {
   "path": "public/assets/documents/jaesung-lee-cv.pdf",
-  "bytes": 167272,
-  "sha256": "baf3923c557fc9c8f4ccd2fc48ae412377e7a7dd6926a50a6368f66e096ea65e",
-  "description": "Publication-only CV rebuild, verified 2026-10-13 against the public CV and publisher records; 15 published journal articles, 4 review/revision records, 2 working papers, 4 conference records. Nonpublication text preserved; original capture provenance remains immutable. Author annotations verified with actual TeX after repairing the StudentList delimiter and trailing whitespace."
+  "bytes": 167722,
+  "sha256": "4e50fb2cd1765d39bac640913ad3b3fab0ab54fcd0b4697ee315724bc57c848e",
+  "description": "Owner-approved current 10-page CV, verified 2026-10-29 from the local LaTeX source with TeX Live 2025. Tatthapong ISEN Best Presentation Competition second place shows 2025; exact date remains a TeX source comment. Includes previously approved service, advising, webinar-recording and QSR finalist updates. Publication text is unchanged from the prior verified PDF; original capture provenance remains immutable."
 }

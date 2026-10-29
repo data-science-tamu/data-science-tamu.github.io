@@ -136,6 +136,7 @@ li + li {
 .faculty-portrait figcaption,
 figcaption,
 time,
+.news-date,
 .degree span,
 .text-links,
 .student .email,
@@ -159,6 +160,7 @@ time,
 .muted,
 figcaption,
 time,
+.news-date,
 .degree span,
 .institution,
 .publication-meta,
@@ -444,7 +446,8 @@ time,
 .latest-news p {
   margin-bottom: 0;
 }
-time {
+time,
+.news-date {
   font-variant-numeric: tabular-nums;
 }
 .contact-panel {

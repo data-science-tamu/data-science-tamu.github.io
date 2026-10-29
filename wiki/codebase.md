@@ -29,6 +29,22 @@ Tatthapong QSR item is a content-only prepend; `tests/tatthapong-qsr-news.test.m
 guards its public wording/link, presentation date, future tense, historical news and
 capture preservation, and both render paths. See [provenance](../docs/source-provenance.md#tatthapong-qsr-finalist-news-2026-10-27).
 
+The shared `newsDate` renderer emits existing `time` markup for `YYYY.MM.DD` and
+a plain `span.news-date` for literal `YYYY`; CSS shares all existing date styles.
+`_comment` is an inert JSON author note and never supplies text, attributes or
+render configuration. Rich HTML still rejects comments and date tags. The owner
+corrected the ISEN second-place record to visible `2025`, moving only that record
+between October 27 and September 19, 2025. Its exact day stays in `_comment`.
+`tests/news-expectations.mjs` validates the correction before normalizing only it
+to its original migration date/position for unchanged baseline hashes/order.
+`tests/news-date.test.mjs` covers the 15-record inventory, rejected mutations,
+legacy order, both render paths/formats, hidden notes and shared CSS. The source
+paragraph guard permits only this date correction and retains its full count.
+See [correction provenance](../docs/source-provenance.md#tatthapong-isen-presentation-year-correction-2026-10-29).
+The parent owns the separate CV source edit/build and verified PDF/manifest sync,
+independent desktop/mobile/accessibility/console QA and publication. Worker
+evidence stays under `.local/presentation-year/worker-*`.
+
 ## Browser Behavior
 
 `public/assets/site.css` owns the shared academic type and layout system: a white canvas, local DM Sans, charcoal text, neutral rules and restrained maroon links. Central rem tokens define body text (1.0625rem), small text (0.9375rem), project headings (1.3125rem), section headings (1.625rem) and page titles (2.125rem, 1.8125rem on mobile). The same hierarchy applies to home, people, research, publications, news and CV; inputs use 1rem. Compact sections put headings above content rather than in a wide empty gutter. The home portrait is 11.25rem wide on desktop; only portrait display may crop an image.

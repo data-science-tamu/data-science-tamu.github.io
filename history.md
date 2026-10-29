@@ -373,3 +373,66 @@ limits remain Chromium and automated accessibility; no native assistive-tool or
 external publisher-content audit is claimed. Non-blocking upstream Actions
 Node20 deprecation and future Ubuntu-runner migration notices were observed;
 workflow changes are outside this correction.
+
+## 2026-10-29 ISEN Presentation Year — Worker Checkpoint
+
+The owner-confirmed ISEN second-place presentation record now displays only
+`2025`. Its exact competition day is kept in an inert JSON `_comment`. Only
+that record moved, between `2025.10.27` and `2025.09.19`; its sentence, two photos
+and `sourceSection: 3` remain exact. Both news render paths share a small date
+renderer: full dates retain their existing `time` markup, and year-only strings
+use a plain `span.news-date` sharing the existing size/color/numeral styles.
+The rich-text sanitizer is unchanged and continues rejecting comments/date tags.
+
+Focused tests were added before production changes. Command:
+`node --test --test-isolation=none --test-reporter=tap tests/news-date.test.mjs tests/tatthapong-qsr-news.test.mjs`.
+Expected RED: 8 failed/5 passed; implementation GREEN: 13 passed/0 failed.
+The default isolated runner reports file-level results in this environment;
+in-process TAP exposes individual assertion details without changing config.
+The first full run also exposed the source-paragraph guard's original date;
+it now permits only this exact approved correction, retaining all 243 paragraphs.
+Original capture and historical-news hash constants are unchanged. The shared
+test normalizer validates the corrected record and chronology before restoring
+only its migration date/position for the old baselines. Mutation checks reject
+missing/duplicate/misdated/misplaced records, changed photos/text and unrelated
+December reordering. Both render paths exercise full dates and generic years,
+and reject exposure of author notes/the exact day, including aria attributes.
+
+`npm test` passed all 13 test files, including deterministic rebuild, source
+coverage and internal links/assets/fragments. `npm run build` passed: 9 content
+pages + 404, 25 publications, 15 news items and 8 projects. `git diff --check`
+passed. Snapshot
+comparison of the entire maintained dataset found only the authorized change.
+All 53 protected files outside the intended CSS edit remain byte-identical,
+including all 10 source captures/manifest, public PDF, current-CV manifest,
+images/fonts/JavaScript and sanitizer. The 2026 QSR post is exactly unchanged.
+All 10 generated HTML files omit the private date/author notes. README,
+provenance, wiki and active planning document the contract and ownership.
+
+Evidence and canonical 55-file build manifest:
+`.local/presentation-year/worker-*`. No commit, push, integration or deployment
+was performed. Parent gates remain pending: separate local CV source edit/build
+and verified public PDF/manifest sync, independent/browser desktop/mobile,
+accessibility/console QA, final validation/review, CI, publication and live
+HTML/PDF readback. This is a worker implementation checkpoint, not release QA.
+
+## 2026-10-29: ISEN Presentation Year - Parent Local Verification
+
+- Owner-confirmed event date is held only in the CV comment and website inert
+  `_comment`; visible award year is 2025. Second-place wording and photos survive.
+- Parent independently passed npm test, all 148 individual tests with isolation
+  disabled for explicit totals, canonical/deterministic build and diff checks.
+  The PDF replacement was followed by another passing npm test and build.
+- Independent review deleg_d21d6bd3 approved the implementation with no blockers.
+- Chromium checked News, Home and CV at 1440, 390 and 320 pixels: 9 cases, no
+  tested WCAG A/AA violations, console errors or horizontal overflow. Target
+  date, photo links, 15 records, chronology, unchanged QSR date, keyboard focus,
+  JavaScript-disabled reading and print visibility passed. Desktop/mobile
+  screenshots were visually inspected; final PDF download matched the manifest.
+- Verified PDF is 167722 bytes, 10 pages, SHA-256
+  `4e50fb2cd1765d39bac640913ad3b3fab0ab54fcd0b4697ee315724bc57c848e`.
+  Exact day is not rendered. Current local CV body differs only by added 2025;
+  public PDF additionally catches up already-approved nonpublication updates.
+- Evidence: `.local/presentation-year/` with parent test logs, browser-check.cjs,
+  qa-local/results.json/screenshots/downloaded-cv.pdf and worker RED/GREEN records.
+  Publication/live readback remains a separate gate.

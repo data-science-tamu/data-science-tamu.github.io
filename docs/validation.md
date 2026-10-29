@@ -481,3 +481,24 @@ workflow changes are outside this correction.
 - Actual HTTPS news and homepage bytes match the approved build. Checked all 15 news entries and 3 latest-news entries, with the new item dated 2026.11.01 and linked to the official announcement.
 - Repeated native browser checks on public home/news at 1440, 390 and 320 pixels: six cases, zero console errors, overflow or tested axe A/AA violations. Keyboard link focus, no-JS and print passed.
 - Evidence: `.local/qsr-news/live-integrity.json` and `qa-live/results.json`. The earlier local pending status is historical. Subsequent closeout edits change only documentation/planning, not any public build bytes.
+
+## 2026-10-29: ISEN Presentation Year - Parent Local Verification
+
+- Owner-confirmed event date is held only in the CV comment and website inert
+  `_comment`; visible award year is 2025. Second-place wording and photos survive.
+- Parent independently passed npm test, all 148 individual tests with isolation
+  disabled for explicit totals, canonical/deterministic build and diff checks.
+  The PDF replacement was followed by another passing npm test and build.
+- Independent review deleg_d21d6bd3 approved the implementation with no blockers.
+- Chromium checked News, Home and CV at 1440, 390 and 320 pixels: 9 cases, no
+  tested WCAG A/AA violations, console errors or horizontal overflow. Target
+  date, photo links, 15 records, chronology, unchanged QSR date, keyboard focus,
+  JavaScript-disabled reading and print visibility passed. Desktop/mobile
+  screenshots were visually inspected; final PDF download matched the manifest.
+- Verified PDF is 167722 bytes, 10 pages, SHA-256
+  `4e50fb2cd1765d39bac640913ad3b3fab0ab54fcd0b4697ee315724bc57c848e`.
+  Exact day is not rendered. Current local CV body differs only by added 2025;
+  public PDF additionally catches up already-approved nonpublication updates.
+- Evidence: `.local/presentation-year/` with parent test logs, browser-check.cjs,
+  qa-local/results.json/screenshots/downloaded-cv.pdf and worker RED/GREEN records.
+  Publication/live readback remains a separate gate.

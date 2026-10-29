@@ -786,16 +786,6 @@
       "sourceSection": 1
     },
     {
-      "date": "2026.03.26",
-      "html": "Tatthapong received second place in the ISEN Best Presentation Competition organized by the INFORMS Student Chapter at Texas A&amp;M University.",
-      "text": "Tatthapong received second place in the ISEN Best Presentation Competition organized by the INFORMS Student Chapter at Texas A&M University.",
-      "images": [
-        "/assets/images/news-1-c0718d6e5d.jpg",
-        "/assets/images/news-2-24d8363a27.jpg"
-      ],
-      "sourceSection": 3
-    },
-    {
       "date": "2026.03.23",
       "html": "The first paper of Ph.D. student Sina Aghaee was accepted by Technometrics. Congratulations, Sina!",
       "text": "The first paper of Ph.D. student Sina Aghaee was accepted by Technometrics. Congratulations, Sina!",
@@ -819,6 +809,17 @@
       "text": "Dr. Lee's paper was selected as a finalist in the QSR Best Referred Paper Competition. Dr. Lee presented this work at the 2025 INFORMS Conference.",
       "images": ["/assets/images/news-1-db61e9c97e.jpg"],
       "sourceSection": 7
+    },
+    {
+      "date": "2025",
+      "_comment": "Competition date: October 16, 2025.",
+      "html": "Tatthapong received second place in the ISEN Best Presentation Competition organized by the INFORMS Student Chapter at Texas A&amp;M University.",
+      "text": "Tatthapong received second place in the ISEN Best Presentation Competition organized by the INFORMS Student Chapter at Texas A&M University.",
+      "images": [
+        "/assets/images/news-1-c0718d6e5d.jpg",
+        "/assets/images/news-2-24d8363a27.jpg"
+      ],
+      "sourceSection": 3
     },
     {
       "date": "2025.09.19",
