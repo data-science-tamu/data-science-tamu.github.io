@@ -258,3 +258,19 @@ are unchanged. Both PDFs have 10 pages and normalized body comparison confirms
 this is the sole text difference. First-page pixels and all URI destinations
 are unchanged, preserving the compact contact row. Only activities.tex changed
 in the authoritative local source. Evidence: `.local/elected-council/`.
+
+## FLATE Date and Collaborator Name Corrections (2026-10-30)
+
+The owner corrected the full CV FLATE entry to "Data Analytics in Manufacturing:
+From Data Collection to Decision Making," Virtual Webinar, Florida Advanced
+Technological Education Center (FLATE), November 2024. The [official event
+record](https://fl-ate.org/updating-floridas-et-pathways/) confirms November 12,
+2024; the [webinar catalog](https://fl-ate.org/flate-webinar-series/) confirms
+the supplied title. The exact day and both source URLs are LaTeX comments only.
+Both Andrew Read-fuller fields in the NIDCR R21 CoI and NSF FDT-BioTech CoPI
+records now read Andrew Read-Fuller, following the owner's explicit correction.
+Only `sections/presentation.tex` and `entry/proposal.entry.tex` changed in the
+standalone CV project. Website synchronization replaces the verified public PDF
+and current manifest, not immutable captures or maintained website HTML content.
+The first-page contact row and Elected Council Member entry are preserved.
+Evidence and before/after source snapshots: `.local/flate-name/`.

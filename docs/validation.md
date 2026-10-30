@@ -562,3 +562,20 @@ and page 8 passed visual review. npm test, all 148 individual tests and the
 deterministic build passed. Only the PDF differs in the build output; website
 HTML/CSS/images/news remain byte-identical. Exact-head CI and public PDF
 readback receipts are retained under `.local/elected-council/`.
+
+## FLATE Date and Collaborator Name Corrections (2026-10-30)
+
+Baseline and corrected TeX Live 2025 builds both have 10 pages. Exact normalized
+body comparison permits only the supplied FLATE entry replacement and the two
+Andrew Read-Fuller corrections; only pages 4/5 differ in raster comparison.
+Both pages passed visual review, all URI destinations are unchanged, and the
+exact November 12 date is absent from visible PDF text. Source manifest confirms
+only presentation.tex and proposal.entry.tex changed; the short CV is untouched.
+
+`npm test`, all 148 tests with isolation disabled, deterministic build and local
+browser checks passed. At 1440/390/320 px, news/home/CV routes have no overflow,
+console errors or axe WCAG A/AA violations; no-JS and print checks passed. The
+actually downloaded local PDF matches its manifest and passes the same semantic
+checks. Build comparison confirms every non-PDF output remains byte-identical.
+Evidence: `.local/flate-name/`; branch CI, independent review and live-release
+receipts are recorded separately at release.

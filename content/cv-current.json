@@ -1,6 +1,6 @@
 {
   "path": "public/assets/documents/jaesung-lee-cv.pdf",
-  "bytes": 167967,
-  "sha256": "6c8ae1afaec2ae85beb457bba6d5f1418c84a384811856748c0f2dc14a724d18",
-  "description": "Owner-approved current 10-page CV, verified 2026-10-30 from authoritative local LaTeX with TeX Live 2025. QSR service reads Elected Council Member, retaining the full section name and 2026-2028 term. The single smaller contact row and all other body text remain unchanged. Original capture provenance remains immutable."
+  "bytes": 167982,
+  "sha256": "e8e1fb4d078d461aa65c2b3c9651dff8beddb9d1c9e8abad38a6c87d2824999c",
+  "description": "Owner-approved current 10-page CV, verified 2026-10-30 from authoritative local LaTeX with TeX Live 2025. FLATE webinar uses the supplied From Data Collection to Decision Making title and November 2024 date; both funding records use Andrew Read-Fuller. Exact November 12 date remains source-comment only. Other body text, compact contact row and Elected Council Member entry are unchanged. Original capture provenance remains immutable."
 }

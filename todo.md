@@ -1,5 +1,14 @@
 # Academic Website Release Tasks
 
+## CV FLATE and Name Corrections - Active
+
+- [x] Verify and correct FLATE title/date in the full CV.
+- [x] Correct NIDCR R21 CoI Andrew Read-Fuller.
+- [x] Correct NSF FDT-BioTech CoPI Andrew Read-Fuller.
+- [x] Verify built PDF, exact body changes, pages 4/5 and existing links.
+- [ ] Synchronize PDF/manifest/provenance; tests/build/browser and independent review.
+- [ ] Commit/push, integrate main, deploy and verify exact live PDF; close history.
+
 ## Publication Presentation
 
 - [x] Remove redundant DOI/Publisher record rows; keep functional title links.

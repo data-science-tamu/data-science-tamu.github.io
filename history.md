@@ -1,5 +1,15 @@
 # Website History
 
+## 2026-10-30: FLATE Date and Collaborator Names - Verified Candidate
+
+The owner-requested FLATE title/date and both Andrew Read-Fuller spellings are
+corrected in the authoritative standalone CV and its public download artifact.
+The exact November 12 date remains a source comment. Both PDFs have 10 pages;
+only pages 4/5 change, all links and the remaining body are preserved. Official
+sources, local tests and browser evidence are recorded in docs/source-provenance.md
+and docs/validation.md, with detailed artifacts in `.local/flate-name/`.
+Main publication and exact live readback remain pending in plan.md/todo.md.
+
 ## 2026-10-30: Elected QSR Council Member
 
 At the owner's request, the full CV now says Elected Council Member for the
