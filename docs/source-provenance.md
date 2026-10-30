@@ -224,3 +224,15 @@ only when opened. There are no runtime requests to Google Sites.
 These are verified Google Sites source rasters, not a claim of vector authoring
 masters. 200% display magnifies pixels; it does not manufacture additional detail.
 The separate original-file link is retained for browser-native viewing.
+
+## 2026-10-30: CV Header Profile Links
+
+Added underlined LinkedIn, Google Scholar and Research Page labels below the
+email in the authoritative full CV. PDF annotations preserve the owner-provided
+URLs exactly, including the Google Scholar query. Full addresses are not printed.
+The full CV remains 10 pages; body comparison excluding the new row and running
+headers is exact. Header and page-flow screenshots were visually checked.
+Only main.tex changed in the separate CV source tree. The separate one-page
+source already builds to two pages before this task; it was left unchanged.
+The public full-CV artifact and manifest are synchronized; local and live
+release evidence is retained under `.local/header-links/`.

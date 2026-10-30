@@ -1,6 +1,6 @@
 {
   "path": "public/assets/documents/jaesung-lee-cv.pdf",
-  "bytes": 167707,
-  "sha256": "5ada0585e778dd01fdd4018cada30f35180a87e1c8210bbeb3570a8fb2a8efa3",
-  "description": "Owner-approved current 10-page CV, verified 2026-10-29 from the local LaTeX source with TeX Live 2025. Tatthapong ISEN Best Presentation Competition second place shows 2025; exact date remains a TeX source comment. Includes previously approved service, advising, webinar-recording and QSR finalist updates. Publication text is unchanged from the prior verified PDF; original capture provenance remains immutable. Follow-up owner request: omit the Session Chair scheduled label, preserving the session title and November 2026 date."
+  "bytes": 168247,
+  "sha256": "a2a65e6a73d96bee08cb61fbffe3b3c74625ef8e23d6d460ca847afaa88c1a85",
+  "description": "Owner-approved current 10-page CV, verified 2026-10-30 from authoritative local LaTeX with TeX Live 2025. Header labels LinkedIn, Google Scholar and Research Page link to the exact owner-provided URLs without displaying the addresses. All remaining body text is unchanged, including the ISEN presentation award year 2025 and the Session Chair entry without a scheduled label. Original capture provenance remains immutable."
 }

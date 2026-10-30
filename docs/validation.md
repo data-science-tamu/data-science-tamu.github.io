@@ -535,3 +535,12 @@ All 148 tests and the deterministic build passed; only the PDF differs in build
 output, with HTML, CSS, images and news byte-identical to the verified release.
 Evidence: `.local/session-chair/`; final distribution is gated by exact-head
 CI/Pages success and public PDF hash/text readback.
+
+## CV Header Links (2026-10-30)
+
+Parent verified 10 pages, exact label-to-URI annotation rectangles, no printed
+profile addresses and unchanged remaining body text. Full npm test and all
+148 individual tests passed; deterministic build and diff checks passed. Only
+the PDF differs in the build, so HTML/CSS/images/news are byte-identical to the
+previously verified release. Evidence: `.local/header-links/`; public acceptance
+requires exact-head CI/Pages success and real downloaded-PDF annotation readback.
