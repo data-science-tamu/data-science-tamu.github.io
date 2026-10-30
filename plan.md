@@ -1,15 +1,5 @@
 # Website Plan
 
-## CV FLATE and Name Corrections - Active
-
-Parent-owned PDF-only synchronization from the standalone CV LaTeX source.
-Correct the FLATE title/date to the owner-provided November 2024 entry, retain
-November 12 in a source comment, and capitalize both Andrew Read-Fuller entries.
-Verify baseline/full PDF, visual pages 4/5, preserved body/links and 10 pages;
-then update current artifact/manifest, tests/build/browser gates, independent
-review, branch CI, main integration and exact public PDF readback.
-Website runtime, immutable source captures and separate short CV are unchanged.
-
 ## Publication Presentation - Published
 
 The requested publication links/numbering/highlight and project-index corrections

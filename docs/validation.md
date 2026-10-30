@@ -579,3 +579,13 @@ actually downloaded local PDF matches its manifest and passes the same semantic
 checks. Build comparison confirms every non-PDF output remains byte-identical.
 Evidence: `.local/flate-name/`; branch CI, independent review and live-release
 receipts are recorded separately at release.
+
+### Public Release Verified
+
+Independent artifact review: APPROVE; both PDF body and all 27 URI destinations
+verified. Branch CI 41044423435 and main Pages run 41044533537 completed
+successfully for `974ceea78a76662c845e80d2de3b8946a8996242`. Live browser checks at
+1440/390/320 px passed; the actual HTTPS-downloaded PDF passed the same exact
+three-correction, 10-page and hash assertions. SHA-256:
+`e8e1fb4d078d461aa65c2b3c9651dff8beddb9d1c9e8abad38a6c87d2824999c`.
+Main is integrated and task planning is closed; receipts remain local.
