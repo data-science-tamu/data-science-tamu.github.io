@@ -553,3 +553,12 @@ remaining body and other source files are unchanged. Header screenshot passed
 visual inspection. npm test, all 148 individual tests and deterministic build
 passed; only the PDF differs in build output. Exact-head CI and live PDF
 readback evidence are retained under `.local/contact-row/`.
+
+## Elected QSR Council Member (2026-10-30)
+
+Parent verified 10 pages and that adding Elected is the sole body difference.
+The first-page raster is pixel-identical, all URI destinations are preserved,
+and page 8 passed visual review. npm test, all 148 individual tests and the
+deterministic build passed. Only the PDF differs in the build output; website
+HTML/CSS/images/news remain byte-identical. Exact-head CI and public PDF
+readback receipts are retained under `.local/elected-council/`.

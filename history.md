@@ -1,5 +1,15 @@
 # Website History
 
+## 2026-10-30: Elected QSR Council Member
+
+At the owner's request, the full CV now says Elected Council Member for the
+INFORMS Quality, Statistics, and Reliability (QSR) Section, 2026-2028. Only the
+word Elected was added; the organization, term and existing source comments
+are unchanged. Both PDFs have 10 pages and normalized body comparison confirms
+this is the sole text difference. First-page pixels and all URI destinations
+are unchanged, preserving the compact contact row. Only activities.tex changed
+in the authoritative local source. Evidence: `.local/elected-council/`.
+
 ## 2026-10-30: Compact CV Contact Row
 
 At the owner's request, the full CV now has a single contact row in the order

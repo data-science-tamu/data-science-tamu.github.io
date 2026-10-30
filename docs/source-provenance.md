@@ -248,3 +248,13 @@ the smaller labels share one baseline and affiliation size is unchanged.
 The full CV remains 10 pages, with identical remaining body text. Only main.tex
 changed in the separate source tree; the short CV remains untouched.
 Local and public PDF validation evidence is under `.local/contact-row/`.
+
+## 2026-10-30: Elected QSR Council Member
+
+At the owner's request, the full CV now says Elected Council Member for the
+INFORMS Quality, Statistics, and Reliability (QSR) Section, 2026-2028. Only the
+word Elected was added; the organization, term and existing source comments
+are unchanged. Both PDFs have 10 pages and normalized body comparison confirms
+this is the sole text difference. First-page pixels and all URI destinations
+are unchanged, preserving the compact contact row. Only activities.tex changed
+in the authoritative local source. Evidence: `.local/elected-council/`.
