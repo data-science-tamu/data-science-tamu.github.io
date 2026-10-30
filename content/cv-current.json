@@ -1,6 +1,6 @@
 {
   "path": "public/assets/documents/jaesung-lee-cv.pdf",
-  "bytes": 168247,
-  "sha256": "a2a65e6a73d96bee08cb61fbffe3b3c74625ef8e23d6d460ca847afaa88c1a85",
-  "description": "Owner-approved current 10-page CV, verified 2026-10-30 from authoritative local LaTeX with TeX Live 2025. Header labels LinkedIn, Google Scholar and Research Page link to the exact owner-provided URLs without displaying the addresses. All remaining body text is unchanged, including the ISEN presentation award year 2025 and the Session Chair entry without a scheduled label. Original capture provenance remains immutable."
+  "bytes": 167951,
+  "sha256": "e822c89f7e93221d319eeba771357a744218178220b75b23c61a54b89dcc3fe8",
+  "description": "Owner-approved current 10-page CV, verified 2026-10-30 from authoritative local LaTeX with TeX Live 2025. One 10pt header row reads LinkedIn | Google Scholar | Research Page | Email, with the exact profile URLs and mailto target behind labels only. Affiliation remains 11pt; remaining body is unchanged. Original capture provenance remains immutable."
 }

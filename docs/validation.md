@@ -544,3 +544,12 @@ profile addresses and unchanged remaining body text. Full npm test and all
 the PDF differs in the build, so HTML/CSS/images/news are byte-identical to the
 previously verified release. Evidence: `.local/header-links/`; public acceptance
 requires exact-head CI/Pages success and real downloaded-PDF annotation readback.
+
+## Compact CV Contact Row (2026-10-30)
+
+Parent verified the label order, shared baseline, exact four URI targets and
+nominal 10pt contact size below unchanged 11pt affiliation. Full CV is 10 pages;
+remaining body and other source files are unchanged. Header screenshot passed
+visual inspection. npm test, all 148 individual tests and deterministic build
+passed; only the PDF differs in build output. Exact-head CI and live PDF
+readback evidence are retained under `.local/contact-row/`.

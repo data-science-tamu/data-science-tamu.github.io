@@ -236,3 +236,15 @@ Only main.tex changed in the separate CV source tree. The separate one-page
 source already builds to two pages before this task; it was left unchanged.
 The public full-CV artifact and manifest are synchronized; local and live
 release evidence is retained under `.local/header-links/`.
+
+## 2026-10-30: Compact CV Contact Row
+
+At the owner's request, the full CV now has a single contact row in the order
+LinkedIn, Google Scholar, Research Page, Email. Email is a mailto-linked label,
+not a printed address. All four original URI destinations are preserved.
+The prior contact labels and affiliation were both nominal 11pt; only the
+contact row now uses the existing 10pt cvbody style. Measured PDF text confirms
+the smaller labels share one baseline and affiliation size is unchanged.
+The full CV remains 10 pages, with identical remaining body text. Only main.tex
+changed in the separate source tree; the short CV remains untouched.
+Local and public PDF validation evidence is under `.local/contact-row/`.
