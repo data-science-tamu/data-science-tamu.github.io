@@ -1,6 +1,6 @@
 # Website History
 
-## 2026-11-06: TNNLS Reviewer Journal - Verified Candidate
+## 2026-11-06: TNNLS Reviewer Journal - Published
 
 Added the owner-confirmed IEEE Transactions on Neural Networks and Learning
 Systems immediately below INFORMS Journal on Computing in the full CV reviewer
@@ -8,7 +8,12 @@ list, matching the existing italic/bullet format. Only this item changes the
 body; 10 pages and all links remain intact. Local PDF, website tests/build and
 desktop/mobile browser verification passed. See docs/source-provenance.md and
 docs/validation.md; full evidence is under `.local/tnnls-reviewer/`.
-Main publication and live readback remain pending in plan.md/todo.md.
+Independent artifact review approved the single insertion. Branch CI
+42242407117 and main Pages run 42242941203 passed for content commit
+617cb4842396a8b180bbf9d5475bec7f4beb0d62. Live desktop/mobile, console, accessibility
+and actual downloaded-PDF verification passed. Public PDF SHA-256:
+`e81477423b15ae658c527f6a902b82416d473e93c67b84daaca3fc9f402e98b5`.
+Main is integrated and no release items remain.
 
 ## 2026-10-30: FLATE Date and Collaborator Names - Published
 

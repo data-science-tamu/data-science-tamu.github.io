@@ -605,3 +605,14 @@ errors or axe WCAG A/AA violations; no-JS and print checks passed. The actually
 downloaded local PDF matches its manifest and passes exact body checks. Every
 non-PDF build output remains byte-identical. Evidence: `.local/tnnls-reviewer/`.
 Independent review and public-release receipts are recorded separately at release.
+
+### Public Release Verified
+
+Independent review: APPROVE; both PDF text extractors confirm the sole insertion,
+all 27 URI annotations remain unchanged, and pages 1-9 are pixel-identical at
+144 DPI. Branch CI 42242407117 and main Pages run 42242941203 passed for
+`617cb4842396a8b180bbf9d5475bec7f4beb0d62`. Live browser checks at 1440/390/320 px
+passed; the actually downloaded public PDF passes the exact journal-position,
+single-insertion, 10-page and hash assertions. SHA-256:
+`e81477423b15ae658c527f6a902b82416d473e93c67b84daaca3fc9f402e98b5`.
+Task planning is closed and detailed receipts remain under `.local/tnnls-reviewer/`.
