@@ -1,5 +1,12 @@
 # Academic Website Release Tasks
 
+## CV TNNLS Reviewer Addition - Active
+
+- [x] Add the single journal at the requested position.
+- [x] Verify full CV text, page flow, links and source scope.
+- [ ] Synchronize PDF/manifest; tests/build/browser and independent review.
+- [ ] Commit/push, integrate main, deploy/read back and close history.
+
 ## Publication Presentation
 
 - [x] Remove redundant DOI/Publisher record rows; keep functional title links.

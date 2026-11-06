@@ -274,3 +274,15 @@ standalone CV project. Website synchronization replaces the verified public PDF
 and current manifest, not immutable captures or maintained website HTML content.
 The first-page contact row and Elected Council Member entry are preserved.
 Evidence and before/after source snapshots: `.local/flate-name/`.
+
+## TNNLS Reviewer Journal Addition (2026-11-06)
+
+At the owner's explicit request, the Journal and Conference Reviewer list now
+includes IEEE Transactions on Neural Networks and Learning Systems immediately
+after INFORMS Journal on Computing and before INFORMS Journal on Data Science.
+Only one italicized resumeItem was added to `sections/activities.tex` in the
+standalone CV project. No review date, count or other service claim was inferred.
+The parent rebuilt the full CV, preserving 10 pages, all other text and links,
+and synchronized only the public PDF/current manifest, not immutable captures.
+The short CV does not include activities and is unchanged. Baseline, source
+snapshots and artifact verification are under `.local/tnnls-reviewer/`.

@@ -1,5 +1,14 @@
 # Website Plan
 
+## CV TNNLS Reviewer Addition - Active
+
+Add the owner-confirmed IEEE Transactions on Neural Networks and Learning
+Systems directly after INFORMS Journal on Computing in the full CV reviewer
+list, preserving the existing italic style. Verify the baseline, exact sole
+addition, 10-page layout and all links; synchronize the parent-owned public
+PDF/manifest, run tests/build/browser and independent review, then integrate,
+publish and read back the exact public PDF. No website runtime changes.
+
 ## Publication Presentation - Published
 
 The requested publication links/numbering/highlight and project-index corrections

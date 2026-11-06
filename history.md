@@ -1,5 +1,15 @@
 # Website History
 
+## 2026-11-06: TNNLS Reviewer Journal - Verified Candidate
+
+Added the owner-confirmed IEEE Transactions on Neural Networks and Learning
+Systems immediately below INFORMS Journal on Computing in the full CV reviewer
+list, matching the existing italic/bullet format. Only this item changes the
+body; 10 pages and all links remain intact. Local PDF, website tests/build and
+desktop/mobile browser verification passed. See docs/source-provenance.md and
+docs/validation.md; full evidence is under `.local/tnnls-reviewer/`.
+Main publication and live readback remain pending in plan.md/todo.md.
+
 ## 2026-10-30: FLATE Date and Collaborator Names - Published
 
 The owner-requested FLATE title/date and both Andrew Read-Fuller spellings are

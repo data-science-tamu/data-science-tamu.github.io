@@ -1,6 +1,6 @@
 {
   "path": "public/assets/documents/jaesung-lee-cv.pdf",
-  "bytes": 167982,
-  "sha256": "e8e1fb4d078d461aa65c2b3c9651dff8beddb9d1c9e8abad38a6c87d2824999c",
-  "description": "Owner-approved current 10-page CV, verified 2026-10-30 from authoritative local LaTeX with TeX Live 2025. FLATE webinar uses the supplied From Data Collection to Decision Making title and November 2024 date; both funding records use Andrew Read-Fuller. Exact November 12 date remains source-comment only. Other body text, compact contact row and Elected Council Member entry are unchanged. Original capture provenance remains immutable."
+  "bytes": 168006,
+  "sha256": "e81477423b15ae658c527f6a902b82416d473e93c67b84daaca3fc9f402e98b5",
+  "description": "Owner-approved current 10-page CV, verified 2026-11-06 from authoritative local LaTeX with TeX Live 2025. Adds IEEE Transactions on Neural Networks and Learning Systems immediately after INFORMS Journal on Computing in the journal/conference reviewer list. This is the sole body addition; all prior corrections and URI destinations are unchanged. Original capture provenance remains immutable."
 }

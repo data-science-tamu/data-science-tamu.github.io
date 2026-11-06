@@ -589,3 +589,19 @@ successfully for `974ceea78a76662c845e80d2de3b8946a8996242`. Live browser checks
 three-correction, 10-page and hash assertions. SHA-256:
 `e8e1fb4d078d461aa65c2b3c9651dff8beddb9d1c9e8abad38a6c87d2824999c`.
 Main is integrated and task planning is closed; receipts remain local.
+
+## TNNLS Reviewer Journal Addition (2026-11-06)
+
+TeX Live 2025 baseline and corrected full builds both have 10 pages. Exact body
+comparison confirms the sole addition is IEEE Transactions on Neural Networks
+and Learning Systems directly after INFORMS Journal on Computing. Only page 10
+changes in the raster comparison; its reviewer list and following patent entry
+passed visual review. All URI destinations are preserved. The source manifest
+confirms only activities.tex changed; the separate short CV is untouched.
+
+`npm test`, all 148 individual tests, deterministic build and local browser
+checks passed. News/home/CV routes at 1440/390/320 px have no overflow, console
+errors or axe WCAG A/AA violations; no-JS and print checks passed. The actually
+downloaded local PDF matches its manifest and passes exact body checks. Every
+non-PDF build output remains byte-identical. Evidence: `.local/tnnls-reviewer/`.
+Independent review and public-release receipts are recorded separately at release.
