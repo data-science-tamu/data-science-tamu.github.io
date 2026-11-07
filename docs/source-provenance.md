@@ -441,3 +441,34 @@ guard validates the exact single record at index zero before removing only that
 record for historical comparisons; original hashes/fixtures and all 243 source
 paragraph checks remain intact. Parent-owned independent QA and release remain
 separate from this content addition.
+
+## Owner-Supplied QSR News Photos
+
+The owner supplied three original JPEGs. The parent read their slide wording
+and provided the following exact mapping; it does not depend on identifying
+people by their faces. All three files remain native 1536 x 1152 images, copied
+byte-for-byte without cropping, resizing, recompression or other processing.
+
+| Source Filename | Public Image under public/assets/images/ | Existing News Date | Bytes | SHA-256 |
+| --- | --- | --- | --- | --- |
+| img_13780f6e66c5.jpeg | qsr-2026-student-paper-finalists.jpg | 2026.11.01 | 186414 | 3d2a878d5c3b295d1109f921449ff7d2223a4f8f6ba918406c06e247e0e4e21b |
+| img_e342af444ecc.jpeg | qsr-2026-council-election.jpg | 2026 | 147722 | cc083b7ca14b1ad6abb7e3eced8c58db82fa92053fd8ee3a9871191955c51405 |
+| img_90a06d9956a6.jpeg | qsr-2026-webinar-speakers.jpg | 2026.10.21 | 151782 | 6a9b0da8c58b17de284a247de125c97d8383c7b51dc937eddf0ee0ce24cb126b |
+
+Visible slide wording, as read by the parent:
+
+- Finalists: Best Student Paper Competition Finalists; Tatthapong Srikitrungruang,
+  Texas A&M; probabilistic physics-informed neural networks paper. No winner claim.
+- Council: Elected 2026 - Terms Begin in Oct 2026; Dr. Jaesung Lee, Texas A&M;
+  QSR Council Member. No election day is inferred or added.
+- Webinar: QSR Academic Webinar Series; Dr. Jaesung Lee, Texas A&M; Oct 2026.
+
+Only these three existing News image arrays change. The webinar speakers photo
+is appended after the unchanged acknowledgement; the recording and PDF remain,
+and no inline flyer is restored. The historical no-image descriptions above
+are superseded only for the named Council and finalist entries. Dates, wording,
+links, record order and all other content remain unchanged. Existing rendering
+supplies direct full-size links, dimensions and alt text; Home News stays
+text-only. One strict test-only photo normalizer validates the complete delta
+before earlier Council/baseline normalization. Original hashes and fixtures
+remain unchanged. Independent QA and release remain parent-owned.

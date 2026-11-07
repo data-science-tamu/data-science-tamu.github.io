@@ -8,6 +8,7 @@ import { imageRenderer } from "../src/helpers.mjs";
 import { assertNewsBaseline } from "./source-baseline.mjs";
 import { normalizePresentationForBaseline } from "./news-expectations.mjs";
 import { normalizeRefreshNewsForBaseline } from "./refresh-expectations.mjs";
+import { newsPhotos } from "./news-photo-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
@@ -27,7 +28,7 @@ test("one preserved Tatthapong finalist item uses only the approved wording and 
     date: "2026.11.01",
     html: approvedHtml,
     text: approvedText,
-    images: [],
+    images: [newsPhotos[1].src],
   });
   assert.match(matches[0].text, /was selected as a finalist/);
   assert.match(matches[0].text, /will present this work/);
@@ -54,7 +55,8 @@ for (const route of ["/news/", "/"]) {
     const articles = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map((match) => match[0]);
     assert.ok(articles[1].includes(`<p>${approvedHtml}</p>`));
     assert.match(articles[1], /<time datetime="2026-11-01">2026\.11\.01<\/time>/);
-    assert.doesNotMatch(articles[1], /<img\b|news-photos/);
+    if (route === "/") assert.doesNotMatch(articles[1], /<img\b|news-photos/);
+    else assert.ok(articles[1].includes("<img src=\"" + newsPhotos[1].src + "\""));
     assert.equal(articles.join("").split(`<a href="${announcement}">`).length - 1, 1);
     const expected = route === "/" ? lab.news.slice(0, 3) : lab.news;
     assert.equal(articles.length, expected.length);

@@ -1,5 +1,13 @@
 # Academic Website Release Tasks
 
+## QSR News Photos
+
+- [x] Add attachment 1 to Tatthapong finalist News (2026.11.01).
+- [x] Add attachment 2 to Council News (2026).
+- [x] Append attachment 3 to webinar News (2026.10.21), retaining existing media.
+- [x] Verify original bytes, preservation, tests/build/browser and independent review.
+- [ ] Commit/push/CI, integrate main, deploy/live readback and close history.
+
 ## QSR Council Election News
 
 - [x] Verify exact role/term against supplied CV; do not infer election date.

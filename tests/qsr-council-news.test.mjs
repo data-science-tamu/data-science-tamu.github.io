@@ -7,6 +7,7 @@ import { createPages } from "../src/templates.mjs";
 import { imageRenderer, rich } from "../src/helpers.mjs";
 import { councilNews, normalizeCouncilNewsForBaseline } from "./council-expectations.mjs";
 import { refresh } from "./refresh-expectations.mjs";
+import { newsPhotos, normalizeNewsPhotosForBaseline } from "./news-photo-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = file => fs.readFileSync(path.join(root, file), "utf8");
@@ -27,7 +28,7 @@ function assertOnlyCouncilAddition(data) {
 test("one newest Council News record states only the owner-confirmed election and CV term", () => {
   normalizeCouncilNewsForBaseline(lab.news);
   assert.equal(lab.news.length, 18);
-  assert.deepEqual(lab.news[0], councilNews);
+  assert.deepEqual(lab.news[0], { ...councilNews, images: [newsPhotos[0].src] });
   assert.equal(rich(lab.news[0].html).replace(/<[^>]*>/g, ""), lab.news[0].text);
   assert.equal(lab.faculty.service.filter(item => item ===
     "Elected Council Member, INFORMS Quality, Statistics, and Reliability (QSR) Section, 2026\u20132028").length, 1);
@@ -44,12 +45,13 @@ test("all 17 prior News records retain their exact bytes, order and non-News dat
   assert.deepEqual(lab.news, before, "The test-only normalizer never mutates maintained News");
   assert.equal(historical.length, 17);
   assert.equal(sha256(JSON.stringify(historical)), baselineNewsSha256);
-  assert.deepEqual(historical, lab.news.slice(1));
+  assert.deepEqual(historical, normalizeNewsPhotosForBaseline(lab.news).slice(1));
+  const normalizedText = JSON.stringify({ ...lab, news: normalizeNewsPhotosForBaseline(lab.news) }, null, 2) + "\n";
   const block = JSON.stringify(councilNews, null, 2).split("\n")
     .map(line => "    " + line).join("\n") + ",\n";
   const prefix = '  "news": [\n';
-  assert.ok(labText.includes(prefix + block), "Only the approved block is prepended without rewriting existing JSON");
-  assert.equal(sha256(labText.replace(prefix + block, prefix)), baselineRawSha256,
+  assert.ok(normalizedText.includes(prefix + block), "Only the approved block is prepended after reversing the photo delta");
+  assert.equal(sha256(normalizedText.replace(prefix + block, prefix)), baselineRawSha256,
     "Removing the exact new block restores every prior file byte, not just JSON values");
 });
 
@@ -96,7 +98,7 @@ for (const [name, mutate] of Object.entries(baselineMutations)) {
     assertOnlyCouncilAddition(lab);
     const data = structuredClone(lab);
     mutate(data);
-    assert.throws(() => assertOnlyCouncilAddition(data), /entire prior lab JSON baseline/);
+    assert.throws(() => assertOnlyCouncilAddition(data), /entire prior lab JSON baseline|photo delta/);
   });
 }
 
@@ -112,9 +114,9 @@ for (const route of ["/", "/news/"]) {
     const council = articles[0];
     assert.ok(council.includes('<span class="news-date">2026</span>'));
     assert.equal(body.split("<p>" + councilNews.html + "</p>").length - 1, 1);
-    assert.equal((council.match(/<a\b/g) || []).length, 1);
+    assert.equal((council.match(/<a\b/g) || []).length, route === "/" ? 1 : 2);
     assert.ok(council.includes('<a href="https://connect.informs.org/qsr/officers">INFORMS Quality, Statistics, and Reliability (QSR) Section</a>'));
-    assert.doesNotMatch(council, /<img\b|news-photos|<time\b|_comment|<!--|2026[.-]\d{2}|November 2|election announcement/i);
+    assert.doesNotMatch(council, /<time\b|_comment|<!--|2026[.-]\d{2}|November 2|election announcement/i);
     assert.match(articles[1], /<time datetime="2026-11-01">2026\.11\.01<\/time>/);
     assert.match(articles[2], /<time datetime="2026-10-21">2026\.10\.21<\/time>/);
     assert.deepEqual(lab.news[3], refresh.newsAddition.record, "The grant record remains exact at index 3");

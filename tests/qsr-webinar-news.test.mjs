@@ -6,6 +6,7 @@ import { createHash } from "node:crypto";
 import { createPages } from "../src/templates.mjs";
 import { dimensions, imageRenderer } from "../src/helpers.mjs";
 import { normalizeRefreshForBaseline } from "./refresh-expectations.mjs";
+import { newsPhotos, normalizeNewsPhotosForBaseline } from "./news-photo-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
@@ -23,7 +24,7 @@ const approved = {
   html: text.replace("YouTube", `<a href="${recording}">YouTube</a>`)
     .replace("Webinar flyer (PDF)", `<a href="${flyerPdf}">Webinar flyer (PDF)</a>`),
   text,
-  images: [acknowledgement],
+  images: [acknowledgement, newsPhotos[2].src],
 };
 const assets = [
   { src: flyerImage, width: 1487, height: 1925, bytes: 641693,
@@ -41,7 +42,8 @@ function assertWebinarNews(data) {
   assert.deepEqual(matches[0], approved, "Only the approved webinar facts, links and native images");
   assert.equal(data.news.length, 18);
   assert.equal(data.news[2], matches[0], "The webinar follows the existing finalist");
-  assert.deepEqual(data.news[1], before.news[0], "The finalist after Council remains exact and has no images");
+  assert.deepEqual(normalizeNewsPhotosForBaseline(data.news)[1], before.news[0],
+    "The finalist after Council remains exact after reversing only the approved photo");
   assert.equal(data.news[3].date, "2026.09.04", "The combined grant entry follows the webinar");
   assert.equal(data.news[4].date, "2026.05.16", "The grant entry precedes the May 16 record");
 }
@@ -146,7 +148,8 @@ for (const route of ["/", "/news/"]) {
     const articles = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map((match) => match[0]);
     assert.equal(articles.length, route === "/" ? 3 : 18);
     assert.ok(articles[1].includes(`<p>${before.news[0].html}</p>`));
-    assert.doesNotMatch(articles[1], /<img\b|news-photos/);
+    if (route === "/") assert.doesNotMatch(articles[1], /<img\b|news-photos/);
+    else assert.ok(articles[1].includes("<img src=\"" + newsPhotos[1].src + "\""));
     const item = articles[2];
     assert.doesNotMatch(item, /View the webinar flyer and QSR acknowledgement photo|qsr-webinar-2026-10-21-flyer\.jpg/,
       `${route}: redundant sentence and inline flyer are removed`);
@@ -162,7 +165,7 @@ for (const route of ["/", "/news/"]) {
       assert.match(item, /id="news-2026-10-21"/);
       const images = [...item.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]);
       assert.deepEqual(images.map((image) => image.match(/\bsrc="([^"]+)"/)[1]), approved.images);
-      for (const [index, asset] of [assets[1]].entries()) {
+      for (const [index, asset] of [assets[1], newsPhotos[2]].entries()) {
         assert.ok(images[index].includes(`width="${asset.width}" height="${asset.height}"`));
         assert.ok(images[index].includes(`style="--image-width: ${asset.width}px"`));
         assert.match(images[index], /alt="[^"]+"/);

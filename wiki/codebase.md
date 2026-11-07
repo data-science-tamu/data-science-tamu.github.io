@@ -193,3 +193,7 @@ See [photo provenance](../docs/source-provenance.md#informs-2026-lab-photo).
 ## QSR Council Election News
 
 The owner-confirmed council announcement is one maintained `content/lab.json` News record. Its year-only date deliberately uses the existing semantic-date renderer without claiming an election day. Role/term provenance is in `docs/source-provenance.md`; regression tests must validate the exact new record before excluding only that record from historical comparisons. The existing shared News renderer displays it on News and in Home's three latest entries. No new UI, assets or runtime behavior are introduced.
+
+## QSR News Photos
+
+Three owner-supplied original JPEGs are attached through the existing `news[].images` arrays in `content/lab.json`: `qsr-2026-student-paper-finalists.jpg` for 2026.11.01, `qsr-2026-council-election.jpg` for 2026, and `qsr-2026-webinar-speakers.jpg` after the existing acknowledgement for 2026.10.21. They live under `public/assets/images/`. The existing News renderer supplies responsive inline photos, descriptive alt text and direct original-image links; Home remains text-only. No template, style or JavaScript changes are needed. Source mappings and hashes are in [source provenance](../docs/source-provenance.md); parent browser/source-preservation evidence is recorded in [validation](../docs/validation.md).

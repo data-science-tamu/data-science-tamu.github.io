@@ -924,21 +924,26 @@
       "date": "2026",
       "html": "Dr. Lee was elected as a Council Member of the <a href=\"https://connect.informs.org/qsr/officers\">INFORMS Quality, Statistics, and Reliability (QSR) Section</a> for the 2026–2028 term.",
       "text": "Dr. Lee was elected as a Council Member of the INFORMS Quality, Statistics, and Reliability (QSR) Section for the 2026–2028 term.",
-      "images": [],
+      "images": [
+        "/assets/images/qsr-2026-council-election.jpg"
+      ],
       "sourceSection": null
     },
     {
       "date": "2026.11.01",
       "html": "Ph.D. student Tatthapong Srikitrungruang was selected as a finalist in the <a href=\"https://connect.informs.org/discussion/informs-2026-best-student-paper-competition-finalists\">2026 INFORMS QSR Best Student Paper Competition</a>. Tatthapong will present this work at the 2026 INFORMS Annual Meeting in San Francisco. Congratulations, Tatthapong!",
       "text": "Ph.D. student Tatthapong Srikitrungruang was selected as a finalist in the 2026 INFORMS QSR Best Student Paper Competition. Tatthapong will present this work at the 2026 INFORMS Annual Meeting in San Francisco. Congratulations, Tatthapong!",
-      "images": []
+      "images": [
+        "/assets/images/qsr-2026-student-paper-finalists.jpg"
+      ]
     },
     {
       "date": "2026.10.21",
       "html": "Dr. Lee presented \"Robust Inference of Unseen Heterogeneous Physical Properties from Imperfect Data: A Unified Probabilistic Physics-Informed Machine Learning Framework\" as part of the INFORMS QSR Webinar Series. Watch the recording on <a href=\"https://youtu.be/SUy7JjjuqcM\">YouTube</a>. <a href=\"/assets/documents/qsr-webinar-2026-10-21-flyer.pdf\">Webinar flyer (PDF)</a>.",
       "text": "Dr. Lee presented \"Robust Inference of Unseen Heterogeneous Physical Properties from Imperfect Data: A Unified Probabilistic Physics-Informed Machine Learning Framework\" as part of the INFORMS QSR Webinar Series. Watch the recording on YouTube. Webinar flyer (PDF).",
       "images": [
-        "/assets/images/qsr-2026-acknowledgement.jpg"
+        "/assets/images/qsr-2026-acknowledgement.jpg",
+        "/assets/images/qsr-2026-webinar-speakers.jpg"
       ]
     },
     {

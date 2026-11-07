@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { normalizeNewsPhotosForBaseline } from "./news-photo-expectations.mjs";
 
 const organization = "INFORMS Quality, Statistics, and Reliability (QSR) Section";
 const text = "Dr. Lee was elected as a Council Member of the " + organization + " for the 2026\u20132028 term.";
@@ -12,6 +13,7 @@ export const councilNews = {
 
 // Validate the exact owner-approved addition before historic baseline comparisons.
 export function normalizeCouncilNewsForBaseline(news) {
+  news = normalizeNewsPhotosForBaseline(news);
   const matches = news.filter(item => item.date === councilNews.date ||
     /Council Member|connect\.informs\.org\/qsr\/officers/.test(JSON.stringify(item)));
   assert.equal(matches.length, 1, "Exactly one approved Council News record");

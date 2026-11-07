@@ -1,5 +1,9 @@
 # Website Plan
 
+## QSR News Photos - Active
+
+Add three original JPEGs to existing Tatthapong finalist, Council election and webinar News. Preserve all wording, dates, order and existing media. Reuse current rendering; no runtime/style edits. Sol/max worker owns content/assets/tests; parent owns independent QA/review/release. Verify exact source bytes, only three image-array changes, prior data/assets preserved, full tests/build and desktop/mobile/accessibility. Then commit/push/CI, integrate main, deploy/read back and close history.
+
 ## QSR Council Election News - Published
 
 The Council Member election News is integrated and publicly verified on News and Home. Completed work is in history.md; provenance and validation are in docs/source-provenance.md and docs/validation.md. No task-specific item remains open.
