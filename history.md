@@ -544,4 +544,8 @@ parent QA passed. Shared home copy was corrected test-first to link directly to
 the News photos rather than promise absent images below. Final independent
 review approved; full tests157/157, native QA27pages/89targets and keyboard
 navigation at1440/390/320 passed.
-Release remains open in plan.md/todo.md; measured evidence is in docs/validation.md.
+Release verified: implementation0304f28, branch CI42336173060 and main Pages
+42336211310 succeeded. HTTPS readback matched all58 build files exactly; live
+home/News passed6 viewport checks and30 local targets with no failures. No task
+gate remains; measured evidence is in docs/validation.md. Subsequent closeout
+edits are documentation-only and do not change public build bytes.

@@ -635,3 +635,11 @@ Task planning is closed and detailed receipts remain under `.local/tnnls-reviewe
 - Final parent Chromium QA: 27 page checks/89 local targets, no failures. Keyboard Enter from home reaches the matching News anchor and two photos at1440/390/320. No-JS, print, 200% text, axe, console and asset checks pass. Evidence: qa-final/results.json and home-photo-flow.json.
 - Independent initial review deleg_4fb2fe14 found only that copy issue. Narrow final review deleg_40a13d8d returned APPROVE after rendering both routes, confirming the target, and rerunning22 focused tests; no other blocking findings.
 - Exact prior-News/non-News/build preservation and native asset hashes remain unchanged. Commit/push, integration, Pages and live readback are the remaining gates, not claimed complete here.
+
+### QSR Webinar: Public Release Verified
+
+- Implementation commit: 0304f28b9af7c23c521c54333917dc5f1cba8fce. Exact-head branch CI [42336173060](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/42336173060) passed; clean primary main fast-forwarded and remote main read back at the same SHA.
+- Main Pages [42336211310](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/42336211310) succeeded. Public https://data-science-tamu.github.io/news/#news-2026-10-21 renders the October 21 record, its two native photos and YouTube/PDF links. Existing Tatthapong news remains first, once, without an acknowledgement photo.
+- Actual HTTPS readback: all58 build files byte-identical (including both images, PDF, News/home and preserved content). Evidence .local/qsr-webinar/live-integrity.json.
+- Public Chromium: home/News at1440/390/320, 6 page checks and30 local targets, no failures. Accessibility, console, image loading, keyboard focus/image opening, no-JS, print and200% text passed; evidence qa-live/results.json and screenshots.
+- QSR plan/todo items are closed. Original Google Sites, separate Research preview, CV, original captures and site code/styles remain untouched. Closeout changes only planning/history/validation text; generated public bytes are unchanged.

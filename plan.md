@@ -1,12 +1,14 @@
 # Website Plan
 
-## QSR Webinar News - Verified; Release Pending
+## QSR Webinar News - Published
 
-Implementation, source/native-asset preservation, 157 tests, build, final native
-QA (27 page checks/89 targets), keyboard photo navigation and independent review
-are complete. Completed implementation and evidence are in history.md and
-docs/validation.md. Only task commit/push, main integration, Pages deployment
-and live readback remain. Separate local Research preview stays untouched.
+The October 21 webinar, recording, flyer JPEG/PDF and acknowledgement photo are
+integrated into primary main and published. Tatthapong's existing finalist item
+is preserved without duplication. Final tests/build, independent review, branch
+CI, Pages deployment, all58-file HTTPS readback and live desktop/mobile checks
+passed. No task-specific implementation/release gate remains. Evidence and
+completed work are in history.md and docs/validation.md. Separate local Research
+preview remains untouched; baseline6e8c253 is retained in Git for reviewed revert.
 
 ## Publication Presentation - Published
 
