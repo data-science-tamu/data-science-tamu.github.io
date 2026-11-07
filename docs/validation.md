@@ -679,3 +679,19 @@ Task planning is closed and detailed receipts remain under `.local/tnnls-reviewe
   harness was corrected to use an explicit browser context required by axe;
   no production change was required. Evidence: qa-local/results.json and
   gallery screenshots under .local/informs-photo/.
+
+### Public Release Verified
+
+- Independent review deleg_8af69089: APPROVE, no blockers; reviewer independently
+  confirmed original bytes, baseline hashes, exact one-record scope and focused tests.
+- Implementation bf9aade00aab688da7900d9bd2d40e89314fd0a0 passed branch CI
+  [42378902043](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/42378902043).
+  Primary main fast-forwarded, remote main read back at the same SHA, and
+  [Pages 42378950973](https://github.com/data-science-tamu/data-science-tamu.github.io/actions/runs/42378950973) succeeded.
+- Actual HTTPS readback matched all 59 generated files exactly, including the
+  supplied original JPEG and the People gallery HTML. Public browser QA at
+  1440/390/320 passed: 3 page checks, 21 local targets, no console/accessibility
+  failures, and intact no-JS/print rendering. Evidence: live-integrity.json and
+  qa-live/results.json under .local/informs-photo/.
+- Final closeout modifies only plan/todo/history/validation; public build bytes
+  remain unchanged. Task is complete; existing consideration-only items are unrelated.

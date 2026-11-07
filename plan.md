@@ -1,11 +1,12 @@
 # Website Plan
 
-## INFORMS 2026 Lab Photo - Release Pending
+## INFORMS 2026 Lab Photo - Published
 
-The original JPEG and matching caption are implemented and locally verified.
-Completed implementation is in history.md; measured QA is in docs/validation.md.
-Final independent review, branch CI, main integration and live deployment
-readback remain. Only the People gallery changes; other previews stay untouched.
+The original photo and matching caption are integrated into primary main and
+published. Tests/build, independent review, desktop/mobile/accessibility,
+exact-head Pages and all 59 public-file readbacks passed. No task-specific
+item remains open. Completed work: history.md; evidence: docs/validation.md.
+Only the People gallery changed; separate previews remain untouched.
 
 ## QSR Webinar News - Published
 

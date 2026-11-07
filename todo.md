@@ -4,7 +4,7 @@
 
 - [x] Add native JPEG and caption with focused regression checks.
 - [x] Parent: verify tests/build/preservation and desktop/mobile/accessibility.
-- [ ] Parent: commit/push, integrate main, deploy and read back live photo.
+- [x] Parent: commit/push, integrate main, deploy and read back live photo.
 
 
 ## QSR Webinar News

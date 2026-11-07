@@ -559,4 +559,7 @@ are unchanged; only people/index.html and the new asset differ in the build.
 Sol/max authored the patch/tests; parent applied them through its approval flow.
 Focused RED (3 expected failures) became 4/4 GREEN; full suite 161/161, build,
 original-content preservation and desktop/mobile accessibility checks passed.
-Release gates remain in plan.md/todo.md until independently reviewed and live.
+Independent review deleg_8af69089 approved. Implementation bf9aade00aab688da7900d9bd2d40e89314fd0a0
+passed branch CI 42378902043 and main Pages 42378950973. All 59 public build
+files matched exactly. Live People gallery passed the same 3 viewport and
+21 target checks. No task-specific item remains open.
