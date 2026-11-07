@@ -596,3 +596,13 @@ Parent210tests/build, independent review deleg_cdc186cd APPROVE,8local and8live 
 ### Completed Plan
 
 Add one owner-requested News item from CV page8: elected Council Member, INFORMS Quality, Statistics, and Reliability (QSR) Section, 2026-2028. No exact election day/month is evidenced, so render year2026 only. Official officers page is contextual, not election-date proof. Preserve all17 existing entries exactly and in order. Smallest change is one data record with strict regression tests and provenance; no templates/CSS/JS/assets/CV changes. Sol/max authors content/tests; parent verifies, reviews, integrates and deploys.
+
+## QSR News Photos - Published
+
+Implementation `7d769ba7a45a4c301cbcdffbb2cdfa73585325a8` is integrated into primary main and publicly deployed. Three unchanged original JPEGs are attached to Tatthapong finalist (2026.11.01), Council election (2026), and webinar (2026.10.21) News. The third follows the existing acknowledgement. All wording/dates/order, recording/PDF links, existing assets and other pages are preserved. No runtime code or styling changed.
+
+Parent 231 tests/build, independent review `deleg_66d3141c` APPROVE, source-byte and 72-file immutable checks passed. Task CI `42389717362` and Pages `42389761232` succeeded at the exact implementation SHA. All 64 live files matched build bytes. Live Home/News repeated eight checks over 1440/768/390/320px and 33 targets/fragments, with keyboard original-photo navigation, no-JavaScript/print support, no overflow/console errors/axe violations. No implementation or release gate remains for the request.
+
+### Completed Plan
+
+Add three original JPEGs to existing Tatthapong finalist, Council election and webinar News. Preserve all wording, dates, order and existing media. Reuse current rendering; no runtime/style edits. Sol/max worker owns content/assets/tests; parent owns independent QA/review/release. Verify exact source bytes, only three image-array changes, prior data/assets preserved, full tests/build and desktop/mobile/accessibility. Then commit/push/CI, integrate main, deploy/read back and close history.

@@ -6,7 +6,7 @@
 - [x] Add attachment 2 to Council News (2026).
 - [x] Append attachment 3 to webinar News (2026.10.21), retaining existing media.
 - [x] Verify original bytes, preservation, tests/build/browser and independent review.
-- [ ] Commit/push/CI, integrate main, deploy/live readback and close history.
+- [x] Commit/push/CI, integrate main, deploy/live readback and close history.
 
 ## QSR Council Election News
 
