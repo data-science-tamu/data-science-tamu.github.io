@@ -727,3 +727,9 @@ Task planning is closed and detailed receipts remain under `.local/tnnls-reviewe
 - All17 previous News entries and ALL non-News data are exact. Removing only the approved new record also restores the original lab JSON bytes. All captured sources and frozen test fixtures are unchanged. Of61 built files,59 remain byte-identical; only Home and News HTML differ. No source-code/CSS/JS/assets/PDF changes.
 - Native Chromium Home/News at1440,768,390,320px:8page checks,30local targets/fragments, no overflow, console errors or axe WCAG A/AA violations. No-JavaScript and print checks passed; desktop/mobile screenshots visually reviewed. New Council item precedes Tatthapong and webinar in Home; all18News items and previousgrant/photos remain onNews.
 - Evidence: .local/council/parent-tests.log, worker-red.log, worker-focused-red.log, preservation.json, qa-local/results.json and screenshots. Parent browser pre-change check failed on the old first item as expected; post-change browser passed after aligning the harness with actual existing date markup. RemoteCI/Pages/live readback remain release gates at this checkpoint.
+
+### QSR Council Public Release
+
+- Implementation d00ed5f60315b0a64219044646f3fab10851dbe6; exact-head branchCI42384144524 and mainPages42384228294 both success, remote main SHA read back and matched.
+- All61 public files fetched by HTTPS and matched local build bytes. Public Home/News repeated8checks across1440/768/390/320px and30targets/fragments; no overflow, JSconsole error or axe violation. Year-only date, correct term, contextual officers link, preserved oldrecords, no-JS and print all passed.
+- Parent pypdf extraction independently confirmed the exact Council role/term is on PDFpage8, resolving worker pagination diagnostic limitations without changing the PDF. Evidence: .local/council/pdf-page-proof.json, live-integrity.json, qa-live/results.json, pages-ci.log. Planning/history and release checklist closed.

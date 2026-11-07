@@ -414,7 +414,7 @@ parent-owned; this section is not a deployment-success record.
 ## Owner-Confirmed QSR Council Election News
 
 The owner explicitly confirmed the election and requested one News addition.
-Page 8 of the owner-supplied CV (`.local/council/cv.txt`) states
+Page 8 of the owner-supplied [CV](../public/assets/documents/jaesung-lee-cv.pdf) (local extraction: `.local/council/cv.txt`) states
 "Elected Council Member, INFORMS Quality, Statistics, and Reliability (QSR)
 Section, 2026–2028"; this role and term already appear exactly once in
 `faculty.service[0]` and are not added again as service or an award.

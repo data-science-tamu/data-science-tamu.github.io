@@ -5,7 +5,7 @@
 - [x] Verify exact role/term against supplied CV; do not infer election date.
 - [x] Worker: test-first one year-only News entry, preserve all17 existing records and every other field.
 - [x] Parent: tests/build, News/Home responsive/console/accessibility/links, independent review.
-- [ ] Parent: commit/push, main integration, Pages/live readback and history closeout.
+- [x] Parent: commit/push, main integration, Pages/live readback and history closeout.
 
 
 ## CV, News and People Refresh

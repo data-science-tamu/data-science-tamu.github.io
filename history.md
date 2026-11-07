@@ -585,3 +585,14 @@ Sol/max authors implementation; parent owns independent QA/release. Verification
 includes CV text/links, source-fidelity tests, deterministic build, keyboard/touch,
 responsive/no-JS/print/reduced-motion, console and accessibility, links/assets,
 branch CI, main integration, Pages and exact live readback.
+
+
+## QSR Council Election News - Published
+
+Implementation d00ed5f60315b0a64219044646f3fab10851dbe6 is integrated into primary main and publicly deployed. One owner-confirmed Council Member announcement for the2026-2028 INFORMS QSR term uses year2026 only and a contextual officers link. News has18 records; Home keeps its three latest items. All17 prior records, their order, every non-News field, source capture, frozen fixture, asset, CV and application code remain exact.
+
+Parent210tests/build, independent review deleg_cdc186cd APPROVE,8local and8live page/viewport checks,30targets, no-JavaScript/print/axe/console and61-file exact HTTPS readback passed. Exact-head task CI42384144524 and Pages42384228294 succeeded. The parent independently extracted the exact role/term from publicCV page8 (.local/council/pdf-page-proof.json). No release gate remains for this request.
+
+### Completed Plan
+
+Add one owner-requested News item from CV page8: elected Council Member, INFORMS Quality, Statistics, and Reliability (QSR) Section, 2026-2028. No exact election day/month is evidenced, so render year2026 only. Official officers page is contextual, not election-date proof. Preserve all17 existing entries exactly and in order. Smallest change is one data record with strict regression tests and provenance; no templates/CSS/JS/assets/CV changes. Sol/max authors content/tests; parent verifies, reviews, integrates and deploys.
