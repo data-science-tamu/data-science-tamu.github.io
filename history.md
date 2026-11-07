@@ -549,3 +549,14 @@ Release verified: implementation0304f28, branch CI42336173060 and main Pages
 home/News passed6 viewport checks and30 local targets with no failures. No task
 gate remains; measured evidence is in docs/validation.md. Subsequent closeout
 edits are documentation-only and do not change public build bytes.
+
+## INFORMS 2026 Lab Photo
+
+Appended the owner-supplied San Francisco photo after the existing 2024/2025
+gallery entries, with the same caption format and existing responsive renderer.
+Original 6560 x 4928 JPEG bytes are preserved. All other lab content and assets
+are unchanged; only people/index.html and the new asset differ in the build.
+Sol/max authored the patch/tests; parent applied them through its approval flow.
+Focused RED (3 expected failures) became 4/4 GREEN; full suite 161/161, build,
+original-content preservation and desktop/mobile accessibility checks passed.
+Release gates remain in plan.md/todo.md until independently reviewed and live.

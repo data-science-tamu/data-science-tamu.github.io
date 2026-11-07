@@ -48,9 +48,24 @@ function assertWebinarNews(data) {
 function assertPreserved(data) {
   const historical = data.news.filter((item) => item.date !== approved.date);
   assert.deepEqual(historical, before.news, "All 15 prior records and their order remain exact");
-  const { news, ...other } = data;
+  assert.deepEqual(data.people.photos, [
+    {
+      src: "/assets/images/people-1-c060cdafd7.jpg",
+      caption: "INFORMS Annual Meeting 2024 (Seattle, WA)",
+    },
+    {
+      src: "/assets/images/people-2-c9f2346674.jpg",
+      caption: "INFORMS Annual Meeting 2025 (Atlanta, GA)",
+    },
+    {
+      src: "/assets/images/informs-2026-san-francisco.jpg",
+      caption: "INFORMS Annual Meeting 2026 (San Francisco, CA)",
+    },
+  ], "Only the exact approved photo addition is allowed");
+  const { news, ...other } = structuredClone(data);
+  other.people.photos.pop();
   assert.equal(sha256(JSON.stringify(other)), before.nonNewsSha256,
-    "All non-News lab data remain exact");
+    "All historic non-News lab data remain exact");
 }
 
 test("one October 21 webinar uses the official full title and ordinary recording/PDF links after the unchanged finalist", () => {

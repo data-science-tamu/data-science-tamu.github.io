@@ -643,3 +643,39 @@ Task planning is closed and detailed receipts remain under `.local/tnnls-reviewe
 - Actual HTTPS readback: all58 build files byte-identical (including both images, PDF, News/home and preserved content). Evidence .local/qsr-webinar/live-integrity.json.
 - Public Chromium: home/News at1440/390/320, 6 page checks and30 local targets, no failures. Accessibility, console, image loading, keyboard focus/image opening, no-JS, print and200% text passed; evidence qa-live/results.json and screenshots.
 - QSR plan/todo items are closed. Original Google Sites, separate Research preview, CV, original captures and site code/styles remain untouched. Closeout changes only planning/history/validation text; generated public bytes are unchanged.
+
+## INFORMS 2026 Lab Photo
+
+- Baseline: 000f413e1074bdf1873f5e24c2aeb1d5b157c385. Scope: append one
+  owner-supplied San Francisco photo in the existing People gallery format.
+- Original JPEG: 6560 x 4928, 1040397 bytes; SHA-256
+  77138f39611d0e0e0bfa44d12e1736a96a1518b14f7b9ae0e73bdd33ad0f4fcc.
+- Implementation author: gpt-6.1-sol, reasoning max; session runtime evidence
+  recorded in .local/informs-photo/worker-runtime.json. Parent applies reviewed
+  worker-authored scripts through its approval flow and owns QA/release.
+- Worker interruption: the original image exceeded the model patch limit
+  (31570 > 30000), before any production edit. A local 1600 x 1202 inspection
+  copy avoids resending the original to vision; public asset keeps exact bytes.
+  Noninteractive script-approval blocks were not disabled; the parent executes
+  the authored changes via its normal approval flow.
+- Focused RED: 4 tests, 1 passed and 3 expected failures (missing record, missing
+  JPEG, missing third rendered figure). Log: .local/informs-photo/worker-red.log.
+- Remaining gates: full GREEN/build, preservation, browser QA, final review,
+  branch CI, main integration, Pages success and exact public readback.
+
+### Local Gates Passed
+
+- Parent ran focused tests: 4/4; npm test: 161/161; npm run build and
+  git diff --check passed. Existing deterministic-build/source-coverage tests
+  remain enabled. Logs: .local/informs-photo/full-green.log.
+- Preservation: all 58 baseline build files are identical except
+  people/index.html; the sole new file is the exact supplied JPEG. Removing
+  only the new photo record restores the complete baseline lab object.
+- Actual Chromium on /people/ at 1440, 390 and 320 px: three correctly ordered
+  native images, matching caption/alt, no cropping or horizontal overflow,
+  zero console errors and zero WCAG A/AA axe violations; 21 local link/asset
+  targets returned HTTP 200. No-JS and print retain all three photos.
+- Gallery screenshots visually checked at 1440 and 390 px. The temporary QA
+  harness was corrected to use an explicit browser context required by axe;
+  no production change was required. Evidence: qa-local/results.json and
+  gallery screenshots under .local/informs-photo/.

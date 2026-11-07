@@ -345,3 +345,21 @@ The parent rebuilt the full CV, preserving 10 pages, all other text and links,
 and synchronized only the public PDF/current manifest, not immutable captures.
 The short CV does not include activities and is unchanged. Baseline, source
 snapshots and artifact verification are under `.local/tnnls-reviewer/`.
+
+## INFORMS 2026 Lab Photo
+
+The owner supplied `img_f27ebcba1cc5.jpeg` and identified the event as the
+INFORMS Annual Meeting 2026 in San Francisco, CA. It is copied byte-for-byte to
+`public/assets/images/informs-2026-san-francisco.jpg`: 6560 x 4928 pixels,
+1040397 bytes, SHA-256
+`77138f39611d0e0e0bfa44d12e1736a96a1518b14f7b9ae0e73bdd33ad0f4fcc`.
+No cropping, resizing, recompression or AI processing is applied. No exact day,
+person identification or award is inferred.
+
+Only one record is appended to `content/lab.json` under `people.photos`;
+the 2024 and 2025 records and original assets remain unchanged. The existing
+People renderer supplies the figure, caption and matching alt text.
+`tests/informs-lab-photo.test.mjs` checks the record, preservation, original
+asset integrity and rendered semantics. The webinar preservation check first
+requires the exact full photo array, then removes only the new final record
+from a clone for comparison with its unchanged historic snapshot hash.

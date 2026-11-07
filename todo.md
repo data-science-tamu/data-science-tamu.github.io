@@ -1,5 +1,12 @@
 # Academic Website Release Tasks
 
+## INFORMS 2026 Lab Photo
+
+- [x] Add native JPEG and caption with focused regression checks.
+- [x] Parent: verify tests/build/preservation and desktop/mobile/accessibility.
+- [ ] Parent: commit/push, integrate main, deploy and read back live photo.
+
+
 ## QSR Webinar News
 
 - [x] Verify existing finalist, webinar date/title and recording content.

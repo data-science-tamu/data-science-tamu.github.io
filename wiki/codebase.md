@@ -168,3 +168,14 @@ Academic/polish implementation, reviews and owner-approved publication are compl
 See [verified release evidence](../docs/validation.md) and
 [recovery procedure](../docs/academic-preview.md); planning and consideration-only
 items remain in ../plan.md and ../todo.md.
+
+## INFORMS 2026 Lab Photo
+
+`content/lab.json` owns the ordered `people.photos` records; the 2026
+San Francisco photo follows the unchanged 2024 and 2025 entries. Its unchanged
+owner-supplied JPEG is `public/assets/images/informs-2026-san-francisco.jpg`.
+The existing `src/templates.mjs` and `src/helpers.mjs` render the
+`/people/` gallery without template, CSS or JavaScript changes.
+`tests/informs-lab-photo.test.mjs` covers exact content, preservation,
+native dimensions/hash and semantic figures/captions/alt text.
+See [photo provenance](../docs/source-provenance.md#informs-2026-lab-photo).
