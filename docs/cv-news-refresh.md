@@ -1,5 +1,7 @@
 # CV, News and People Content Refresh
 
+Current source-link policy and replacements superseding this historical release are recorded in [News source corrections](news-source-corrections.md). In particular, owner-personal Montague/grant announcements are no longer the maintained links; the historical choices below are release history, not current recommendations.
+
 ## Scope and Evidence
 
 This record documents the owner-approved content/test refresh, not deployment or

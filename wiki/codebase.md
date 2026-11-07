@@ -197,3 +197,9 @@ The owner-confirmed council announcement is one maintained `content/lab.json` Ne
 ## QSR News Photos
 
 Three owner-supplied original JPEGs are attached through the existing `news[].images` arrays in `content/lab.json`: `qsr-2026-student-paper-finalists.jpg` for 2026.11.01, `qsr-2026-council-election.jpg` for 2026, and `qsr-2026-webinar-speakers.jpg` after the existing acknowledgement for 2026.10.21. They live under `public/assets/images/`. The existing News renderer supplies responsive inline photos, descriptive alt text and direct original-image links; Home remains text-only. No template, style or JavaScript changes are needed. Source mappings and hashes are in [source provenance](../docs/source-provenance.md); parent browser/source-preservation evidence is recorded in [validation](../docs/validation.md).
+
+## News Evidence And Chronology
+
+News source links and presentation tense live in `content/lab.json`; shared award links feed Home and CV from `faculty.awards`. Use accessible issuer/university/organizer records that support the linked claim, not the owner's personal announcements. A paper-title DOI identifies the paper but does not establish an award or press feature. Organization-owned announcements are distinct from personal posts; retain the expressly requested QSR Spotlight. See `docs/news-source-corrections.md` for this audit and retrieval limits.
+
+`people.photos` is maintained newest-first; templates and the existing horizontal gallery use this canonical order without runtime date inference. Preserve each source/caption pair and original image bytes. Exact approved corrections are recorded in the correction fixture/helper and checked before earlier historical baselines are restored; historical fixtures must not be rewritten merely to make changes pass.

@@ -1,0 +1,105 @@
+{
+  "baseline": "7c067cb32ffa2bc619c8799ba2308eb5e55e14a6",
+  "baselineSha256": "8a138f8dda82eaddddf6035282ceec310b4ead6990011451aa00a71b5f2c607f",
+  "baselineRawSha256": "09e24653059847f875f4168aa715dfcb5f3a60f7e5084585db5d08b55925b642",
+  "changes": [
+    {
+      "path": [
+        "people",
+        "photos"
+      ],
+      "before": [
+        {
+          "src": "/assets/images/people-1-c060cdafd7.jpg",
+          "caption": "INFORMS Annual Meeting 2024 (Seattle, WA)"
+        },
+        {
+          "src": "/assets/images/people-2-c9f2346674.jpg",
+          "caption": "INFORMS Annual Meeting 2025 (Atlanta, GA)"
+        },
+        {
+          "src": "/assets/images/informs-2026-san-francisco.jpg",
+          "caption": "INFORMS Annual Meeting 2026 (San Francisco, CA)"
+        }
+      ],
+      "after": [
+        {
+          "src": "/assets/images/informs-2026-san-francisco.jpg",
+          "caption": "INFORMS Annual Meeting 2026 (San Francisco, CA)"
+        },
+        {
+          "src": "/assets/images/people-2-c9f2346674.jpg",
+          "caption": "INFORMS Annual Meeting 2025 (Atlanta, GA)"
+        },
+        {
+          "src": "/assets/images/people-1-c060cdafd7.jpg",
+          "caption": "INFORMS Annual Meeting 2024 (Seattle, WA)"
+        }
+      ]
+    },
+    {
+      "path": [
+        "news",
+        1,
+        "html"
+      ],
+      "before": "Ph.D. student Tatthapong Srikitrungruang was selected as a finalist in the <a href=\"https://connect.informs.org/discussion/informs-2026-best-student-paper-competition-finalists\">2026 INFORMS QSR Best Student Paper Competition</a>. Tatthapong will present this work at the 2026 INFORMS Annual Meeting in San Francisco. Congratulations, Tatthapong!",
+      "after": "Ph.D. student Tatthapong Srikitrungruang was selected as a finalist in the <a href=\"https://connect.informs.org/discussion/informs-2026-best-student-paper-competition-finalists\">2026 INFORMS QSR Best Student Paper Competition</a>. Tatthapong presented this work at the 2026 INFORMS Annual Meeting in San Francisco. Congratulations, Tatthapong!"
+    },
+    {
+      "path": [
+        "news",
+        1,
+        "text"
+      ],
+      "before": "Ph.D. student Tatthapong Srikitrungruang was selected as a finalist in the 2026 INFORMS QSR Best Student Paper Competition. Tatthapong will present this work at the 2026 INFORMS Annual Meeting in San Francisco. Congratulations, Tatthapong!",
+      "after": "Ph.D. student Tatthapong Srikitrungruang was selected as a finalist in the 2026 INFORMS QSR Best Student Paper Competition. Tatthapong presented this work at the 2026 INFORMS Annual Meeting in San Francisco. Congratulations, Tatthapong!"
+    },
+    {
+      "path": [
+        "news",
+        3,
+        "html"
+      ],
+      "before": "Dr. Lee received three NIH and NSF grants as Principal Investigator, totaling approximately $1.94 million in project funding: an NIH/NIAMS R01, an NSF FDT-BioTech award, and an NIH/NIDCR R21, supporting digital twins and physics-informed machine learning for biomedical prediction and evaluation. Read the <a href=\"https://www.linkedin.com/posts/jaesung-lee-phd_dmsfunded-nsf-nih-activity-7501684789985333248-zv30\">grant announcement</a> and the <a href=\"https://www.linkedin.com/posts/informs-quality-statistics-and-reliability-qsr_quality-statistics-reliability-activity-7501331937618370560-xMwW\">INFORMS QSR Member Spotlight</a>.",
+      "after": "Dr. Lee received three NIH and NSF grants as Principal Investigator, totaling approximately $1.94 million in project funding: an NIH/NIAMS R01, an NSF FDT-BioTech award, and an NIH/NIDCR R21, supporting digital twins and physics-informed machine learning for biomedical prediction and evaluation. Read the <a href=\"https://www.linkedin.com/posts/wm-michael-barnes-64-department-of-industrial-systems-engineering-at-texas-a-m-university_dr-jaesung-lee-an-assistant-professor-in-activity-7501423618027982848-FY2_\">department announcement</a> and the <a href=\"https://www.linkedin.com/posts/informs-quality-statistics-and-reliability-qsr_quality-statistics-reliability-activity-7501331937618370560-xMwW\">INFORMS QSR Member Spotlight</a>."
+    },
+    {
+      "path": [
+        "news",
+        3,
+        "text"
+      ],
+      "before": "Dr. Lee received three NIH and NSF grants as Principal Investigator, totaling approximately $1.94 million in project funding: an NIH/NIAMS R01, an NSF FDT-BioTech award, and an NIH/NIDCR R21, supporting digital twins and physics-informed machine learning for biomedical prediction and evaluation. Read the grant announcement and the INFORMS QSR Member Spotlight.",
+      "after": "Dr. Lee received three NIH and NSF grants as Principal Investigator, totaling approximately $1.94 million in project funding: an NIH/NIAMS R01, an NSF FDT-BioTech award, and an NIH/NIDCR R21, supporting digital twins and physics-informed machine learning for biomedical prediction and evaluation. Read the department announcement and the INFORMS QSR Member Spotlight."
+    },
+    {
+      "path": [
+        "news",
+        6,
+        "html"
+      ],
+      "before": "Dr. Lee was recognized as the <a href=\"https://www.linkedin.com/posts/jaesung-lee-phd_i-am-honored-to-be-selected-as-a-2025-26-activity-7392316347638214656-Idum\">2025-26 Montague-Center for Teaching Excellence (CTE) Scholar</a> at Texas A&amp;M University. This is a university-wide recognition for excellence and innovation in undergraduate teaching.",
+      "after": "Dr. Lee was recognized as the <a href=\"https://scholars.library.tamu.edu/vivo/display/n0dce822f-af71-11f0-9de4-005056bbe4f8\">2025-26 Montague-Center for Teaching Excellence (CTE) Scholar</a> at Texas A&amp;M University. This is a university-wide recognition for excellence and innovation in undergraduate teaching."
+    },
+    {
+      "path": [
+        "faculty",
+        "awards",
+        1,
+        "html"
+      ],
+      "before": "<a href=\"https://www.linkedin.com/posts/jaesung-lee-phd_i-am-honored-to-be-selected-as-a-2025-26-activity-7392316347638214656-Idum\">2025–26 Montague-Center for Teaching Excellence (CTE) Scholar</a>, Texas A&amp;M University, 2025",
+      "after": "<a href=\"https://scholars.library.tamu.edu/vivo/display/n0dce822f-af71-11f0-9de4-005056bbe4f8\">2025–26 Montague-Center for Teaching Excellence (CTE) Scholar</a>, Texas A&amp;M University, 2025"
+    },
+    {
+      "path": [
+        "news",
+        7,
+        "html"
+      ],
+      "before": "Dr. Lee's paper was selected as a finalist in the <a href=\"https://connect.informs.org/qsr/awards\">QSR Best Refereed Paper Competition</a>. Dr. Lee presented this work at the 2025 INFORMS Conference.",
+      "after": "Dr. Lee's paper was selected as a finalist in the <a href=\"https://connect.informs.org/discussion/qsr-best-referred-paper-competition-finalists\">QSR Best Refereed Paper Competition</a>. Dr. Lee presented this work at the 2025 INFORMS Conference."
+    }
+  ]
+}

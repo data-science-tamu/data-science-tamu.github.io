@@ -6,6 +6,7 @@ import { createHash } from "node:crypto";
 import { createPages } from "../src/templates.mjs";
 import { imageRenderer, rich } from "../src/helpers.mjs";
 import { councilNews, normalizeCouncilNewsForBaseline } from "./council-expectations.mjs";
+import { normalizeCorrectionsForBaseline, correctedNewsExpectation } from "./correction-expectations.mjs";
 import { refresh } from "./refresh-expectations.mjs";
 import { newsPhotos, normalizeNewsPhotosForBaseline } from "./news-photo-expectations.mjs";
 
@@ -20,7 +21,8 @@ const baselineRawSha256 = "24d1e54be21a22437786e168d1f92edaa5ac0ca39ff5e3d28e1bb
 const baselineNewsSha256 = "b2ad4aa9da9ff4231b36b516016d6dd8ed8114079cd129d3cac1118923efa4d1";
 
 function assertOnlyCouncilAddition(data) {
-  const baseline = { ...data, news: normalizeCouncilNewsForBaseline(data.news) };
+  const baseline = normalizeCorrectionsForBaseline(data);
+  baseline.news = normalizeCouncilNewsForBaseline(baseline.news);
   assert.equal(sha256(JSON.stringify(baseline)), baselineSha256,
     "The entire prior lab JSON baseline remains exact after removing only the approved Council entry");
 }
@@ -41,12 +43,13 @@ test("removing only the approved Council addition restores the entire git-show b
 
 test("all 17 prior News records retain their exact bytes, order and non-News data", () => {
   const before = structuredClone(lab.news);
-  const historical = normalizeCouncilNewsForBaseline(lab.news);
+  const restored = normalizeCorrectionsForBaseline(lab);
+  const historical = normalizeCouncilNewsForBaseline(restored.news);
   assert.deepEqual(lab.news, before, "The test-only normalizer never mutates maintained News");
   assert.equal(historical.length, 17);
   assert.equal(sha256(JSON.stringify(historical)), baselineNewsSha256);
-  assert.deepEqual(historical, normalizeNewsPhotosForBaseline(lab.news).slice(1));
-  const normalizedText = JSON.stringify({ ...lab, news: normalizeNewsPhotosForBaseline(lab.news) }, null, 2) + "\n";
+  assert.deepEqual(historical, normalizeNewsPhotosForBaseline(restored.news).slice(1));
+  const normalizedText = JSON.stringify({ ...restored, news: normalizeNewsPhotosForBaseline(restored.news) }, null, 2) + "\n";
   const block = JSON.stringify(councilNews, null, 2).split("\n")
     .map(line => "    " + line).join("\n") + ",\n";
   const prefix = '  "news": [\n';
@@ -98,7 +101,7 @@ for (const [name, mutate] of Object.entries(baselineMutations)) {
     assertOnlyCouncilAddition(lab);
     const data = structuredClone(lab);
     mutate(data);
-    assert.throws(() => assertOnlyCouncilAddition(data), /entire prior lab JSON baseline|photo delta/);
+    assert.throws(() => assertOnlyCouncilAddition(data), /entire prior lab JSON baseline|photo delta|Approved News\/gallery correction/);
   });
 }
 
@@ -119,13 +122,13 @@ for (const route of ["/", "/news/"]) {
     assert.doesNotMatch(council, /<time\b|_comment|<!--|2026[.-]\d{2}|November 2|election announcement/i);
     assert.match(articles[1], /<time datetime="2026-11-01">2026\.11\.01<\/time>/);
     assert.match(articles[2], /<time datetime="2026-10-21">2026\.10\.21<\/time>/);
-    assert.deepEqual(lab.news[3], refresh.newsAddition.record, "The grant record remains exact at index 3");
+    assert.deepEqual(lab.news[3], correctedNewsExpectation(refresh.newsAddition.record), "The grant record remains exact at index 3");
     if (route === "/") {
       assert.doesNotMatch(articles.join(""), /<img\b|news-photos/);
-      assert.ok(!body.includes(refresh.newsAddition.record.html), "Grant item leaves only the first-three Home summary");
+      assert.ok(!body.includes(correctedNewsExpectation(refresh.newsAddition.record).html), "Grant item leaves only the first-three Home summary");
     } else {
       assert.match(council, /id="news-2026"/);
-      assert.ok(articles[3].includes("<p>" + refresh.newsAddition.record.html + "</p>"));
+      assert.ok(articles[3].includes("<p>" + correctedNewsExpectation(refresh.newsAddition.record).html + "</p>"));
       assert.match(articles[3], /<time datetime="2026-09-04">2026\.09\.04<\/time>/);
     }
   });

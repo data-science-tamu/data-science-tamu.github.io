@@ -5,6 +5,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { createPages } from "../src/templates.mjs";
 import { dimensions, imageRenderer } from "../src/helpers.mjs";
+import { normalizeCorrectionsForBaseline } from "./correction-expectations.mjs";
 import { newsPhotos, normalizeNewsPhotosForBaseline } from "./news-photo-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -17,7 +18,8 @@ const baselineSha256 = "7a9d4773bfa1076b945794108525786a09b06339801f8050845d2e83
 const baselineRawSha256 = "24fee95e38d6bc0dc04fd09cfaf00a71e99c7a6d79299aace6e5b80a3911439a";
 
 function assertOnlyNewsPhotos(data) {
-  const baseline = { ...data, news: normalizeNewsPhotosForBaseline(data.news) };
+  const baseline = normalizeCorrectionsForBaseline(data);
+  baseline.news = normalizeNewsPhotosForBaseline(baseline.news);
   assert.equal(sha256(JSON.stringify(baseline)), baselineSha256,
     "The entire prior lab JSON baseline is restored after only the three approved photo additions");
   return baseline;
@@ -68,7 +70,7 @@ for (const [name, mutate] of Object.entries(mutations)) {
     assertOnlyNewsPhotos(lab);
     const data = structuredClone(lab);
     mutate(data);
-    assert.throws(() => assertOnlyNewsPhotos(data), /photo delta|entire prior lab JSON baseline/);
+    assert.throws(() => assertOnlyNewsPhotos(data), /photo delta|entire prior lab JSON baseline|Approved News\/gallery correction/);
   });
 }
 
@@ -101,10 +103,10 @@ for (const route of ["/news/", "/"]) {
   });
 }
 
-test("all other rendered pages remain exactly unchanged", () => {
+test("all other rendered pages remain exactly unchanged by the historical photo additions", () => {
   const baseline = assertOnlyNewsPhotos(lab);
   const oldPages = createPages(site, baseline, imageRenderer(path.join(root, "public")));
-  const pages = createPages(site, lab, imageRenderer(path.join(root, "public")));
+  const pages = createPages(site, normalizeCorrectionsForBaseline(lab), imageRenderer(path.join(root, "public")));
   assert.deepEqual(pages.filter(page => page.route !== "/news/"),
     oldPages.filter(page => page.route !== "/news/"));
 });

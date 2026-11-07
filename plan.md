@@ -1,5 +1,10 @@
 # Website Plan
 
+## News Source Corrections - Active
+
+Audit all News links for direct institutional evidence; replace owner announcements, reverse People gallery chronology, and change Tatthapong presentation to past tense. Keep source facts, assets, design and all unrelated data unchanged. Worker sol/max implements; parent owns independent QA/review/release. Acceptance: exact scoped delta, tests/build, responsive/keyboard/no-JS/print/a11y, trusted source readback, branch CI/main/Pages/live.
+
+
 ## QSR News Photos - Published
 
 All three original photos are integrated into main and publicly verified in their matching News entries. No task-specific work remains. Completed plan and release evidence are in history.md and docs/validation.md.

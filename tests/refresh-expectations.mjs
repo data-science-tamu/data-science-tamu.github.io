@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
+import { normalizeNewsCorrectionsForBaseline, normalizeNonNewsCorrectionsForBaseline } from "./correction-expectations.mjs";
 import { normalizeCouncilNewsForBaseline } from "./council-expectations.mjs";
 
 export const refresh = JSON.parse(fs.readFileSync(new URL("./fixtures/cv-news-refresh.json", import.meta.url), "utf8"));
@@ -19,7 +20,7 @@ function restoreChanges(data, changes) {
 
 // Validate every changed field before reversing only the approved delta.
 export function normalizeRefreshNewsForBaseline(news) {
-  const data = {news: structuredClone(normalizeCouncilNewsForBaseline(news))}, addition = refresh.newsAddition;
+  const data = {news: structuredClone(normalizeCouncilNewsForBaseline(normalizeNewsCorrectionsForBaseline(news)))}, addition = refresh.newsAddition;
   const matches = data.news.filter(item => item.date === addition.record.date);
   assert.equal(matches.length, 1, "Exactly one combined grant/spotlight announcement");
   assert.deepEqual(data.news[addition.index], addition.record, "Exact new record at its approved position");
@@ -29,7 +30,7 @@ export function normalizeRefreshNewsForBaseline(news) {
 }
 
 export function normalizeRefreshForBaseline(lab) {
-  const data = structuredClone(lab);
+  const data = normalizeNonNewsCorrectionsForBaseline(lab);
   data.news = normalizeRefreshNewsForBaseline(data.news);
   restoreChanges(data, refresh.changes.filter(change => change.path[0] !== "news"));
   assert.equal(sha256(JSON.stringify(data)), refresh.baselineSha256,

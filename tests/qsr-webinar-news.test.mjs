@@ -5,6 +5,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { createPages } from "../src/templates.mjs";
 import { dimensions, imageRenderer } from "../src/helpers.mjs";
+import { normalizeNewsCorrectionsForBaseline, correctedNewsExpectation } from "./correction-expectations.mjs";
 import { normalizeRefreshForBaseline } from "./refresh-expectations.mjs";
 import { newsPhotos, normalizeNewsPhotosForBaseline } from "./news-photo-expectations.mjs";
 
@@ -42,7 +43,7 @@ function assertWebinarNews(data) {
   assert.deepEqual(matches[0], approved, "Only the approved webinar facts, links and native images");
   assert.equal(data.news.length, 18);
   assert.equal(data.news[2], matches[0], "The webinar follows the existing finalist");
-  assert.deepEqual(normalizeNewsPhotosForBaseline(data.news)[1], before.news[0],
+  assert.deepEqual(normalizeNewsPhotosForBaseline(normalizeNewsCorrectionsForBaseline(data.news))[1], before.news[0],
     "The finalist after Council remains exact after reversing only the approved photo");
   assert.equal(data.news[3].date, "2026.09.04", "The combined grant entry follows the webinar");
   assert.equal(data.news[4].date, "2026.05.16", "The grant entry precedes the May 16 record");
@@ -65,7 +66,7 @@ function assertPreserved(data) {
       src: "/assets/images/informs-2026-san-francisco.jpg",
       caption: "INFORMS Annual Meeting 2026 (San Francisco, CA)",
     },
-  ], "Only the exact approved photo addition is allowed");
+  ].reverse(), "Only the exact approved photo addition and newest-first correction are allowed");
   const { news, ...other } = structuredClone(baseline);
   other.people.photos.pop();
   assert.equal(sha256(JSON.stringify(other)), before.nonNewsSha256,
@@ -147,7 +148,7 @@ for (const route of ["/", "/news/"]) {
     ).find((page) => page.route === route).body;
     const articles = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map((match) => match[0]);
     assert.equal(articles.length, route === "/" ? 3 : 18);
-    assert.ok(articles[1].includes(`<p>${before.news[0].html}</p>`));
+    assert.ok(articles[1].includes(`<p>${correctedNewsExpectation(before.news[0]).html}</p>`));
     if (route === "/") assert.doesNotMatch(articles[1], /<img\b|news-photos/);
     else assert.ok(articles[1].includes("<img src=\"" + newsPhotos[1].src + "\""));
     const item = articles[2];

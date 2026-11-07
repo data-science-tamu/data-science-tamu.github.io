@@ -1,5 +1,14 @@
 # Academic Website Release Tasks
 
+## News Source Corrections
+
+- [x] Audit all News links and replace weak owner sources.
+- [x] Reverse People photos to 2026, 2025, 2024.
+- [x] Change Tatthapong will present to presented.
+- [x] Tests/build/preservation/browser/review.
+- [ ] Commit/push/integrate/deploy/readback/closeout.
+
+
 ## QSR News Photos
 
 - [x] Add attachment 1 to Tatthapong finalist News (2026.11.01).

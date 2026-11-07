@@ -5,6 +5,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { createPages } from "../src/templates.mjs";
 import { dimensions, imageRenderer, rich } from "../src/helpers.mjs";
+import { correctedNewsExpectation } from "./correction-expectations.mjs";
 import { refresh, normalizeRefreshForBaseline } from "./refresh-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -126,14 +127,14 @@ test("News keeps the exact grant entry after the three latest Home items and fin
     assert.equal(articles.length,route==="/"?3:18);
     assert.doesNotMatch(body,/<(?:iframe|embed|object)\b/i);
     if(route==="/news/") {
-      assert.ok(articles[3].includes("<p>"+refresh.newsAddition.record.html+"</p>"));
+      assert.ok(articles[3].includes("<p>"+correctedNewsExpectation(refresh.newsAddition.record).html+"</p>"));
       assert.match(articles[3],/<time datetime="2026-09-04">2026\.09\.04<\/time>/);
       const sina=articles.find(item=>item.includes('id="news-2025-04-22"'));
       const images=[...sina.matchAll(/<img\b[^>]*src="([^"]+)"/g)].map(match=>match[1]);
       assert.deepEqual(images,refresh.photos.map(photo=>photo.src));
       assert.doesNotMatch(sina,/\b(?:winner|won)\b/i);
     } else {
-      assert.ok(!body.includes(refresh.newsAddition.record.html),"The grant stays on News, outside the three latest Home items");
+      assert.ok(!body.includes(correctedNewsExpectation(refresh.newsAddition.record).html),"The grant stays on News, outside the three latest Home items");
     }
   }
 });

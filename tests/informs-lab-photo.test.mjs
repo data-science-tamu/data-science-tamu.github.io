@@ -20,8 +20,8 @@ const approved = {
   caption: "INFORMS Annual Meeting 2026 (San Francisco, CA)",
 };
 
-test("one approved INFORMS 2026 photo follows the unchanged 2024 and 2025 records", () => {
-  assert.deepEqual(lab.people.photos, [...prior, approved]);
+test("the approved INFORMS 2026 photo precedes the unchanged 2025 and 2024 records", () => {
+  assert.deepEqual(lab.people.photos, [approved, ...[...prior].reverse()]);
 });
 
 test("all other lab content and prior photo bytes remain exact", () => {
@@ -51,10 +51,10 @@ test("the existing People renderer emits ordered semantic figures with matching 
   assert.ok(gallery, "People retains its Lab photos gallery");
   const figures = [...gallery[1].matchAll(/<figure\b[^>]*>([\s\S]*?)<\/figure>/g)].map((match) => match[1]);
   assert.equal(figures.length, 3);
-  for (const [index, photo] of [...prior, approved].entries()) {
+  for (const [index, photo] of [approved, ...[...prior].reverse()].entries()) {
     assert.ok(figures[index].includes(`src="${photo.src}" alt="${photo.caption}"`));
     assert.ok(figures[index].includes(`<figcaption>${photo.caption}</figcaption>`));
   }
-  assert.match(figures[2], /width="6560" height="4928"/);
-  assert.match(figures[2], /loading="lazy"/);
+  assert.match(figures[0], /width="6560" height="4928"/);
+  assert.match(figures[0], /loading="lazy"/);
 });

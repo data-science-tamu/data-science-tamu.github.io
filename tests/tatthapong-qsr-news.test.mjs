@@ -15,7 +15,7 @@ const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const lab = JSON.parse(read("content/lab.json"));
 const announcement = "https://connect.informs.org/discussion/informs-2026-best-student-paper-competition-finalists";
 const competition = "2026 INFORMS QSR Best Student Paper Competition";
-const approvedText = "Ph.D. student Tatthapong Srikitrungruang was selected as a finalist in the 2026 INFORMS QSR Best Student Paper Competition. Tatthapong will present this work at the 2026 INFORMS Annual Meeting in San Francisco. Congratulations, Tatthapong!";
+const approvedText = "Ph.D. student Tatthapong Srikitrungruang was selected as a finalist in the 2026 INFORMS QSR Best Student Paper Competition. Tatthapong presented this work at the 2026 INFORMS Annual Meeting in San Francisco. Congratulations, Tatthapong!";
 const approvedHtml = approvedText.replace(competition, `<a href="${announcement}">${competition}</a>`);
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 
@@ -23,7 +23,7 @@ test("one preserved Tatthapong finalist item uses only the approved wording and 
   const matches = lab.news.filter((item) => item.html.includes(announcement) ||
     (item.text.includes("Tatthapong") && item.text.includes(competition)));
   assert.equal(matches.length, 1, "Exactly one Tatthapong QSR finalist announcement");
-  assert.equal(lab.news[1], matches[0], "The scheduled presentation announcement follows Council");
+  assert.equal(lab.news[1], matches[0], "The completed presentation announcement follows Council");
   assert.deepEqual(matches[0], {
     date: "2026.11.01",
     html: approvedHtml,
@@ -31,8 +31,8 @@ test("one preserved Tatthapong finalist item uses only the approved wording and 
     images: [newsPhotos[1].src],
   });
   assert.match(matches[0].text, /was selected as a finalist/);
-  assert.match(matches[0].text, /will present this work/);
-  assert.doesNotMatch(matches[0].text, /\b(?:won|winner|ranked|first place|accepted|published|presented)\b/i);
+  assert.match(matches[0].text, /presented this work/);
+  assert.doesNotMatch(matches[0].text, /\b(?:won|winner|ranked|first place|accepted|published)\b/i);
 });
 
 test("the capture and prior news remain preserved except the approved ISEN year/position correction", () => {
