@@ -29,6 +29,65 @@ publication status is claimed. The new record has no images or `sourceSection`;
 the immutable captures and all prior records were unchanged by that addition. Public announcement
 evidence is retained locally in `.local/qsr-news/official-finalists.html` and `.txt`.
 
+## QSR Webinar News (2026-11-06)
+
+One content-only record dated `2026.10.21` follows the unchanged `2026.11.01`
+Tatthapong finalist record and precedes `2026.05.16`. The date labels only the
+webinar, not an announcement, photo post or ceremony. There are now 16 maintained
+News records; all previous 15 records and their order remain exact.
+
+The [official QSR announcement](https://lnkd.in/p/gqBWRkzK) and its flyer identify
+Dr. Jaesung Lee as the speaker in the INFORMS QSR Webinar Series on October 21,
+2026. The official title is "Robust Inference of Unseen Heterogeneous Physical
+Properties from Imperfect Data: A Unified Probabilistic Physics-Informed Machine
+Learning Framework". The announcement was published September 21, 2026; that is
+not the webinar date. The parent visually read the downloaded flyer to confirm
+the title, speaker, date and time. Its JPEG and one-page PDF came from the public
+LinkedIn document manifest. They are source-served renditions, not guaranteed
+original authored files.
+
+The [recording](https://youtu.be/SUy7JjjuqcM) belongs to QSR INFORMS and was
+uploaded October 21, 2026. Its displayed YouTube/oEmbed title is incorrectly
+"Search on the Replay Buffer:Bridging Planning and Reinforcement Learning by
+Jaesung Lee". The parent checked the retrieved full transcript: the introduction
+at 2:25 gives the Robust Inference title and the speaker at 4:28 confirms that
+topic. This agrees with the official announcement/flyer, so the public News item
+uses the official title rather than the incorrect upload title. Browser playback
+failed; verification used transcript, the matching title slide in the video
+thumbnail, oEmbed/title/author metadata and the flyer,
+not a claim that the parent watched the video. Local source evidence is under
+`.local/qsr-webinar/`, including `youtube-transcript.md`,
+`qsr-webinar-metadata.json` and `qsr-webinar-youtube.json`.
+
+The owner explicitly identified the acknowledgement photo in the
+[QSR photo post](https://lnkd.in/p/gfSiETQK) and requested its low-resolution
+extraction. `qsr-2026-acknowledgement.jpg` is the unchanged seventh image,
+`gallery-07.jpg`, at its native 800 x 533 pixels. It is not a finalist photo.
+The post date, November 6, 2026, does not establish a ceremony day or purpose;
+no ceremony date, winner, rank or service-role claim is made. The wording merely
+identifies a QSR acknowledgement photo displayed after the webinar flyer.
+
+The three supplied local assets retain their exact downloaded bytes. No image
+was upscaled, cropped or recompressed. The existing News renderer supplies native
+dimensions and direct image links; home retains its text-only first-three summary.
+Recording and PDF use ordinary rich HTML links. No external player, template,
+CSS or JavaScript change is needed.
+
+| Local Asset | Native Dimensions / Pages | Bytes | SHA-256 |
+| --- | --- | --- | --- |
+| `public/assets/images/qsr-webinar-2026-10-21-flyer.jpg` | 1487 x 1925 | 641693 | `088188e0aca36031cec8378e4e79f50c2adcbad46bdbb68e9750c154dac61761` |
+| `public/assets/images/qsr-2026-acknowledgement.jpg` | 800 x 533 | 69996 | `4c433abda82773511a71ab5daae2b6ee1073bf954c49e2acff42b7725ea6ad42` |
+| `public/assets/documents/qsr-webinar-2026-10-21-flyer.pdf` | 1 page | 182065 | `b30ddc0190cc127170419a2b429c2b447cdb522ad4312ae52b8b84d4e8d83ef0` |
+
+`tests/qsr-webinar-news.test.mjs` checks the exact single entry, native asset
+hashes/dimensions, image order and both render paths without embeds. The portable
+`tests/fixtures/qsr-webinar-before.json` retains all 15 previous News records plus
+the SHA-256 of all other lab data; test runtime does not depend on ignored local
+snapshots. Existing capture hashes, paragraph fidelity and mutation guards remain
+unchanged. Worker RED/GREEN evidence is under `.local/qsr-webinar/worker-*.log`;
+independent browser/accessibility/source QA and release remain parent-owned.
+
+
 ## Tatthapong ISEN Presentation Year Correction (2026-10-29)
 
 The owner confirmed that Tatthapong's ISEN Best Presentation Competition second

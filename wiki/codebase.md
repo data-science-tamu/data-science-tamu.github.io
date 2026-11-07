@@ -29,6 +29,21 @@ Tatthapong QSR item is a content-only prepend; `tests/tatthapong-qsr-news.test.m
 guards its public wording/link, presentation date, future tense, historical news and
 capture preservation, and both render paths. See [provenance](../docs/source-provenance.md#tatthapong-qsr-finalist-news-2026-10-27).
 
+The QSR webinar is a content-only second record dated `2026.10.21`, leaving the
+finalist first and all 15 prior records exact (16 total). Its ordinary recording
+and local PDF links appear on home and News; only News renders the flyer followed
+by the owner-identified acknowledgement photo using existing image links/native
+dimensions. The shared copy uses a descriptive ordinary link to
+`/news/#news-2026-10-21` from both routes, without assuming images are present
+on home. `tests/qsr-webinar-news.test.mjs` covers exact facts/links/order,
+both render paths, no embeds, asset hashes/dimensions and rejected mutations.
+`tests/fixtures/qsr-webinar-before.json` preserves prior News plus the non-News
+lab-data hash without requiring ignored evidence at test runtime. The official
+flyer overrides the incorrect YouTube display title; see
+[webinar provenance](../docs/source-provenance.md#qsr-webinar-news-2026-11-06).
+Worker evidence stays in `.local/qsr-webinar/worker-*`; browser QA/release
+remain parent-owned. No template, CSS, JavaScript or CV changes belong here.
+
 The shared `newsDate` renderer emits existing `time` markup for `YYYY.MM.DD` and
 a plain `span.news-date` for literal `YYYY`; CSS shares all existing date styles.
 `_comment` is an inert JSON author note and never supplies text, attributes or
@@ -37,7 +52,7 @@ corrected the ISEN second-place record to visible `2025`, moving only that recor
 between October 27 and September 19, 2025. Its exact day stays in `_comment`.
 `tests/news-expectations.mjs` validates the correction before normalizing only it
 to its original migration date/position for unchanged baseline hashes/order.
-`tests/news-date.test.mjs` covers the 15-record inventory, rejected mutations,
+`tests/news-date.test.mjs` covers the 16-record inventory, rejected mutations,
 legacy order, both render paths/formats, hidden notes and shared CSS. The source
 paragraph guard permits only this date correction and retains its full count.
 See [correction provenance](../docs/source-provenance.md#tatthapong-isen-presentation-year-correction-2026-10-29).

@@ -1,5 +1,13 @@
 # Website Plan
 
+## QSR Webinar News - Verified; Release Pending
+
+Implementation, source/native-asset preservation, 157 tests, build, final native
+QA (27 page checks/89 targets), keyboard photo navigation and independent review
+are complete. Completed implementation and evidence are in history.md and
+docs/validation.md. Only task commit/push, main integration, Pages deployment
+and live readback remain. Separate local Research preview stays untouched.
+
 ## Publication Presentation - Published
 
 The requested publication links/numbering/highlight and project-index corrections

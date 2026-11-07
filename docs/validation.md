@@ -616,3 +616,22 @@ passed; the actually downloaded public PDF passes the exact journal-position,
 single-insertion, 10-page and hash assertions. SHA-256:
 `e81477423b15ae658c527f6a902b82416d473e93c67b84daaca3fc9f402e98b5`.
 Task planning is closed and detailed receipts remain under `.local/tnnls-reviewer/`.
+
+## QSR Webinar News: Parent Verification (2026-11-06)
+
+- Primary baseline: 6e8c25314c3910075db9cf0b9ba89d518d68b9a9; dedicated branch content/qsr-webinar-news. Separate Research preview and primary worktree were not used for implementation.
+- Runtime session 20261106_214117_38f73e confirms gpt-6.1-sol with reasoning effort max; evidence .local/qsr-webinar/worker-runtime.json.
+- Source checks: official flyer/announcement confirm October 21, 2026 and exact full talk title. Recording transcript at 2:25/4:28 and actual video thumbnail match the talk, despite incorrect YouTube display title. Browser playback failed; no playback success is claimed.
+- Initial RED: 18 focused tests, 5 expected failures before content insertion. GREEN: 157 full tests; deterministic build, original source paragraphs/hashes and local asset/link/fragment guards passed.
+- Parent preservation: all previous 15 News records and all non-News lab data deepEqual baseline. Of 55 existing build files, only index.html and news/index.html changed. Three assets added (flyer JPEG/PDF and native acknowledgement JPEG); all asset bytes/hashes preserved.
+- Native Chromium: 9 routes at 1440/390/320 pixels, 27 page checks, 88 local targets. No axe WCAG A/AA violations, console/page errors, broken images or horizontal overflow. Keyboard link focus, image navigation, no-JS, print and 200% text checks passed. Full-entry screenshots show both uncropped images on desktop/mobile.
+- Parent copy review found shared wording incorrectly saying images were "shown below" on image-free home. Reproduction: .local/qsr-webinar/parent-copy-red.json. Same-model test-first follow-up and final revalidation are pending.
+- Independent review and release remain pending at this checkpoint. Evidence: .local/qsr-webinar/{preservation.json,qa-local/results.json,worker-*.log}.
+
+### QSR Webinar: Final Pre-Release Gates Passed
+
+- Shared-copy correction used the same verified sol/max session. Narrow RED: 9 tests/3 expected failures; GREEN: 9 focused tests and 157 full tests. Parent independently reran 22 focused and 157 full tests, build and diff check.
+- Root cause was route-specific spatial wording in shared content/lab.json data: home reuses that HTML without the images rendered on News. Earlier exact-string/render tests accepted this semantic error; new assertions reject the wording and require the descriptive link on both routes. No template workaround was added.
+- Final parent Chromium QA: 27 page checks/89 local targets, no failures. Keyboard Enter from home reaches the matching News anchor and two photos at1440/390/320. No-JS, print, 200% text, axe, console and asset checks pass. Evidence: qa-final/results.json and home-photo-flow.json.
+- Independent initial review deleg_4fb2fe14 found only that copy issue. Narrow final review deleg_40a13d8d returned APPROVE after rendering both routes, confirming the target, and rerunning22 focused tests; no other blocking findings.
+- Exact prior-News/non-News/build preservation and native asset hashes remain unchanged. Commit/push, integration, Pages and live readback are the remaining gates, not claimed complete here.

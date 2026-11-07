@@ -532,3 +532,16 @@ HTML/PDF readback. This is a worker implementation checkpoint, not release QA.
 - Evidence: `.local/presentation-year/` with parent test logs, browser-check.cjs,
   qa-local/results.json/screenshots/downloaded-cv.pdf and worker RED/GREEN records.
   Publication/live readback remains a separate gate.
+
+## QSR Webinar News Implementation (2026-11-06)
+
+Added one October 21, 2026 QSR webinar record with the exact official title,
+recording, local flyer PDF/JPEG and owner-approved native 800 x 533 acknowledgement
+photo. The November 1 Tatthapong finalist announcement already existed and remains
+exact, without a duplicate or an attached acknowledgement image. Original content,
+CV, templates, styles and client code are unchanged. Initial implementation and
+parent QA passed. Shared home copy was corrected test-first to link directly to
+the News photos rather than promise absent images below. Final independent
+review approved; full tests157/157, native QA27pages/89targets and keyboard
+navigation at1440/390/320 passed.
+Release remains open in plan.md/todo.md; measured evidence is in docs/validation.md.

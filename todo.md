@@ -1,5 +1,19 @@
 # Academic Website Release Tasks
 
+## QSR Webinar News
+
+- [x] Verify existing finalist, webinar date/title and recording content.
+- [x] Download flyer JPEG/PDF; locate owner-approved acknowledgement JPEG.
+- [x] Worker: failing tests, one October 21 entry, two photos and recording/PDF links.
+- [x] Worker: preserve prior news and non-news data; full tests/build/docs.
+- [x] Parent: independent review, desktop/mobile/accessibility/assets/console QA.
+- [ ] Parent: commit/push, integrate main, deploy/live readback; close history.
+
+Worker evidence: focused RED 18 tests / 5 expected failures; focused GREEN 22/22;
+full tests 157/157; build, exact baseline/asset preservation and whitespace checks
+passed. See .local/qsr-webinar/worker-result.md. Final parent QA/review passed; release remains open.
+
+
 ## Publication Presentation
 
 - [x] Remove redundant DOI/Publisher record rows; keep functional title links.
