@@ -606,3 +606,13 @@ Parent 231 tests/build, independent review `deleg_66d3141c` APPROVE, source-byte
 ### Completed Plan
 
 Add three original JPEGs to existing Tatthapong finalist, Council election and webinar News. Preserve all wording, dates, order and existing media. Reuse current rendering; no runtime/style edits. Sol/max worker owns content/assets/tests; parent owns independent QA/review/release. Verify exact source bytes, only three image-array changes, prior data/assets preserved, full tests/build and desktop/mobile/accessibility. Then commit/push/CI, integrate main, deploy/read back and close history.
+
+## News Source, Photo Chronology And Tense - Published
+
+Implementation 4c040fff0f1783dc0a0e56a17cd7d51331e9320a was integrated into primary main and publicly verified. Montague News and shared Home/CV award now link the individual TAMU award receipt; grants link the department-issued announcement, preserving the QSR Spotlight; 2025 QSR finalist News links the specific official announcement. People photos use the same original objects in 2026/2025/2024 order. Tatthapong's News says presented, retaining finalist/date/photo. No runtime, styling, asset or unrelated content changes.
+
+Final 267 tests/build and exact-approved-data/63-file preservation passed; 60 other built files remain byte-identical. Independent review deleg_121023a3 APPROVE. Task CI42402163545 and Pages42402204642 succeeded at the implementation SHA. All64 HTTPS public files matched build bytes, and live browser repeated16checks across4routes/4widths,42targets/fragments, gallery keyboard/buttons, no-JavaScript/print, console and axe with no failures. Direct sources and source limitations are documented in docs/news-source-corrections.md.
+
+### Completed Plan
+
+Audit all News links for direct institutional evidence; replace owner announcements, reverse People gallery chronology, and change Tatthapong presentation to past tense. Keep source facts, assets, design and all unrelated data unchanged. Worker sol/max implements; parent owns independent QA/review/release. Acceptance: exact scoped delta, tests/build, responsive/keyboard/no-JS/print/a11y, trusted source readback, branch CI/main/Pages/live.

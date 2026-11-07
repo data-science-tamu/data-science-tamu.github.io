@@ -6,7 +6,7 @@
 - [x] Reverse People photos to 2026, 2025, 2024.
 - [x] Change Tatthapong will present to presented.
 - [x] Tests/build/preservation/browser/review.
-- [ ] Commit/push/integrate/deploy/readback/closeout.
+- [x] Commit/push/integrate/deploy/readback/closeout.
 
 
 ## QSR News Photos

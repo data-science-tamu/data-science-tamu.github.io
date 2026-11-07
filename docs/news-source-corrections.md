@@ -160,4 +160,6 @@ timed out; it was not retried or used as release evidence. Parent reviewed the
 existing source bodies and independently verified every newly inserted URL.
 Implementation/source evidence: .local/corrections/worker-result.md,
 parent-sources.json, candidate-tests.log, preservation.json, qa-local/results.json.
-Deployment/readback is the final remaining gate.
+Published implementation: 4c040fff0f1783dc0a0e56a17cd7d51331e9320a.
+Task CI42402163545 and Pages42402204642 passed. All64 public files matched
+the build; live16browserchecks/42targets passed. No task-specific gate remains.
