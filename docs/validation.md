@@ -711,3 +711,9 @@ Task planning is closed and detailed receipts remain under `.local/tnnls-reviewe
 - Initial content review deleg_26d093d8 found one documentation-only blocker: the parent handoff transcribed the certificate source as iise-2025-4.jpeg (404) rather than the source page's iise-2025-2.jpeg. Asset byte checks had correctly preserved the downloaded image but did not validate the independently transcribed prose URL. The parent fetched the actual -2.jpeg URL, confirmed SHA-256 a02c4d4ec4c6e10d91020cb49d9043357a8300e09b55ffcf6918fb36a63bf842 and exact byte equality with the public asset, and corrected the canonical provenance URL without modifying the image. A narrow follow-up review is required before release.
 
 - Narrow provenance follow-up review deleg_e456c482: APPROVE; the sole blocker is resolved. Parent also parsed both actual image citations from docs/cv-news-refresh.md, confirmed each in the live source page, fetched both and byte-compared them with the public JPEGs (.local/refresh/check-photo-provenance.cjs and photo-provenance-check.json). Precommit full suite again passed 180/180. All local/review gates are clear.
+
+### CV Refresh Public Release
+
+- Implementation: 8b98974d1c130b555e160737c9c3755f97e7076f. Task-branch CI42381564156 and main Pages42381603919 completed successfully for that exact head. Remote task/main refs were read back and matched.
+- HTTPS readback matched all61 public files byte-for-byte. Full live Chromium QA repeated30 page/viewport checks and90 local targets/fragments, with no failures, console errors or axe violations; gallery keyboard/touch/resize/reduced-motion/no-JS/print checks passed on the public deployment.
+- .local/refresh/qa-live/results.json, browser-live.log, live-integrity.json and pages-ci.log hold machine evidence. History and task checklist are closed.

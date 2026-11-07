@@ -563,3 +563,25 @@ Independent review deleg_8af69089 approved. Implementation bf9aade00aab688da7900
 passed branch CI 42378902043 and main Pages 42378950973. All 59 public build
 files matched exactly. Live People gallery passed the same 3 viewport and
 21 target checks. No task-specific item remains open.
+
+
+## CV, News and People Refresh - Published
+
+Implementation 8b98974d1c130b555e160737c9c3755f97e7076f is integrated into clean main and publicly deployed. Updated CV-derived fields and selected service/funding/advising, finalist awards, verified News/student links, exact Sina QCRE photos, webinar cleanup and accessible horizontal Lab photos. Supplied PDF was already identical and remains unchanged.
+
+Parent180tests/build, independent UI/content review with corrected provenance follow-up, 30 local and 30 live browser checks/90 targets, mobile touch/keys/no-JS/print/reduced-motion/axe, 61-file exact public readback all passed. Task-branch CI42381564156 and main Pages42381603919 both succeeded for the implementation head. Existing scientific/publication data/assets and separate Research preview are untouched. Detailed evidence: docs/validation.md and docs/cv-news-refresh.md. No implementation/release gate remains for this request.
+
+### Completed Plan
+
+
+Source: user attachment main_10.pdf, current website data, primary public
+announcements, Sina's personal site. Source audit precedes content changes.
+Smallest implementation: maintain content/local assets, reuse existing page
+renderers, add ordinary student links and a small accessible gallery enhancement
+(no dependency/carousel library, autoplay or visual redesign).
+Preserve source captures, research comparison worktree and unrelated projects.
+Any ambiguous identity, funding amount/date or award status is held for evidence.
+Sol/max authors implementation; parent owns independent QA/release. Verification
+includes CV text/links, source-fidelity tests, deterministic build, keyboard/touch,
+responsive/no-JS/print/reduced-motion, console and accessibility, links/assets,
+branch CI, main integration, Pages and exact live readback.

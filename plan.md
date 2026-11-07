@@ -1,19 +1,8 @@
 # Website Plan
 
-## CV, News and People Refresh
+## CV, News and People Refresh - Published
 
-Source: user attachment main_10.pdf, current website data, primary public
-announcements, Sina's personal site. Source audit precedes content changes.
-Smallest implementation: maintain content/local assets, reuse existing page
-renderers, add ordinary student links and a small accessible gallery enhancement
-(no dependency/carousel library, autoplay or visual redesign).
-Preserve source captures, research comparison worktree and unrelated projects.
-Any ambiguous identity, funding amount/date or award status is held for evidence.
-Sol/max authors implementation; parent owns independent QA/release. Verification
-includes CV text/links, source-fidelity tests, deterministic build, keyboard/touch,
-responsive/no-JS/print/reduced-motion, console and accessibility, links/assets,
-branch CI, main integration, Pages and exact live readback.
-
+All requested changes are integrated and publicly verified. Completed work is in history.md; source decisions and validation are in docs/cv-news-refresh.md and docs/validation.md. No release gate remains. Existing unresolved historical News dates are recorded rather than silently changed.
 
 ## INFORMS 2026 Lab Photo - Published
 

@@ -10,7 +10,7 @@
 - [x] Implement accessible horizontal Lab photos navigation with existing design
 - [x] Confirm three funded grants, calculate total and add News
 - [x] Find exact QSR LinkedIn highlight and add linked News
-- [ ] Parent: finish content review, branch CI, main integration, Pages and live readback
+- [x] Parent: final content review, branch CI, main integration, Pages and live readback passed
 
 ### Existing News Link Audit
 
