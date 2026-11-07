@@ -1,8 +1,8 @@
 # Website Plan
 
-## Montague CTE Link - Active
+## Montague CTE Link - Published
 
-Use the owner-specified CTE URL exactly for News and the shared Home/CV award. Change only two content hrefs and their current test expectations; retain all historical before-values/hashes. Verify baseline/failing test, full tests, deterministic build, exact preservation and desktop/mobile browser/accessibility; then commit/push, integrate main and read back Pages. External CTE responds HTTP 404 from this environment; this is an explicit owner-selected destination, not newly verified article content.
+Owner-selected CTE hrefs are integrated into main and verified on public Home/News/CV. Completed plan and evidence are in history.md and docs/validation.md. No task-specific work remains; the documented external CTE retrieval limitation persists.
 
 ## News Source Corrections - Published
 

@@ -616,3 +616,13 @@ Final 267 tests/build and exact-approved-data/63-file preservation passed; 60 ot
 ### Completed Plan
 
 Audit all News links for direct institutional evidence; replace owner announcements, reverse People gallery chronology, and change Tatthapong presentation to past tense. Keep source facts, assets, design and all unrelated data unchanged. Worker sol/max implements; parent owns independent QA/review/release. Acceptance: exact scoped delta, tests/build, responsive/keyboard/no-JS/print/a11y, trusted source readback, branch CI/main/Pages/live.
+
+## Owner-Selected Montague CTE Link - Published
+
+The owner explicitly chose the CTE faculty-named-montague-2025-2026.html URL instead of the Scholars receipt. Implementation eb118153129e93fce086ed5b3c59d0ce69d5bcec changes exactly two content hrefs, rendered on Home/News/CV, and corresponding current test expectations. All words, dates, photos, other content and historical before-values/hashes remain unchanged.
+
+Baseline267tests passed; focused RED5pass/33fail preceded edits; final focused38/full269tests passed. Parent build/preservation confirms only three HTML pages changed by the exact href replacement and61otherfiles are identical. Local/live browser16checks/42targets, native screenshots and independent review deleg_f3251448 APPROVE passed. Branch CI42418939373 and Pages42419007080 succeeded. Main/remote were read back and64publicfiles matched the build. External CTE requests still return404/S3error in this environment; the explicit owner-selected link is published without falsely claiming article availability.
+
+### Completed Plan
+
+Use the owner-specified CTE URL exactly for News and the shared Home/CV award. Change only two content hrefs and their current test expectations; retain all historical before-values/hashes. Verify baseline/failing test, full tests, deterministic build, exact preservation and desktop/mobile browser/accessibility; then commit/push, integrate main and read back Pages. External CTE responds HTTP 404 from this environment; this is an explicit owner-selected destination, not newly verified article content.
