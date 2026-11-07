@@ -1,5 +1,9 @@
 # Website Plan
 
+## Montague CTE Link - Active
+
+Use the owner-specified CTE URL exactly for News and the shared Home/CV award. Change only two content hrefs and their current test expectations; retain all historical before-values/hashes. Verify baseline/failing test, full tests, deterministic build, exact preservation and desktop/mobile browser/accessibility; then commit/push, integrate main and read back Pages. External CTE responds HTTP 404 from this environment; this is an explicit owner-selected destination, not newly verified article content.
+
 ## News Source Corrections - Published
 
 News source replacements, newest-first People photos and past-tense presentation wording are integrated into main and verified publicly. No task-specific work remains. Completed plan and evidence: history.md, docs/news-source-corrections.md and docs/validation.md.

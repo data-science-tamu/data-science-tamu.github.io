@@ -12,7 +12,7 @@ const raw = fs.readFileSync(path.join(root, "content/lab.json"), "utf8");
 const lab = JSON.parse(raw);
 const site = JSON.parse(fs.readFileSync(path.join(root, "content/site.json"), "utf8"));
 const sha256 = value => createHash("sha256").update(value).digest("hex");
-const montague = "https://scholars.library.tamu.edu/vivo/display/n0dce822f-af71-11f0-9de4-005056bbe4f8";
+const montague = "https://cte.tamu.edu/news-and-highlights/faculty-named-montague-2025-2026.html";
 const department = "https://www.linkedin.com/posts/wm-michael-barnes-64-department-of-industrial-systems-engineering-at-texas-a-m-university_dr-jaesung-lee-an-assistant-professor-in-activity-7501423618027982848-FY2_";
 const spotlight = "https://www.linkedin.com/posts/informs-quality-statistics-and-reliability-qsr_quality-statistics-reliability-activity-7501331937618370560-xMwW";
 
@@ -56,7 +56,7 @@ test("the grants item uses the verified department announcement and retains QSR 
   }
 });
 
-test("News and the shared Home/CV Montague award link to the individual TAMU award receipt", () => {
+test("News and the shared Home/CV Montague award use the owner-specified CTE link", () => {
   assert.ok(lab.news[6].html.includes('href="' + montague + '"'));
   assert.ok(lab.faculty.awards[1].html.includes('href="' + montague + '"'));
   assert.equal(lab.news[6].date, "2025.11.06");
@@ -79,6 +79,8 @@ const mutations = {
   "duplicate News": data => data.news.push(structuredClone(data.news[1])),
   "wrong News order": data => data.news.reverse(),
   "personal source": data => { data.news[6].html = data.news[6].html.replace(montague, "https://www.linkedin.com/posts/jaesung-lee-phd"); },
+  "old Montague Scholars News href": data => { data.news[6].html = data.news[6].html.replace(montague, "https://scholars.library.tamu.edu/vivo/display/n0dce822f-af71-11f0-9de4-005056bbe4f8"); },
+  "old Montague Scholars faculty award href": data => { data.faculty.awards[1].html = data.faculty.awards[1].html.replace(montague, "https://scholars.library.tamu.edu/vivo/display/n0dce822f-af71-11f0-9de4-005056bbe4f8"); },
   "wrong gallery order": data => data.people.photos.reverse(),
   "duplicate gallery photo": data => { data.people.photos[1] = structuredClone(data.people.photos[0]); },
   "changed caption": data => { data.people.photos[0].caption += " Changed"; },

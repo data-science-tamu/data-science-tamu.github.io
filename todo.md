@@ -1,5 +1,11 @@
 # Academic Website Release Tasks
 
+## Montague CTE Link
+
+- [x] Worker: test-first exact two-href change and current expectation update.
+- [ ] Parent: full tests/build/preservation/browser/final review.
+- [ ] Parent: push, integrate main, Pages/readback and close history.
+
 ## News Source Corrections
 
 - [x] Audit all News links and replace weak owner sources.

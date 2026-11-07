@@ -1,5 +1,17 @@
 # News Source, Tense and Gallery Corrections
 
+## Owner-Selected Montague Destination
+
+The owner subsequently requested the exact CTE article URL
+`https://cte.tamu.edu/news-and-highlights/faculty-named-montague-2025-2026.html`
+for Montague News and the shared Home/CV award. This supersedes the Scholars
+link decision below, which is retained as release history and supporting award
+evidence. Direct retrieval returned HTTP 404 on 2026-11-07; article content and
+availability are not newly verified. The explicit owner choice is preserved
+without a fallback or any claim/date/text change. The current correction fixture
+updates only the two Montague after-values; its before-values and baseline
+hashes remain unchanged.
+
 ## Scope
 
 This correction changes only maintained content in content/lab.json. Templates,
@@ -13,7 +25,7 @@ owns this document and the complete claim-level audit of all 18 News records;
 this worker inventory does not substitute for that final audit. No further
 source change is authorized without a concrete blocker reported by the parent.
 
-## Approved Corrections
+## Prior Approved Corrections
 
 | Surface | Exact correction | Evidence and limit |
 | --- | --- | --- |
@@ -23,9 +35,9 @@ source change is authorized without a concrete blocker reported by the parent.
 | News 2025.11.06 and shared Home/CV Montague award | Replace both personal hrefs with the [individual TAMU award receipt](https://scholars.library.tamu.edu/vivo/display/n0dce822f-af71-11f0-9de4-005056bbe4f8) | Parent HTTP 200 and live-browser readback identify Montague Center for Teaching Excellence (CTE) Scholar, Lee, Jaesung, year awarded 2025, conferred by Texas A&M University. No wording or date changes. The university receipt proves the award, not the original News posting date. |
 | News 2025.10.27 | Replace the generic QSR awards href with the [specific official finalists announcement](https://connect.informs.org/discussion/qsr-best-referred-paper-competition-finalists) | Parent HTTP 200 and body readback list the 2025 finalists and Jaesung Lee, Tatthapong and Salman. Preserve the existing anchor, text, date, photo and finalist-not-winner status. |
 
-The CTE article/PDF were rejected as public link targets: extraction recovered
-text, but direct requests and the parent's browser encountered domain-wide
-masked 403/404 responses. No guessed or inaccessible CTE URL is inserted.
+In the prior correction, CTE retrieval failures led to selecting Scholars.
+The later explicit owner selection above supersedes that target decision; it
+does not imply the external retrieval problem has been resolved.
 
 ## Evidence Boundaries
 
@@ -52,7 +64,7 @@ The worker does not wait for the researcher or make further source changes.
 | 2026.09.04 | [department announcement](https://www.linkedin.com/posts/wm-michael-barnes-64-department-of-industrial-systems-engineering-at-texas-a-m-university_dr-jaesung-lee-an-assistant-professor-in-activity-7501423618027982848-FY2_); [INFORMS QSR Member Spotlight](https://www.linkedin.com/posts/informs-quality-statistics-and-reliability-qsr_quality-statistics-reliability-activity-7501331937618370560-xMwW) | Department-issued grant announcement; organization spotlight | The parent-verified department post supports PI, amount and award types. The owner-requested QSR spotlight remains a separate organizational source. |
 | 2026.05.16 | [Doctoral Student Colloquium](https://www.linkedin.com/posts/cieadh_iise-cieadh-activity-7465501192018739200-lxdH) | Organizer-issued panel announcement | The CIEADH post names Jaesung Lee among the experts; it is not a personal owner post. Retain the original News date. |
 | 2026.03.23 | [first paper of Ph.D. student Sina Aghaee](https://doi.org/10.1080/00401706.2026.2653564) | Article entity; claim audit parent-owned | An article DOI alone cannot establish an acceptance date. The parent approved preserving the current wording/date; final claim-level audit documentation is parent-owned. |
-| 2025.11.06 | [2025-26 Montague-Center for Teaching Excellence (CTE) Scholar](https://scholars.library.tamu.edu/vivo/display/n0dce822f-af71-11f0-9de4-005056bbe4f8) | Individual university award receipt | Recipient Lee, Jaesung; Montague CTE Scholar; 2025; conferred by Texas A&M. It does not establish the original News announcement date. |
+| 2025.11.06 | Owner-selected CTE article: `https://cte.tamu.edu/news-and-highlights/faculty-named-montague-2025-2026.html` | Explicit owner-selected university announcement | Retrieval currently returns HTTP 404; no newly verified article body. Prior Scholars receipt supports the retained award fact, and the News date/text are unchanged. |
 | 2025.10.27 | [QSR Best Refereed Paper Competition](https://connect.informs.org/discussion/qsr-best-referred-paper-competition-finalists) | Specific official finalist announcement | The named 2025 finalists list supports Lee, Tatthapong and Salman and their paper, not a winning result. |
 | 2025 | No external content link | Owner announcement and supplied photos; no external anchor | Keep the original second-place wording, year-only visible date, author note and both photos. No external award receipt is invented. |
 | 2025.09.19 | [first paper of Ph.D. student Tatthapong Srikitrungruang](https://doi.org/10.1002/advs.202508445) | Article entity | The publisher DOI identifies the paper. It does not independently establish the News acceptance date or journal impact factor. |
