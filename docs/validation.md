@@ -717,3 +717,13 @@ Task planning is closed and detailed receipts remain under `.local/tnnls-reviewe
 - Implementation: 8b98974d1c130b555e160737c9c3755f97e7076f. Task-branch CI42381564156 and main Pages42381603919 completed successfully for that exact head. Remote task/main refs were read back and matched.
 - HTTPS readback matched all61 public files byte-for-byte. Full live Chromium QA repeated30 page/viewport checks and90 local targets/fragments, with no failures, console errors or axe violations; gallery keyboard/touch/resize/reduced-motion/no-JS/print checks passed on the public deployment.
 - .local/refresh/qa-live/results.json, browser-live.log, live-integrity.json and pages-ci.log hold machine evidence. History and task checklist are closed.
+
+
+## QSR Council Election News: Pre-Release
+
+- Baseline cc0dcde566793840b2fd4dd1ffe24205eaa0a9ad; dedicated content/qsr-council-news worktree. Implementation ran gpt-6.1-sol with reasoning max (runtime session20261107_084830_66cfc6, read-only model evidence .local/council/runtime-model.json).
+- Owner confirmation and CVpage8 support Council Member, INFORMS QSR Section,2026-2028. Year-only2026 preserves unknown election month/day; officers link is contextual, not an independently verified election announcement. Existing year-only span and full-date time contracts are unchanged.
+- Test-first RED demonstrated absent Council record; full final parent suite210/210 and deterministic build passed. Independent review deleg_cdc186cd APPROVE verified source/role/term, all three Git-derived baseline hashes, exact7-line production-data addition and strict normalization/mutation tests.
+- All17 previous News entries and ALL non-News data are exact. Removing only the approved new record also restores the original lab JSON bytes. All captured sources and frozen test fixtures are unchanged. Of61 built files,59 remain byte-identical; only Home and News HTML differ. No source-code/CSS/JS/assets/PDF changes.
+- Native Chromium Home/News at1440,768,390,320px:8page checks,30local targets/fragments, no overflow, console errors or axe WCAG A/AA violations. No-JavaScript and print checks passed; desktop/mobile screenshots visually reviewed. New Council item precedes Tatthapong and webinar in Home; all18News items and previousgrant/photos remain onNews.
+- Evidence: .local/council/parent-tests.log, worker-red.log, worker-focused-red.log, preservation.json, qa-local/results.json and screenshots. Parent browser pre-change check failed on the old first item as expected; post-change browser passed after aligning the harness with actual existing date markup. RemoteCI/Pages/live readback remain release gates at this checkpoint.

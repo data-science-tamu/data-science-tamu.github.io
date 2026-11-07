@@ -410,3 +410,34 @@ narrow explicit replacements, existing citation corrections and the private
 ISEN year correction. The focused content suite passed 66 tests. Full build,
 independent desktop/mobile/accessibility/console QA and release remain
 parent-owned; this section is not a deployment-success record.
+
+## Owner-Confirmed QSR Council Election News
+
+The owner explicitly confirmed the election and requested one News addition.
+Page 8 of the owner-supplied CV (`.local/council/cv.txt`) states
+"Elected Council Member, INFORMS Quality, Statistics, and Reliability (QSR)
+Section, 2026–2028"; this role and term already appear exactly once in
+`faculty.service[0]` and are not added again as service or an award.
+The News date is only `2026`: no election month/day is established, and the
+November 2 section meeting date is not treated as an election date. The item
+is prepended as the latest owner-provided update, with no images or author-note
+day and with `sourceSection: null` because it is not from the original capture.
+
+Only the organization name links to the [QSR officers page](https://connect.informs.org/qsr/officers)
+as section-leadership context, not an election announcement or independent
+verification of this election. The page and the locally retained Fall 2026
+newsletter still show nominations or older leadership information; neither is
+claimed to verify the new role. The factual election/term source is the owner
+confirmation and CV, not an inferred roster update.
+
+There are now 18 maintained News records. All 17 previous records, their order
+and bytes, all non-News data, source captures and assets remain unchanged.
+Home shows Council, Tatthapong's finalist announcement and the webinar; the
+unchanged grant announcement remains fourth on News. The existing date renderer
+continues to use `<span class="news-date">2026</span>` for this year-only item,
+while full-date records retain their semantic `time` markup. No template,
+runtime, styling, JavaScript or CV change is needed. The narrow test-only Council
+guard validates the exact single record at index zero before removing only that
+record for historical comparisons; original hashes/fixtures and all 243 source
+paragraph checks remain intact. Parent-owned independent QA and release remain
+separate from this content addition.

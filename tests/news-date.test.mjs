@@ -21,8 +21,8 @@ const articles = (html) => [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article
   .map((match) => match[0]);
 const privateDate = /Competition date:|October 16, 2025|2025[.-]10[.-]16|_comment/;
 
-test("the single corrected ISEN presentation preserves its sentence, photos and source section among 17 records", () => {
-  assert.equal(lab.news.length, 17);
+test("the single corrected ISEN presentation preserves its sentence, photos and source section among 18 records", () => {
+  assert.equal(lab.news.length, 18);
   assertPresentationCorrection(lab.news);
   assert.deepEqual(lab.news.filter((item) => item.date.startsWith("2024.12")).map((item) => item.date),
     ["2024.12.10", "2024.12.11"], "Deliberate legacy December order survives");
@@ -56,7 +56,7 @@ test("source baseline rejects missing, duplicate, wrong-year, misplaced or alter
     "wrong comment": (news, index) => { news[index]._comment = "Competition date: October 16, 2026."; },
     "missing photo": (news, index) => news[index].images.pop(),
     "reordered photos": (news, index) => news[index].images.reverse(),
-    "changed photo": (news, index) => { news[index].images[0] = lab.news[1].images[0]; },
+    "changed photo": (news, index) => { news[index].images[0] = lab.news[2].images[0]; },
     "changed text": (news, index) => { news[index].text += " Changed."; },
     "changed html": (news, index) => { news[index].html += " Changed."; },
     "changed source section": (news, index) => { news[index].sourceSection = 9; },

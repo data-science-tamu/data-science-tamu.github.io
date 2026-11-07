@@ -11,8 +11,9 @@ const root = path.resolve(import.meta.dirname, "..");
 const lab = JSON.parse(fs.readFileSync(path.join(root,"content/lab.json"),"utf8"));
 const sha256 = value => createHash("sha256").update(value).digest("hex");
 const plain = html => html.replace(/<[^>]*>/g, "").replaceAll("&amp;","&").replaceAll("&gt;",">").replaceAll("&lt;","<").replaceAll("&nbsp;"," ").replace(/\s+/g," ").trim();
-const actualPath = keys => keys[0] === "news" && keys[1] >= refresh.newsAddition.index
-  ? [keys[0],keys[1]+1,...keys.slice(2)] : keys;
+// Fixture paths predate the grant insertion and the single Council prepend.
+const actualPath = keys => keys[0] === "news"
+  ? [keys[0],keys[1]+1+Number(keys[1] >= refresh.newsAddition.index),...keys.slice(2)] : keys;
 function leaves(value, keys = []) {
   return value && typeof value === "object"
     ? Object.entries(value).flatMap(([key,item]) => leaves(item,[...keys,key]))
@@ -27,7 +28,7 @@ test("the exact approved CV, people and News delta preserves every unrelated con
   const before = structuredClone(lab);
   normalizeRefreshForBaseline(lab);
   assert.deepEqual(lab,before,"Preservation comparisons do not mutate maintained content");
-  assert.equal(lab.news.length,17);
+  assert.equal(lab.news.length,18);
   assert.deepEqual(lab.faculty.interests.map(item=>item.text),[
     "Domain-informed statistical machine learning and uncertainty quantification",
     "Bayesian modeling, uncertainty quantification, and data-driven decision-making",
@@ -55,7 +56,7 @@ test("every approved changed value, including all funding fields and URLs, rejec
     }
   }
   for (const leaf of leaves(refresh.newsAddition.record)) {
-    const data = structuredClone(lab), target = ["news",refresh.newsAddition.index,...leaf.keys];
+    const data = structuredClone(lab), target = ["news",refresh.newsAddition.index+1,...leaf.keys];
     changeAt(data,target,String(leaf.value)+" UNAPPROVED");
     assert.throws(()=>normalizeRefreshForBaseline(data),target.join("."));
   }
@@ -71,11 +72,11 @@ test("the refresh guard rejects unrelated research/publication changes, extra cl
     data=>{data.faculty.bio[0].text += " Changed";},
     data=>{data.people.current[0].education[0].dates = "2023–2027";},
     data=>{data.people.photos.reverse();},
-    data=>{data.news[2].images.push("/assets/images/qsr-2026-acknowledgement.jpg");},
+    data=>{data.news[3].images.push("/assets/images/qsr-2026-acknowledgement.jpg");},
     data=>{data.faculty.funding.items[0].invented = "claim";},
     data=>{data.people.current[0].links.push({label:"Unknown",href:"https://example.invalid/"});},
-    data=>{data.news.splice(2,0,structuredClone(data.news[2]));},
-    data=>{data.news.splice(2,1);},
+    data=>{data.news.splice(3,0,structuredClone(data.news[3]));},
+    data=>{data.news.splice(3,1);},
     data=>{data.news.push(...data.news.splice(-2,1));},
     data=>{data.news.find(item=>item.date === "2025").date="2025.10.16";},
   ];
@@ -93,7 +94,7 @@ test("rich content keeps exact text/HTML parity and ordinary verified links", ()
   }
   const webinar = lab.news.find(item=>item.date==="2026.10.21");
   assert.doesNotMatch(webinar.html,/View the webinar flyer|flyer\.jpg/);
-  const grants = lab.news[2];
+  const grants = lab.news[3];
   assert.deepEqual(grants.images,[]);
   assert.doesNotMatch(grants.html,/<(?:iframe|embed|object)|all projects.*underway|personal funding/i);
   assert.match(grants.text,/approximately \$1\.94 million in project funding/);
@@ -116,21 +117,23 @@ for(const photo of refresh.photos) {
   });
 }
 
-test("News renders the exact combined grant entry and finalist photos in approved order without embeds",()=>{
+test("News keeps the exact grant entry after the three latest Home items and finalist photos in approved order",()=>{
   normalizeRefreshForBaseline(lab);
   const pages=createPages(JSON.parse(fs.readFileSync(path.join(root,"content/site.json"),"utf8")),lab,imageRenderer(path.join(root,"public")));
   for(const route of ["/","/news/"]) {
     const body=pages.find(page=>page.route===route).body;
     const articles=[...body.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map(match=>match[0]);
-    assert.equal(articles.length,route==="/"?3:17);
-    assert.ok(articles[2].includes("<p>"+refresh.newsAddition.record.html+"</p>"));
-    assert.match(articles[2],/<time datetime="2026-09-04">2026\.09\.04<\/time>/);
+    assert.equal(articles.length,route==="/"?3:18);
     assert.doesNotMatch(body,/<(?:iframe|embed|object)\b/i);
     if(route==="/news/") {
+      assert.ok(articles[3].includes("<p>"+refresh.newsAddition.record.html+"</p>"));
+      assert.match(articles[3],/<time datetime="2026-09-04">2026\.09\.04<\/time>/);
       const sina=articles.find(item=>item.includes('id="news-2025-04-22"'));
       const images=[...sina.matchAll(/<img\b[^>]*src="([^"]+)"/g)].map(match=>match[1]);
       assert.deepEqual(images,refresh.photos.map(photo=>photo.src));
       assert.doesNotMatch(sina,/\b(?:winner|won)\b/i);
+    } else {
+      assert.ok(!body.includes(refresh.newsAddition.record.html),"The grant stays on News, outside the three latest Home items");
     }
   }
 });

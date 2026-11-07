@@ -188,3 +188,8 @@ See [photo provenance](../docs/source-provenance.md#informs-2026-lab-photo).
 - Lab photos remain the ordered `people.photos` list. `src/templates.mjs` emits semantic figures in a focusable `data-photo-track`; `public/assets/site.css` supplies native horizontal scroll/snap, single-card mobile layout and full print output. `public/assets/site.js` progressively enables previous/next, count, keyboard and reduced-motion-aware scrolling. No carousel library, autoplay or dependency is used.
 - `tests/people-gallery.test.mjs` exercises optional render fields and production gallery event handlers with controlled geometry. Parent browser QA separately exercises real layout, touch scrolling, accessibility, no-JavaScript and print behavior.
 - Photo, grant, CV and per-News sources and unresolved historical discrepancies are documented in `docs/cv-news-refresh.md` and `docs/source-provenance.md`; the full scientific/Research presentation is outside this change.
+
+
+## QSR Council Election News
+
+The owner-confirmed council announcement is one maintained `content/lab.json` News record. Its year-only date deliberately uses the existing semantic-date renderer without claiming an election day. Role/term provenance is in `docs/source-provenance.md`; regression tests must validate the exact new record before excluding only that record from historical comparisons. The existing shared News renderer displays it on News and in Home's three latest entries. No new UI, assets or runtime behavior are introduced.

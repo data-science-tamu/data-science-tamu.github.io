@@ -1,5 +1,10 @@
 # Website Plan
 
+## QSR Council Election News
+
+Add one owner-requested News item from CV page8: elected Council Member, INFORMS Quality, Statistics, and Reliability (QSR) Section, 2026-2028. No exact election day/month is evidenced, so render year2026 only. Official officers page is contextual, not election-date proof. Preserve all17 existing entries exactly and in order. Smallest change is one data record with strict regression tests and provenance; no templates/CSS/JS/assets/CV changes. Sol/max authors content/tests; parent verifies, reviews, integrates and deploys.
+
+
 ## CV, News and People Refresh - Published
 
 All requested changes are integrated and publicly verified. Completed work is in history.md; source decisions and validation are in docs/cv-news-refresh.md and docs/validation.md. No release gate remains. Existing unresolved historical News dates are recorded rather than silently changed.

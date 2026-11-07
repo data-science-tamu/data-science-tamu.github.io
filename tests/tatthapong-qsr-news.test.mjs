@@ -18,11 +18,11 @@ const approvedText = "Ph.D. student Tatthapong Srikitrungruang was selected as a
 const approvedHtml = approvedText.replace(competition, `<a href="${announcement}">${competition}</a>`);
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 
-test("one newest Tatthapong finalist item uses only the approved wording and official link", () => {
+test("one preserved Tatthapong finalist item uses only the approved wording and official link", () => {
   const matches = lab.news.filter((item) => item.html.includes(announcement) ||
     (item.text.includes("Tatthapong") && item.text.includes(competition)));
   assert.equal(matches.length, 1, "Exactly one Tatthapong QSR finalist announcement");
-  assert.equal(lab.news[0], matches[0], "Prepend the scheduled presentation announcement");
+  assert.equal(lab.news[1], matches[0], "The scheduled presentation announcement follows Council");
   assert.deepEqual(matches[0], {
     date: "2026.11.01",
     html: approvedHtml,
@@ -47,14 +47,14 @@ test("the capture and prior news remain preserved except the approved ISEN year/
 });
 
 for (const route of ["/news/", "/"]) {
-  test(`${route} renders the finalist first with a semantic presentation date and the expected news coverage`, () => {
+  test(`${route} renders the finalist second with a semantic presentation date and the expected news coverage`, () => {
     const html = createPages(
       JSON.parse(read("content/site.json")), lab, imageRenderer(path.join(root, "public")),
     ).find((page) => page.route === route).body;
     const articles = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map((match) => match[0]);
-    assert.ok(articles[0].includes(`<p>${approvedHtml}</p>`));
-    assert.match(articles[0], /<time datetime="2026-11-01">2026\.11\.01<\/time>/);
-    assert.doesNotMatch(articles[0], /<img\b|news-photos/);
+    assert.ok(articles[1].includes(`<p>${approvedHtml}</p>`));
+    assert.match(articles[1], /<time datetime="2026-11-01">2026\.11\.01<\/time>/);
+    assert.doesNotMatch(articles[1], /<img\b|news-photos/);
     assert.equal(articles.join("").split(`<a href="${announcement}">`).length - 1, 1);
     const expected = route === "/" ? lab.news.slice(0, 3) : lab.news;
     assert.equal(articles.length, expected.length);
@@ -64,6 +64,6 @@ for (const route of ["/news/", "/"]) {
         : `<time datetime="${item.date.replaceAll(".", "-")}">${item.date}</time>`;
       assert.ok(articles[index].includes(date), `${route}: date for ${item.text}`);
     }
-    if (route === "/news/") assert.match(articles[0], /id="news-2026-11-01"/);
+    if (route === "/news/") assert.match(articles[1], /id="news-2026-11-01"/);
   });
 }

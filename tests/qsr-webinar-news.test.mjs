@@ -39,11 +39,11 @@ function assertWebinarNews(data) {
     /QSR Webinar Series|Robust Inference|SUy7JjjuqcM|qsr-webinar-2026-10-21-flyer/.test(JSON.stringify(item)));
   assert.equal(matches.length, 1, "Exactly one QSR webinar record");
   assert.deepEqual(matches[0], approved, "Only the approved webinar facts, links and native images");
-  assert.equal(data.news.length, 17);
-  assert.equal(data.news[1], matches[0], "The webinar follows the existing finalist");
-  assert.deepEqual(data.news[0], before.news[0], "The first finalist remains exact and has no images");
-  assert.equal(data.news[2].date, "2026.09.04", "The combined grant entry follows the webinar");
-  assert.equal(data.news[3].date, "2026.05.16", "The grant entry precedes the May 16 record");
+  assert.equal(data.news.length, 18);
+  assert.equal(data.news[2], matches[0], "The webinar follows the existing finalist");
+  assert.deepEqual(data.news[1], before.news[0], "The finalist after Council remains exact and has no images");
+  assert.equal(data.news[3].date, "2026.09.04", "The combined grant entry follows the webinar");
+  assert.equal(data.news[4].date, "2026.05.16", "The grant entry precedes the May 16 record");
 }
 
 function assertPreserved(data) {
@@ -72,9 +72,9 @@ function assertPreserved(data) {
 
 test("one October 21 webinar uses the official full title and ordinary recording/PDF links after the unchanged finalist", () => {
   assertWebinarNews(lab);
-  assert.doesNotMatch(lab.news[1].html, /Search on the Replay Buffer|<iframe|<embed|<object|\b(?:winner|rank|ceremony|council)\b/i);
-  assert.match(lab.news[1].text, /^[\x20-\x7e]+$/);
-  assert.doesNotMatch(JSON.stringify(lab.news[1]), /shown below/i);
+  assert.doesNotMatch(lab.news[2].html, /Search on the Replay Buffer|<iframe|<embed|<object|\b(?:winner|rank|ceremony|council)\b/i);
+  assert.match(lab.news[2].text, /^[\x20-\x7e]+$/);
+  assert.doesNotMatch(JSON.stringify(lab.news[2]), /shown below/i);
 });
 
 test("the portable pre-webinar fixture preserves every previous News record and all other lab data", () => {
@@ -89,19 +89,19 @@ test("the portable pre-webinar fixture preserves every previous News record and 
 test("webinar expectations reject duplicates, wrong dates/title/links, an inline flyer and unsupported claims", () => {
   assertWebinarNews(lab);
   const mutations = {
-    missing: (data) => data.news.splice(1, 1),
-    duplicate: (data) => data.news.splice(1, 0, structuredClone(data.news[1])),
-    "announcement date": (data) => { data.news[1].date = "2026.09.21"; },
-    "photo posting date": (data) => { data.news[1].date = "2026.11.06"; },
-    "wrong video title": (data) => { data.news[1].html = "Search on the Replay Buffer:Bridging Planning and Reinforcement Learning by Jaesung Lee"; },
-    "wrong recording": (data) => { data.news[1].html = data.news[1].html.replace(recording, "https://example.org/"); },
-    "missing PDF link": (data) => { data.news[1].html = data.news[1].html.replace(flyerPdf, "/cv/"); },
-    "missing photo": (data) => data.news[1].images.pop(),
-    "inline flyer": (data) => data.news[1].images.unshift(flyerImage),
-    "captured section": (data) => { data.news[1].sourceSection = 1; },
-    misplaced: (data) => data.news.unshift(...data.news.splice(1, 1)),
-    "winner claim": (data) => { data.news[1].text += " Dr. Lee was the winner."; },
-    embed: (data) => { data.news[1].html += `<iframe src="${recording}"></iframe>`; },
+    missing: (data) => data.news.splice(2, 1),
+    duplicate: (data) => data.news.splice(2, 0, structuredClone(data.news[2])),
+    "announcement date": (data) => { data.news[2].date = "2026.09.21"; },
+    "photo posting date": (data) => { data.news[2].date = "2026.11.06"; },
+    "wrong video title": (data) => { data.news[2].html = "Search on the Replay Buffer:Bridging Planning and Reinforcement Learning by Jaesung Lee"; },
+    "wrong recording": (data) => { data.news[2].html = data.news[2].html.replace(recording, "https://example.org/"); },
+    "missing PDF link": (data) => { data.news[2].html = data.news[2].html.replace(flyerPdf, "/cv/"); },
+    "missing photo": (data) => data.news[2].images.pop(),
+    "inline flyer": (data) => data.news[2].images.unshift(flyerImage),
+    "captured section": (data) => { data.news[2].sourceSection = 1; },
+    misplaced: (data) => data.news.unshift(...data.news.splice(2, 1)),
+    "winner claim": (data) => { data.news[2].text += " Dr. Lee was the winner."; },
+    embed: (data) => { data.news[2].html += `<iframe src="${recording}"></iframe>`; },
   };
   for (const [name, mutate] of Object.entries(mutations)) {
     const data = structuredClone(lab);
@@ -113,8 +113,8 @@ test("webinar expectations reject duplicates, wrong dates/title/links, an inline
 test("preservation checks reject changes to prior news order/content or unrelated lab data", () => {
   assertPreserved(lab);
   const mutations = {
-    "old sentence": (data) => { data.news[0].text += " Changed."; },
-    "finalist photo": (data) => data.news[0].images.push(acknowledgement),
+    "old sentence": (data) => { data.news[1].text += " Changed."; },
+    "finalist photo": (data) => data.news[1].images.push(acknowledgement),
     "missing old record": (data) => data.news.pop(),
     "legacy order": (data) => data.news.push(...data.news.splice(data.news.length - 2, 1)),
     "faculty name": (data) => { data.faculty.name += " Changed"; },
@@ -139,15 +139,15 @@ for (const asset of assets) {
 }
 
 for (const route of ["/", "/news/"]) {
-  test(`${route} renders one webinar second with the exact title/date and recording/PDF links, never an embed`, () => {
+  test(`${route} renders one webinar third with the exact title/date and recording/PDF links, never an embed`, () => {
     const html = createPages(
       JSON.parse(read("content/site.json")), lab, imageRenderer(path.join(root, "public")),
     ).find((page) => page.route === route).body;
     const articles = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map((match) => match[0]);
-    assert.equal(articles.length, route === "/" ? 3 : 17);
-    assert.ok(articles[0].includes(`<p>${before.news[0].html}</p>`));
-    assert.doesNotMatch(articles[0], /<img\b|news-photos/);
-    const item = articles[1];
+    assert.equal(articles.length, route === "/" ? 3 : 18);
+    assert.ok(articles[1].includes(`<p>${before.news[0].html}</p>`));
+    assert.doesNotMatch(articles[1], /<img\b|news-photos/);
+    const item = articles[2];
     assert.doesNotMatch(item, /View the webinar flyer and QSR acknowledgement photo|qsr-webinar-2026-10-21-flyer\.jpg/,
       `${route}: redundant sentence and inline flyer are removed`);
     assert.doesNotMatch(item, /shown below/i);
