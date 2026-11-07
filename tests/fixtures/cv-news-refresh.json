@@ -1,0 +1,627 @@
+{
+  "baselineSha256": "9d301c4357acab01ff19846ba57d0efa24f95ac478a2b050d31d01f0c8b81f43",
+  "changes": [
+    {
+      "path": [
+        "faculty",
+        "interests"
+      ],
+      "before": [
+        {
+          "text": "Advanced Statistical modeling and data mining methods in the application of advanced Engineering processes and systems.",
+          "html": "Advanced Statistical modeling and data mining methods in the application of advanced Engineering processes and systems."
+        },
+        {
+          "text": "Data-driven modeling, analysis, design, and control of emerging advanced manufacturing processes",
+          "html": "Data-driven modeling, analysis, design, and control of emerging advanced manufacturing processes"
+        },
+        {
+          "text": "Data-driven analytics for IoT-enabled smart manufacturing, service, and healthcare systems",
+          "html": "Data-driven analytics for IoT-enabled smart manufacturing, service, and healthcare systems"
+        }
+      ],
+      "after": [
+        {
+          "text": "Domain-informed statistical machine learning and uncertainty quantification",
+          "html": "Domain-informed statistical machine learning and uncertainty quantification"
+        },
+        {
+          "text": "Bayesian modeling, uncertainty quantification, and data-driven decision-making",
+          "html": "Bayesian modeling, uncertainty quantification, and data-driven decision-making"
+        },
+        {
+          "text": "Digital twins and predictive analytics for advanced manufacturing and healthcare",
+          "html": "Digital twins and predictive analytics for advanced manufacturing and healthcare"
+        }
+      ]
+    },
+    {
+      "path": [
+        "faculty",
+        "education",
+        3,
+        "degree"
+      ],
+      "before": "BFE",
+      "after": "BE"
+    },
+    {
+      "path": [
+        "faculty",
+        "education",
+        4,
+        "field"
+      ],
+      "before": "Industrial Systems Information Engineering",
+      "after": "Industrial Systems and Information Engineering"
+    },
+    {
+      "path": [
+        "faculty",
+        "courses"
+      ],
+      "before": [
+        {
+          "text": "ISEN 350 Quality Engineering",
+          "html": "ISEN 350 Quality Engineering"
+        },
+        {
+          "text": "ISEN 614 Advanced Quality Control",
+          "html": "ISEN 614 Advanced Quality Control"
+        },
+        {
+          "text": "DAEN 210 Uncertainty Modeling",
+          "html": "DAEN 210 Uncertainty Modeling"
+        },
+        {
+          "text": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department.",
+          "html": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department."
+        }
+      ],
+      "after": [
+        {
+          "text": "ISEN 350 Quality Engineering (Fall 2022, Fall 2023)",
+          "html": "ISEN 350 Quality Engineering (Fall 2022, Fall 2023)"
+        },
+        {
+          "text": "ISEN 614 Advanced Quality Control (Spring 2023, Spring 2024, Spring 2025, Fall 2026)",
+          "html": "ISEN 614 Advanced Quality Control (Spring 2023, Spring 2024, Spring 2025, Fall 2026)"
+        },
+        {
+          "text": "DAEN 210 Uncertainty Modeling (Spring 2024, Spring 2025, Spring 2026)",
+          "html": "DAEN 210 Uncertainty Modeling (Spring 2024, Spring 2025, Spring 2026)"
+        },
+        {
+          "text": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department. Course development: Summer 2023.",
+          "html": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department. Course development: Summer 2023."
+        }
+      ]
+    },
+    {
+      "path": [
+        "faculty",
+        "awards"
+      ],
+      "before": [
+        {
+          "text": "2025–26 Montague-Center for Teaching Excellence (CTE) Scholar, Texas A&M University, 2025",
+          "html": "2025–26 Montague-Center for Teaching Excellence (CTE) Scholar, Texas A&amp;M University, 2025"
+        },
+        {
+          "text": "University-wide recognition for excellence and innovation in undergraduate teaching (includes a $6,500 teaching grant)",
+          "html": "University-wide recognition for excellence and innovation in undergraduate teaching (includes a $6,500 teaching grant)"
+        },
+        {
+          "text": "QSR Best Referred Paper Competition Finalist, INFORMS Annual Meeting, 2025",
+          "html": "QSR Best Referred Paper Competition Finalist, INFORMS Annual Meeting, 2025"
+        },
+        {
+          "text": "QCRE Student Paper Competition Finalist (Ph.D. Student: Sina Aghaee), IISE Annual Conference & Expo, 2025",
+          "html": "QCRE Student Paper Competition Finalist (Ph.D. Student: Sina Aghaee), IISE Annual Conference &amp; Expo, 2025"
+        },
+        {
+          "text": "IISE Transactions Best Paper Award, IISE, 2024",
+          "html": "IISE Transactions Best Paper Award, IISE, 2024"
+        },
+        {
+          "text": "Best paper award, Management and Innovation Technology International Conference, 2015",
+          "html": "Best paper award, Management and Innovation Technology International Conference, 2015"
+        },
+        {
+          "text": "Best Master’s Thesis Award, KAIST, 2013",
+          "html": "Best Master’s Thesis Award, KAIST, 2013"
+        }
+      ],
+      "after": [
+        {
+          "text": "QSR Best Student Paper Competition Finalist (Ph.D. Advisee: Tatthapong Srikitrungruang), INFORMS Annual Meeting, 2026",
+          "html": "<a href=\"https://connect.informs.org/discussion/informs-2026-best-student-paper-competition-finalists\">QSR Best Student Paper Competition</a> Finalist (Ph.D. Advisee: Tatthapong Srikitrungruang), INFORMS Annual Meeting, 2026"
+        },
+        {
+          "text": "2025–26 Montague-Center for Teaching Excellence (CTE) Scholar, Texas A&M University, 2025",
+          "html": "<a href=\"https://www.linkedin.com/posts/jaesung-lee-phd_i-am-honored-to-be-selected-as-a-2025-26-activity-7392316347638214656-Idum\">2025–26 Montague-Center for Teaching Excellence (CTE) Scholar</a>, Texas A&amp;M University, 2025"
+        },
+        {
+          "text": "University-wide recognition for excellence and innovation in undergraduate teaching (includes a $6,500 teaching grant)",
+          "html": "University-wide recognition for excellence and innovation in undergraduate teaching (includes a $6,500 teaching grant)"
+        },
+        {
+          "text": "QSR Best Refereed Paper Competition Finalist, INFORMS Annual Meeting, 2025",
+          "html": "<a href=\"https://connect.informs.org/qsr/awards\">QSR Best Refereed Paper Competition</a> Finalist, INFORMS Annual Meeting, 2025"
+        },
+        {
+          "text": "QCRE Student Paper Competition Finalist (Ph.D. Advisee: Sina Aghaee Dabaghan Fard), IISE Annual Conference & Expo, 2025",
+          "html": "<a href=\"https://myemail.constantcontact.com/QCRE-News---May-2025.html?aid=vKcqr1w06AU&amp;soid=1101700049774\">QCRE Student Paper Competition</a> Finalist (Ph.D. Advisee: Sina Aghaee Dabaghan Fard), IISE Annual Conference &amp; Expo, 2025"
+        },
+        {
+          "text": "IISE Transactions Best Paper Award, IISE, 2024",
+          "html": "<a href=\"https://www.linkedin.com/posts/uw-madison-dept-of-industrial-and-systems-engineering-isye_iiseannual2024-activity-7199389862829973504--xtp\">IISE Transactions Best Paper Award</a>, IISE, 2024"
+        },
+        {
+          "text": "Exceptional performance warrant on M.S. exam (statistical consulting exam involving interviewing two clients, writing reports, and orally defending the reports to four faculty committees), Department of Statistics, UW–Madison, 2020",
+          "html": "Exceptional performance warrant on M.S. exam (statistical consulting exam involving interviewing two clients, writing reports, and orally defending the reports to four faculty committees), Department of Statistics, UW–Madison, 2020"
+        },
+        {
+          "text": "Best paper award, Management and Innovation Technology International Conference, 2015",
+          "html": "Best paper award, Management and Innovation Technology International Conference, 2015"
+        },
+        {
+          "text": "Best Master’s Thesis Award, KAIST, 2013",
+          "html": "Best Master’s Thesis Award, KAIST, 2013"
+        }
+      ]
+    },
+    {
+      "path": [
+        "faculty",
+        "experience"
+      ],
+      "after": [
+        {
+          "role": "Assistant Professor",
+          "organization": "Industrial and Systems Engineering, Texas A&M University",
+          "period": "2022–present"
+        },
+        {
+          "role": "Senior Consultant",
+          "organization": "Gurobikorea, Seoul, South Korea",
+          "period": "2017"
+        },
+        {
+          "role": "Research Engineer/Software Developer",
+          "organization": "Diquest Inc., Seoul, South Korea",
+          "period": "2013–2016"
+        }
+      ]
+    },
+    {
+      "path": [
+        "faculty",
+        "funding"
+      ],
+      "after": {
+        "summary": "Awarded research funding: $3.08 million in total project funding ($2.96 million federal); $1.94 million in federal PI funding.",
+        "items": [
+          {
+            "role": "PI",
+            "sponsor": "National Institutes of Health (NIH)/NIAMS",
+            "title": "R01, SCH: Digital Twin Systems for Personalized Prediction of Osteoporotic Spine Fractures Using Physics-Informed Machine Learning",
+            "period": "09/2026–08/2030",
+            "amount": "Project total: $1,027,705",
+            "details": "Co-Investigators: Jangho Park, Yuxiao Zhou."
+          },
+          {
+            "role": "PI",
+            "sponsor": "National Science Foundation (NSF)",
+            "title": "Trustworthy Digital Twins for Patient-Specific Evaluation of Implant Systems",
+            "period": "06/2027–05/2030",
+            "amount": "Project total: $513,000",
+            "details": "FDT-BioTech. Co-PIs: Yuxiao Zhou, Andrew Read-Fuller."
+          },
+          {
+            "role": "PI",
+            "sponsor": "National Institutes of Health (NIH)/NIDCR",
+            "title": "R21, Toward Personalized Dental Surgery Planning: Dental Bone Stiffness Discovery and Strain Prediction Using Physics-Informed Machine Learning",
+            "period": "08/2026–07/2028",
+            "amount": "Project total: $394,886",
+            "details": "M-PI: Yuxiao Zhou; Co-Investigator: Andrew Read-Fuller."
+          },
+          {
+            "role": "Senior Personnel",
+            "sponsor": "National Science Foundation (NSF)",
+            "title": "Conference: Collaborative Research at the Intersection of Statistics and Engineering: High-Dimensional Data Analysis",
+            "period": "01/2026–12/2026",
+            "amount": "Project total: $20,000",
+            "details": "DMS. PI: Ardavan Yazdanbakhsh."
+          },
+          {
+            "role": "Co-PI",
+            "sponsor": "Crider Foods",
+            "title": "Cannery 4.0 Phase 2",
+            "period": "02/2025–11/2025",
+            "amount": "Project total: $101,628; my share: $36,390",
+            "details": "PI: Satish Bukkapatnam. My role: Led the project’s failure-prediction analytics, developing machine-learning methods that convert process sensor streams into early warnings for proactive maintenance."
+          },
+          {
+            "role": "Co-PI",
+            "sponsor": "LIFT / U.S. Department of War",
+            "title": "VITAL: Virtual Qualification and Certification of an Advanced Structural Material Leveraging Advanced Data-Driven Approaches",
+            "period": "09/2025–09/2026",
+            "amount": "Project total: $1,000,000; TAMU portion: $283,748; my share: $93,237",
+            "details": "AMC 2024. PI: Mohsen Taheri Andani; Lead: EOS North America. My role: Led the project’s data-driven virtual qualification and certification thrust; Mohsen Taheri Andani and industry partners led additive manufacturing and mechanical testing."
+          },
+          {
+            "role": "PI",
+            "sponsor": "Texas A&M Institute of Data Science",
+            "title": "Toward Smart Orthopedic Surgery Planning Using Physics-Informed Machine Learning",
+            "period": "01/2025–12/2026",
+            "amount": "Project total: $20,000",
+            "details": "SPAICD. Collaborator: Yuxiao Zhou.",
+            "href": "https://tamids.tamu.edu/faculty-and-researchers/past-seed-grants/"
+          }
+        ]
+      }
+    },
+    {
+      "path": [
+        "faculty",
+        "service"
+      ],
+      "after": [
+        "Elected Council Member, INFORMS Quality, Statistics, and Reliability (QSR) Section, 2026–2028",
+        "Committee Member, IISE Transactions (Design & Manufacturing Focused Issue) 2027 Best Paper Award Committee, 2026",
+        "Organizing Committee Member and Senior Personnel, Workshop on Collaborative Research at the Intersection of Statistics and Engineering (CRSE): High-Dimensional Data Analysis, Wharton School, University of Pennsylvania, Philadelphia, PA, August 11–13, 2026",
+        "Panelist, “Starting Out in Academia” panel in “Doctoral Colloquium”, IISE Doctoral Colloquium, IISE Conference, Arlington, TX, 2026",
+        "Associate Editor, Journal of Intelligent Manufacturing, 2024-",
+        "Director of the Korean Research Association for the Business Education, 2023-Present",
+        "Editorial Board Member of the Korean Research Association for the Business Education, 2023-2025"
+      ]
+    },
+    {
+      "path": [
+        "people",
+        "current",
+        0,
+        "links"
+      ],
+      "after": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/in/tatthapongjoe"
+        }
+      ]
+    },
+    {
+      "path": [
+        "people",
+        "current",
+        0,
+        "highlights"
+      ],
+      "after": [
+        "Finalist for the 2026 QSR Best Student Paper Competition at the INFORMS Annual Meeting.",
+        "Finalist for the 2025 QSR Best Refereed Paper Competition at the INFORMS Annual Meeting.",
+        "Second place in the ISEN Best Presentation Competition, organized by the INFORMS Student Chapter, 2025."
+      ]
+    },
+    {
+      "path": [
+        "people",
+        "current",
+        1,
+        "links"
+      ],
+      "after": [
+        {
+          "label": "Website",
+          "href": "https://sinalytics.net/"
+        },
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/in/sinaaghaee"
+        }
+      ]
+    },
+    {
+      "path": [
+        "people",
+        "current",
+        1,
+        "highlights"
+      ],
+      "after": [
+        "Finalist for the QCRE Student Paper Competition at the 2025 IISE Annual Conference & Expo."
+      ]
+    },
+    {
+      "path": [
+        "people",
+        "current",
+        2,
+        "links"
+      ],
+      "after": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/in/tanvir-ahmed-68126229b"
+        }
+      ]
+    },
+    {
+      "path": [
+        "people",
+        "current",
+        2,
+        "highlights"
+      ],
+      "after": [
+        "Runner-up, Student Presentation Competition, INFORMS Student Chapter at Texas A&M University, 2026."
+      ]
+    },
+    {
+      "path": [
+        "people",
+        "undergraduates"
+      ],
+      "after": [
+        {
+          "name": "Andres Sanchez",
+          "period": "Fall 2026–present",
+          "description": "DAEN 491, research credit"
+        }
+      ]
+    },
+    {
+      "path": [
+        "people",
+        "past",
+        0,
+        "names",
+        0
+      ],
+      "before": "Noor S. Obeidat (Graduated, 2025 Fall)",
+      "after": "Noor S. Obeidat (Graduated, 2025 Fall); Outstanding Master of Science Thesis Student Award, 2025."
+    },
+    {
+      "path": [
+        "people",
+        "past",
+        2,
+        "names",
+        1
+      ],
+      "before": "Gabriel Gonzalez (2024 Sep-2025 June)",
+      "after": "Gabriel Gonzalez (2024 Sep-2025 June); admitted to an M.S. program at Harvard University."
+    },
+    {
+      "path": [
+        "news",
+        1,
+        "html"
+      ],
+      "before": "Dr. Lee presented \"Robust Inference of Unseen Heterogeneous Physical Properties from Imperfect Data: A Unified Probabilistic Physics-Informed Machine Learning Framework\" as part of the INFORMS QSR Webinar Series. Watch the recording on <a href=\"https://youtu.be/SUy7JjjuqcM\">YouTube</a>. <a href=\"/assets/documents/qsr-webinar-2026-10-21-flyer.pdf\">Webinar flyer (PDF)</a>. <a href=\"/news/#news-2026-10-21\">View the webinar flyer and QSR acknowledgement photo</a>.",
+      "after": "Dr. Lee presented \"Robust Inference of Unseen Heterogeneous Physical Properties from Imperfect Data: A Unified Probabilistic Physics-Informed Machine Learning Framework\" as part of the INFORMS QSR Webinar Series. Watch the recording on <a href=\"https://youtu.be/SUy7JjjuqcM\">YouTube</a>. <a href=\"/assets/documents/qsr-webinar-2026-10-21-flyer.pdf\">Webinar flyer (PDF)</a>."
+    },
+    {
+      "path": [
+        "news",
+        1,
+        "text"
+      ],
+      "before": "Dr. Lee presented \"Robust Inference of Unseen Heterogeneous Physical Properties from Imperfect Data: A Unified Probabilistic Physics-Informed Machine Learning Framework\" as part of the INFORMS QSR Webinar Series. Watch the recording on YouTube. Webinar flyer (PDF). View the webinar flyer and QSR acknowledgement photo.",
+      "after": "Dr. Lee presented \"Robust Inference of Unseen Heterogeneous Physical Properties from Imperfect Data: A Unified Probabilistic Physics-Informed Machine Learning Framework\" as part of the INFORMS QSR Webinar Series. Watch the recording on YouTube. Webinar flyer (PDF)."
+    },
+    {
+      "path": [
+        "news",
+        1,
+        "images"
+      ],
+      "before": [
+        "/assets/images/qsr-webinar-2026-10-21-flyer.jpg",
+        "/assets/images/qsr-2026-acknowledgement.jpg"
+      ],
+      "after": [
+        "/assets/images/qsr-2026-acknowledgement.jpg"
+      ]
+    },
+    {
+      "path": [
+        "news",
+        2,
+        "html"
+      ],
+      "before": "Dr. Lee served as a panelist at the Doctoral Student Colloquium, sharing advice with doctoral students preparing for academic careers.",
+      "after": "Dr. Lee served as a panelist at the <a href=\"https://www.linkedin.com/posts/cieadh_iise-cieadh-activity-7465501192018739200-lxdH\">Doctoral Student Colloquium</a>, sharing advice with doctoral students preparing for academic careers."
+    },
+    {
+      "path": [
+        "news",
+        3,
+        "html"
+      ],
+      "before": "The first paper of Ph.D. student Sina Aghaee was accepted by Technometrics. Congratulations, Sina!",
+      "after": "The <a href=\"https://doi.org/10.1080/00401706.2026.2653564\">first paper of Ph.D. student Sina Aghaee</a> was accepted by Technometrics. Congratulations, Sina!"
+    },
+    {
+      "path": [
+        "news",
+        4,
+        "html"
+      ],
+      "before": "Dr. Lee was recognized as the 2025-26 Montague-Center for Teaching Excellence (CTE) Scholar at Texas A&amp;M University. This is a university-wide recognition for excellence and innovation in undergraduate teaching.",
+      "after": "Dr. Lee was recognized as the <a href=\"https://www.linkedin.com/posts/jaesung-lee-phd_i-am-honored-to-be-selected-as-a-2025-26-activity-7392316347638214656-Idum\">2025-26 Montague-Center for Teaching Excellence (CTE) Scholar</a> at Texas A&amp;M University. This is a university-wide recognition for excellence and innovation in undergraduate teaching."
+    },
+    {
+      "path": [
+        "news",
+        5,
+        "html"
+      ],
+      "before": "Dr. Lee's paper was selected as a finalist in the QSR Best Referred Paper Competition. Dr. Lee presented this work at the 2025 INFORMS Conference.",
+      "after": "Dr. Lee's paper was selected as a finalist in the <a href=\"https://connect.informs.org/qsr/awards\">QSR Best Refereed Paper Competition</a>. Dr. Lee presented this work at the 2025 INFORMS Conference."
+    },
+    {
+      "path": [
+        "news",
+        5,
+        "text"
+      ],
+      "before": "Dr. Lee's paper was selected as a finalist in the QSR Best Referred Paper Competition. Dr. Lee presented this work at the 2025 INFORMS Conference.",
+      "after": "Dr. Lee's paper was selected as a finalist in the QSR Best Refereed Paper Competition. Dr. Lee presented this work at the 2025 INFORMS Conference."
+    },
+    {
+      "path": [
+        "news",
+        7,
+        "html"
+      ],
+      "before": "The first paper of Ph.D. student Tatthapong Srikitrungruang was accepted by Advanced Science (IF &gt; 14). Congratulations, Tatthapong!",
+      "after": "The <a href=\"https://doi.org/10.1002/advs.202508445\">first paper of Ph.D. student Tatthapong Srikitrungruang</a> was accepted by Advanced Science (IF &gt; 14). Congratulations, Tatthapong!"
+    },
+    {
+      "path": [
+        "news",
+        9,
+        "html"
+      ],
+      "before": "Ph.D. student Sina Aghaee was selected as a finalist in the IISE QCRE Best Student Paper Competition. Sina presented this work at the 2025 IISE Conference. Congratulations, Sina!&nbsp;",
+      "after": "Ph.D. student Sina Aghaee was selected as a finalist in the <a href=\"https://myemail.constantcontact.com/QCRE-News---May-2025.html?aid=vKcqr1w06AU&amp;soid=1101700049774\">IISE QCRE Best Student Paper Competition</a>. Sina presented this work at the 2025 IISE Conference. Congratulations, Sina!&nbsp;"
+    },
+    {
+      "path": [
+        "news",
+        9,
+        "images"
+      ],
+      "before": [],
+      "after": [
+        "/assets/images/sina-qcre-2025-group.jpg",
+        "/assets/images/sina-qcre-2025-certificate.jpg"
+      ]
+    },
+    {
+      "path": [
+        "news",
+        11,
+        "html"
+      ],
+      "before": "Dr. Lee received <a href=\"https://tamids.tamu.edu/2025/01/06/2024-spaicd-recipients/\">the Seed Program for AI, Computing, and Data Science (SPAICD) Award</a> from the Texas A&amp;M Institute of Data Science (TAMIDS). This award was featured in the <a href=\"https://engineering.tamu.edu/news/2025/01/revolutionizing-dental-surgery-with-ai.html\">College of Engineering News</a> and <a href=\"https://www.dental-tribune.com/news/bones-and-machines-ai-and-the-transformation-of-dental-implantology\">the Dental Tribune International</a>.",
+      "after": "Dr. Lee received <a href=\"https://tamids.tamu.edu/faculty-and-researchers/past-seed-grants/\">the Seed Program for AI, Computing, and Data Science (SPAICD) Award</a> from the Texas A&amp;M Institute of Data Science (TAMIDS). This award was featured in the <a href=\"https://engineering.tamu.edu/news/2025/01/revolutionizing-dental-surgery-with-ai.html\">College of Engineering News</a> and <a href=\"https://www.dental-tribune.com/news/bones-and-machines-ai-and-the-transformation-of-dental-implantology\">the Dental Tribune International</a>."
+    },
+    {
+      "path": [
+        "news",
+        12,
+        "html"
+      ],
+      "before": "Dr. Lee's paper \"Landmark-Embedded Gaussian Process&nbsp; with Applications for&nbsp; Functional Data Modeling\" received the IISE Transactions Best Paper Award from IISE Transactions. Dr. Lee presented this work at the 2024 IISE Conference.",
+      "after": "Dr. Lee's paper \"Landmark-Embedded Gaussian Process&nbsp; with Applications for&nbsp; Functional Data Modeling\" received the <a href=\"https://www.linkedin.com/posts/uw-madison-dept-of-industrial-and-systems-engineering-isye_iiseannual2024-activity-7199389862829973504--xtp\">IISE Transactions Best Paper Award</a> from IISE Transactions. Dr. Lee presented this work at the 2024 IISE Conference."
+    },
+    {
+      "path": [
+        "news",
+        14,
+        "html"
+      ],
+      "before": "The paper co-authored by Dr. Lee \"Fully Inkjet-Printed, 2D Materials-Based Field-Effect Transistor for Water Sensing\" was recognized as one of the top-viewed articles in Advanced Materials Technologies in 2023.",
+      "after": "The paper co-authored by Dr. Lee \"<a href=\"https://doi.org/10.1002/admt.202301288\">Fully Inkjet-Printed, 2D Materials-Based Field-Effect Transistor for Water Sensing</a>\" was recognized as one of the top-viewed articles in Advanced Materials Technologies in 2023."
+    },
+    {
+      "path": [
+        "news",
+        15,
+        "html"
+      ],
+      "before": "Dr. Lee's paper \"Landmark-Embedded Gaussian Process&nbsp; with Applications for&nbsp; Functional Data Modeling,\" published in IISE Transactions, was featured in ISE Magazine.",
+      "after": "Dr. Lee's paper \"<a href=\"https://doi.org/10.1080/24725854.2021.1974129\">Landmark-Embedded Gaussian Process&nbsp; with Applications for&nbsp; Functional Data Modeling</a>,\" published in IISE Transactions, was featured in ISE Magazine."
+    }
+  ],
+  "newsAddition": {
+    "index": 2,
+    "record": {
+      "date": "2026.09.04",
+      "html": "Dr. Lee received three NIH and NSF grants as Principal Investigator, totaling approximately $1.94 million in project funding: an NIH/NIAMS R01, an NSF FDT-BioTech award, and an NIH/NIDCR R21, supporting digital twins and physics-informed machine learning for biomedical prediction and evaluation. Read the <a href=\"https://www.linkedin.com/posts/jaesung-lee-phd_dmsfunded-nsf-nih-activity-7501684789985333248-zv30\">grant announcement</a> and the <a href=\"https://www.linkedin.com/posts/informs-quality-statistics-and-reliability-qsr_quality-statistics-reliability-activity-7501331937618370560-xMwW\">INFORMS QSR Member Spotlight</a>.",
+      "text": "Dr. Lee received three NIH and NSF grants as Principal Investigator, totaling approximately $1.94 million in project funding: an NIH/NIAMS R01, an NSF FDT-BioTech award, and an NIH/NIDCR R21, supporting digital twins and physics-informed machine learning for biomedical prediction and evaluation. Read the grant announcement and the INFORMS QSR Member Spotlight.",
+      "images": []
+    }
+  },
+  "paragraphCorrections": [
+    {
+      "page": "home",
+      "before": "Advanced Statistical modeling and data mining methods in the application of advanced Engineering processes and systems.",
+      "after": "Domain-informed statistical machine learning and uncertainty quantification"
+    },
+    {
+      "page": "home",
+      "before": "Data-driven modeling, analysis, design, and control of emerging advanced manufacturing processes",
+      "after": "Bayesian modeling, uncertainty quantification, and data-driven decision-making"
+    },
+    {
+      "page": "home",
+      "before": "Data-driven analytics for IoT-enabled smart manufacturing, service, and healthcare systems",
+      "after": "Digital twins and predictive analytics for advanced manufacturing and healthcare"
+    },
+    {
+      "page": "home",
+      "before": "ISEN 350 Quality Engineering",
+      "after": "ISEN 350 Quality Engineering (Fall 2022, Fall 2023)"
+    },
+    {
+      "page": "home",
+      "before": "ISEN 614 Advanced Quality Control",
+      "after": "ISEN 614 Advanced Quality Control (Spring 2023, Spring 2024, Spring 2025, Fall 2026)"
+    },
+    {
+      "page": "home",
+      "before": "DAEN 210 Uncertainty Modeling",
+      "after": "DAEN 210 Uncertainty Modeling (Spring 2024, Spring 2025, Spring 2026)"
+    },
+    {
+      "page": "home",
+      "before": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department.",
+      "after": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department. Course development: Summer 2023."
+    },
+    {
+      "page": "home",
+      "before": "QSR Best Referred Paper Competition Finalist, INFORMS Annual Meeting, 2025",
+      "after": "QSR Best Refereed Paper Competition Finalist, INFORMS Annual Meeting, 2025"
+    },
+    {
+      "page": "home",
+      "before": "QCRE Student Paper Competition Finalist (Ph.D. Student: Sina Aghaee), IISE Annual Conference & Expo, 2025",
+      "after": "QCRE Student Paper Competition Finalist (Ph.D. Advisee: Sina Aghaee Dabaghan Fard), IISE Annual Conference & Expo, 2025"
+    },
+    {
+      "page": "home",
+      "before": "BFE 2011 Financial Engineering Korea University, Seoul, South Korea",
+      "after": "BE 2011 Financial Engineering Korea University, Seoul, South Korea"
+    },
+    {
+      "page": "home",
+      "before": "BS 2011 Industrial Systems Information Engineering Korea University, Seoul, South Korea",
+      "after": "BS 2011 Industrial Systems and Information Engineering Korea University, Seoul, South Korea"
+    },
+    {
+      "page": "news",
+      "before": "2025.10.27 Dr. Lee's paper was selected as a finalist in the QSR Best Referred Paper Competition. Dr. Lee presented this work at the 2025 INFORMS Conference.",
+      "after": "2025.10.27 Dr. Lee's paper was selected as a finalist in the QSR Best Refereed Paper Competition. Dr. Lee presented this work at the 2025 INFORMS Conference."
+    }
+  ],
+  "photos": [
+    {
+      "src": "/assets/images/sina-qcre-2025-group.jpg",
+      "bytes": 74829,
+      "width": 720,
+      "height": 539,
+      "sha256": "4d17f556f26fd771c878f906faf42f2d16bacf34f260ae0dcfa6997a0c99b1a0"
+    },
+    {
+      "src": "/assets/images/sina-qcre-2025-certificate.jpg",
+      "bytes": 73153,
+      "width": 800,
+      "height": 620,
+      "sha256": "a02c4d4ec4c6e10d91020cb49d9043357a8300e09b55ffcf6918fb36a63bf842"
+    }
+  ]
+}

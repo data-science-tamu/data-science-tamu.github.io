@@ -179,3 +179,12 @@ The existing `src/templates.mjs` and `src/helpers.mjs` render the
 `tests/informs-lab-photo.test.mjs` covers exact content, preservation,
 native dimensions/hash and semantic figures/captions/alt text.
 See [photo provenance](../docs/source-provenance.md#informs-2026-lab-photo).
+
+
+## CV, News and People Refresh
+
+- Maintained facts and source-backed links live in `content/lab.json`; CV-only `faculty.experience`, `faculty.funding` and `faculty.service` are rendered by `src/templates.mjs`. Funding strings distinguish project totals from TAMU portions and individual shares. The complete owner-supplied PDF remains at its existing URL.
+- People student `links` and `highlights` are ordinary local-rendered content. `people.undergraduates` is separate from past members; degree-date conflicts are not silently reconciled against LinkedIn.
+- Lab photos remain the ordered `people.photos` list. `src/templates.mjs` emits semantic figures in a focusable `data-photo-track`; `public/assets/site.css` supplies native horizontal scroll/snap, single-card mobile layout and full print output. `public/assets/site.js` progressively enables previous/next, count, keyboard and reduced-motion-aware scrolling. No carousel library, autoplay or dependency is used.
+- `tests/people-gallery.test.mjs` exercises optional render fields and production gallery event handlers with controlled geometry. Parent browser QA separately exercises real layout, touch scrolling, accessibility, no-JavaScript and print behavior.
+- Photo, grant, CV and per-News sources and unresolved historical discrepancies are documented in `docs/cv-news-refresh.md` and `docs/source-provenance.md`; the full scientific/Research presentation is outside this change.

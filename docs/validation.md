@@ -695,3 +695,19 @@ Task planning is closed and detailed receipts remain under `.local/tnnls-reviewe
   qa-live/results.json under .local/informs-photo/.
 - Final closeout modifies only plan/todo/history/validation; public build bytes
   remain unchanged. Task is complete; existing consideration-only items are unrelated.
+
+
+## CV, News and People Refresh: Parent Pre-Release Verification
+
+- Baseline: 1250a58a37c359553cfe273db3f78515671ffe6d; dedicated branch content/cv-news-people-refresh. Original Google Sites and separate Research comparison worktree untouched.
+- Implementation runtime: two owner-local Hermes CLI sessions used gpt-6.1-sol with reasoning effort max, verified through read-only runtime records (.local/refresh/runtime-models.json).
+- Parent PDF SHA and byte comparison confirmed the supplied main_10.pdf exactly matches the current 168006-byte public CV; all 19 CV DOI links were already present. Funding calculated from original CV amounts: three PI awards total $1,935,591; all seven project totals $3,077,219; federal project totals $2,955,591. Portions/shares not double-counted.
+- Parent npm test: 180 passed, zero failures/skips. npm run build passed; repeated-build determinism is included in the tests. All 243 captured substantive paragraphs remain covered with narrow explicit CV corrections; immutable publication/source baselines retained.
+- Real Chromium: 30 page/viewport checks at 1440, 768, 390 and 320 px; 90 unique local targets/fragments resolved. Zero console errors and zero axe WCAG A/AA violations. Gallery button/focus/arrow/Home/End/native-scroll/resize/reduced-motion checks passed; mobile touch swipe exercised through Chromium touch input. No-JavaScript native scrolling and complete print layout passed. Visual inspection covered gallery, Home awards, CV funding and Sina/grant News at desktop/mobile sizes.
+- Build preservation: 59 prior public files retained, 53 byte-identical. Only Home, People, CV, News HTML and shared CSS/JS changed; two exact original Sina JPEGs added. All research/publication HTML, scientific assets, CV, old news photos and lab photo bytes remain exact.
+- UI independent review deleg_bfeb9fdc: APPROVE, 11 focused tests passed; old navigation/filter/scientific-viewer JS byte-preserved outside gallery insertion. Content review and remote release/readback are separate remaining gates at this checkpoint.
+- Evidence: .local/refresh/parent-full-tests.log, qa-local/results.json, preservation.json, cv-comparison.json, parent-cv-audit.json; source decisions in docs/cv-news-refresh.md. No public credential or private media-token data is included in the build.
+
+- Initial content review deleg_26d093d8 found one documentation-only blocker: the parent handoff transcribed the certificate source as iise-2025-4.jpeg (404) rather than the source page's iise-2025-2.jpeg. Asset byte checks had correctly preserved the downloaded image but did not validate the independently transcribed prose URL. The parent fetched the actual -2.jpeg URL, confirmed SHA-256 a02c4d4ec4c6e10d91020cb49d9043357a8300e09b55ffcf6918fb36a63bf842 and exact byte equality with the public asset, and corrected the canonical provenance URL without modifying the image. A narrow follow-up review is required before release.
+
+- Narrow provenance follow-up review deleg_e456c482: APPROVE; the sole blocker is resolved. Parent also parsed both actual image citations from docs/cv-news-refresh.md, confirmed each in the live source page, fetched both and byte-compared them with the public JPEGs (.local/refresh/check-photo-provenance.cjs and photo-provenance-check.json). Precommit full suite again passed 180/180. All local/review gates are clear.

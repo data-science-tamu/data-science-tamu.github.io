@@ -7,6 +7,7 @@ import { createPages } from "../src/templates.mjs";
 import { imageRenderer } from "../src/helpers.mjs";
 import { assertNewsBaseline } from "./source-baseline.mjs";
 import { normalizePresentationForBaseline } from "./news-expectations.mjs";
+import { normalizeRefreshNewsForBaseline } from "./refresh-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
@@ -39,7 +40,7 @@ test("the capture and prior news remain preserved except the approved ISEN year/
   assert.equal(sha256(read("content/source/news.json")),
     "595176b2327d6f59bdb336431e89b6d181ca0075617beeea32ae86c1b81bfb55");
   // Validate the owner correction, then restore only it for the original hash.
-  const historical = normalizePresentationForBaseline(lab.news)
+  const historical = normalizePresentationForBaseline(normalizeRefreshNewsForBaseline(lab.news))
     .filter((item) => Object.hasOwn(item, "sourceSection"));
   assert.equal(sha256(JSON.stringify(historical)),
     "f807d45cde099edce0e7a7644d4395b8cb600249a484508eeb4ee579a6532434");
@@ -54,7 +55,7 @@ for (const route of ["/news/", "/"]) {
     assert.ok(articles[0].includes(`<p>${approvedHtml}</p>`));
     assert.match(articles[0], /<time datetime="2026-11-01">2026\.11\.01<\/time>/);
     assert.doesNotMatch(articles[0], /<img\b|news-photos/);
-    assert.equal(html.split(`<a href="${announcement}">`).length - 1, 1);
+    assert.equal(articles.join("").split(`<a href="${announcement}">`).length - 1, 1);
     const expected = route === "/" ? lab.news.slice(0, 3) : lab.news;
     assert.equal(articles.length, expected.length);
     for (const [index, item] of expected.entries()) {

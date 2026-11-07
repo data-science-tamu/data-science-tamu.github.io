@@ -1,5 +1,37 @@
 # Academic Website Release Tasks
 
+## CV, News and People Refresh
+
+- [x] Compare supplied CV/PDF and update all applicable content, preserving source truth
+- [x] Remove webinar media sentence/inline flyer; keep PDF, YouTube and acknowledgement
+- [x] Add Tatthapong 2026 finalist to Home/CV Awards and Honors
+- [x] Add Sina QCRE group and certificate photos to existing News entry
+- [x] Add Sina website and verified LinkedIn links for Tatthapong, Sina, Tanvir
+- [x] Implement accessible horizontal Lab photos navigation with existing design
+- [x] Confirm three funded grants, calculate total and add News
+- [x] Find exact QSR LinkedIn highlight and add linked News
+- [ ] Parent: finish content review, branch CI, main integration, Pages and live readback
+
+### Existing News Link Audit
+
+- [x] 2026.11.01: Tatthapong QSR finalist: existing official link retained
+- [x] 2026.10.21: QSR webinar: recording/PDF retained, redundant media removed
+- [x] 2026.05.16: Doctoral colloquium: specific CIEADH post added
+- [x] 2026.03.23: Sina Technometrics: article DOI added
+- [x] 2025.11.06: Montague Scholar: owner announcement added
+- [x] 2025.10.27: QSR refereed finalist: official awards link added
+- [x] 2025: Tatthapong received second place in the ISEN Best Presentation Competition organized by the INFORMS Student Chapter at Texas A&M University.
+- [x] 2025.09.19: Tatthapong Advanced Science: article DOI added
+- [x] 2025.09.01: Tanvir joins: preserved; verified profile linked on People
+- [x] 2025.04.22: Sina QCRE finalist: official newsletter and two photos added
+- [x] 2025.02.01: We are excited to begin the "Cannery 4.0" industry project with Crider Foods and look forward to building real-time machine breakdown prediction AI model.
+- [x] 2024.12.10: SPAICD: repaired official TAMIDS link
+- [x] 2024.12.11: IISE Best Paper: UW-Madison announcement added
+- [x] 2024.07.22: Associate Editor: existing board/journal links retained
+- [x] 2023.04.16: Top-viewed article: paper DOI added, historical date conflict recorded
+- [x] 2022.10.04: ISE Magazine: paper DOI added; feature body remains member-gated
+
+
 ## INFORMS 2026 Lab Photo
 
 - [x] Add native JPEG and caption with focused regression checks.

@@ -5,6 +5,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { createPages } from "../src/templates.mjs";
 import { dimensions, imageRenderer } from "../src/helpers.mjs";
+import { normalizeRefreshForBaseline } from "./refresh-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
@@ -16,14 +17,13 @@ const recording = "https://youtu.be/SUy7JjjuqcM";
 const flyerPdf = "/assets/documents/qsr-webinar-2026-10-21-flyer.pdf";
 const flyerImage = "/assets/images/qsr-webinar-2026-10-21-flyer.jpg";
 const acknowledgement = "/assets/images/qsr-2026-acknowledgement.jpg";
-const text = `Dr. Lee presented "${title}" as part of the INFORMS QSR Webinar Series. Watch the recording on YouTube. Webinar flyer (PDF). View the webinar flyer and QSR acknowledgement photo.`;
+const text = `Dr. Lee presented "${title}" as part of the INFORMS QSR Webinar Series. Watch the recording on YouTube. Webinar flyer (PDF).`;
 const approved = {
   date: "2026.10.21",
   html: text.replace("YouTube", `<a href="${recording}">YouTube</a>`)
-    .replace("Webinar flyer (PDF)", `<a href="${flyerPdf}">Webinar flyer (PDF)</a>`)
-    .replace("View the webinar flyer and QSR acknowledgement photo", `<a href="/news/#news-2026-10-21">View the webinar flyer and QSR acknowledgement photo</a>`),
+    .replace("Webinar flyer (PDF)", `<a href="${flyerPdf}">Webinar flyer (PDF)</a>`),
   text,
-  images: [flyerImage, acknowledgement],
+  images: [acknowledgement],
 };
 const assets = [
   { src: flyerImage, width: 1487, height: 1925, bytes: 641693,
@@ -39,14 +39,16 @@ function assertWebinarNews(data) {
     /QSR Webinar Series|Robust Inference|SUy7JjjuqcM|qsr-webinar-2026-10-21-flyer/.test(JSON.stringify(item)));
   assert.equal(matches.length, 1, "Exactly one QSR webinar record");
   assert.deepEqual(matches[0], approved, "Only the approved webinar facts, links and native images");
-  assert.equal(data.news.length, 16);
+  assert.equal(data.news.length, 17);
   assert.equal(data.news[1], matches[0], "The webinar follows the existing finalist");
   assert.deepEqual(data.news[0], before.news[0], "The first finalist remains exact and has no images");
-  assert.equal(data.news[2].date, "2026.05.16", "The webinar precedes the May 16 record");
+  assert.equal(data.news[2].date, "2026.09.04", "The combined grant entry follows the webinar");
+  assert.equal(data.news[3].date, "2026.05.16", "The grant entry precedes the May 16 record");
 }
 
 function assertPreserved(data) {
-  const historical = data.news.filter((item) => item.date !== approved.date);
+  const baseline = normalizeRefreshForBaseline(data);
+  const historical = baseline.news.filter((item) => item.date !== approved.date);
   assert.deepEqual(historical, before.news, "All 15 prior records and their order remain exact");
   assert.deepEqual(data.people.photos, [
     {
@@ -62,7 +64,7 @@ function assertPreserved(data) {
       caption: "INFORMS Annual Meeting 2026 (San Francisco, CA)",
     },
   ], "Only the exact approved photo addition is allowed");
-  const { news, ...other } = structuredClone(data);
+  const { news, ...other } = structuredClone(baseline);
   other.people.photos.pop();
   assert.equal(sha256(JSON.stringify(other)), before.nonNewsSha256,
     "All historic non-News lab data remain exact");
@@ -84,7 +86,7 @@ test("the portable pre-webinar fixture preserves every previous News record and 
   assertPreserved(lab);
 });
 
-test("webinar expectations reject duplicates, wrong dates/title/links, reordered images and unsupported claims", () => {
+test("webinar expectations reject duplicates, wrong dates/title/links, an inline flyer and unsupported claims", () => {
   assertWebinarNews(lab);
   const mutations = {
     missing: (data) => data.news.splice(1, 1),
@@ -95,7 +97,7 @@ test("webinar expectations reject duplicates, wrong dates/title/links, reordered
     "wrong recording": (data) => { data.news[1].html = data.news[1].html.replace(recording, "https://example.org/"); },
     "missing PDF link": (data) => { data.news[1].html = data.news[1].html.replace(flyerPdf, "/cv/"); },
     "missing photo": (data) => data.news[1].images.pop(),
-    "reordered images": (data) => data.news[1].images.reverse(),
+    "inline flyer": (data) => data.news[1].images.unshift(flyerImage),
     "captured section": (data) => { data.news[1].sourceSection = 1; },
     misplaced: (data) => data.news.unshift(...data.news.splice(1, 1)),
     "winner claim": (data) => { data.news[1].text += " Dr. Lee was the winner."; },
@@ -142,12 +144,12 @@ for (const route of ["/", "/news/"]) {
       JSON.parse(read("content/site.json")), lab, imageRenderer(path.join(root, "public")),
     ).find((page) => page.route === route).body;
     const articles = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map((match) => match[0]);
-    assert.equal(articles.length, route === "/" ? 3 : 16);
+    assert.equal(articles.length, route === "/" ? 3 : 17);
     assert.ok(articles[0].includes(`<p>${before.news[0].html}</p>`));
     assert.doesNotMatch(articles[0], /<img\b|news-photos/);
     const item = articles[1];
-    assert.ok(item.includes(`<a href="/news/#news-2026-10-21">View the webinar flyer and QSR acknowledgement photo</a>`),
-      `${route}: descriptive ordinary acknowledgement link reaches the News photos`);
+    assert.doesNotMatch(item, /View the webinar flyer and QSR acknowledgement photo|qsr-webinar-2026-10-21-flyer\.jpg/,
+      `${route}: redundant sentence and inline flyer are removed`);
     assert.doesNotMatch(item, /shown below/i);
     assert.ok(item.includes(`<p>${approved.html}</p>`));
     assert.match(item, /<time datetime="2026-10-21">2026\.10\.21<\/time>/);
@@ -160,7 +162,7 @@ for (const route of ["/", "/news/"]) {
       assert.match(item, /id="news-2026-10-21"/);
       const images = [...item.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]);
       assert.deepEqual(images.map((image) => image.match(/\bsrc="([^"]+)"/)[1]), approved.images);
-      for (const [index, asset] of assets.slice(0, 2).entries()) {
+      for (const [index, asset] of [assets[1]].entries()) {
         assert.ok(images[index].includes(`width="${asset.width}" height="${asset.height}"`));
         assert.ok(images[index].includes(`style="--image-width: ${asset.width}px"`));
         assert.match(images[index], /alt="[^"]+"/);

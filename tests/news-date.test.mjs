@@ -21,8 +21,8 @@ const articles = (html) => [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article
   .map((match) => match[0]);
 const privateDate = /Competition date:|October 16, 2025|2025[.-]10[.-]16|_comment/;
 
-test("the single corrected ISEN presentation preserves its sentence, photos and source section among 16 records", () => {
-  assert.equal(lab.news.length, 16);
+test("the single corrected ISEN presentation preserves its sentence, photos and source section among 17 records", () => {
+  assert.equal(lab.news.length, 17);
   assertPresentationCorrection(lab.news);
   assert.deepEqual(lab.news.filter((item) => item.date.startsWith("2024.12")).map((item) => item.date),
     ["2024.12.10", "2024.12.11"], "Deliberate legacy December order survives");

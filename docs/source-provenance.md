@@ -363,3 +363,50 @@ People renderer supplies the figure, caption and matching alt text.
 asset integrity and rendered semantics. The webinar preservation check first
 requires the exact full photo array, then removes only the new final record
 from a clone for comparison with its unchanged historic snapshot hash.
+
+
+## Owner CV, News and People Refresh
+
+The current owner-approved HTML refresh is documented in
+[CV, News and People Content Refresh](cv-news-refresh.md), the canonical
+per-News link ledger, CV-page/funding ledger, identity caveats and new-photo
+provenance for this change. It supersedes only the named historical differences
+above; original captures and earlier release evidence remain untouched.
+
+There are now 17 News records: all 16 prior records in their existing order,
+plus one combined grant-announcement/QSR Member Spotlight item dated
+2026.09.04. Its date is the owner's announcement publication date, not an award
+start date. Funding figures are project totals; LIFT's TAMU portion and the
+owner's shares are separately labeled and not counted twice. NSF FDT-BioTech's
+06/2027 start remains explicit. Existing 2023.04.16 top-viewed News predates the
+paper's 2023.08.15 online publication; this unresolved historical date is
+preserved, not silently repaired. The May 2024 IISE award announcement likewise
+does not replace the existing December 2024 News date.
+
+The webinar now omits its final media sentence/link and inline flyer image;
+its official title, recording, local PDF and acknowledgement remain. All three
+original webinar assets, including the flyer JPEG, retain their bytes and
+stable paths. Sina's existing April 2025 finalist item adds the verified
+QCRE newsletter link, then native group and certificate photos from
+[Sina's snapshots](https://sinalytics.net/snapshots.html). Their hashes and exact
+original URLs are in the refresh ledger. No winner or new ceremony date is
+inferred. All three Lab photos retain their original data, order and bytes.
+
+Owner CV pages 1, 3-8 supply the explicit faculty interest/education/course/award,
+appointment, funding, professional-service and advising updates. All existing
+faculty awards, including the $6,500 teaching grant, are retained; QSR Refereed
+and Sina's full name/Ph.D. Advisee label are corrected. Student profile links
+are identity context, not permission to overwrite conflicting enrollment dates.
+Publications, scientific content, original captures/fixtures, existing assets
+and the public CV PDF/current manifest remain unchanged. The parent reports
+the supplied PDF byte-identical to the current artifact; local old/new extracted
+text and link lists also compare exactly. The worker did not locate the brief's
+cv-comparison.json and makes no claim to have inspected that missing file.
+
+Exact approved-delta checks precede reversal for all original baseline-hash
+comparisons. The unchanged pre-webinar fixture and original hashes still gate
+preservation; all 243 captured source paragraphs remain covered through twelve
+narrow explicit replacements, existing citation corrections and the private
+ISEN year correction. The focused content suite passed 66 tests. Full build,
+independent desktop/mobile/accessibility/console QA and release remain
+parent-owned; this section is not a deployment-success record.

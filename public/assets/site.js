@@ -134,6 +134,66 @@ if (form) {
   filter();
 }
 
+for (const root of document.querySelectorAll("[data-photo-gallery]")) {
+  const track = root.querySelector("[data-photo-track]");
+  const controls = root.querySelector("[data-photo-controls]");
+  const previous = root.querySelector("[data-photo-previous]");
+  const next = root.querySelector("[data-photo-next]");
+  const status = root.querySelector("[data-photo-status]");
+  if (!track || !controls || !previous || !next || !status) continue;
+  const photos = [...track.querySelectorAll("figure")];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const measure = () => {
+    const max = Math.max(0, track.scrollWidth - track.clientWidth);
+    const position = Math.max(0, Math.min(track.scrollLeft, max));
+    const origin = track.getBoundingClientRect().left;
+    const items = photos.map((photo) => {
+      const rect = photo.getBoundingClientRect();
+      return { left: rect.left - origin + track.scrollLeft, width: rect.width };
+    });
+    return { max, position, items };
+  };
+  const update = () => {
+    const { max, position, items } = measure();
+    previous.setAttribute("aria-disabled", String(position <= 1));
+    next.setAttribute("aria-disabled", String(position >= max - 1));
+    const visible = items.map((item, index) => ({ ...item, index })).filter((item) =>
+      item.left + item.width > position + 1 && item.left < position + track.clientWidth - 1);
+    const first = (visible[0]?.index ?? 0) + 1;
+    const last = (visible.at(-1)?.index ?? 0) + 1;
+    const text = !items.length ? "0 photos" : first === last
+      ? `Photo ${first} of ${items.length}` : `Photos ${first}-${last} of ${items.length}`;
+    if (status.textContent !== text) status.textContent = text;
+  };
+  const go = (left) => track.scrollTo({
+    left,
+    behavior: reducedMotion.matches ? "instant" : "smooth",
+  });
+  const move = (direction) => {
+    const { max, position, items } = measure();
+    if (direction < 0 ? position <= 1 : position >= max - 1) return;
+    const target = direction < 0
+      ? [...items].reverse().find((item) => item.left < position - 1)?.left ?? 0
+      : items.find((item) => item.left > position + 1)?.left ?? max;
+    go(Math.max(0, Math.min(target, max)));
+  };
+  previous.addEventListener("click", () => move(-1));
+  next.addEventListener("click", () => move(1));
+  track.addEventListener("scroll", update, { passive: true });
+  track.addEventListener("keydown", (event) => {
+    if (event.target !== track || event.defaultPrevented || event.ctrlKey ||
+      event.metaKey || event.altKey || event.shiftKey || !photos.length) return;
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    if (event.key === "Home") go(0);
+    else if (event.key === "End") go(measure().max);
+    else move(event.key === "ArrowLeft" ? -1 : 1);
+  });
+  window.addEventListener("resize", update);
+  update();
+  controls.hidden = photos.length === 0;
+}
+
 const dialog = document.querySelector("#figure-viewer");
 if (typeof dialog?.showModal === "function") {
   const title = dialog.querySelector("[data-viewer-title]");
