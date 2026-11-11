@@ -126,7 +126,7 @@ test("all eight projects label facts, distinguish collaborators and nest notes u
         }
         if (item.text?.startsWith("This work is done")) {
           assert.equal(item.kind, "collaborators");
-          assert.ok(html.includes(`<p class="project-collaborators"><strong>Collaborators:</strong> ${item.html}</p>`));
+          assert.ok(html.includes(`<li class="project-collaborators"><strong>Collaborators:</strong> ${item.html}</li>`));
         }
         if (item.kind === "citation") {
           assert.equal(item.kind, "citation");

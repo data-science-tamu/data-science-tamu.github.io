@@ -3,17 +3,27 @@ import { publicationCitation, publicationReferences } from "./publications.mjs";
 
 // Presentation is authored in maintained data, never inferred from prose.
 export function researchContent(items, publicationsById, headingLevel = 4) {
-  let html = "", publications = false, citationList = false;
+  let html = "", publications = false, citationList = false, fieldList = false;
   const content = (html) => publicationReferences(html, publicationsById);
   const closeList = () => {
     if (citationList) html += "</ul>";
     citationList = false;
+  };
+  const closeFields = () => {
+    if (fieldList) html += "</ul>";
+    fieldList = false;
   };
   for (const item of items) {
     const kind = item.kind || "paragraph";
     if (!["paragraph", "collaborators", "citation", "publication-heading", "list"].includes(kind) ||
         (item.notes && kind !== "citation") || (item.items && kind !== "list"))
       throw new Error("Invalid research presentation metadata");
+    if (item.label !== undefined && (kind !== "paragraph" ||
+        typeof item.label !== "string" || !item.label.trim() ||
+        typeof item.html !== "string" || !item.html.startsWith(item.label)))
+      throw new Error("Invalid research paragraph label");
+    const field = kind === "collaborators" || item.label !== undefined;
+    if (!field) closeFields();
     if (kind === "citation") {
       const publication = publicationsById.get(item.recordId);
       if (!publication) throw new Error("Invalid research citation record");
@@ -41,13 +51,17 @@ export function researchContent(items, publicationsById, headingLevel = 4) {
       html += `<section class="research-overview-group"><h3>${content(item.html)}</h3><ul>${item.items.map((p) => `<li>${content(p.html)}</li>`).join("")}</ul></section>`;
       continue;
     }
-    if (kind === "collaborators") {
-      html += `<p class="project-collaborators"><strong>Collaborators:</strong> ${content(item.html)}</p>`;
+    if (field) {
+      if (!fieldList) html += '<ul class="project-fields">';
+      fieldList = true;
+      html += kind === "collaborators"
+        ? `<li class="project-collaborators"><strong>Collaborators:</strong> ${content(item.html)}</li>`
+        : `<li><strong>${e(item.label)}</strong>${content(item.html.slice(item.label.length))}</li>`;
       continue;
     }
-    if (item.label && !item.html.startsWith(item.label)) throw new Error("Invalid research paragraph label");
-    html += `<p>${item.label ? `<strong>${e(item.label)}</strong>${content(item.html.slice(item.label.length))}` : content(item.html)}</p>`;
+    html += `<p>${content(item.html)}</p>`;
   }
+  closeFields();
   closeList();
   if (publications) html += "</section>";
   return html;

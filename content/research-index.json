@@ -1,0 +1,230 @@
+{
+  "asOf": "2026-11",
+  "groups": [
+    {
+      "id": "topics",
+      "label": "Topics",
+      "items": [
+        {
+          "slug": "smart-manufacturing",
+          "label": "Smart Manufacturing",
+          "summary": "Monitoring, failure prediction and maintenance decisions for production systems.",
+          "projects": [
+            "preventive-maintenance",
+            "failure-prognostics",
+            "fault-diagnosis"
+          ],
+          "publications": [
+            "J12",
+            "J15",
+            "J11",
+            "J10",
+            "J2",
+            "J14"
+          ],
+          "funding": [
+            "Cannery 4.0 Phase 2"
+          ]
+        },
+        {
+          "slug": "advanced-manufacturing",
+          "label": "Advanced Manufacturing & Materials",
+          "summary": "Process quality, robust design, printed sensors and data-driven virtual qualification.",
+          "projects": [
+            "nanosensor-monitoring",
+            "robust-design",
+            "functional-data-calibration",
+            "water-sensing"
+          ],
+          "publications": [
+            "J3",
+            "C3",
+            "J6",
+            "C4",
+            "J4",
+            "J8",
+            "J7"
+          ],
+          "funding": [
+            "VITAL: Virtual Qualification and Certification of an Advanced Structural Material Leveraging Advanced Data-Driven Approaches"
+          ]
+        },
+        {
+          "slug": "digital-twins",
+          "label": "Digital Twins",
+          "summary": "Patient-specific prediction and evaluation. Bone-property inference is related foundational work, not a claim of a completed digital twin.",
+          "projects": [
+            "bone-elastic-properties"
+          ],
+          "publications": [
+            "J9",
+            "J17*"
+          ],
+          "funding": [
+            "R01, SCH: Digital Twin Systems for Personalized Prediction of Osteoporotic Spine Fractures Using Physics-Informed Machine Learning",
+            "Trustworthy Digital Twins for Patient-Specific Evaluation of Implant Systems"
+          ]
+        },
+        {
+          "slug": "healthcare-biomechanics",
+          "label": "Healthcare & Biomechanics",
+          "summary": "Bone-property inference and research supporting personalized fracture assessment, implant evaluation and surgical planning.",
+          "projects": [
+            "bone-elastic-properties"
+          ],
+          "publications": [
+            "J9",
+            "J17*",
+            "W1",
+            "W2"
+          ],
+          "funding": [
+            "R01, SCH: Digital Twin Systems for Personalized Prediction of Osteoporotic Spine Fractures Using Physics-Informed Machine Learning",
+            "Trustworthy Digital Twins for Patient-Specific Evaluation of Implant Systems",
+            "R21, Toward Personalized Dental Surgery Planning: Dental Bone Stiffness Discovery and Strain Prediction Using Physics-Informed Machine Learning",
+            "Toward Smart Orthopedic Surgery Planning Using Physics-Informed Machine Learning"
+          ]
+        },
+        {
+          "slug": "scientific-engineering-ml",
+          "label": "Scientific & Engineering ML",
+          "summary": "Domain-informed inference, noisy-data learning and reliable modeling for scientific and engineering problems.",
+          "projects": [
+            "bone-elastic-properties",
+            "functional-data-calibration",
+            "failure-prognostics"
+          ],
+          "publications": [
+            "J9",
+            "J4",
+            "J12",
+            "J13",
+            "J14",
+            "J10",
+            "J17*",
+            "J18*",
+            "W1",
+            "W2"
+          ],
+          "funding": [
+            "R01, SCH: Digital Twin Systems for Personalized Prediction of Osteoporotic Spine Fractures Using Physics-Informed Machine Learning",
+            "R21, Toward Personalized Dental Surgery Planning: Dental Bone Stiffness Discovery and Strain Prediction Using Physics-Informed Machine Learning",
+            "Toward Smart Orthopedic Surgery Planning Using Physics-Informed Machine Learning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "problems",
+      "label": "Problems",
+      "items": [
+        {
+          "slug": "monitoring-quality",
+          "label": "Monitoring & Quality Control",
+          "summary": "Quantifying process variation and assessing the quality of printed material patterns.",
+          "projects": [
+            "nanosensor-monitoring"
+          ],
+          "publications": [
+            "J3",
+            "C3"
+          ],
+          "funding": []
+        },
+        {
+          "slug": "diagnostics",
+          "label": "Diagnostics",
+          "summary": "Identifying faulty operations, structural damage and defect patterns.",
+          "projects": [
+            "fault-diagnosis",
+            "robust-design"
+          ],
+          "publications": [
+            "J2",
+            "J5",
+            "J14",
+            "J13"
+          ],
+          "funding": []
+        },
+        {
+          "slug": "prognostics",
+          "label": "Prognostics",
+          "summary": "Predicting failure time, failure mode and downtime from sensor observations.",
+          "projects": [
+            "failure-prognostics"
+          ],
+          "publications": [
+            "J12",
+            "J15",
+            "J10",
+            "J19*"
+          ],
+          "funding": [
+            "Cannery 4.0 Phase 2"
+          ]
+        },
+        {
+          "slug": "maintenance-planning",
+          "label": "Maintenance Planning",
+          "summary": "Selecting preventive maintenance actions under economic dependence and partial observation.",
+          "projects": [
+            "preventive-maintenance"
+          ],
+          "publications": [
+            "J11",
+            "J16*"
+          ],
+          "funding": []
+        },
+        {
+          "slug": "process-design-optimization",
+          "label": "Process & Design Optimization",
+          "summary": "Finding robust designs and process settings using data-efficient optimization.",
+          "projects": [
+            "robust-design",
+            "water-sensing"
+          ],
+          "publications": [
+            "J6",
+            "C4",
+            "J8"
+          ],
+          "funding": []
+        },
+        {
+          "slug": "inverse-problems-calibration",
+          "label": "Inverse Problems & Calibration",
+          "summary": "Inferring latent physical properties from indirect observations and calibrating sensor responses.",
+          "projects": [
+            "bone-elastic-properties",
+            "functional-data-calibration"
+          ],
+          "publications": [
+            "J9",
+            "J4",
+            "J5",
+            "J17*",
+            "W1",
+            "W2"
+          ],
+          "funding": [
+            "R21, Toward Personalized Dental Surgery Planning: Dental Bone Stiffness Discovery and Strain Prediction Using Physics-Informed Machine Learning",
+            "Toward Smart Orthopedic Surgery Planning Using Physics-Informed Machine Learning"
+          ]
+        },
+        {
+          "slug": "virtual-testing-qualification",
+          "label": "Virtual Testing & Qualification",
+          "summary": "Research supporting data-driven qualification and computational evaluation, not a claim of completed certification.",
+          "projects": [],
+          "publications": [],
+          "funding": [
+            "VITAL: Virtual Qualification and Certification of an Advanced Structural Material Leveraging Advanced Data-Driven Approaches",
+            "Trustworthy Digital Twins for Patient-Specific Evaluation of Implant Systems"
+          ]
+        }
+      ]
+    }
+  ]
+}

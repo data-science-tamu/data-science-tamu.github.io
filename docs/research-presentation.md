@@ -9,9 +9,9 @@ metadata. Approved bibliography corrections follow [source provenance](source-pr
 as a newly verified metric.
 
 - `label` names an existing exact leading label in `html`, such as `Goal:`,
-  `Methodologies:`, `PDE Equation:` or `Detail:`. Only that prefix becomes strong.
+  `Methodologies:`, `PDE Equation:` or `Detail:`. Only that prefix becomes strong; in the local preview, the labeled entry is a semantic list item.
 - `kind: "collaborators"` distinguishes an existing collaborator paragraph;
-  its original wording follows the visible `Collaborators:` label.
+  its original wording follows the visible `Collaborators:` label and shares the adjacent labeled-detail list.
 - `kind: "citation"` uses an explicit `recordId` from maintained publications.
   Citation paragraphs appear in a list beneath `Publications`, with an integrated
   Publication record link. `src/publications.mjs` resolves canonical authors,
@@ -125,3 +125,17 @@ expectations adapt only reference presentation; source facts/fixtures are unchan
 These tests are not measured browser layout or assistive-technology QA. Parent
 owns native-browser checks at 1440/1024/801/800/390/320px and enlarged text,
 accessibility checks, independent review, final closeout and release.
+
+## Topic And Problem Navigation
+
+The owner-approved [top-menu navigation](research-menu-preview.md) adds an explicitly configured navigation index without rewriting maintained research prose or assets. Its references group canonical projects, publications and funding by shared topic or problem; they do not assert that any paper is an output of a listed award. Publication is owner-authorized. W1 membership in Healthcare & Biomechanics and Inverse Problems & Calibration is explicitly author-confirmed; this does not change working-paper status.
+
+### Shared Project And Publication Presentation
+
+The navigation uses one `content/lab.json` project record per ID. `src/research-projects.mjs` extracts the existing scientific figure and complete project markup into `researchRenderers`; Overview, directions and the configured browse pages call that same code. Original-size image/viewer links, paragraph structure, collaborators and citation notes are not re-authored by destination. `src/publications.mjs:publicationDetails` similarly supplies canonical author/metadata/note markup to the publication listing and browse sections. Project images are not inferred to belong to individual publications or grants.
+
+Header navigation lists Overview and the three existing directions vertically, followed by Topics and Problems. Methods is excluded only from this navigation/index; existing project Methodologies paragraphs remain intact. Original source/assets remain protected by existing hashes. Body-preservation checks permit only the explicitly approved label-list wrapper transformation; other markup and content stay protected. The navigation contract and author-confirmed categorization are in [research-menu-preview](research-menu-preview.md).
+
+### Labeled Detail Lists
+
+The shared renderer presents explicit paragraph labels and collaborator fields as real unordered-list items through `src/research-content.mjs`, so Overview, direction and topic/problem pages share one implementation. Consecutive fields share a compact list. Ordinary paragraphs, citations, publication-group headings and overview groups close the detail list and retain their previous structure. Prose that merely resembles a label is not reclassified. Bold labels, original order, inline citation resolution, explanatory wording, figures and source data remain unchanged. CSS is owned by the scoped stylesheet `src/research-index.css`; no client JavaScript or additional data schema is needed.

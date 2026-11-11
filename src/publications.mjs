@@ -50,6 +50,10 @@ export function publicationPrimaryLink(p) {
   return p.doi ? `https://doi.org/${p.doi}` : p.links?.[0]?.href;
 }
 
+export function publicationDetails(p) {
+  return `<p class="authors">${publicationAuthors(p)}</p><p class="publication-meta">${e(publicationMetadata(p))}</p>${p.notes.length ? `<ul class="publication-notes">${p.notes.map((n) => `<li>${e(n)}</li>`).join("")}</ul>` : ""}`;
+}
+
 // All research citations use the same authors/title/bibliography as the listing.
 export function publicationCitation(recordId, publicationsById) {
   const p = publicationsById?.get?.(recordId);

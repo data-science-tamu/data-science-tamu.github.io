@@ -626,3 +626,24 @@ Baseline267tests passed; focused RED5pass/33fail preceded edits; final focused38
 ### Completed Plan
 
 Use the owner-specified CTE URL exactly for News and the shared Home/CV award. Change only two content hrefs and their current test expectations; retain all historical before-values/hashes. Verify baseline/failing test, full tests, deterministic build, exact preservation and desktop/mobile browser/accessibility; then commit/push, integrate main and read back Pages. External CTE responds HTTP 404 from this environment; this is an explicit owner-selected destination, not newly verified article content.
+
+## 2026-11-11 - Research Local Preview Refinement
+
+The owner requested the Overview link followed by three vertical research directions, removal of Methods, and reusable original project descriptions/figures and publication details. Completed in preview/research-topic-menu only. No commit, push, merge, deployment or primary/other-preview edits.
+
+- Header primary links now form one column; only Topics/Problems and their 12 destinations remain. Existing project Methodologies paragraphs are not removed.
+- src/research-projects.mjs shares original full project/figure markup with Overview, directions and browse pages. src/publications.mjs shares canonical publication details. No source copies or invented paper-specific figures.
+- Parent: 339 tests pass, build21content+404, deterministic rebuild/fail-closed checks, 65source/assets and10old-body hashes, 24route viewport checks,8menu sizes,105targets,42figurechecks,10page/menu axe+2modal axe with no violations/console errors. Keyboard/touch/hover/noJS/200%text and original-image dialog focus/scale verified.
+- Independent review deleg_b62df4c5 APPROVE, 68focused tests pass, no blocking local code/spec findings. Existing W1 Healthcare/Inverse semantic memberships explicitly remain pending evidence/approval.
+- Primary main is clean at b9f8086ddbcc29b3bbc37cdc5c6b14b1ad757dc3. HTTPS public Research exactly matches frozen baseline. Baseline4200/candidate4201 restarted and read back successfully.
+- WSL space exhaustion interrupted the initial snapshot; only that incomplete task snapshot was removed. Task baseline/snapshots/QA evidence were preserved with byte checks on /mnt/d/wsl_backup/data-science-tamu.github.io/research-topic-menu; sources stay in WSL. No unrelated data cleanup. Browser harness static-vs-runtime false failure was corrected at the comparison boundary; no production changes for that issue.
+
+Evidence: .local/research-menu/revision2/parent-evidence.json, source-freeze.json, preservation.json, parent-tests.log, parent-build.log, qa/report.md, qa/report.json, qa/dialog-report.json, qa/route-checklist.md and screenshots. Editing/source ownership documented in docs/research-menu-preview.md, docs/research-presentation.md and wiki/codebase.md. Remaining owner/content decisions are carried in local plan.md/todo.md.
+
+## 2026-11-11 - Local Research Label Bullets
+
+Owner requested bullet points before bold project labels. `src/research-content.mjs` now groups explicitly labeled paragraphs and collaborator entries into native unordered lists; `src/research-index.css` provides compact hanging indentation. All 8 projects share the same renderer across Overview, directions and topic/problem pages. Text, figures, canonical records, citation sections/notes, menus and membership remain unchanged. No inferred labels, duplicate records or client-script additions.
+
+TDD: baseline339pass; new44tests36expectedfail; targeted122pass; full383pass. Parent independently repeated383tests/build/diff-check. All22built HTML pages match the prior preview after ONLY reversing metadata wrappers in browser DOM;66source/public files byte-identical. Historical hash fixtures were not rewritten. 44desktop/mobile screens and172native bullet checks pass;4axe audits zero violations/console errors.320/800/801/1024px,200%-text,noJS1440/390,print and figure dialog smoke checks pass; actual desktop/mobile screenshots inspected. Independent review deleg_093574b5 APPROVE with46focused tests and no blocking findings. Browser coverage remains Chromium/WSL, not Firefox/WebKit or real screen reader.
+
+Evidence and frozen before-state: `.local/research-menu/label-bullets/` (D-backed task evidence). See parent-evidence.json, parent-tests.log, parent-build.log, source-freeze.json, qa/report.md, qa/report.json and qa/labels-desktop.png. Source/output hashes verified after parent runs. Public Research HTML exactly matches original baseline; primary main clean at b9f8086ddbcc29b3bbc37cdc5c6b14b1ad757dc3. LOCAL ONLY: no commit, push, merge or deployment. Prior W1 semantic-review and owner publication decisions remain separately pending, not modified by this task.

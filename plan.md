@@ -1,5 +1,13 @@
 # Website Plan
 
+## Research Navigation Release - In Progress
+
+Owner authorized publication of the current Research comparison and explicitly confirmed W1 belongs in both Healthcare & Biomechanics and Inverse Problems & Calibration on 2026-11-11. Both memberships are retained unchanged as author-confirmed categorization; W1 remains a working paper. The previous semantic evidence gap is resolved by that confirmation, not by inference from its title.
+
+Release the existing preview/research-topic-menu worktree only: vertical Overview/three directions, Topics and Problems, common project/publication rendering and semantic detail bullets. Preserve canonical source facts, original figures and separate previews. No new production behavior is needed.
+
+Remaining gates: refresh tests/build/browser/preservation, close the focused semantic review, commit/push the task branch and verify its CI, fast-forward primary main, verify exact-head Pages and live readback, then record completed work in history.md. Recovery baseline: b9f8086ddbcc29b3bbc37cdc5c6b14b1ad757dc3. Evidence: .local/research-menu/release; implementation evidence remains under revision2 and label-bullets.
+
 ## Montague CTE Link - Published
 
 Owner-selected CTE hrefs are integrated into main and verified on public Home/News/CV. Completed plan and evidence are in history.md and docs/validation.md. No task-specific work remains; the documented external CTE retrieval limitation persists.

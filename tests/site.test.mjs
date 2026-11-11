@@ -4,6 +4,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
+import { normalizeResearchFieldLists } from "./research-field-normalization.mjs";
 import {
   assertPublicationBaseline,
   assertNewsBaseline,
@@ -245,4 +246,66 @@ test("home title and faculty footer come from maintained content", async () => {
     plain(home.body.match(/<h1>([\s\S]*?)<\/h1>/)[1]).includes(site.title),
   );
   assert.ok(layout(site, home, data.faculty.name, data.research.areas).includes(data.faculty.name));
+});
+
+
+test("actual build includes all approved browse routes, canonical links and unchanged existing bodies", () => {
+  const configPath = path.join(root, "content/research-index.json");
+  assert.ok(fs.existsSync(configPath), "maintained approved research index must exist");
+  const index = JSON.parse(read("content/research-index.json"));
+  const selected = index.groups.flatMap((group) => group.items.map((item) => ({
+    ...item, route: '/research/browse/' + group.id + '/' + item.slug + '/',
+  })));
+  assert.equal(selected.length, 12);
+  const built = files(path.join(root, "dist/research/browse")).filter((f) => f.endsWith(".html"));
+  assert.equal(built.length, 12);
+  assert.ok(!fs.existsSync(path.join(root, "dist/research/browse/methods")), "removed Methods routes must not survive a rebuild");
+  const sitemap = read("dist/sitemap.xml");
+  assert.doesNotMatch(sitemap, /\/research\/browse\/methods\//);
+  for (const item of selected) {
+    const html = htmlAt(item.route);
+    assert.equal((html.match(/<h1\b/g) || []).length, 1);
+    assert.match(html, /aria-current="page"/);
+    const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]);
+    assert.equal(ids.length, new Set(ids).size, item.route);
+    assert.ok(plain(html).includes(item.label));
+    assert.ok(sitemap.includes('https://data-science-tamu.github.io' + item.route));
+    assert.ok(html.includes('rel="canonical" href="https://data-science-tamu.github.io' + item.route + '"'));
+    assert.match(html, /href="\/assets\/research-index.css"/);
+  }
+  const baseline = JSON.parse(read("tests/fixtures/research-menu-preservation.json"));
+  for (const [file, digest] of Object.entries(baseline.builtBodies)) {
+    const body = read('dist/' + file).match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
+    assert.equal(createHash("sha256").update(normalizeResearchFieldLists(body)).digest("hex"), digest, file);
+  }
+  assert.equal(read("dist/assets/research-index.css"), read("src/research-index.css"));
+  for (const file of files(path.join(root, "public"))) {
+    const relative = path.relative(path.join(root, "public"), file);
+    assert.deepEqual(fs.readFileSync(path.join(root, "dist", relative)), fs.readFileSync(file), relative);
+  }
+});
+
+test("build fails closed for invalid research index before touching last good output", () => {
+  const existing = read("dist/index.html");
+  const digest = () => files(path.join(root, "dist")).sort().map((file) => [
+    path.relative(path.join(root, "dist"), file),
+    createHash("sha256").update(fs.readFileSync(file)).digest("hex"),
+  ]);
+  const before = digest();
+  const temp = path.join(root, ".local/invalid-research-index.json");
+  fs.writeFileSync(temp, JSON.stringify({ groups: [] }));
+  try {
+    for (const indexPath of [temp, ".local/no-such-research-index.json"]) {
+      const invalid = runBuild(["--research-index", indexPath]);
+      assert.notEqual(invalid.status, 0, "invalid/missing research index must reject the build");
+      assert.equal(read("dist/index.html"), existing);
+      assert.deepEqual(digest(), before);
+    }
+    fs.writeFileSync(temp, "{not json");
+    const malformed = runBuild(["--research-index", temp]);
+    assert.notEqual(malformed.status, 0);
+    assert.deepEqual(digest(), before);
+  } finally {
+    fs.rmSync(temp, { force: true });
+  }
 });

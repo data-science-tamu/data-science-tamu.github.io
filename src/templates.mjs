@@ -1,6 +1,7 @@
 import { escape as e, rich, anchor } from "./helpers.mjs";
+import { researchRenderers } from "./research-projects.mjs";
 import { researchContent } from "./research-content.mjs";
-import { publicationAuthors, publicationMetadata, publicationPrimaryLink, publicationPresentation } from "./publications.mjs";
+import { publicationDetails, publicationPrimaryLink, publicationPresentation } from "./publications.mjs";
 
 const nav = [
   ["/", "Home"],
@@ -34,8 +35,11 @@ function researchLinks(areas, route, listItems = false) {
   }).join("");
 }
 
-function researchDisclosure(areas, id, route, action = false) {
-  return `<div class="research-disclosure${action ? " research-action" : ""}"><a${action ? ' class="button"' : route === "/research/" ? ' aria-current="page"' : route.startsWith("/research/") ? ' class="active-section"' : ""} href="/research/">Research</a><button type="button" data-research-toggle aria-label="Open research menu" aria-expanded="false" aria-controls="${id}" hidden><svg class="research-chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><ul class="research-directions" id="${id}" data-research-directions>${researchLinks(areas, route, true)}</ul></div>`;
+function researchDisclosure(areas, id, route, action = false, browseGroups = []) {
+  const grouped = browseGroups.length ? '<li class="research-menu-groups">' + browseGroups.map((group) =>
+    '<section aria-labelledby="' + e(id + '-' + group.id) + '"><h3 id="' + e(id + '-' + group.id) + '">' + e(group.label) + '</h3><ul>' + group.items.map((item) =>
+      '<li><a href="' + e(item.route) + '"' + (route === item.route ? ' aria-current="page"' : "") + '>' + e(item.label) + '</a></li>').join("") + '</ul></section>').join("") + '</li>' : "";
+  return `<div class="research-disclosure${action ? " research-action" : ""}"><a${action ? ' class="button"' : route === "/research/" ? ' aria-current="page"' : route.startsWith("/research/") ? ' class="active-section"' : ""} href="/research/">Research</a><button type="button" data-research-toggle aria-label="Open research menu" aria-expanded="false" aria-controls="${id}" hidden><svg class="research-chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><ul class="research-directions${browseGroups.length ? " research-browse-menu" : ""}" id="${id}" data-research-directions>${researchLinks(areas, route, true)}${grouped}</ul></div>`;
 }
 
 export function createPages(site, lab, img, originals = new Map()) {
@@ -46,10 +50,7 @@ export function createPages(site, lab, img, originals = new Map()) {
   const themeFigure = themeFigures[0];
   const areas = () =>
     `<div class="research-areas">${lab.research.areas.map((a, i) => `<a class="area-link" href="/research/${e(a.slug)}/"><span class="index">0${i + 1}</span><div><h3>${e(a.title)}</h3><p>${e(a.summary)}</p></div>${arrow}</a>`).join("")}</div>`;
-  const figure = (src, alt, caption = alt) =>
-    `<figure class="scientific-figure"><a href="${e(originals.get(src) || src)}" data-figure-open data-figure-title="${e(caption)}" aria-label="${e(`View full-size figure: ${caption}`)}">${img(src, alt)}</a><figcaption>${e(caption)} <a href="${e(originals.get(src) || src)}" data-figure-open data-figure-title="${e(caption)}">View full-size figure ${arrow}</a></figcaption></figure>`;
-  const project = (p) =>
-    `<article class="project" id="${e(p.id)}"><div class="project-text"><h3>${e(p.title)}</h3>${p.prefix ? `<p class="small">${rich(p.prefix.html)}</p>` : ""}${researchContent(p.paragraphs, publicationsById)}</div>${figure(p.image, p.alt, p.title)}</article>`;
+  const { figure, project } = researchRenderers(img, originals, publicationsById);
   const contact = () =>
     `<section class="contact-panel" id="prospective-students"><div><h2>Prospective Students &amp; Collaborators</h2></div><div>${paragraphs([faculty.collaboration, faculty.prospective])}${button(`mailto:${site.email}`, site.email)}</div></section>`;
   const facultyLinks = () =>
@@ -119,7 +120,7 @@ export function createPages(site, lab, img, originals = new Map()) {
           .map(
             (p) => {
               const href = publicationPrimaryLink(p);
-              return `<li class="publication" id="${anchor(p.id)}" data-type="${type}" data-year="${p.year || "undated"}">${(p.legacyAnchors || []).map((id) => `<span id="${e(id)}" class="publication-alias" aria-hidden="true"></span>`).join("")}<div class="publication-id">[${e(p.displayId)}]</div><article><h3>${href ? `<a href="${e(href)}">${e(p.title)}</a>` : e(p.title)}</h3><p class="authors">${publicationAuthors(p)}</p><p class="publication-meta">${e(publicationMetadata(p))}</p>${p.notes.length ? `<ul class="publication-notes">${p.notes.map((n) => `<li>${e(n)}</li>`).join("")}</ul>` : ""}</article></li>`;
+              return `<li class="publication" id="${anchor(p.id)}" data-type="${type}" data-year="${p.year || "undated"}">${(p.legacyAnchors || []).map((id) => `<span id="${e(id)}" class="publication-alias" aria-hidden="true"></span>`).join("")}<div class="publication-id">[${e(p.displayId)}]</div><article><h3>${href ? `<a href="${e(href)}">${e(p.title)}</a>` : e(p.title)}</h3>${publicationDetails(p)}</article></li>`;
             },
           )
           .join("")}</ol></section>`,
@@ -179,7 +180,7 @@ export function createPages(site, lab, img, originals = new Map()) {
   return pages;
 }
 
-export function layout(site, page, facultyName, researchAreas) {
+export function layout(site, page, facultyName, researchAreas, browseGroups = []) {
   const isHome = page.route === "/";
   return `<!doctype html>
 <html lang="en">
@@ -193,12 +194,12 @@ export function layout(site, page, facultyName, researchAreas) {
 <meta name="theme-color" content="#500000">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css">${browseGroups.length ? '\n<link rel="stylesheet" href="/assets/research-index.css">' : ""}
 <script src="/assets/site.js" defer></script>
 </head>
 <body class="${isHome ? "home" : "inner-page"}">
 <a class="skip-link" href="#main">Skip to main content</a>
-<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="${e(site.title)} home"><span>${e(site.title)}<small>${e(site.institution)}</small></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">&#9776;</span></button><nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">${nav.map(([href, label]) => href === "/research/" ? researchDisclosure(researchAreas, "header-research-directions", page.route) : `<a href="${href}"${href === page.route ? ` aria-current="page"` : ""}>${label}</a>`).join("")}</nav></div></header>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="${e(site.title)} home"><span>${e(site.title)}<small>${e(site.institution)}</small></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">&#9776;</span></button><nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">${nav.map(([href, label]) => href === "/research/" ? researchDisclosure(researchAreas, "header-research-directions", page.route, false, browseGroups) : `<a href="${href}"${href === page.route ? ` aria-current="page"` : ""}>${label}</a>`).join("")}</nav></div></header>
 <main id="main" tabindex="-1" class="container">${page.body}</main>
 ${page.body.includes('class="scientific-figure"') ? figureViewer() : ""}
 <footer class="site-footer"><div class="footer-inner"><div><a class="footer-brand" href="/">${e(site.title)}</a><p>${e(site.department)}<br>${e(site.institution)}<br>${e(site.location)}</p></div><div><p>Contact</p><a href="mailto:${e(site.email)}">${e(site.email)}</a><p>${e(facultyName)} <span aria-hidden="true">/</span> ${e(site.facultyRole)}</p></div><div class="footer-links"><a href="/research/">Research</a><a href="/people/">People</a><a href="/publication/">Publications</a><a href="/cv/">Curriculum vitae</a></div></div><div class="footer-bottom"><span>Data Science Lab <span aria-hidden="true">&middot;</span> ${e(site.institution)}</span><a href="#main">Back to top <span aria-hidden="true">&#8593;</span></a></div></footer>

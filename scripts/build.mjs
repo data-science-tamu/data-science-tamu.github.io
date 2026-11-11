@@ -8,6 +8,7 @@ import {
 } from "../src/helpers.mjs";
 import { createPages, layout } from "../src/templates.mjs";
 import { validateFigureOriginals } from "../src/figure-originals.mjs";
+import { resolveResearchIndex, createResearchBrowsePages } from "../src/research-index.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const configFlag = process.argv.indexOf("--config");
@@ -15,6 +16,10 @@ const configPath =
   configFlag === -1
     ? path.join(root, "content/site.json")
     : path.resolve(root, process.argv[configFlag + 1] || "missing-config");
+const indexFlag = process.argv.indexOf("--research-index");
+const indexPath = indexFlag === -1
+  ? path.join(root, "content/research-index.json")
+  : path.resolve(root, process.argv[indexFlag + 1] || "missing-research-index");
 try {
   const site = JSON.parse(fs.readFileSync(configPath, "utf8"));
   validateConfig(site);
@@ -29,6 +34,8 @@ try {
     if (!Array.isArray(lab[key]) || lab[key].length < count)
       throw new Error(`Invalid lab content: ${key} is incomplete`);
   validatePublications(lab.publications);
+  const browseGroups = resolveResearchIndex(JSON.parse(fs.readFileSync(indexPath, "utf8")), lab);
+  const browseStyles = fs.readFileSync(path.join(root, "src/research-index.css"), "utf8");
   if (!fs.existsSync(path.join(root, "public", site.cv)))
     throw new Error("CV PDF is missing");
   const originals = validateFigureOriginals(
@@ -36,15 +43,14 @@ try {
     path.join(root, "public"),
     [...lab.research.figures.map((f) => f.src), ...lab.projects.map((p) => p.image)],
   );
-  const pages = createPages(
-    site,
-    lab,
-    imageRenderer(path.join(root, "public")),
-    originals,
-  );
+  const img = imageRenderer(path.join(root, "public"));
+  const pages = [
+    ...createPages(site, lab, img, originals),
+    ...createResearchBrowsePages(browseGroups, lab, img, originals),
+  ];
   const rendered = pages.map((page) => [
     `${page.route}index.html`,
-    layout(site, page, lab.faculty.name, lab.research.areas),
+    layout(site, page, lab.faculty.name, lab.research.areas, browseGroups),
   ]);
   const errorPage = {
     route: "/404.html",
@@ -53,11 +59,12 @@ try {
       "This page could not be found. Return to the Data Science Lab website.",
     body: `<header class="page-heading"><p class="eyebrow">404</p><h1>Page not found</h1><p class="lead">The page may have moved, or the address may be incorrect.</p><div class="hero-actions"><a class="button" href="/">Return home</a><a class="button button-secondary" href="/research/">Explore research</a></div></header>`,
   };
-  rendered.push(["404.html", layout(site, errorPage, lab.faculty.name, lab.research.areas)]);
+  rendered.push(["404.html", layout(site, errorPage, lab.faculty.name, lab.research.areas, browseGroups)]);
   const stage = path.join(root, ".local/build-output");
   fs.mkdirSync(path.dirname(stage), { recursive: true });
   fs.rmSync(stage, { recursive: true, force: true });
   fs.cpSync(path.join(root, "public"), stage, { recursive: true });
+  fs.writeFileSync(path.join(stage, "assets/research-index.css"), browseStyles);
   for (const [file, html] of rendered) {
     const target = path.join(stage, file);
     fs.mkdirSync(path.dirname(target), { recursive: true });
