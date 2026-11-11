@@ -1,12 +1,16 @@
-# Research Top-Menu Comparison
+# Research Top-Menu Navigation
 
 ## Scope and Authority
 
-The comparison was initially LOCAL ONLY on 2026-11-07. On 2026-11-11 the owner authorized publishing the current preview. The owner subsequently confirmed both W1 topic/problem memberships explicitly. Publication and retention of those memberships are authorized; release verification is tracked in plan.md and todo.md. The earlier research-message preview is a separate comparison and must not be overwritten.
+The comparison was initially LOCAL ONLY on 2026-11-07. On 2026-11-11 the owner authorized publishing the current preview. The owner subsequently confirmed both W1 topic/problem memberships explicitly. Publication and retention of those memberships were authorized; release abcc1ce is integrated into main and publicly verified. Completed evidence is in history.md and docs/validation.md. The earlier research-message preview is a separate comparison and must not be overwritten.
 
 Baseline: main b9f8086ddbcc29b3bbc37cdc5c6b14b1ad757dc3. Candidate branch: preview/research-topic-menu. Worktree: /home/jlee/projects/.worktrees/data-science-tamu.github.io-research-topic-menu.
 
-## Compare
+## Published Pages And Preserved Comparison
+
+- Published Research: https://data-science-tamu.github.io/research/
+- Healthcare & Biomechanics: https://data-science-tamu.github.io/research/browse/topics/healthcare-biomechanics/
+- Inverse Problems & Calibration: https://data-science-tamu.github.io/research/browse/problems/inverse-problems-calibration/
 
 - Frozen existing version: http://localhost:4200/research/
 - Candidate: http://localhost:4201/research/

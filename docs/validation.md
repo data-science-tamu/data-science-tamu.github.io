@@ -785,3 +785,15 @@ Parent independently reran 383 tests (all passed), build and diff-check. All 77 
 Evidence: .local/research-menu/release/{preflight.json,tests.log,build.log,labels.log,extra.log,local-browser/report.json,reviewed-freeze.json}. GitHub CI, primary-main integration, Pages and live readback remain pending until separately recorded. Recovery baseline b9f8086ddbcc29b3bbc37cdc5c6b14b1ad757dc3; use reviewed revert, not force push/reset.
 
 Independent closure review deleg_302ae937: APPROVE; 68 focused tests passed, 117 source and 77 built hashes matched. Explicit author confirmation satisfies the prior semantic review; original working-paper status and all memberships remain unchanged. No new blocking issue. Review evidence is retained under .local/research-menu/release/review.md.
+
+## 2026-11-11 - Research Navigation And Detail Bullets Published
+
+Owner approved the reviewed comparison for publication and explicitly confirmed W1 in both Healthcare & Biomechanics and Inverse Problems & Calibration. Both links and Scientific & Engineering ML are retained unchanged as author-confirmed categorization, with Working paper status. Earlier title-only semantic uncertainty is resolved by the author, not by invented manuscript evidence.
+
+Released vertical Overview/three research directions plus Topics/Problems, 12 browse pages with separate projects/publications/funding, shared canonical project/figure/publication rendering, and native detail-label bullet lists. Original source facts, images, funding/status distinctions and separate Research comparison worktrees were preserved.
+
+Release commit: abcc1ce383205faa2eff125255dbfbfa507aa1ad. Branch CI 43102073696 passed; primary main was fast-forward integrated and pushed; exact-head Pages run 43102167978 passed test-build and deploy. Independent final review deleg_302ae937 APPROVE, 68 focused tests. Parent task and integrated-main suites each passed 383 tests; deterministic builds match all 77 reviewed output hashes. Local preservation, responsive, native list, keyboard/figure and accessibility gates passed (preflight detail in docs/validation.md).
+
+Public HTTPS readback verified all 77 build files byte-for-byte (19287397 bytes). Live Chromium checks: 8 menu viewport cases, 24 browse route/viewport cases, 4 explicit W1 title/status checks, 4 WCAG-tag axe audits with zero violations, zero console/page errors, and functioning figure-dialog focus restoration. Desktop menu and mobile W1 screenshots visually inspected. Live URL: https://data-science-tamu.github.io/research/ . Evidence: .local/research-menu/release/ including branch-ci.json, pages.json, pages-jobs.json, readback-abcc1ce383205faa2eff125255dbfbfa507aa1ad.json, live-browser/report.json, review.md and preflight.json.
+
+No task-specific release blocker remains. Validation limits: Chromium on WSL, not all browser engines or real assistive technologies. GitHub Actions emitted non-blocking action-runtime/runner-image deprecation notices; all jobs succeeded and this release does not change workflows. Recovery baseline b9f8086ddbcc29b3bbc37cdc5c6b14b1ad757dc3 remains in Git; use a reviewed revert, never a force push/reset.

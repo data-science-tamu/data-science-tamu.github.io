@@ -4,18 +4,18 @@
 
 - [x] Shared semantic label bullets and compact responsive styling.
 - [x] Tests/build, exact data and presentation-only preservation, browser/accessibility/review.
-- [x] Record result/history and deliver local comparison; no publication.
+- [x] Record implementation/history and deliver local comparison; later publication completed below.
 
 
-## Research Navigation Release
+## Research Navigation Release - Published
 
 - [x] Overview and three directions in one column; Topics and Problems only.
 - [x] Full project content/figures and canonical publication presentation reused.
 - [x] Tests/build/preservation/browser/figure-viewer/accessibility/independent review.
 - [x] Owner authorized publishing the current preview on 2026-11-11.
 - [x] Owner explicitly confirmed W1 belongs in both Healthcare and Inverse Problems; retain both memberships.
-- [ ] Refresh required validation, close focused review and commit/push the task branch with passing CI.
-- [ ] Integrate main, verify exact-head Pages and live readback, close release history.
+- [x] Refresh required validation, close focused review and commit/push the task branch with passing CI.
+- [x] Integrate main, verify exact-head Pages and live readback, close release history.
 
 ## Montague CTE Link
 
