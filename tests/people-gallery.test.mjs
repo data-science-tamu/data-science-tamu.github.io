@@ -4,7 +4,6 @@ import fs from "node:fs";
 import vm from "node:vm";
 import { createPages } from "../src/templates.mjs";
 import { escape, imageRenderer } from "../src/helpers.mjs";
-import { normalizeCvExperienceHtml } from "./cv-experience-expectations.mjs";
 
 const read = (file) => fs.readFileSync(new URL(file, import.meta.url), "utf8");
 const site = JSON.parse(read("../content/site.json"));
@@ -54,7 +53,7 @@ test("current undergraduate research is separate from past members", () => {
   assert.match(html, /Past members: Students &amp; research experiences/);
 });
 
-test("optional experience, funding and service render on CV only with exact escaped strings", () => {
+test("CV omits populated experience while preserving escaped funding, service, links and data", () => {
   const lab = baseline();
   lab.faculty.experience = [{role: "Example appointment <role>", organization: "Example organization & lab", period: "Example appointment period"}];
   lab.faculty.funding = {summary: "Example funding summary <exact>", items: [
@@ -62,66 +61,55 @@ test("optional experience, funding and service render on CV only with exact esca
     {role: "Example co-PI", sponsor: "Another sponsor", title: "Project without optional details", period: "Another period", amount: "$10 (exact)"},
   ]};
   lab.faculty.service = ["Example service <plain>", "Example editorial & review service"];
+  const before = structuredClone(lab);
   const pages = render(lab);
   const cv = pages.get("/cv/");
-  for (const text of [...Object.values(lab.faculty.experience[0]), lab.faculty.funding.summary,
+  for (const text of [lab.faculty.funding.summary,
     ...lab.faculty.funding.items.flatMap((item) => Object.values(item)), ...lab.faculty.service]) {
     assert.ok(cv.includes(escape(text)), text);
     for (const [route, html] of pages) if (route !== "/cv/") assert.ok(!html.includes(escape(text)), route + ": " + text);
   }
-  assert.match(cv, /<h2>Professional Experience<\/h2>/);
+  assert.doesNotMatch(cv, /Professional Experience/);
+  for (const text of Object.values(lab.faculty.experience[0]))
+    assert.ok(!cv.includes(escape(text)), text);
   assert.match(cv, /<h2>Research Funding<\/h2>/);
   assert.match(cv, /<h2>Professional Service<\/h2>/);
   assert.match(cv, /<h3><a href="https:\/\/example.test\/award\?a=1&amp;b=2">Example project &lt;title&gt;<\/a><\/h3>/);
   assert.ok(cv.indexOf("Example project &lt;title&gt;") < cv.indexOf("Example PI role"));
   assert.match(cv, /<li>Example service &lt;plain&gt;<\/li>/);
+  assert.ok(cv.includes('href="' + site.cv + '" download>Download CV PDF'));
+  assert.ok(cv.includes('href="' + site.cv + '">Open CV PDF'));
   assert.doesNotMatch(cv, /undefined|<exact>|<plain>/);
-});
-
-const experienceSection = (html) => html.match(/<section class="section split-section"><div class="section-heading"><h2>Professional Experience<\/h2><\/div>([\s\S]*?)<\/section>/)?.[1];
-const experienceItems = (items) => '<div><ul>' + items.map((item) => '<li><strong>' + escape(item.role) + '</strong>, ' + escape(item.organization) + ' (' + escape(item.period) + ')</li>').join('') + '</ul></div>';
-
-test("CV Professional Experience uses one native bullet and inline text per unchanged ordered record", () => {
-  assert.equal(experienceSection(render(source).get('/cv/')), experienceItems(source.faculty.experience));
-});
-
-test("CV inline experience escapes every dynamic field without changing other sections or pages", () => {
-  const lab = baseline();
-  const beforePages = render(lab);
-  lab.faculty.experience = [
-    { role: 'Role <one> & "quoted"', organization: 'Organization <two> & "lab"', period: 'Period <three> & "dates"' },
-    { role: 'Second role', organization: 'Second organization', period: 'Second period' },
-  ];
-  const before = structuredClone(lab);
-  const pages = render(lab);
-  const cv = pages.get('/cv/');
-  assert.equal(experienceSection(cv), experienceItems(lab.faculty.experience));
-  assert.doesNotMatch(experienceSection(cv), /<one>|<two>|<three>|<h[1-6]|<p\b|<br\b|style=|nowrap|role=/);
-  assert.equal(cv.replace(/<section class="section split-section"><div class="section-heading"><h2>Professional Experience<\/h2><\/div>[\s\S]*?<\/section>/, ''), beforePages.get('/cv/'));
-  for (const [route, html] of pages) if (route !== '/cv/') assert.equal(html, beforePages.get(route), route);
   assert.deepEqual(lab, before);
 });
 
-test("historical CV normalization reverses only the exact approved experience section", () => {
+test("CV omits the entire Professional Experience section and its whitespace placeholder", () => {
+  const before = structuredClone(source);
   const cv = render(source).get('/cv/');
-  const old = normalizeCvExperienceHtml(cv);
-  assert.notEqual(old, cv);
-  assert.match(experienceSection(old), /^<div><ul class="clean-list detail-list"><li><h3>Assistant Professor<\/h3>/);
-  for (const mutate of [
-    (data) => { data.faculty.experience.pop(); },
-    (data) => { data.faculty.experience.reverse(); },
-    (data) => { data.faculty.experience.push(data.faculty.experience[0]); },
-    ...['role', 'organization', 'period'].map((field) => (data) => { data.faculty.experience[0][field] += ' UNAPPROVED'; }),
+  assert.doesNotMatch(cv, /Professional Experience|Senior Consultant|Gurobikorea|Research Engineer\/Software Developer|Diquest/);
+  assert.ok(cv.includes(source.faculty.awards.at(-1).html + '</li></ul></div></section><section class="section split-section"><div class="section-heading"><h2>Research Funding</h2>'), "funding directly follows awards without a section or whitespace placeholder");
+  assert.deepEqual(source, before);
+});
+
+test("experience variants leave every page byte-identical without mutating retained records", () => {
+  const lab = structuredClone(source);
+  delete lab.faculty.experience;
+  const beforePages = render(lab);
+  for (const records of [
+    undefined, null, [], source.faculty.experience, [...source.faculty.experience].reverse(),
+    [{ role: 'Role <one> & "quoted"', organization: 'Organization <two> & "lab"', period: 'Period <three> & "dates"' }],
+    [{ role: 'First unique appointment', organization: 'First unique organization', period: 'First unique period' },
+      { role: 'Second unique appointment', organization: 'Second unique organization', period: 'Second unique period' }],
   ]) {
-    const data = structuredClone(source);
-    mutate(data);
-    const changed = render(data).get('/cv/');
-    assert.equal(normalizeCvExperienceHtml(changed), changed);
+    const data = structuredClone(lab);
+    data.faculty.experience = structuredClone(records);
+    const before = structuredClone(data);
+    const pages = render(data);
+    assert.deepEqual(pages, beforePages, "experience must have no HTML effect, including whitespace, funding, service and links");
+    for (const item of records || []) for (const text of Object.values(item))
+      if (!beforePages.get('/cv/').includes(escape(text))) assert.ok(!pages.get('/cv/').includes(escape(text)), text);
+    assert.deepEqual(data, before);
   }
-  const changed = cv.replace(experienceSection(cv), experienceSection(cv).replace('<ul>', '<ul class="unexpected">'));
-  assert.equal(normalizeCvExperienceHtml(changed), changed);
-  assert.equal(normalizeCvExperienceHtml(cv + '<p>Unrelated content</p>'), old + '<p>Unrelated content</p>');
-  assert.equal(normalizeCvExperienceHtml(old), old);
 });
 
 test("absent or empty optional arrays preserve baseline pages without empty new sections", () => {

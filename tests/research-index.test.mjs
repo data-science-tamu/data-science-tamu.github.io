@@ -7,7 +7,7 @@ import { normalizeResearchFieldLists } from "./research-field-normalization.mjs"
 import { normalizeMontagueDetailsHtml, normalizeMontagueDetailsRaw } from "./award-detail-expectations.mjs";
 import { normalizeContactEducationHtml } from "./contact-education-expectations.mjs";
 import { normalizePastRosterHtml, normalizePastRosterRaw } from "./people-partner-expectations.mjs";
-import { normalizeCvExperienceHtml } from "./cv-experience-expectations.mjs";
+
 import { validateFigureOriginals } from "../src/figure-originals.mjs";
 import * as publications from "../src/publications.mjs";
 import { createPages, layout } from "../src/templates.mjs";
@@ -58,7 +58,7 @@ test("existing data and public files retain exact guards with approved partner d
 });
 test("historical body hashes allow only approved Home/People composition and exact Montague detail nesting", () => {
   const home = JSON.parse(read("tests/fixtures/home-preservation.json"));
-  assert.deepEqual(Object.fromEntries(originalPages.map((page) => [page.route, hash(normalizeCvExperienceHtml(normalizePastRosterHtml(normalizeContactEducationHtml(normalizeMontagueDetailsHtml(normalizeResearchFieldLists(page.body))))))])),
+  assert.deepEqual(Object.fromEntries(originalPages.map((page) => [page.route, hash(normalizePastRosterHtml(normalizeContactEducationHtml(normalizeMontagueDetailsHtml(normalizeResearchFieldLists(page.body)))))])),
     { ...baseline.bodies, "/": home.homeBodySha256 });
 });
 test("maintained browse config preserves approved Topics/Problems exactly with only Methods removed", () => {

@@ -1,7 +1,7 @@
 # Website Plan
 
-The dates-first People roster and single-line CV experience follow-up was
-verified; see history.md.
+The People roster keeps dates first. The web CV omits Professional Experience;
+see history.md for the presentation change.
 
 The inline past-role layout is verified in the local People preview. See history.md.
 

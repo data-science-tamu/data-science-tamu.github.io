@@ -1,5 +1,11 @@
 # Website History
 
+## Web CV: Omit Professional Experience
+
+Removed the heading and its three appointment rows from the HTML CV. Research
+Funding follows Awards and Honors. The maintained records, downloadable PDF,
+and all other built pages remain unchanged.
+
 ## Dates First and Single-Line CV Experience
 
 Anna Hartman and Shu Nee Khor retain their groups and descriptions; their
