@@ -1,5 +1,7 @@
 # Academic Website Release Tasks
 
+- [x] Verify the teaching-only section on Home and CV and preserve other content.
+
 - [x] Omit Professional Experience from the web CV; preserve the records and PDF.
 - [x] Check dates before role labels on People.
 

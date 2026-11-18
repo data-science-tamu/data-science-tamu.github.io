@@ -232,11 +232,11 @@ award renderer in `src/templates.mjs` nests each detail inside its parent on
 both Home and the HTML CV, preserving filtering at the award level. The teaching
 grant description belongs to the Montague award; do not add it as another award.
 
-`src/templates.mjs` shares small Education, teaching/recognition and award
-renderers. CV composes all three in its original order and whitespace; Home
-omits the repeated biography/profile block and Education, then follows its
-unchanged hero/research/news prefix with Awards, partners, original teaching/
-interests/recognition, then the unchanged contact panel as the final section.
+`src/templates.mjs` shares Education, Courses taught, and award renderers.
+The HTML CV shows education, courses and awards; Home follows its hero,
+research and news with Awards, partners, Courses taught and the contact panel.
+Neither page displays `faculty.interests` or `faculty.recognition`. Both lists
+remain in the maintained data. Home's Research focus stays near the top.
 The hero's prospective-students anchor remains linked to that panel. Home awards
 use native list bullets; CV retains its original list markup. People, CSS and
 other assets remain unchanged.

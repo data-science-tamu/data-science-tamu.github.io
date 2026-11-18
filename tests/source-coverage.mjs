@@ -54,7 +54,16 @@ export function assertSourceCoverage(data, htmlAt) {
     ["BS 2011 Industrial Systems Information Engineering Korea University, Seoul, South Korea", "/cv/"],
     ["Best Master\u2019s Thesis Award, KAIST, 2013", "/cv/"],
   ].map(([text, route]) => [normalize(text), route]));
-  normalizeRefreshForBaseline(data);
+  const baseline = normalizeRefreshForBaseline(data);
+  // These exact captured Home paragraphs stay in canonical data, not another page.
+  const canonicalHomeParagraphs = new Map([
+    ["Research Interests", "interests"],
+    ["Research Recognition", "recognition"],
+  ].flatMap(([heading, field]) => [
+    [normalize(heading), { field, records: baseline.faculty[field] }],
+    ...baseline.faculty[field].map((record) => [normalize(record.text), { field, records: [record] }]),
+  ]));
+  const canonicalHomeSeen = new Set();
   const peopleContacts = new Map(data.people.current.map((person) =>
     [normalize(`${person.name} (${person.email.replace("@", " at ")})`), person]));
   const pastRoleParagraphs = new Set(capturedPastRoleParagraphs.map(normalize));
@@ -74,6 +83,17 @@ export function assertSourceCoverage(data, htmlAt) {
         if (!text || labels.includes(normalize(text))) continue;
         const partnerIndex = page.slug === "home" ? capturedPartners.slice(1).findIndex((paragraph) => normalize(paragraph.text) === normalize(text)) : -1;
         const person = page.slug === "people" && peopleContacts.get(normalize(text));
+        const canonical = page.slug === "home" && canonicalHomeParagraphs.get(normalize(text));
+        if (canonical) {
+          for (const record of canonical.records) {
+            const expected = approvedParagraphText("home", record.text, normalize);
+            assert.equal(data.faculty[canonical.field].filter((item) => normalize(item.text) === normalize(expected)).length, 1,
+              `home -> canonical faculty.${canonical.field}: ${record.text}`);
+          }
+          canonicalHomeSeen.add(normalize(text));
+          checked++;
+          continue;
+        }
         if (partnerIndex !== -1) {
           assertPartnerGroupCoverage(main, partnerIndex);
           checked++;
@@ -135,4 +155,6 @@ export function assertSourceCoverage(data, htmlAt) {
     }
   }
   assert.equal(checked, 243, "Captured substantive paragraph baseline");
+  assert.deepEqual([...canonicalHomeSeen].sort(), [...canonicalHomeParagraphs.keys()].sort(),
+    "Every intentionally non-displayed Home paragraph retains explicit canonical coverage");
 }

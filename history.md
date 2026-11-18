@@ -1,5 +1,12 @@
 # Website History
 
+## Standalone Courses Taught on Home and CV
+
+Removed the duplicate research interests and recognition lists from both web
+pages without changing Research focus, Awards and Honors, courses, or the PDF.
+Only the Home and CV HTML changed in the 77-file build. All 516 tests passed;
+desktop and mobile browser checks passed on both pages.
+
 ## Web CV: Omit Professional Experience
 
 Removed the heading and its three appointment rows from the HTML CV. Research

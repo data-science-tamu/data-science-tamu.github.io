@@ -29,7 +29,7 @@ const section = (html, title) => {
   const start = html.lastIndexOf('<section', heading);
   return html.slice(start, html.indexOf('</section>', start) + '</section>'.length);
 };
-const teaching = (html) => html.match(/<section class="section faculty-details">[\s\S]*?<\/section>/)?.[0];
+const teaching = (html) => section(html, "Courses taught");
 const select = (awards, options = config()) => {
   assert.equal(typeof templates.selectHomeAwards, "function", "explicit Home-only award selector must exist");
   return templates.selectHomeAwards(awards, options);
@@ -74,17 +74,17 @@ test("Home section order ends in Prospective Students & Collaborators", () => {
   assert.deepEqual([...home.matchAll(/<h2>([^<]*)<\/h2>/g)].map((match) => match[1]), [
     lab.faculty.name, "Research focus", "Research directions", "Latest news",
     "Awards and Honors",
-    "Industry &amp; funding partners", "Courses taught", "Research Interests &amp; recognition",
+    "Industry &amp; funding partners", "Courses taught",
     "Prospective Students &amp; Collaborators",
   ]);
   assert.equal(hash(teaching(home)), baseline.homeTeachingSha256);
   assert.equal(hash(section(home, "Industry & funding partners")), baseline.homePartnersSha256);
-  for (const field of ["courses", "interests", "recognition"])
-    for (const item of lab.faculty[field]) {
-      assert.ok(teaching(home).includes('<li>' + item.html + '</li>'), field + ': ' + item.text);
-      assert.ok(teaching(cv).includes('<li>' + item.html + '</li>'), 'CV ' + field + ': ' + item.text);
-    }
-  assert.ok(teaching(home).includes('<h3>Research Recognition</h3>'));
+  for (const item of lab.faculty.courses) {
+    assert.ok(teaching(home).includes('<li>' + item.html + '</li>'), 'courses: ' + item.text);
+    assert.ok(teaching(cv).includes('<li>' + item.html + '</li>'), 'CV courses: ' + item.text);
+  }
+  for (const html of [home, cv])
+    assert.doesNotMatch(html, /<h2>Research Interests &amp; recognition<\/h2>|<h3>Research Recognition<\/h3>/);
 });
 
 test("Home hero anchor resolves to exactly one final contact section before the footer", () => {
