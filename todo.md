@@ -1,6 +1,7 @@
 # Academic Website Release Tasks
 
-- [x] Check dates before role labels and one-line desktop CV experience entries.
+- [x] Omit Professional Experience from the web CV; preserve the records and PDF.
+- [x] Check dates before role labels on People.
 
 - [x] Verify both past members' inline roles, grouping and unchanged dates.
 

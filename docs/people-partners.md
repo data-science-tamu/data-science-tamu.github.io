@@ -11,8 +11,8 @@ parentheses directly after the name, then the internship or REU description.
 Student education on People and faculty education on the HTML CV share a row
 format: degree (dates), an aligned gap, then field and institution separated
 by a comma. Narrow screens can wrap long descriptions without hiding details.
-Each Professional Experience entry on the HTML CV reads as role, organization
-and parenthesized dates in one line when there is room.
+Professional Experience is omitted from the HTML CV. Keep the appointment
+records in `faculty.experience` and the downloadable CV PDF intact.
 
 In Home, keep one list per partner group and one organization per bullet. Use
 the ordered names in `faculty.partners.groups`, not comma-separated rich text.
