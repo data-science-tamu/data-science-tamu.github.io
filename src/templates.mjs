@@ -79,12 +79,12 @@ export function createPages(site, lab, img, originals = new Map()) {
   ]);
   const facultyEducation = () =>
     `<section class="section split-section" id="faculty-background">${sectionHead("Education")}<div>${education(faculty.education)}<p class="section-link"><a href="/cv/">Full curriculum vitae ${arrow}</a></p></div></section>`;
-  const teachingAndRecognition = () =>
-    `<section class="section faculty-details"><div>${sectionHead("Courses taught")}${list(faculty.courses)}</div><div>${sectionHead("Research Interests & recognition")}${list(faculty.interests)}<h3>Research Recognition</h3>${list(faculty.recognition)}</div></section>`;
+  const teaching = () =>
+    `<section class="section split-section">${sectionHead("Courses taught")}<div>${list(faculty.courses)}</div></section>`;
   const awardsAndHonors = (awards, bulleted = false) =>
     `<section class="section split-section">${sectionHead("Awards and Honors")}<div><ul${bulleted ? "" : ' class="clean-list"'}>${awards.map(awardItem).join("")}</ul></div></section>`;
   const facultyDetails = () => `${facultyEducation()}
-  ${teachingAndRecognition()}
+  ${teaching()}
   ${awardsAndHonors(faculty.awards)}`;
   const cvDetails = () =>
     `${faculty.funding && (faculty.funding.summary || faculty.funding.items?.length) ? `<section class="section split-section">${sectionHead("Research Funding")}<div>${faculty.funding.summary ? `<p>${e(faculty.funding.summary)}</p>` : ""}${faculty.funding.items?.length ? `<ul class="clean-list detail-list">${faculty.funding.items.map((item) => `<li><h3>${item.href ? `<a href="${e(item.href)}">${e(item.title)}</a>` : e(item.title)}</h3><p class="small">${[item.role, item.sponsor, item.period, item.amount].map(e).join(" &middot; ")}</p>${item.details ? `<p>${e(item.details)}</p>` : ""}</li>`).join("")}</ul>` : ""}</div></section>` : ""}
@@ -96,7 +96,7 @@ export function createPages(site, lab, img, originals = new Map()) {
   <section class="section split-section">${sectionHead("Latest news")}<div class="latest-news">${latest.map((n) => `<article>${newsDate(n.date)}<p>${rich(n.html)}</p></article>`).join("")}<a href="/news/">All lab news ${arrow}</a></div></section>
   ${awardsAndHonors(selectHomeAwards(faculty.awards), true)}
   <section class="section split-section">${sectionHead("Industry & funding partners")}<div class="prose">${paragraphs([faculty.partners.introduction])}${faculty.partners.groups.map((group) => `<h3>${e(group.title)}</h3><ul class="partner-list">${group.items.map((item) => `<li>${e(item)}</li>`).join("")}</ul>`).join("")}</div></section>
-  ${teachingAndRecognition()}
+  ${teaching()}
   ${contact()}`;
   const people = `${pageHead("People", "Faculty, current students, and past members of the Data Science Lab.")}
   <section class="section faculty-feature"><div>${img(faculty.portrait, `Portrait of ${faculty.name}`)}</div><div><div class="person-name"><h2>${e(faculty.name)}</h2>${facultyLinks()}</div>${paragraphs([faculty.bio[0]])}</div></section>

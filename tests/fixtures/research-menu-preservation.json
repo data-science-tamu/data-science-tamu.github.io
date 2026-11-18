@@ -70,7 +70,7 @@
   "bodies": {
     "/": "8c436f2fdc399e9b55ba69de57f34423b526087e0e8eb27d0efc148abbca0246",
     "/people/": "147bdc5ce6181b46aa02e90a6b0dea064798cddfe72bca4d41ddfebc601ce913",
-    "/cv/": "96697cecbd91b17d23cb63547bfc32ae00916e2362d093ae4632c400a9d2cc1c",
+    "/cv/": "42d7c62f6783484de181f4f77a4318157a4fa33be468c606c6a9bc5ec09a9701",
     "/research/": "e08683bb8f2c17489770408ce2eb1d3f07bbd1b05c3cf191e1a44c76e66ac742",
     "/news/": "fa364586f8ddde666a60f5ca22c308b7d77c55d2b271b9d6ecd40a1be608afc8",
     "/publication/": "4eadd6feb7b5fd283512b954a67a37fcb6a4ae501079e9d5dbbc7556b2893db0",
@@ -80,7 +80,7 @@
   },
   "builtBodies": {
     "404.html": "ba803cbe7e98d2c60014490e63e8d9c077d6dc62f9040634f8a752652e3ca3c8",
-    "cv/index.html": "96697cecbd91b17d23cb63547bfc32ae00916e2362d093ae4632c400a9d2cc1c",
+    "cv/index.html": "42d7c62f6783484de181f4f77a4318157a4fa33be468c606c6a9bc5ec09a9701",
     "index.html": "8c436f2fdc399e9b55ba69de57f34423b526087e0e8eb27d0efc148abbca0246",
     "news/index.html": "fa364586f8ddde666a60f5ca22c308b7d77c55d2b271b9d6ecd40a1be608afc8",
     "people/index.html": "147bdc5ce6181b46aa02e90a6b0dea064798cddfe72bca4d41ddfebc601ce913",

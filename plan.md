@@ -1,5 +1,8 @@
 # Website Plan
 
+Home and the HTML CV share a standalone Courses taught section. Verification is
+recorded in history.md.
+
 The People roster keeps dates first. The web CV omits Professional Experience;
 see history.md for the presentation change.
 
