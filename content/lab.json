@@ -102,11 +102,13 @@
       },
       {
         "text": "2025–26 Montague-Center for Teaching Excellence (CTE) Scholar, Texas A&M University, 2025",
-        "html": "<a href=\"https://cte.tamu.edu/news-and-highlights/faculty-named-montague-2025-2026.html\">2025–26 Montague-Center for Teaching Excellence (CTE) Scholar</a>, Texas A&amp;M University, 2025"
-      },
-      {
-        "text": "University-wide recognition for excellence and innovation in undergraduate teaching (includes a $6,500 teaching grant)",
-        "html": "University-wide recognition for excellence and innovation in undergraduate teaching (includes a $6,500 teaching grant)"
+        "html": "<a href=\"https://cte.tamu.edu/news-and-highlights/faculty-named-montague-2025-2026.html\">2025–26 Montague-Center for Teaching Excellence (CTE) Scholar</a>, Texas A&amp;M University, 2025",
+        "details": [
+          {
+            "text": "University-wide recognition for excellence and innovation in undergraduate teaching (includes a $6,500 teaching grant)",
+            "html": "University-wide recognition for excellence and innovation in undergraduate teaching (includes a $6,500 teaching grant)"
+          }
+        ]
       },
       {
         "text": "QSR Best Refereed Paper Competition Finalist, INFORMS Annual Meeting, 2025",
@@ -143,20 +145,32 @@
         "html": "Featured Article in ISE Magazine, IISE, 2022"
       }
     ],
-    "partners": [
-      {
+    "partners": {
+      "introduction": {
         "text": "My research group has been working with industry collaborators and supported by multiple institutions:",
         "html": "My research group has been working with industry collaborators and supported by multiple institutions:"
       },
-      {
-        "text": "Industrial Research Collaborators: - EOS North America, 3Degrees",
-        "html": "Industrial Research Collaborators: <br>- EOS North America, 3Degrees"
-      },
-      {
-        "text": "Funding Partners:- NSF, NIH, LIFT, U.S. Department of War/Defense, TAMIDS, Crider Foods",
-        "html": "Funding Partners:<br>- NSF, NIH, LIFT, U.S. Department of War/Defense, TAMIDS, Crider Foods"
-      }
-    ],
+      "groups": [
+        {
+          "title": "Industrial Research Collaborators",
+          "items": [
+            "EOS North America",
+            "3Degrees"
+          ]
+        },
+        {
+          "title": "Funding Partners",
+          "items": [
+            "U.S. National Science Foundation (NSF)",
+            "National Institutes of Health (NIH)",
+            "Lightweight Innovations for Tomorrow (LIFT)",
+            "U.S. Department of War/Defense",
+            "Texas A&M Institute of Data Science (TAMIDS)",
+            "Crider Foods"
+          ]
+        }
+      ]
+    },
     "experience": [
       {
         "role": "Assistant Professor",
@@ -356,13 +370,8 @@
         "title": "Master's Students",
         "label": "Past Students",
         "names": [
-          "Noor S. Obeidat (Graduated, 2025 Fall); Outstanding Master of Science Thesis Student Award, 2025."
-        ]
-      },
-      {
-        "title": "Student Intern",
-        "names": [
-          "Shu Nee Khor (2023 Nov- 2024 January)"
+          "Noor S. Obeidat (Graduated, 2025 Fall); Outstanding Master of Science Thesis Student Award, 2025.",
+          "Shu Nee Khor, Student Intern (2023 Nov- 2024 January)"
         ]
       },
       {
@@ -370,13 +379,8 @@
         "label": "Past Students",
         "names": [
           "Matthew Lemon (2024 Sep-2025 June)",
-          "Gabriel Gonzalez (2024 Sep-2025 June); admitted to an M.S. program at Harvard University."
-        ]
-      },
-      {
-        "title": "REU Program (Research Experiences for Undergraduates)",
-        "names": [
-          "Anna Hartman (2023 May-July)"
+          "Gabriel Gonzalez (2024 Sep-2025 June); admitted to an M.S. program at Harvard University.",
+          "Anna Hartman, REU Program (Research Experiences for Undergraduates) (2023 May-July)"
         ]
       }
     ],

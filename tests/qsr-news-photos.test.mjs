@@ -105,8 +105,12 @@ for (const route of ["/news/", "/"]) {
 
 test("all other rendered pages remain exactly unchanged by the historical photo additions", () => {
   const baseline = assertOnlyNewsPhotos(lab);
+  const corrected = normalizeCorrectionsForBaseline(lab);
+  // Render both historical fixtures through the current structured partner schema.
+  baseline.faculty.partners = structuredClone(lab.faculty.partners);
+  corrected.faculty.partners = structuredClone(lab.faculty.partners);
   const oldPages = createPages(site, baseline, imageRenderer(path.join(root, "public")));
-  const pages = createPages(site, normalizeCorrectionsForBaseline(lab), imageRenderer(path.join(root, "public")));
+  const pages = createPages(site, corrected, imageRenderer(path.join(root, "public")));
   assert.deepEqual(pages.filter(page => page.route !== "/news/"),
     oldPages.filter(page => page.route !== "/news/"));
 });

@@ -2,6 +2,8 @@ import { escape as e, rich, anchor } from "./helpers.mjs";
 import { researchRenderers } from "./research-projects.mjs";
 import { researchContent } from "./research-content.mjs";
 import { publicationDetails, publicationPrimaryLink, publicationPresentation } from "./publications.mjs";
+import homeContent from "../content/home.json" with { type: "json" };
+import { personLinks } from "./people-links.mjs";
 
 const nav = [
   ["/", "Home"],
@@ -14,8 +16,10 @@ const nav = [
 const arrow = `<span aria-hidden="true">&#8599;</span>`;
 const paragraphs = (items) =>
   items.map((p) => `<p>${rich(p.html)}</p>`).join("\n");
-const list = (items) =>
-  `<ul class="clean-list">${items.map((p) => `<li>${rich(p.html)}</li>`).join("")}</ul>`;
+const list = (items, bulleted = false) =>
+  `<ul${bulleted ? "" : ' class="clean-list"'}>${items.map((p) => `<li>${rich(p.html)}</li>`).join("")}</ul>`;
+const awardItem = (award) =>
+  `<li>${rich(award.html)}${award.details?.length ? list(award.details, true) : ""}</li>`;
 const button = (href, label, secondary = false) =>
   `<a class="button${secondary ? " button-secondary" : ""}" href="${e(href)}">${e(label)} ${arrow}</a>`;
 const sectionHead = (title) =>
@@ -26,7 +30,7 @@ const newsDate = (date) => /^\d{4}$/.test(date)
 const pageHead = (title, description) =>
   `<header class="page-heading"><h1>${e(title)}</h1><p class="lead">${e(description)}</p></header>`;
 const education = (items) =>
-  `<ul class="education-list">${items.map((d) => `<li><span class="degree">${e(d.degree)} <span>${e(d.dates)}</span></span><div><strong>${e(d.field)}</strong><span class="institution">${e(d.institution)}</span></div></li>`).join("")}</ul>`;
+  `<ul class="education-list">${items.map((d) => `<li><span class="degree">${e(d.degree)} <span>(${e(d.dates)})</span></span><div><strong>${e(d.field)}</strong>, <span class="institution">${e(d.institution)}</span></div></li>`).join("")}</ul>`;
 
 function researchLinks(areas, route, listItems = false) {
   return [["/research/", "Overview"], ...areas.map((a) => [`/research/${a.slug}/`, a.title])].map(([href, label]) => {
@@ -42,6 +46,20 @@ function researchDisclosure(areas, id, route, action = false, browseGroups = [])
   return `<div class="research-disclosure${action ? " research-action" : ""}"><a${action ? ' class="button"' : route === "/research/" ? ' aria-current="page"' : route.startsWith("/research/") ? ' class="active-section"' : ""} href="/research/">Research</a><button type="button" data-research-toggle aria-label="Open research menu" aria-expanded="false" aria-controls="${id}" hidden><svg class="research-chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><ul class="research-directions${browseGroups.length ? " research-browse-menu" : ""}" id="${id}" data-research-directions>${researchLinks(areas, route, true)}${grouped}</ul></div>`;
 }
 
+export function selectHomeAwards(awards, config = homeContent) {
+  if (!config || typeof config !== "object" || Array.isArray(config) ||
+    Object.keys(config).length !== 1 || !Array.isArray(config.excludedAwardTexts))
+    throw new Error("Invalid home award exclusions: expected excludedAwardTexts array");
+  const excluded = new Set();
+  for (const text of config.excludedAwardTexts) {
+    if (typeof text !== "string" || !text.trim() || excluded.has(text) ||
+      awards.filter((award) => award.text === text).length !== 1)
+      throw new Error("Invalid home award exclusions: entries must be unique, exact canonical award texts");
+    excluded.add(text);
+  }
+  return awards.filter((award) => !excluded.has(award.text));
+}
+
 export function createPages(site, lab, img, originals = new Map()) {
   const faculty = lab.faculty;
   const publicationsById = publicationPresentation(lab.publications);
@@ -53,12 +71,21 @@ export function createPages(site, lab, img, originals = new Map()) {
   const { figure, project } = researchRenderers(img, originals, publicationsById);
   const contact = () =>
     `<section class="contact-panel" id="prospective-students"><div><h2>Prospective Students &amp; Collaborators</h2></div><div>${paragraphs([faculty.collaboration, faculty.prospective])}${button(`mailto:${site.email}`, site.email)}</div></section>`;
-  const facultyLinks = () =>
-    `<div class="text-links"><a href="${e(site.profile)}">Faculty profile ${arrow}</a><a href="${e(site.scholar)}">Google Scholar ${arrow}</a><a href="${e(site.linkedin)}">LinkedIn ${arrow}</a></div>`;
-  const facultyDetails =
-    () => `<section class="section split-section" id="faculty-background">${sectionHead("Education")}<div>${education(faculty.education)}<p class="section-link"><a href="/cv/">Full curriculum vitae ${arrow}</a></p></div></section>
-  <section class="section faculty-details"><div>${sectionHead("Courses taught")}${list(faculty.courses)}</div><div>${sectionHead("Research Interests & recognition")}${list(faculty.interests)}<h3>Research Recognition</h3>${list(faculty.recognition)}</div></section>
-  <section class="section split-section">${sectionHead("Awards and Honors")}<div>${list(faculty.awards)}</div></section>`;
+  const facultyLinks = () => personLinks(faculty.name, site.email, [
+    { label: "Faculty profile", href: site.profile },
+    { label: "Google Scholar", href: site.scholar },
+    { label: "LinkedIn", href: site.linkedin },
+    ...(typeof site.cv === "string" && site.cv.trim() ? [{ label: "Curriculum vitae", href: "/cv/" }] : []),
+  ]);
+  const facultyEducation = () =>
+    `<section class="section split-section" id="faculty-background">${sectionHead("Education")}<div>${education(faculty.education)}<p class="section-link"><a href="/cv/">Full curriculum vitae ${arrow}</a></p></div></section>`;
+  const teachingAndRecognition = () =>
+    `<section class="section faculty-details"><div>${sectionHead("Courses taught")}${list(faculty.courses)}</div><div>${sectionHead("Research Interests & recognition")}${list(faculty.interests)}<h3>Research Recognition</h3>${list(faculty.recognition)}</div></section>`;
+  const awardsAndHonors = (awards, bulleted = false) =>
+    `<section class="section split-section">${sectionHead("Awards and Honors")}<div><ul${bulleted ? "" : ' class="clean-list"'}>${awards.map(awardItem).join("")}</ul></div></section>`;
+  const facultyDetails = () => `${facultyEducation()}
+  ${teachingAndRecognition()}
+  ${awardsAndHonors(faculty.awards)}`;
   const cvDetails = () =>
     `${faculty.experience?.length ? `<section class="section split-section">${sectionHead("Professional Experience")}<div><ul class="clean-list detail-list">${faculty.experience.map((item) => `<li><h3>${e(item.role)}</h3><p>${e(item.organization)}</p><p class="small">${e(item.period)}</p></li>`).join("")}</ul></div></section>` : ""}
   ${faculty.funding && (faculty.funding.summary || faculty.funding.items?.length) ? `<section class="section split-section">${sectionHead("Research Funding")}<div>${faculty.funding.summary ? `<p>${e(faculty.funding.summary)}</p>` : ""}${faculty.funding.items?.length ? `<ul class="clean-list detail-list">${faculty.funding.items.map((item) => `<li><h3>${item.href ? `<a href="${e(item.href)}">${e(item.title)}</a>` : e(item.title)}</h3><p class="small">${[item.role, item.sponsor, item.period, item.amount].map(e).join(" &middot; ")}</p>${item.details ? `<p>${e(item.details)}</p>` : ""}</li>`).join("")}</ul>` : ""}</div></section>` : ""}
@@ -68,14 +95,15 @@ export function createPages(site, lab, img, originals = new Map()) {
   <section class="section split-section">${sectionHead("Research focus")}<div class="prose">${paragraphs([faculty.bio[2]])}<ul class="topic-list">${faculty.topics.map((t) => `<li>${e(t)}</li>`).join("")}</ul><p class="section-link"><a href="/people/">Meet the research group ${arrow}</a></p></div></section>
   <section class="section">${sectionHead("Research directions")}${areas()}</section>
   <section class="section split-section">${sectionHead("Latest news")}<div class="latest-news">${latest.map((n) => `<article>${newsDate(n.date)}<p>${rich(n.html)}</p></article>`).join("")}<a href="/news/">All lab news ${arrow}</a></div></section>
-  ${contact()}
-  <section class="section split-section">${sectionHead(faculty.name)}<div class="prose">${paragraphs([faculty.bio[0]])}${facultyLinks()}</div></section>${facultyDetails()}
-  <section class="section split-section">${sectionHead("Industry & funding partners")}<div class="prose">${paragraphs(faculty.partners)}</div></section>`;
+  ${awardsAndHonors(selectHomeAwards(faculty.awards), true)}
+  <section class="section split-section">${sectionHead("Industry & funding partners")}<div class="prose">${paragraphs([faculty.partners.introduction])}${faculty.partners.groups.map((group) => `<h3>${e(group.title)}</h3><ul class="partner-list">${group.items.map((item) => `<li>${e(item)}</li>`).join("")}</ul>`).join("")}</div></section>
+  ${teachingAndRecognition()}
+  ${contact()}`;
   const people = `${pageHead("People", "Faculty, current students, and past members of the Data Science Lab.")}
-  <section class="section faculty-feature"><div>${img(faculty.portrait, `Portrait of ${faculty.name}`)}</div><div><h2>${e(faculty.name)}</h2>${paragraphs([faculty.bio[0]])}<a href="mailto:${e(site.email)}">${e(site.email)}</a>${facultyLinks()}<p><a href="/cv/">Curriculum vitae ${arrow}</a></p></div></section>
-  <section class="section"><div class="section-heading"><h2>Current Ph.D. Students</h2></div><div class="student-list">${lab.people.current.map((p) => `<article class="student"><div class="student-photo">${img(p.portrait, `Portrait of ${p.name}`)}</div><div><h3>${e(p.name)}</h3><a class="email" href="mailto:${e(p.email)}">${e(p.email)}</a>${p.links?.length ? `<div class="text-links">${p.links.map((link) => `<a href="${e(link.href)}">${e(link.label)}</a>`).join("")}</div>` : ""}<h4>Education</h4>${education(p.education)}${p.highlights?.length ? `<ul class="student-highlights">${p.highlights.map((item) => `<li>${e(item)}</li>`).join("")}</ul>` : ""}</div></article>`).join("")}</div></section>
-  ${lab.people.undergraduates?.length ? `<section class="section split-section">${sectionHead("Current Undergraduate Research")}<div><ul class="clean-list detail-list">${lab.people.undergraduates.map((p) => `<li><h3>${e(p.name)}</h3><p class="small">${e(p.period)}</p><p>${e(p.description)}</p></li>`).join("")}</ul></div></section>` : ""}
-  <section class="section">${sectionHead("Past members: Students & research experiences")}<div class="past-members">${lab.people.past.map((g) => `<section><h3>${e(g.title)}</h3>${g.label ? `<p class="small">${e(g.label)}</p>` : ""}<ul>${g.names.map((n) => `<li>${e(n)}</li>`).join("")}</ul></section>`).join("")}</div></section>
+  <section class="section faculty-feature"><div>${img(faculty.portrait, `Portrait of ${faculty.name}`)}</div><div><div class="person-name"><h2>${e(faculty.name)}</h2>${facultyLinks()}</div>${paragraphs([faculty.bio[0]])}</div></section>
+  <section class="section"><div class="section-heading"><h2>Current Ph.D. Students</h2></div><div class="student-list">${lab.people.current.map((p) => `<article class="student"><div class="student-photo">${img(p.portrait, `Portrait of ${p.name}`)}</div><div><div class="person-name"><h3>${e(p.name)}</h3>${personLinks(p.name, p.email, p.links)}</div><h4>Education</h4>${education(p.education)}${p.highlights?.length ? `<ul class="student-highlights">${p.highlights.map((item) => `<li>${e(item)}</li>`).join("")}</ul>` : ""}</div></article>`).join("")}</div></section>
+  ${lab.people.undergraduates?.length ? `<section class="section split-section people-roster">${sectionHead("Current Undergraduate Research")}<div><ul class="student-roster">${lab.people.undergraduates.map((p) => { const links = personLinks(p.name, p.email, p.links); return `<li>${e(p.name)} (${e(p.period)}); ${e(p.description)}${links ? ` ${links}` : ""}</li>`; }).join("")}</ul></div></section>` : ""}
+  <section class="section">${sectionHead("Past members: Students & research experiences")}<div class="past-members people-roster">${lab.people.past.map((g) => `<section><h3>${e(g.title)}</h3><ul class="student-roster">${g.names.map((n) => `<li>${e(n)}</li>`).join("")}</ul></section>`).join("")}</div></section>
   <section class="section" data-photo-gallery aria-labelledby="lab-photos-title"><div class="section-heading"><h2 id="lab-photos-title">Lab photos</h2></div><div class="photo-grid" id="lab-photos" data-photo-track role="region" tabindex="0" aria-label="Lab photos" aria-describedby="lab-photos-help">${lab.people.photos.map((p) => `<figure>${img(p.src, p.caption)}<figcaption>${e(p.caption)}</figcaption></figure>`).join("")}</div><p class="small photo-help" id="lab-photos-help">Scroll horizontally to browse photos. When the gallery is focused, use Left/Right arrows, Home or End.</p><div class="photo-controls" data-photo-controls hidden><button type="button" data-photo-previous aria-label="Previous lab photo" aria-controls="lab-photos" aria-disabled="true">Previous</button><p class="photo-status" data-photo-status role="status" aria-live="polite" aria-atomic="true"></p><button type="button" data-photo-next aria-label="Next lab photo" aria-controls="lab-photos" aria-disabled="true">Next</button></div></section>${contact()}`;
   const cv = `${pageHead("Curriculum Vitae", "Academic background, teaching and research. Open or download the complete curriculum vitae below.")}
   <section class="cv-document"><div><h2>Jaesung Lee <span class="muted">/ CV</span></h2><p>The full CV includes academic appointments, education, publications, research activities and professional service.</p></div><div class="cv-actions">${button(site.cv, "Open CV PDF")}<a class="button button-secondary" href="${e(site.cv)}" download>Download CV PDF <span aria-hidden="true">&#8595;</span></a></div><p class="small cv-note">PDF not opening in your browser? Use the download link to view it in a PDF reader.</p></section>

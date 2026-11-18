@@ -1,0 +1,30 @@
+{
+  "homeBodySha256": "9e679f5b861a52657a764ca5f3bf0f66486f438061f6faf103ab9d27977c6187",
+  "homePrefixSha256": "45e8d0b316c939db038c49134e59cbf2aea243a8b5425c34e9feec62ed96bf19",
+  "homeTeachingSha256": "52433eaefc87bfe094348f5c6ff80da397d19e05d92fc185cfe096425b95b8ed",
+  "homePartnersSha256": "ede545c9450d053c8581e05879fa9a8ae40a65367243b5c8c52804ce05074d9b",
+  "homeChromeSha256": "8400959c31f776e3bdb3a579fda2bfcb42e9a0f26fba2fa8ea62c91c317a8178",
+  "documents": {
+    "404.html": "16e66e5e3a177d524e3903bb2b528c501cb742dbd38d1fc622fbf6b59290f96b",
+    "cv/index.html": "a9893d02c1d8df46805a606ac729ab141b14350c55412b118a2600368e845e5a",
+    "news/index.html": "c3fbad742c891cfb9724be374a18cab936516c4b42f4630f422293bc74f7cd06",
+    "people/index.html": "348e639a5ea5c490eb1a922cbfec85b1f2c877e50d8bf1611db61ab88a40ff78",
+    "publication/index.html": "f81343b2203713550fc07d0c9374cbaf8862fecb8ea98f517773c3273198c926",
+    "research/ai-for-processes/index.html": "5e5649284041ca2377e9cab3e4562966c7c1fa2f3a01d6baecad3349283dcac4",
+    "research/ai-for-systems/index.html": "04baa7817b168e3d4e50b45baabf56da8339e8d1efc5ec1dd985822318e4295f",
+    "research/browse/problems/diagnostics/index.html": "c6d238533241e6780fd2e104ddbc92bced91eccb008a9239a00be051d5cb9d29",
+    "research/browse/problems/inverse-problems-calibration/index.html": "66faba7988f6d8d8ddffdefe8ad65a54eb5b41c0132594d1902db6111c42edc3",
+    "research/browse/problems/maintenance-planning/index.html": "88adfe3d273b8ee4b9cdac3b23f8318ae3c48db2095dae96b9973910b9b908e6",
+    "research/browse/problems/monitoring-quality/index.html": "54d98485ada1afdb57230dd8c878619e14b99f227af5a50f4a97f1b4439fd849",
+    "research/browse/problems/process-design-optimization/index.html": "bf890a76f1de0ebf75af5ac7715359105dae23ddb9e08320ae92cdb2fcddeecd",
+    "research/browse/problems/prognostics/index.html": "8a27c46896ec63323023fdbbc461d6f53a733e72049cd7c05faad624dfeec7d2",
+    "research/browse/problems/virtual-testing-qualification/index.html": "47771b4d8c9f1aff92f8d34927f2f0c54167e844d1ffd182b3bc878d1b23208e",
+    "research/browse/topics/advanced-manufacturing/index.html": "db30ee3fc9f50b4cce1b3212959d47a664acb98e562bb84b91d03caaabc76ffe",
+    "research/browse/topics/digital-twins/index.html": "f7ff606239a1b4ecdfa1a6e383bfce96480c58fdac86009a36126809ad594ef2",
+    "research/browse/topics/healthcare-biomechanics/index.html": "feaa2e32ba4644f305ca8b05b117ed39381eecdc7f962f3d77f397e4158d9568",
+    "research/browse/topics/scientific-engineering-ml/index.html": "1270d6fddd47ba06df78d4c2101225ccab4a6fdfc4f66de88d62d476b6e52f57",
+    "research/browse/topics/smart-manufacturing/index.html": "5227391f1e74c61a2d5d9fc100df6423c9cd8052396612f18f5dc76c9078a6cb",
+    "research/index.html": "1ded9d3184d6d29662f1dc6724b2390a9ca437578c18056f152bbd7b2d97963b",
+    "research/physics-informed-ai/index.html": "200210ff56c25505340f53656f3949f05b72a9ee455ba5531f52eebee9fdfc7c"
+  }
+}

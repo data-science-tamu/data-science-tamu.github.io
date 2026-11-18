@@ -4,6 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { normalizeResearchFieldLists } from "./research-field-normalization.mjs";
+import { normalizeMontagueDetailsHtml, normalizeMontagueDetailsRaw } from "./award-detail-expectations.mjs";
+import { normalizeContactEducationHtml } from "./contact-education-expectations.mjs";
+import { normalizePastRosterHtml, normalizePastRosterRaw } from "./people-partner-expectations.mjs";
 import { validateFigureOriginals } from "../src/figure-originals.mjs";
 import * as publications from "../src/publications.mjs";
 import { createPages, layout } from "../src/templates.mjs";
@@ -48,12 +51,14 @@ const freeze = (value) => {
 };
 
 // Locked before implementation, including every existing content file and public asset.
-test("existing maintained data and every public file stay byte-identical", () => {
+test("existing data and public files retain exact guards with approved partner data, People CSS and Montague nesting", () => {
   for (const [file, digest] of Object.entries(baseline.files))
-    assert.equal(hash(fs.readFileSync(path.join(root, file))), digest, file);
+    assert.equal(hash(file === "content/lab.json" ? normalizeMontagueDetailsRaw(normalizePastRosterRaw(read(file))) : fs.readFileSync(path.join(root, file))), digest, file);
 });
-test("all existing page bodies including the home hero remain exactly unchanged", () => {
-  assert.deepEqual(Object.fromEntries(originalPages.map((page) => [page.route, hash(normalizeResearchFieldLists(page.body))])), baseline.bodies);
+test("historical body hashes allow only approved Home/People composition and exact Montague detail nesting", () => {
+  const home = JSON.parse(read("tests/fixtures/home-preservation.json"));
+  assert.deepEqual(Object.fromEntries(originalPages.map((page) => [page.route, hash(normalizePastRosterHtml(normalizeContactEducationHtml(normalizeMontagueDetailsHtml(normalizeResearchFieldLists(page.body)))))])),
+    { ...baseline.bodies, "/": home.homeBodySha256 });
 });
 test("maintained browse config preserves approved Topics/Problems exactly with only Methods removed", () => {
   const { asOf, ...mapping } = config();

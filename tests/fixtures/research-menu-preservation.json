@@ -3,7 +3,7 @@
   "files": {
     "content/cv-current.json": "6fa957030744ec979ba669743637d1826e9db7533181553f78949a01201f4492",
     "content/figure-originals.json": "ee7523261171eed132559fca7b655c8604be91a7d6f2f1bbf3a4055c64664b7c",
-    "content/lab.json": "90ffa8a3f08b7f08fb117885b2dd52d69f2be56b6bf0c4f0b9eb69144bc38fda",
+    "content/lab.json": "1d7aab42709802bb7b91a9e6d1739f6b334c45a719dc8d7ed4b35cde5c0ae6e5",
     "content/site.json": "07258b1462d9cad087715e4c9dc2f295bd6afad1eed50726c88df22766a26c10",
     "content/source/cv.json": "6f8bf8f705057608c431504a52e8eb83b8dc2834535d549eca13ba199c05dfe4",
     "content/source/home.json": "c0044e67e5859e2ceee1d1e08c03b10cf0aa6bec3b28a9d9217612f3f063cd03",
@@ -63,13 +63,13 @@
     "public/assets/images/research-1-ea37ce2933.png": "ea37ce2933b4ed547ebc5000005ba6d214e3aff83124955790e45fd894d05b10",
     "public/assets/images/sina-qcre-2025-certificate.jpg": "a02c4d4ec4c6e10d91020cb49d9043357a8300e09b55ffcf6918fb36a63bf842",
     "public/assets/images/sina-qcre-2025-group.jpg": "4d17f556f26fd771c878f906faf42f2d16bacf34f260ae0dcfa6997a0c99b1a0",
-    "public/assets/site.css": "f4b1e850a236524a0ce2a70779d3c9613e51b23f9f1fb338a0d95815b7ba389d",
+    "public/assets/site.css": "204285487b5a5b0f8c757ed0c985f4e9c5a31a6e77e4807a7b3c8b548bda1511",
     "public/assets/site.js": "de5fbcddb149f5125710146a640594f8a3a9327a8f363098a4638087a9d50887",
     "public/favicon.svg": "d1845914e2458ab704c12edb93b21edcad1467302dc5be27bd1343fbf734001d"
   },
   "bodies": {
     "/": "8c436f2fdc399e9b55ba69de57f34423b526087e0e8eb27d0efc148abbca0246",
-    "/people/": "37facab49a7129e5fc47c6f5f86d1c10a70b3452104b0f3a17d8f7d7e27cb7f0",
+    "/people/": "147bdc5ce6181b46aa02e90a6b0dea064798cddfe72bca4d41ddfebc601ce913",
     "/cv/": "5a537763510fa2e7f822f13bff9bac972e23534f17710f0efd0bc1904d2905df",
     "/research/": "e08683bb8f2c17489770408ce2eb1d3f07bbd1b05c3cf191e1a44c76e66ac742",
     "/news/": "fa364586f8ddde666a60f5ca22c308b7d77c55d2b271b9d6ecd40a1be608afc8",
@@ -83,7 +83,7 @@
     "cv/index.html": "5a537763510fa2e7f822f13bff9bac972e23534f17710f0efd0bc1904d2905df",
     "index.html": "8c436f2fdc399e9b55ba69de57f34423b526087e0e8eb27d0efc148abbca0246",
     "news/index.html": "fa364586f8ddde666a60f5ca22c308b7d77c55d2b271b9d6ecd40a1be608afc8",
-    "people/index.html": "37facab49a7129e5fc47c6f5f86d1c10a70b3452104b0f3a17d8f7d7e27cb7f0",
+    "people/index.html": "147bdc5ce6181b46aa02e90a6b0dea064798cddfe72bca4d41ddfebc601ce913",
     "publication/index.html": "4eadd6feb7b5fd283512b954a67a37fcb6a4ae501079e9d5dbbc7556b2893db0",
     "research/ai-for-processes/index.html": "4270d13ebd0b778a0269bd7b732e6894f76ca740378778607f8d0e9734a3acd9",
     "research/ai-for-systems/index.html": "ea82b7f043de2d1b8b93f9f0db67113a199a2051da6e327236cbfc870fdc5ba5",

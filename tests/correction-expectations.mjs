@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { normalizeMontagueDetailsForBaseline } from "./award-detail-expectations.mjs";
+import { normalizePartnersForBaseline, normalizePastRosterForBaseline } from "./people-partner-expectations.mjs";
 
 export const corrections = JSON.parse(fs.readFileSync(new URL("./fixtures/news-source-corrections.json", import.meta.url), "utf8"));
 
@@ -16,11 +18,11 @@ function restoreApprovedChanges(data, changes) {
 }
 
 export function normalizeCorrectionsForBaseline(lab) {
-  return restoreApprovedChanges(lab, corrections.changes);
+  return restoreApprovedChanges(normalizeMontagueDetailsForBaseline(normalizePartnersForBaseline(normalizePastRosterForBaseline(lab))), corrections.changes);
 }
 
 export function normalizeNonNewsCorrectionsForBaseline(lab) {
-  return restoreApprovedChanges(lab, corrections.changes.filter(change => change.path[0] !== "news"));
+  return restoreApprovedChanges(normalizeMontagueDetailsForBaseline(normalizePartnersForBaseline(normalizePastRosterForBaseline(lab))), corrections.changes.filter(change => change.path[0] !== "news"));
 }
 
 export function normalizeNewsCorrectionsForBaseline(news) {

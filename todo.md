@@ -1,5 +1,34 @@
 # Academic Website Release Tasks
 
+- [x] Verify both past members' inline roles, grouping and unchanged dates.
+
+- [x] Implement stacked contacts, text CV, and compact education rows.
+- [x] Check desktop/mobile rendering, keyboard, preservation and local preview.
+
+- [x] People contact icons, single-column roster, and Home partner lists.
+- [x] Verify names, destinations, responsive layout, tests/build and local readback.
+
+- [x] Local preview: nest and verify Montague teaching recognition on Home and CV.
+
+## Home Simplification - Local Preview Only
+
+- [x] Follow-up: test-first contact-last placement and visible Home award bullets.
+- [x] Follow-up: tests/build, exact preservation, browser/anchor/bullets and review.
+- [x] Follow-up: update docs/history and deliver the revised localhost preview.
+
+- [x] Inspect ownership and establish clean dedicated worktree and 383-test baseline.
+- [x] Test-first Home-specific section composition and two award exclusions.
+- [x] Preserve canonical facts/assets, CV and all other rendered routes.
+- [x] Parent full tests/build, native browser checks and independent review.
+- [x] Deliver localhost preview; capture and inspect desktop/mobile screenshots.
+- [x] Record local-only completion evidence in history and preview documentation.
+- Publication is not requested; do not commit, push, merge or deploy this preview.
+
+Implementation and parent verification are recorded in history.md,
+docs/home-preview.md and .local/home-simplify/. Independent review
+deleg_fb295d99: APPROVE (local-only), 102 focused tests passed. All local gates
+are closed; publication is a separate, unrequested action.
+
 ## Research Label Bullets
 
 - [x] Shared semantic label bullets and compact responsive styling.
