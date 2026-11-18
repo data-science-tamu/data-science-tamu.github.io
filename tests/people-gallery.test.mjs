@@ -4,6 +4,7 @@ import fs from "node:fs";
 import vm from "node:vm";
 import { createPages } from "../src/templates.mjs";
 import { escape, imageRenderer } from "../src/helpers.mjs";
+import { normalizeCvExperienceHtml } from "./cv-experience-expectations.mjs";
 
 const read = (file) => fs.readFileSync(new URL(file, import.meta.url), "utf8");
 const site = JSON.parse(read("../content/site.json"));
@@ -75,6 +76,52 @@ test("optional experience, funding and service render on CV only with exact esca
   assert.ok(cv.indexOf("Example project &lt;title&gt;") < cv.indexOf("Example PI role"));
   assert.match(cv, /<li>Example service &lt;plain&gt;<\/li>/);
   assert.doesNotMatch(cv, /undefined|<exact>|<plain>/);
+});
+
+const experienceSection = (html) => html.match(/<section class="section split-section"><div class="section-heading"><h2>Professional Experience<\/h2><\/div>([\s\S]*?)<\/section>/)?.[1];
+const experienceItems = (items) => '<div><ul>' + items.map((item) => '<li><strong>' + escape(item.role) + '</strong>, ' + escape(item.organization) + ' (' + escape(item.period) + ')</li>').join('') + '</ul></div>';
+
+test("CV Professional Experience uses one native bullet and inline text per unchanged ordered record", () => {
+  assert.equal(experienceSection(render(source).get('/cv/')), experienceItems(source.faculty.experience));
+});
+
+test("CV inline experience escapes every dynamic field without changing other sections or pages", () => {
+  const lab = baseline();
+  const beforePages = render(lab);
+  lab.faculty.experience = [
+    { role: 'Role <one> & "quoted"', organization: 'Organization <two> & "lab"', period: 'Period <three> & "dates"' },
+    { role: 'Second role', organization: 'Second organization', period: 'Second period' },
+  ];
+  const before = structuredClone(lab);
+  const pages = render(lab);
+  const cv = pages.get('/cv/');
+  assert.equal(experienceSection(cv), experienceItems(lab.faculty.experience));
+  assert.doesNotMatch(experienceSection(cv), /<one>|<two>|<three>|<h[1-6]|<p\b|<br\b|style=|nowrap|role=/);
+  assert.equal(cv.replace(/<section class="section split-section"><div class="section-heading"><h2>Professional Experience<\/h2><\/div>[\s\S]*?<\/section>/, ''), beforePages.get('/cv/'));
+  for (const [route, html] of pages) if (route !== '/cv/') assert.equal(html, beforePages.get(route), route);
+  assert.deepEqual(lab, before);
+});
+
+test("historical CV normalization reverses only the exact approved experience section", () => {
+  const cv = render(source).get('/cv/');
+  const old = normalizeCvExperienceHtml(cv);
+  assert.notEqual(old, cv);
+  assert.match(experienceSection(old), /^<div><ul class="clean-list detail-list"><li><h3>Assistant Professor<\/h3>/);
+  for (const mutate of [
+    (data) => { data.faculty.experience.pop(); },
+    (data) => { data.faculty.experience.reverse(); },
+    (data) => { data.faculty.experience.push(data.faculty.experience[0]); },
+    ...['role', 'organization', 'period'].map((field) => (data) => { data.faculty.experience[0][field] += ' UNAPPROVED'; }),
+  ]) {
+    const data = structuredClone(source);
+    mutate(data);
+    const changed = render(data).get('/cv/');
+    assert.equal(normalizeCvExperienceHtml(changed), changed);
+  }
+  const changed = cv.replace(experienceSection(cv), experienceSection(cv).replace('<ul>', '<ul class="unexpected">'));
+  assert.equal(normalizeCvExperienceHtml(changed), changed);
+  assert.equal(normalizeCvExperienceHtml(cv + '<p>Unrelated content</p>'), old + '<p>Unrelated content</p>');
+  assert.equal(normalizeCvExperienceHtml(old), old);
 });
 
 test("absent or empty optional arrays preserve baseline pages without empty new sections", () => {

@@ -50,7 +50,7 @@ export const approvedPast = [
     title: "Master's Students", label: "Past Students",
     names: [
       "Noor S. Obeidat (Graduated, 2025 Fall); Outstanding Master of Science Thesis Student Award, 2025.",
-      "Shu Nee Khor, Student Intern (2023 Nov- 2024 January)",
+      "Shu Nee Khor (2023 Nov- 2024 January), Student Intern",
     ],
   },
   {
@@ -58,7 +58,7 @@ export const approvedPast = [
     names: [
       "Matthew Lemon (2024 Sep-2025 June)",
       "Gabriel Gonzalez (2024 Sep-2025 June); admitted to an M.S. program at Harvard University.",
-      "Anna Hartman, REU Program (Research Experiences for Undergraduates) (2023 May-July)",
+      "Anna Hartman (2023 May-July), REU Program (Research Experiences for Undergraduates)",
     ],
   },
 ];

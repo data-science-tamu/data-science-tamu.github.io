@@ -1,5 +1,7 @@
 # Academic Website Release Tasks
 
+- [x] Check dates before role labels and one-line desktop CV experience entries.
+
 - [x] Verify both past members' inline roles, grouping and unchanged dates.
 
 - [x] Implement stacked contacts, text CV, and compact education rows.

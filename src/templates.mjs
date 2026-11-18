@@ -87,7 +87,7 @@ export function createPages(site, lab, img, originals = new Map()) {
   ${teachingAndRecognition()}
   ${awardsAndHonors(faculty.awards)}`;
   const cvDetails = () =>
-    `${faculty.experience?.length ? `<section class="section split-section">${sectionHead("Professional Experience")}<div><ul class="clean-list detail-list">${faculty.experience.map((item) => `<li><h3>${e(item.role)}</h3><p>${e(item.organization)}</p><p class="small">${e(item.period)}</p></li>`).join("")}</ul></div></section>` : ""}
+    `${faculty.experience?.length ? `<section class="section split-section">${sectionHead("Professional Experience")}<div><ul>${faculty.experience.map((item) => `<li><strong>${e(item.role)}</strong>, ${e(item.organization)} (${e(item.period)})</li>`).join("")}</ul></div></section>` : ""}
   ${faculty.funding && (faculty.funding.summary || faculty.funding.items?.length) ? `<section class="section split-section">${sectionHead("Research Funding")}<div>${faculty.funding.summary ? `<p>${e(faculty.funding.summary)}</p>` : ""}${faculty.funding.items?.length ? `<ul class="clean-list detail-list">${faculty.funding.items.map((item) => `<li><h3>${item.href ? `<a href="${e(item.href)}">${e(item.title)}</a>` : e(item.title)}</h3><p class="small">${[item.role, item.sponsor, item.period, item.amount].map(e).join(" &middot; ")}</p>${item.details ? `<p>${e(item.details)}</p>` : ""}</li>`).join("")}</ul>` : ""}</div></section>` : ""}
   ${faculty.service?.length ? `<section class="section split-section">${sectionHead("Professional Service")}<div><ul>${faculty.service.map((item) => `<li>${e(item)}</li>`).join("")}</ul></div></section>` : ""}`;
   const latest = lab.news.slice(0, 3);
