@@ -5,6 +5,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { normalizeResearchFieldLists } from "./research-field-normalization.mjs";
+import { normalizeMontagueDetailsHtml } from "./award-detail-expectations.mjs";
+import { normalizeContactEducationHtml } from "./contact-education-expectations.mjs";
+import { normalizePastRosterHtml } from "./people-partner-expectations.mjs";
 import {
   assertPublicationBaseline,
   assertNewsBaseline,
@@ -274,15 +277,27 @@ test("actual build includes all approved browse routes, canonical links and unch
     assert.match(html, /href="\/assets\/research-index.css"/);
   }
   const baseline = JSON.parse(read("tests/fixtures/research-menu-preservation.json"));
+  const home = JSON.parse(read("tests/fixtures/home-preservation.json"));
   for (const [file, digest] of Object.entries(baseline.builtBodies)) {
     const body = read('dist/' + file).match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
-    assert.equal(createHash("sha256").update(normalizeResearchFieldLists(body)).digest("hex"), digest, file);
+    assert.equal(createHash("sha256").update(normalizePastRosterHtml(normalizeContactEducationHtml(normalizeMontagueDetailsHtml(normalizeResearchFieldLists(body))))).digest("hex"), file === "index.html" ? home.homeBodySha256 : digest, file);
   }
   assert.equal(read("dist/assets/research-index.css"), read("src/research-index.css"));
   for (const file of files(path.join(root, "public"))) {
     const relative = path.relative(path.join(root, "public"), file);
     assert.deepEqual(fs.readFileSync(path.join(root, "dist", relative)), fs.readFileSync(file), relative);
   }
+});
+
+test("preview preserves built HTML guards with approved People output, exact CV award nesting and shared Home chrome", () => {
+  const baseline = JSON.parse(read("tests/fixtures/home-preservation.json"));
+  const documents = files(path.join(root, "dist")).filter((file) => file.endsWith('.html'))
+    .map((file) => path.relative(path.join(root, "dist"), file)).filter((file) => file !== 'index.html').sort();
+  assert.deepEqual(documents, Object.keys(baseline.documents).sort());
+  for (const file of documents)
+    assert.equal(createHash("sha256").update(normalizePastRosterHtml(normalizeContactEducationHtml(normalizeMontagueDetailsHtml(read('dist/' + file))))).digest("hex"), baseline.documents[file], file);
+  const chrome = read('dist/index.html').replace(/<main\b[^>]*>[\s\S]*?<\/main>/, '<main></main>');
+  assert.equal(createHash("sha256").update(chrome).digest("hex"), baseline.homeChromeSha256);
 });
 
 test("build fails closed for invalid research index before touching last good output", () => {

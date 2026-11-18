@@ -1,5 +1,118 @@
 # Website History
 
+## Past Role Labels (Local Preview)
+
+The People past roster has two degree-level headings. Shu Nee Khor's Student
+Intern role and Anna Hartman's full REU program label follow their respective
+names before the original dates. The other three entries are unchanged. Only
+`people/index.html` differs in the build. Chromium checked both group memberships,
+inline text positions, and no horizontal overflow at 1440, 390 and 320 pixels.
+
+## Contacts Below Names and Compact Education (Local Preview)
+
+People contact strips now sit below the name; the faculty CV link reads CV.
+Education on People and the HTML CV aligns degree (dates) with field, school.
+The 1440px browser view fits all eight student and five faculty credentials on
+one line each. At 1024, 390 and 320px, long descriptions wrap without overflow.
+The parent verified the build, all 476 tests, name-specific destinations, keyboard
+focus, every education record, browser accessibility checks and Windows readback.
+Of 77 build outputs, only People HTML, CV HTML and site.css changed. The Home
+page, PDF, content records and other routes remained intact.
+
+## People Contacts, Rosters and Home Partners (Local Preview)
+
+Faculty and Ph.D. student names now have matching accessible icon links to
+their existing destinations. Current undergraduate Andres Sanchez uses the same
+compact list format as the past students without being classified as an alumnus.
+Past groups follow one column; Home lists two industrial partners and six funders
+individually. The preceding local preview remains on 4202, and the new version on
+4203 was reachable from Windows. All 469 tests passed. Native Chromium checked
+both routes at widths 1440, 390 and 320, including keyboard access, link targets,
+roster order, partner markers and automated accessibility. Only Home HTML,
+People HTML and the shared stylesheet changed among the previous build outputs.
+
+## 2026-11-18: Montague Scholar Award Detail (Local Preview)
+
+The recognition sentence, including the $6,500 teaching grant, was stored as a
+separate award. It now belongs to the Montague Scholar record and renders as one
+nested list item in both Home and the HTML CV. The original text and CTE link
+are intact. The only build changes are the exact list regrouping in those two
+pages; the CV PDF, News and other outputs are unchanged. All 436 tests passed.
+Chromium verified both pages at 390px and 1440px with native nested markers and
+no reported axe violations or overflow. Evidence: `.local/montague-subitem/`.
+
+## 2026-11-17: Home Contact Position and Award Bullets - Verified Local Preview
+
+Continued the same uncommitted preview worktree. The unchanged Prospective
+Students & Collaborators panel is now the final Home section before the footer;
+the hero link and unique target remain intact. Home Awards and Honors opts into
+native bullets through the existing list renderer; CV and every other caller
+keep their original markup. Canonical text, award exclusions, order and links
+are unchanged. No CSS, assets or non-Home output changed.
+
+Expected Home output was derived from the saved 417-test baseline before edits.
+Focused RED: five expected failures among 35 tests; GREEN: 35 passed. Parent
+independently passed all 419 tests, build and whitespace checks. Of 144 saved
+content/public/output files, only dist/index.html differs; all 67 content/public
+files and 76 other output files remain byte-identical.
+
+Fresh native Chromium QA:20 page/viewport, four navigation/anchor, six no-JS/
+print/200%-text cases and 87 local targets passed with no tested axe, console,
+image or overflow failures. Native disc markers and outside indentation were
+checked in every Home case. Desktop/mobile screenshots were inspected, the
+hero link scrolled to the final panel, and served CV bytes stayed exact. Windows
+localhost:4202 responded HTTP200; the revised preview URL was delivered.
+
+Independent review deleg_f6fe58c2: APPROVE, no findings, 35 focused tests passed.
+The reviewer independently reconstructed the requested byte-exact change and
+confirmed protected output. Parent confirmed all three frozen review files
+remained unchanged on receipt; no duplicate review/test cycle was needed.
+All follow-up gates are closed. Evidence: .local/home-simplify/followup/ and
+docs/home-preview.md. Main remains unchanged; no commit, push, merge or deployment.
+
+## 2026-11-17: Home Simplification - Verified Local Preview
+
+Implemented only in the uncommitted `preview/home-simplify` worktree. Home omits
+the repeated biography/profile block and Education; unchanged hero/research/news/
+contact content precedes Awards, partners and the original teaching/interests/
+recognition section. Explicit exact-text `content/home.json` exclusions hide only
+the two approved Master's-related awards on Home. The selector has no allowable
+count rule; the maintained config test locks the approved pair. CV retains every
+award and all Education, with byte-identical output including whitespace.
+
+Focused test-first RED: 33 tests, 2 passed and 31 expected failures. Focused GREEN:
+33/33; full `npm test`: 417/417, none skipped; `npm run build` and whitespace
+checks passed, with `TMPDIR=/dev/shm` for tests/build. The 243-paragraph coverage
+count is unchanged; eight explicit People/CV destination mutations are rejected.
+All 65 original maintained-data/capture/public hashes pass. Of 77 build files,
+only index.html changes; the other 76, including 21 non-Home HTML documents,
+remain exact. Historical fixtures, original content/assets, CSS/JS and menus are
+unchanged. Provenance/contract: docs/home-preview.md; actual commands and logs:
+.local/home-simplify/worker-result.md.
+
+Parent independently passed 417 tests, build and whitespace checks. Across 143
+baseline content/public/output entries, only dist/index.html changed; all 66
+original content/assets and 76 other output files remain exact. Chromium passed
+20 page/viewport cases, four navigation cases, six no-JS/print/200%-text cases
+and 87 local URL/fragment checks, with no tested accessibility, console, image
+or overflow failures. Desktop/mobile screenshots were inspected. Native browser
+height decreased from 4506 to 3597px at 1440px width and from 7185 to 5950px at
+390px width. Served CV bytes remain exact.
+
+Independent read-only review deleg_fb295d99: APPROVE (local-only), 102 focused
+tests passed, no blockers. The reviewer separately confirmed all 21 non-Home
+HTML documents and Home chrome against the baseline. Parent confirmed the seven
+reviewed runtime/test files did not change afterward. The corrected browser
+harness distinguishes existing hover-open behavior from click toggling; both
+baseline and candidate behaved identically and no menu code changed.
+
+Preview http://localhost:4202/ and unchanged comparison http://localhost:4200/
+respond HTTP200; Windows curl independently verified localhost:4202. The preview
+link was delivered to the owner. All local gates are closed. Primary main remains
+clean at 1de3cc31240c2a76faaae83b301f678becc10650. No commit, push, merge,
+deployment, CV/PDF edit or worker-started server was performed or authorized.
+Detailed parent evidence: .local/home-simplify/parent-verification.md and qa/.
+
 ## 2026-11-06: TNNLS Reviewer Journal - Published
 
 Added the owner-confirmed IEEE Transactions on Neural Networks and Learning

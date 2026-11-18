@@ -24,7 +24,7 @@ function baseline() {
 const render = (lab) => new Map(createPages(site, lab, renderImage).map((page) => [page.route, page.body]));
 const student = (html) => html.match(/<article class="student">([\s\S]*?)<\/article>/)[1];
 
-test("student links follow email and escaped highlights follow education", () => {
+test("student icon links follow email beside the name and escaped highlights follow education", () => {
   const lab = baseline();
   lab.people.current = [{ ...lab.people.current[0],
     links: [{label: "Personal <site>", href: "https://example.test/?a=1&b=2"},
@@ -32,9 +32,10 @@ test("student links follow email and escaped highlights follow education", () =>
     highlights: ["Example <award> & recognition", "Example research highlight"],
   }];
   const html = student(render(lab).get("/people/"));
-  assert.match(html, /class="text-links"><a href="https:\/\/example.test\/\?a=1&amp;b=2">Personal &lt;site&gt;/);
-  assert.match(html, /href="https:\/\/www.linkedin.com\/in\/example\/">LinkedIn/);
-  assert.ok(html.indexOf("class=\"email\"") < html.indexOf("class=\"text-links\""));
+  assert.ok(html.includes('href="https://example.test/?a=1&amp;b=2" aria-label="' + escape(lab.people.current[0].name + ': Personal <site>') + '"'));
+  assert.ok(html.includes('href="https://www.linkedin.com/in/example/" aria-label="' + lab.people.current[0].name + ': LinkedIn"'));
+  assert.ok(html.indexOf('href="mailto:') < html.indexOf('href="https://example.test/'));
+  assert.match(html, /<\/h3><span class="person-links">/);
   assert.match(html, /<ul class="student-highlights"><li>Example &lt;award&gt; &amp; recognition<\/li><li>Example research highlight<\/li><\/ul>/);
   assert.ok(html.indexOf("class=\"education-list\"") < html.indexOf("class=\"student-highlights\""));
   assert.doesNotMatch(html, /<award>|<site>/);
@@ -45,7 +46,7 @@ test("current undergraduate research is separate from past members", () => {
   lab.people.undergraduates = [{name: "Example <student>", period: "Example period", description: "Research & mentoring"}];
   const html = render(lab).get("/people/");
   assert.match(html, /<h2>Current Undergraduate Research<\/h2>/);
-  assert.match(html, /<h3>Example &lt;student&gt;<\/h3>/);
+  assert.match(html, /<ul class="student-roster"><li>Example &lt;student&gt; \(Example period\); Research &amp; mentoring<\/li><\/ul>/);
   assert.match(html, /Example period/);
   assert.match(html, /Research &amp; mentoring/);
   assert.ok(html.indexOf("Current Undergraduate Research") < html.indexOf("Past members:"));

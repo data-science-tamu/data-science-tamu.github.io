@@ -217,3 +217,38 @@ In the [Research navigation](../docs/research-menu-preview.md), `src/research-pr
 ### Research Detail Bullets
 
 `src/research-content.mjs` owns the explicit labeled-detail/collaborator list, reused by all project renderings. `src/research-index.css` owns compact detail-list markers and indentation. Data stays in `content/lab.json`; only markup changes. See the canonical [labeled-detail contract](../docs/research-presentation.md#labeled-detail-lists) and [navigation provenance](../docs/research-menu-preview.md#label-bullet-refinement).
+
+## Home Composition Preview
+
+`src/people-links.mjs` renders faculty and student contacts below profile names,
+including the text CV link. `src/templates.mjs` renders degree/date and
+field/institution rows for both People and the HTML CV. The People template keeps current and past rosters
+separate. Home partner lists are rendered from the ordered groups in
+`content/lab.json`. See [People and partners preview](../docs/people-partners.md).
+
+An award in `content/lab.json` can carry its own `details` list. The shared
+award renderer in `src/templates.mjs` nests each detail inside its parent on
+both Home and the HTML CV, preserving filtering at the award level. The teaching
+grant description belongs to the Montague award; do not add it as another award.
+
+`src/templates.mjs` shares small Education, teaching/recognition and award
+renderers. CV composes all three in its original order and whitespace; Home
+omits the repeated biography/profile block and Education, then follows its
+unchanged hero/research/news prefix with Awards, partners, original teaching/
+interests/recognition, then the unchanged contact panel as the final section.
+The hero's prospective-students anchor remains linked to that panel. Home awards
+use native list bullets; CV retains its original list markup. People, CSS and
+other assets remain unchanged.
+
+`content/home.json` is Home-only presentation configuration. Its exact canonical
+`excludedAwardTexts` are validated by `selectHomeAwards` and never mutate
+`content/lab.json`. The maintained-config test locks the owner's two exclusions;
+the runtime selector allows any unique, existing, explicit text list without
+heuristics or a count rule, preserving future ordinary awards automatically.
+`tests/home-simplification.test.mjs` covers this contract and missing-target
+mutations for all eight captured paragraphs whose explicit People/CV location
+replaces Home. The original 243-paragraph count and historical fixtures remain.
+`tests/site.test.mjs` additionally checks every non-Home HTML byte and Home chrome
+against the portable Home preservation fixture. Scope and completed local
+verification are in [Home preview](../docs/home-preview.md); publication remains
+outside this preview-only task.

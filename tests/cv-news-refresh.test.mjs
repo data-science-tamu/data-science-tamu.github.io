@@ -7,14 +7,27 @@ import { createPages } from "../src/templates.mjs";
 import { dimensions, imageRenderer, rich } from "../src/helpers.mjs";
 import { correctedNewsExpectation } from "./correction-expectations.mjs";
 import { refresh, normalizeRefreshForBaseline } from "./refresh-expectations.mjs";
+import { montagueParent, montagueDetail } from "./award-detail-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const lab = JSON.parse(fs.readFileSync(path.join(root,"content/lab.json"),"utf8"));
 const sha256 = value => createHash("sha256").update(value).digest("hex");
 const plain = html => html.replace(/<[^>]*>/g, "").replaceAll("&amp;","&").replaceAll("&gt;",">").replaceAll("&lt;","<").replaceAll("&nbsp;"," ").replace(/\s+/g," ").trim();
-// Fixture paths predate the grant insertion and the single Council prepend.
-const actualPath = keys => keys[0] === "news"
-  ? [keys[0],keys[1]+1+Number(keys[1] >= refresh.newsAddition.index),...keys.slice(2)] : keys;
+// Fixture paths predate grant/Council insertions, Montague nesting and inline past roles.
+const actualPath = keys => {
+  if (keys[0] === "news")
+    return [keys[0],keys[1]+1+Number(keys[1] >= refresh.newsAddition.index),...keys.slice(2)];
+  if (keys[0] === "people" && keys[1] === "past" && keys[2] === 2)
+    return ["people", "past", 1, ...keys.slice(3)];
+  if (keys[0] === "faculty" && keys[1] === "awards" && keys.length > 2) {
+    const historical = refresh.changes.find(change => change.path.join(".") === "faculty.awards").after[keys[2]];
+    const isDetail = historical.text === montagueDetail.text;
+    const index = lab.faculty.awards.findIndex(award => award.text === (isDetail ? montagueParent.text : historical.text));
+    assert.ok(index >= 0, "Historical award still has a canonical destination");
+    return ["faculty", "awards", index, ...(isDetail ? ["details", 0] : []), ...keys.slice(3)];
+  }
+  return keys;
+};
 function leaves(value, keys = []) {
   return value && typeof value === "object"
     ? Object.entries(value).flatMap(([key,item]) => leaves(item,[...keys,key]))
@@ -42,7 +55,7 @@ test("every approved changed value, including all funding fields and URLs, rejec
   for (const change of refresh.changes) {
     const keys = actualPath(change.path);
     for (const leaf of leaves(change.after)) {
-      const data = structuredClone(lab), target = [...keys,...leaf.keys];
+      const data = structuredClone(lab), target = actualPath([...change.path,...leaf.keys]);
       changeAt(data,target,String(leaf.value)+" UNAPPROVED");
       assert.throws(()=>normalizeRefreshForBaseline(data),target.join("."));
     }
@@ -90,7 +103,7 @@ test("the refresh guard rejects unrelated research/publication changes, extra cl
 
 test("rich content keeps exact text/HTML parity and ordinary verified links", () => {
   normalizeRefreshForBaseline(lab);
-  for(const item of [...lab.news,...lab.faculty.awards,...lab.faculty.courses,...lab.faculty.interests]) {
+  for(const item of [...lab.news,...lab.faculty.awards.flatMap(award => [award, ...(award.details || [])]),...lab.faculty.courses,...lab.faculty.interests]) {
     assert.equal(plain(rich(item.html)),item.text);
   }
   const webinar = lab.news.find(item=>item.date==="2026.10.21");

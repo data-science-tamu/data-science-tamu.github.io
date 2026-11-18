@@ -1,5 +1,32 @@
 # Website Plan
 
+The inline past-role layout is verified in the local People preview. See history.md.
+
+The contact-row and education follow-up is implemented and locally verified;
+its presentation, tests, and browser checks are recorded in history.md.
+
+The People and Home partner changes are available in the verified local preview
+on port 4203. Port 4202 serves the preceding preview. See history.md for QA.
+
+Montague award nesting is verified on the local Home and HTML CV preview. See history.md.
+
+## Home Simplification - Local Preview Only
+
+The contact-last and Home award-bullet follow-up is complete, including fresh
+parent QA and independent approval. Completed evidence is recorded in history.md
+and docs/home-preview.md; detailed logs are in `.local/home-simplify/followup/`.
+The verified updated localhost URL has been delivered. No follow-up item remains.
+
+The initial simplification was verified in the uncommitted `preview/home-simplify`
+worktree before this follow-up. Its earlier local gates, including independent
+review, are closed; completed work and measured evidence are in history.md and
+docs/home-preview.md. Evidence is under `.local/home-simplify/` (D-drive-backed).
+
+Preview: http://localhost:4202/; unchanged comparison: http://localhost:4200/.
+Primary main remains clean at `1de3cc31240c2a76faaae83b301f678becc10650`.
+No commit, push, merge or deployment is requested or authorized. Earlier Research
+Interests drafting and Selected Publications proposals remain outside this task.
+
 ## Research Navigation - Published
 
 Owner-approved menu, shared project/publication presentation and detail bullets are integrated into primary main and publicly verified. W1 is retained in both Healthcare & Biomechanics and Inverse Problems & Calibration with explicit author confirmation. Completed work and measured release evidence are in history.md and docs/validation.md; provenance is in docs/research-menu-preview.md.
