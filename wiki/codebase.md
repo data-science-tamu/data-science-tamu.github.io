@@ -222,7 +222,8 @@ In the [Research navigation](../docs/research-menu-preview.md), `src/research-pr
 
 `src/people-links.mjs` renders faculty and student contacts below profile names,
 including the text CV link. `src/templates.mjs` renders degree/date and
-field/institution rows for both People and the HTML CV. The People template keeps current and past rosters
+field/institution rows for both People and the HTML CV, and compact role,
+organization and period entries for Professional Experience. The People template keeps current and past rosters
 separate. Home partner lists are rendered from the ordered groups in
 `content/lab.json`. See [People and partners preview](../docs/people-partners.md).
 

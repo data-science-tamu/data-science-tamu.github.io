@@ -1,5 +1,8 @@
 # Website Plan
 
+The dates-first People roster and single-line CV experience follow-up was
+verified; see history.md.
+
 The inline past-role layout is verified in the local People preview. See history.md.
 
 The contact-row and education follow-up is implemented and locally verified;

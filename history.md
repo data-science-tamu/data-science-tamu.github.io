@@ -1,5 +1,12 @@
 # Website History
 
+## Dates First and Single-Line CV Experience
+
+Anna Hartman and Shu Nee Khor retain their groups and descriptions; their
+original dates now follow their names directly. The HTML CV displays each of
+the three appointments as role, organization (period). Browser checks passed
+at 1440, 1024, 390 and 320 pixels; only People and CV HTML changed in the build.
+
 ## Past Role Labels (Local Preview)
 
 The People past roster has two degree-level headings. Shu Nee Khor's Student
