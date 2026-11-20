@@ -8,17 +8,25 @@ import { dimensions, imageRenderer, rich } from "../src/helpers.mjs";
 import { correctedNewsExpectation } from "./correction-expectations.mjs";
 import { refresh, normalizeRefreshForBaseline } from "./refresh-expectations.mjs";
 import { montagueParent, montagueDetail } from "./award-detail-expectations.mjs";
+import { flatCourses, courseParent, courseDetail } from "./course-bullet-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const lab = JSON.parse(fs.readFileSync(path.join(root,"content/lab.json"),"utf8"));
 const sha256 = value => createHash("sha256").update(value).digest("hex");
 const plain = html => html.replace(/<[^>]*>/g, "").replaceAll("&amp;","&").replaceAll("&gt;",">").replaceAll("&lt;","<").replaceAll("&nbsp;"," ").replace(/\s+/g," ").trim();
-// Fixture paths predate grant/Council insertions, Montague nesting and inline past roles.
+// Fixture paths predate grant/Council insertions, nested details and inline past roles.
 const actualPath = keys => {
   if (keys[0] === "news")
     return [keys[0],keys[1]+1+Number(keys[1] >= refresh.newsAddition.index),...keys.slice(2)];
   if (keys[0] === "people" && keys[1] === "past" && keys[2] === 2)
     return ["people", "past", 1, ...keys.slice(3)];
+  if (keys[0] === "faculty" && keys[1] === "courses" && keys.length > 2) {
+    const historical = flatCourses[keys[2]], isDetail = historical.text === courseDetail.text;
+    const index = lab.faculty.courses.findIndex((course) => course.text === (isDetail ? courseParent.text : historical.text));
+    assert.ok(index >= 0, "Historical course still has a canonical destination");
+    if (isDetail) assert.deepEqual(lab.faculty.courses[index].details, [courseDetail]);
+    return ["faculty", "courses", index, ...(isDetail ? ["details", 0] : []), ...keys.slice(3)];
+  }
   if (keys[0] === "faculty" && keys[1] === "awards" && keys.length > 2) {
     const historical = refresh.changes.find(change => change.path.join(".") === "faculty.awards").after[keys[2]];
     const isDetail = historical.text === montagueDetail.text;
@@ -65,7 +73,8 @@ test("every approved changed value, including all funding fields and URLs, rejec
     assert.throws(()=>normalizeRefreshForBaseline(data),keys.join(".")+" missing");
     if (Array.isArray(change.after) && change.after.length > 1) {
       const reordered = structuredClone(lab);
-      changeAt(reordered, keys, [...change.after].reverse());
+      const records = keys.reduce((item, key) => item[key], reordered);
+      changeAt(reordered, keys, [...records].reverse());
       assert.throws(()=>normalizeRefreshForBaseline(reordered),keys.join(".")+" reordered");
     }
   }
@@ -103,7 +112,7 @@ test("the refresh guard rejects unrelated research/publication changes, extra cl
 
 test("rich content keeps exact text/HTML parity and ordinary verified links", () => {
   normalizeRefreshForBaseline(lab);
-  for(const item of [...lab.news,...lab.faculty.awards.flatMap(award => [award, ...(award.details || [])]),...lab.faculty.courses,...lab.faculty.interests]) {
+  for(const item of [...lab.news,...lab.faculty.awards.flatMap(award => [award, ...(award.details || [])]),...lab.faculty.courses.flatMap(course => [course, ...(course.details || [])]),...lab.faculty.interests]) {
     assert.equal(plain(rich(item.html)),item.text);
   }
   const webinar = lab.news.find(item=>item.date==="2026.10.21");

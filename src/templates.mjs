@@ -80,12 +80,12 @@ export function createPages(site, lab, img, originals = new Map()) {
   const facultyEducation = () =>
     `<section class="section split-section" id="faculty-background">${sectionHead("Education")}<div>${education(faculty.education)}<p class="section-link"><a href="/cv/">Full curriculum vitae ${arrow}</a></p></div></section>`;
   const teaching = () =>
-    `<section class="section split-section">${sectionHead("Courses taught")}<div>${list(faculty.courses)}</div></section>`;
+    `<section class="section split-section">${sectionHead("Courses taught")}<div><ul>${faculty.courses.map(awardItem).join("")}</ul></div></section>`;
   const awardsAndHonors = (awards, bulleted = false) =>
     `<section class="section split-section">${sectionHead("Awards and Honors")}<div><ul${bulleted ? "" : ' class="clean-list"'}>${awards.map(awardItem).join("")}</ul></div></section>`;
   const facultyDetails = () => `${facultyEducation()}
   ${teaching()}
-  ${awardsAndHonors(faculty.awards)}`;
+  ${awardsAndHonors(faculty.awards, true)}`;
   const cvDetails = () =>
     `${faculty.funding && (faculty.funding.summary || faculty.funding.items?.length) ? `<section class="section split-section">${sectionHead("Research Funding")}<div>${faculty.funding.summary ? `<p>${e(faculty.funding.summary)}</p>` : ""}${faculty.funding.items?.length ? `<ul class="clean-list detail-list">${faculty.funding.items.map((item) => `<li><h3>${item.href ? `<a href="${e(item.href)}">${e(item.title)}</a>` : e(item.title)}</h3><p class="small">${[item.role, item.sponsor, item.period, item.amount].map(e).join(" &middot; ")}</p>${item.details ? `<p>${e(item.details)}</p>` : ""}</li>`).join("")}</ul>` : ""}</div></section>` : ""}
   ${faculty.service?.length ? `<section class="section split-section">${sectionHead("Professional Service")}<div><ul>${faculty.service.map((item) => `<li>${e(item)}</li>`).join("")}</ul></div></section>` : ""}`;

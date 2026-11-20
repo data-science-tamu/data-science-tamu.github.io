@@ -237,9 +237,10 @@ The HTML CV shows education, courses and awards; Home follows its hero,
 research and news with Awards, partners, Courses taught and the contact panel.
 Neither page displays `faculty.interests` or `faculty.recognition`. Both lists
 remain in the maintained data. Home's Research focus stays near the top.
-The hero's prospective-students anchor remains linked to that panel. Home awards
-use native list bullets; CV retains its original list markup. People, CSS and
-other assets remain unchanged.
+The hero's prospective-students anchor remains linked to that panel. Both pages
+use native bullets for courses and awards. Course-specific notes live in the
+course's `details` array, so the development note follows DAEN 210 even if the
+courses change order.
 
 `content/home.json` is Home-only presentation configuration. Its exact canonical
 `excludedAwardTexts` are validated by `selectHomeAwards` and never mutate

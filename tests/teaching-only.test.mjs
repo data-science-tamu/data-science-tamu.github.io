@@ -4,8 +4,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { createPages } from "../src/templates.mjs";
 import { imageRenderer } from "../src/helpers.mjs";
-import { refresh, normalizeRefreshForBaseline } from "./refresh-expectations.mjs";
+import { normalizeRefreshForBaseline } from "./refresh-expectations.mjs";
 import { assertSourceCoverage } from "./source-coverage.mjs";
+import { awardItemHtml, topLevelAwardItems } from "./award-detail-expectations.mjs";
+import { approvedCourses, courseDetail, teachingHtml, historicalTeachingHtml, cvAwardsHtml, historicalCvAwardsHtml, normalizeCourseBulletsHtml } from "./course-bullet-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
@@ -15,15 +17,12 @@ const render = (data = lab) => createPages(site, data, img);
 const pages = render();
 const body = (route, variants = pages) => variants.find((page) => page.route === route).body;
 const routes = ["/", "/cv/"];
-const approvedCourses = refresh.changes.find((change) => change.path.join(".") === "faculty.courses").after;
 const section = (html, title) => {
   const heading = html.indexOf('<h2>' + title + '</h2>');
   assert.ok(heading >= 0, title + ': section exists');
   const start = html.lastIndexOf('<section', heading);
   return html.slice(start, html.indexOf('</section>', heading) + '</section>'.length);
 };
-const teachingHtml = (courses) => '<section class="section split-section"><div class="section-heading"><h2>Courses taught</h2></div><div><ul class="clean-list">' +
-  courses.map((course) => '<li>' + course.html + '</li>').join('') + '</ul></div></section>';
 const freeze = (value) => {
   if (value && typeof value === "object") {
     for (const child of Object.values(value)) freeze(child);
@@ -43,9 +42,13 @@ for (const route of routes) {
     assert.doesNotMatch(body(route), /class="section faculty-details"/);
   });
 
-  test(route + " keeps exact approved course wording, order and split-section markup", () => {
+  test(route + " uses three native course bullets with the exact development detail nested once", () => {
     assert.deepEqual(lab.faculty.courses, approvedCourses);
-    assert.equal(section(body(route), "Courses taught"), teachingHtml(approvedCourses));
+    const teaching = section(body(route), "Courses taught");
+    assert.equal(teaching, teachingHtml());
+    assert.deepEqual(topLevelAwardItems(teaching), approvedCourses.map(awardItemHtml));
+    assert.equal(teaching.split(courseDetail.html).length - 1, 1);
+    assert.doesNotMatch(teaching, /clean-list|style=|role=/);
     assert.equal((body(route).match(/<h2>Courses taught<\/h2>/g) || []).length, 1);
   });
 }
@@ -84,8 +87,12 @@ test("both teaching lists retain rich course HTML and canonical order for popula
   const richCourse = {
     text: 'Test Course & Lab: Details',
     html: '<strong>Test Course &amp; Lab</strong>: <em><a href="/cv/">Details</a></em>',
+    details: [
+      { text: 'First detail & context', html: '<em>First detail</em> &amp; context' },
+      { text: 'Second detail', html: '<a href="/cv/">Second detail</a><br>More context' },
+    ],
   };
-  for (const courses of [[], [richCourse], [...approvedCourses, richCourse], [...approvedCourses].reverse()]) {
+  for (const courses of [[], [richCourse], [richCourse, { text: 'Plain', html: 'Plain', details: [] }], [...approvedCourses, richCourse], [richCourse, ...approvedCourses].reverse()]) {
     const data = structuredClone(lab);
     data.faculty.courses = structuredClone(courses);
     const before = structuredClone(data);
@@ -93,6 +100,53 @@ test("both teaching lists retain rich course HTML and canonical order for popula
     for (const route of routes)
       assert.equal(section(body(route, render(data)), "Courses taught"), teachingHtml(courses));
     assert.deepEqual(data, before);
+  }
+});
+
+test("course parent and detail use the existing rich-text validation", () => {
+  for (const html of ['<script>alert(1)</script>', '<a href="/cv/" onclick="alert(1)">Detail</a>', '<a href="javascript:alert(1)">Detail</a>', 'Detail <', null]) {
+    for (const target of ['parent', 'detail']) {
+      const data = structuredClone(lab);
+      const course = { text: 'Parent', html: 'Parent', details: [{ text: 'Detail', html: 'Detail' }] };
+      if (target === 'parent') course.html = html;
+      else course.details[0].html = html;
+      data.faculty.courses = [course];
+      assert.throws(() => render(data), /Invalid inline (?:content|markup)/, target);
+    }
+  }
+});
+
+test("historical section adapters accept only the exact approved markup and preserve unrelated bytes", () => {
+  for (const [current, historical, route] of [[teachingHtml(), historicalTeachingHtml, '/'], [cvAwardsHtml, historicalCvAwardsHtml, '/cv/']]) {
+    assert.equal(normalizeCourseBulletsHtml(current + ' sentinel', route), historical + ' sentinel');
+    assert.equal(normalizeCourseBulletsHtml(historical, route), historical);
+    const items = topLevelAwardItems(current);
+    for (const changed of [
+      current.replace('<ul>', '<ul class="clean-list">'),
+      current.replace(items[0], ''),
+      current.replace(items[0], items[0] + items[0]),
+      current.replace(items[0] + items[1], items[1] + items[0]),
+      current.replace('2025', '2099'),
+    ]) {
+      assert.notEqual(changed, current);
+      assert.equal(normalizeCourseBulletsHtml(changed, route), changed);
+    }
+  }
+  assert.equal(normalizeCourseBulletsHtml(cvAwardsHtml, '/'), cvAwardsHtml, 'Home awards are never adapted');
+});
+
+test("source provenance rejects missing, duplicated, flattened or misattached course details", () => {
+  normalizeRefreshForBaseline(lab);
+  for (const mutate of [
+    (courses) => { delete courses[2].details; },
+    (courses) => { courses[2].details.push(structuredClone(courseDetail)); },
+    (courses) => { courses.push(...courses[2].details); delete courses[2].details; },
+    (courses) => { courses[0].details = courses[2].details; delete courses[2].details; },
+    (courses) => { delete courses[2].html; },
+  ]) {
+    const data = structuredClone(lab);
+    mutate(data.faculty.courses);
+    assert.throws(() => normalizeRefreshForBaseline(data), (error) => error.code === 'ERR_ASSERTION');
   }
 });
 
@@ -127,7 +181,8 @@ test("non-displayed canonical records remain exact and source coverage rejects e
 
 test("canonical-only coverage does not allow courses or unrelated Home content to disappear", () => {
   for (const original of [
-    ...approvedCourses.map((course) => '<li>' + course.html + '</li>'),
+    ...approvedCourses.map(awardItemHtml),
+    awardItemHtml(courseDetail),
     '<p>' + lab.faculty.bio[2].html + '</p>',
     '<li>' + lab.faculty.awards.find((award) => award.text.includes('Best paper award, Management')).html + '</li>',
   ]) {
