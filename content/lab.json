@@ -88,11 +88,13 @@
       },
       {
         "text": "DAEN 210 Uncertainty Modeling (Spring 2024, Spring 2025, Spring 2026)",
-        "html": "DAEN 210 Uncertainty Modeling (Spring 2024, Spring 2025, Spring 2026)"
-      },
-      {
-        "text": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department. Course development: Summer 2023.",
-        "html": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department. Course development: Summer 2023."
+        "html": "DAEN 210 Uncertainty Modeling (Spring 2024, Spring 2025, Spring 2026)",
+        "details": [
+          {
+            "text": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department. Course development: Summer 2023.",
+            "html": "I have developed and offered DAEN 210 for the Data Engineering program newly offered by the department. Course development: Summer 2023."
+          }
+        ]
       }
     ],
     "awards": [

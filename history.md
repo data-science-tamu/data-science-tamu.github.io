@@ -1,5 +1,12 @@
 # Website History
 
+## Course and Award Bullets
+
+Both Home and the HTML CV use one bullet per course. The development note is
+a child of DAEN 210. The CV award list also uses native bullets, preserving
+Montague's nested grant detail. Only Home and CV HTML changed in the build;
+519 tests and desktop/mobile browser checks passed. The PDF is unchanged.
+
 ## Standalone Courses Taught on Home and CV
 
 Removed the duplicate research interests and recognition lists from both web

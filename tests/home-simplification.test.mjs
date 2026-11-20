@@ -8,6 +8,7 @@ import { escape, imageRenderer } from "../src/helpers.mjs";
 import { assertSourceCoverage } from "./source-coverage.mjs";
 import { awardItemHtml, normalizeMontagueDetailsHtml, topLevelAwardItems } from "./award-detail-expectations.mjs";
 import { educationItemHtml } from "./contact-education-expectations.mjs";
+import { normalizeCourseBulletsHtml } from "./course-bullet-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
@@ -77,11 +78,11 @@ test("Home section order ends in Prospective Students & Collaborators", () => {
     "Industry &amp; funding partners", "Courses taught",
     "Prospective Students &amp; Collaborators",
   ]);
-  assert.equal(hash(teaching(home)), baseline.homeTeachingSha256);
+  assert.equal(hash(normalizeCourseBulletsHtml(teaching(home))), baseline.homeTeachingSha256);
   assert.equal(hash(section(home, "Industry & funding partners")), baseline.homePartnersSha256);
   for (const item of lab.faculty.courses) {
-    assert.ok(teaching(home).includes('<li>' + item.html + '</li>'), 'courses: ' + item.text);
-    assert.ok(teaching(cv).includes('<li>' + item.html + '</li>'), 'CV courses: ' + item.text);
+    assert.ok(teaching(home).includes(awardItemHtml(item)), 'courses: ' + item.text);
+    assert.ok(teaching(cv).includes(awardItemHtml(item)), 'CV courses: ' + item.text);
   }
   for (const html of [home, cv])
     assert.doesNotMatch(html, /<h2>Research Interests &amp; recognition<\/h2>|<h3>Research Recognition<\/h3>/);
@@ -112,15 +113,16 @@ test("Home excludes exactly the two authorized awards and CV retains every award
   assert.ok(awards.includes('Best paper award, Management and Innovation Technology International Conference, 2015'));
 });
 
-test("Home awards use native bullets while CV awards retain clean-list markup", () => {
+test("Home and CV awards use native bullets with every existing award retained", () => {
   const awards = section(home, "Awards and Honors");
   assert.match(awards, /<div><ul><li>/);
   assert.doesNotMatch(awards, /\bclean-list\b/);
-  assert.match(section(cv, "Awards and Honors"), /<div><ul class="clean-list"><li>/);
+  assert.match(section(cv, "Awards and Honors"), /<div><ul><li>/);
+  assert.doesNotMatch(section(cv, "Awards and Honors"), /\bclean-list\b/);
 });
 
 test("Home layout retains the approved composition and structured partners except exact Montague detail nesting", () => {
-  assert.equal(hash(normalizeMontagueDetailsHtml(home)), baseline.homeBodySha256);
+  assert.equal(hash(normalizeMontagueDetailsHtml(normalizeCourseBulletsHtml(home))), baseline.homeBodySha256);
 });
 
 test("maintained Home config names only the exact two award texts", () => {

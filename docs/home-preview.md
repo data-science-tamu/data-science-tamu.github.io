@@ -1,9 +1,10 @@
 # Home Simplification - Local Preview Only
 
 **Current presentation:** Home and the HTML CV share a standalone Courses
-taught section. Neither displays the former Research Interests or Research
-Recognition lists. Home's Research focus and each page's Awards and Honors
-are unchanged. The sections below document the earlier preview.
+taught section: one bullet per course, with the development note nested under
+DAEN 210. Both pages use bullets for Awards and Honors. Neither displays the
+former Research Interests or Research Recognition lists. Home's Research focus
+is unchanged. The sections below document the earlier preview.
 
 Later local correction (2026-11-18): on Home and the HTML CV the $6,500 grant
 sentence is one nested detail of the Montague Scholar award. This is the only

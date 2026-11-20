@@ -42,7 +42,7 @@ for (const route of ['/', '/cv/']) {
     assert.equal(count(section, montagueDetail.html), 1);
     assert.ok(!topLevelAwardItems(section).includes(awardItemHtml(montagueDetail)));
     assert.deepEqual(topLevelAwardItems(section), selected.map(awardItemHtml));
-    assert.match(section, route === '/' ? /<div><ul><li>/ : /<div><ul class="clean-list"><li>/);
+    assert.match(section, /<div><ul><li>/);
   });
 }
 
