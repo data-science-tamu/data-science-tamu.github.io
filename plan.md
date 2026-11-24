@@ -1,5 +1,7 @@
 # Website Plan
 
+Home portrait contact icons are verified; see history.md.
+
 Home and HTML CV course bullets, and the CV award bullets, are verified; see history.md.
 
 Home and the HTML CV share a standalone Courses taught section. Verification is

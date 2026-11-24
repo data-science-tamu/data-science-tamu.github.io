@@ -9,6 +9,7 @@ import { assertSourceCoverage } from "./source-coverage.mjs";
 import { awardItemHtml, normalizeMontagueDetailsHtml, topLevelAwardItems } from "./award-detail-expectations.mjs";
 import { educationItemHtml } from "./contact-education-expectations.mjs";
 import { normalizeCourseBulletsHtml } from "./course-bullet-expectations.mjs";
+import { homeIconCaption, normalizeHomeIconsHtml } from "./home-icon-expectations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
@@ -48,11 +49,13 @@ test("Home has one faculty identity heading in the unchanged hero", () => {
   assert.ok(home.includes('<h2>' + lab.faculty.name + '</h2><p>' + escape(site.facultyRole)));
 });
 
-test("Home omits only the repeated introduction and external profile block", () => {
+test("Home omits the repeated introduction and external profile block outside the faculty caption", () => {
   assert.ok(!home.includes(lab.faculty.bio[0].html));
+  assert.ok(home.includes(homeIconCaption));
+  const outsideCaption = home.replace(homeIconCaption, "");
   for (const key of ["profile", "scholar", "linkedin"])
-    assert.ok(!home.includes('href="' + escape(site[key]) + '"'), key);
-  assert.doesNotMatch(home, /Faculty profile|Google Scholar|LinkedIn/);
+    assert.ok(!outsideCaption.includes('href="' + escape(site[key]) + '"'), key);
+  assert.doesNotMatch(outsideCaption, /Faculty profile|Google Scholar|LinkedIn/);
 });
 
 test("Home omits Education while People profile and complete CV education remain", () => {
@@ -68,7 +71,7 @@ test("Home omits Education while People profile and complete CV education remain
 test("Home hero, research, news and relocated contact stay byte-identical", () => {
   const prefix = home.slice(0, home.indexOf(section(home, "Awards and Honors")));
   const contact = section(home, "Prospective Students & Collaborators");
-  assert.equal(hash(prefix + contact), baseline.homePrefixSha256);
+  assert.equal(hash(normalizeHomeIconsHtml(prefix + contact)), baseline.homePrefixSha256);
 });
 
 test("Home section order ends in Prospective Students & Collaborators", () => {
@@ -122,7 +125,7 @@ test("Home and CV awards use native bullets with every existing award retained",
 });
 
 test("Home layout retains the approved composition and structured partners except exact Montague detail nesting", () => {
-  assert.equal(hash(normalizeMontagueDetailsHtml(normalizeCourseBulletsHtml(home))), baseline.homeBodySha256);
+  assert.equal(hash(normalizeMontagueDetailsHtml(normalizeCourseBulletsHtml(normalizeHomeIconsHtml(home)))), baseline.homeBodySha256);
 });
 
 test("maintained Home config names only the exact two award texts", () => {
