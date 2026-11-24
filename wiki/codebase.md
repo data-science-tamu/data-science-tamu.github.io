@@ -220,8 +220,9 @@ In the [Research navigation](../docs/research-menu-preview.md), `src/research-pr
 
 ## Home Composition Preview
 
-`src/people-links.mjs` renders faculty and student contacts below profile names,
-including the text CV link. `src/templates.mjs` renders degree/date and
+`src/people-links.mjs` renders the four faculty contact icons in the Home
+portrait caption. People reuses those links and adds the text CV link.
+`src/templates.mjs` renders degree/date and
 field/institution rows for both People and the HTML CV. It does not render
 `faculty.experience` on the HTML CV. The People template keeps current and past rosters
 separate. Home partner lists are rendered from the ordered groups in

@@ -9,6 +9,7 @@ import { normalizeMontagueDetailsHtml } from "./award-detail-expectations.mjs";
 import { normalizeContactEducationHtml } from "./contact-education-expectations.mjs";
 import { normalizePastRosterHtml } from "./people-partner-expectations.mjs";
 import { normalizeCourseBulletsHtml } from "./course-bullet-expectations.mjs";
+import { normalizeHomeIconsHtml } from "./home-icon-expectations.mjs";
 
 import {
   assertPublicationBaseline,
@@ -281,7 +282,8 @@ test("actual build includes all approved browse routes, canonical links and unch
   const baseline = JSON.parse(read("tests/fixtures/research-menu-preservation.json"));
   const home = JSON.parse(read("tests/fixtures/home-preservation.json"));
   for (const [file, digest] of Object.entries(baseline.builtBodies)) {
-    const body = read('dist/' + file).match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
+    const renderedBody = read('dist/' + file).match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
+    const body = file === "index.html" ? normalizeHomeIconsHtml(renderedBody) : renderedBody;
     assert.equal(createHash("sha256").update(normalizePastRosterHtml(normalizeContactEducationHtml(normalizeMontagueDetailsHtml(normalizeResearchFieldLists(normalizeCourseBulletsHtml(body, file === "cv/index.html" ? "/cv/" : "/")))))).digest("hex"), file === "index.html" ? home.homeBodySha256 : digest, file);
   }
   assert.equal(read("dist/assets/research-index.css"), read("src/research-index.css"));

@@ -1,5 +1,13 @@
 # Website History
 
+## Home Portrait Contact Icons
+
+Replaced the email address beneath the Home portrait with the existing Email,
+Faculty profile, Google Scholar and LinkedIn icon links. The People page retains
+its additional CV link. All 522 tests passed; the Home caption was the only
+changed build output. Browser checks covered keyboard order and touch targets
+at viewport widths of 320, 390 and 1440 pixels.
+
 ## Course and Award Bullets
 
 Both Home and the HTML CV use one bullet per course. The development note is

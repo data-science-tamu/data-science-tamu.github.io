@@ -1,5 +1,7 @@
 # Academic Website Release Tasks
 
+- [x] Verify the Home portrait contact links, keyboard order and mobile layout.
+
 - [x] Verify course and award bullets and their nested details on desktop and mobile.
 
 - [x] Verify the teaching-only section on Home and CV and preserve other content.
